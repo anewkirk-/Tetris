@@ -1,1 +1,2 @@
 c:\users\echo_drop\documents\visual studio 2012\Projects\Tetris\Tetris\bin\Debug\Tetris.exe.config
+C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\bin\Debug\Tetris.exe.config
