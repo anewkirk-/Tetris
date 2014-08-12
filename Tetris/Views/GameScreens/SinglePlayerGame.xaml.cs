@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Tetris.Views.GameScreens
 {
     /// <summary>
-    /// Interaction logic for TwoPlayeModeSelect.xaml
+    /// Interaction logic for SinglePlayerGame.xaml
     /// </summary>
-    public partial class TwoPlayeModeSelect : UserControl
+    public partial class SinglePlayerGame : UserControl
     {
-        public TwoPlayeModeSelect()
+        public SinglePlayerGame()
         {
             InitializeComponent();
         }
