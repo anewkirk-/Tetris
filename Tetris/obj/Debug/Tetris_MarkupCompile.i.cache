@@ -9,12 +9,23 @@ Tetris
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\App.xaml
+2877392421
+
+10-1958985721
+=======
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\App.xaml
 11151548125
 
+<<<<<<< HEAD
 10283302765
+=======
+91774673704
+>>>>>>> origin/master
+>>>>>>> origin/master
 12-1401562060
-MainWindow.xaml;
+GameScreens\MainMenu.xaml;MainWindow.xaml;
 
 False
 
