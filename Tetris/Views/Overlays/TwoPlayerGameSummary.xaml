@@ -31,6 +31,9 @@
             </StackPanel>
             
         </StackPanel>
-            
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="TPGS_playAgain" Content="Play Again" />
+            <Button x:Name="TPGS_mainMenu" Content="Back to Main Menu" />
+        </StackPanel>
     </StackPanel>
 </UserControl>

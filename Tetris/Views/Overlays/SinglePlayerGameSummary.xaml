@@ -5,7 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+
+    <!-- http://stackoverflow.com/questions/5450985/how-to-make-overlay-control-above-all-other-controls -->
+    
+    
+    <StackPanel>
+        <Label Content="Game Summary" />
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Score:" />
+                    <Label x:Name="SPGS_score" Content="SCORE" />
+                </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="SPGS_playAgain" Content="Play Again" />
+            <Button x:Name="SPGS_mainMenu" Content="Back to Main Menu" />
+        </StackPanel>
+
+    </StackPanel>
 </UserControl>

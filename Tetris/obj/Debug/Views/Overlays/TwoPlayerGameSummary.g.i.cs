@@ -63,6 +63,22 @@ namespace Tetris.Views.Overlays {
         #line default
         #line hidden
         
+        
+        #line 35 "..\..\..\..\Views\Overlays\TwoPlayerGameSummary.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button TPGS_playAgain;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 36 "..\..\..\..\Views\Overlays\TwoPlayerGameSummary.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button TPGS_mainMenu;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -101,6 +117,12 @@ namespace Tetris.Views.Overlays {
             return;
             case 3:
             this.TPGS_playerTwo_score = ((System.Windows.Controls.Label)(target));
+            return;
+            case 4:
+            this.TPGS_playAgain = ((System.Windows.Controls.Button)(target));
+            return;
+            case 5:
+            this.TPGS_mainMenu = ((System.Windows.Controls.Button)(target));
             return;
             }
             this._contentLoaded = true;
