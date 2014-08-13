@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\
 Tetris
 none
 false
 DEBUG;TRACE
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\App.xaml
-8454512385
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\App.xaml
+10-1219049632
 
-20-1426214652
-131919534955
-MainWindow.xaml;Views\GameScreens\MainMenu.xaml;Views\GameScreens\ModeSelect.xaml;Views\GameScreens\ScoresMenu.xaml;Views\GameScreens\SinglePlayerGame.xaml;Views\GameScreens\TwoPlayerGame.xaml;Views\Overlays\AddHighScore.xaml;Views\Overlays\PauseScreen.xaml;
+221439557850
+13-245623233
+MainWindow.xaml;Views\GameScreens\MainMenu.xaml;Views\GameScreens\ModeSelect.xaml;Views\GameScreens\ScoresMenu.xaml;Views\GameScreens\SinglePlayerGame.xaml;Views\GameScreens\TwoPlayerGame.xaml;Views\Overlays\AddHighScore.xaml;Views\Overlays\SinglePlayerGameSummary.xaml;Views\Overlays\PauseScreen.xaml;Views\Overlays\TwoPlayerGameSummary.xaml;
 
 False
 

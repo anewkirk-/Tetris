@@ -10,34 +10,52 @@ namespace Tetris.Controllers
     {
         public GameMode Mode { get; set; }
         public bool isRunning { get; set; }
-        public bool LeftKey { get; set; }
-        public bool RightKey { get; set; }
-        public bool DownKey { get; set; }
-        public bool LeftRotateKey { get; set; }
-        public bool RightRotateKey { get; set; }
-
         
-        public void Play()
+        //
+        public void Tick()
         {
-
+            throw new NotImplementedException();
         }
 
-        public bool isCollision()
-        {
-            return false;
-        }
-    
-        //Tetrimino moves down one per tick
-        //semiphore here - threads lock the resource until they are finished with them
-        public void Drop()
-        {
-            
-        }
-
-        //Add a row of Tetrimino's with an empty space in the middle when a "Tetris" has occured
+        //Add a row of Tetrimino's with an empty space in the middle when a "Tetris" has occured on the other player's screen
         public void AddRowSansOne()
         {
+            throw new NotImplementedException();
+        }
 
+        public void StartMoveLeft()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StartMoveRight()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StopMoveLeft()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StopMoveRight()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StartHardDrop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StopHardDrop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RotateCurrent()
+        {
+            throw new NotImplementedException();
         }
     }
 }
