@@ -92,9 +92,6 @@
     <Compile Include="Views\Overlays\AddHighScore.xaml.cs">
       <DependentUpon>AddHighScore.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Overlays\GameSummary.xaml.cs">
-      <DependentUpon>GameSummary.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Overlays\PauseScreen.xaml.cs">
       <DependentUpon>PauseScreen.xaml</DependentUpon>
     </Compile>
@@ -132,10 +129,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Overlays\AddHighScore.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Overlays\GameSummary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

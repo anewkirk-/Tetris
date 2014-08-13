@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tetris.Models
 {
-    class Score
+    public class Score
     {
         private string _username;
 

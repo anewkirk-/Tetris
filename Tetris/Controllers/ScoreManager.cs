@@ -9,7 +9,7 @@ using Tetris.Models;
 
 namespace Tetris.Controllers
 {
-    class ScoreManager
+    public class ScoreManager
     {
 
         private static SQLiteConnection _conn;
