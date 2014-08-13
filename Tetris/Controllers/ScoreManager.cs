@@ -23,7 +23,19 @@ namespace Tetris.Controllers
 
         public static List<Score> GetAll()
         {
-            throw new NotImplementedException();
+            Connect();
+            List<Score> res = new List<Score>();
+            string query = "SELECT * FROM scores ORDER BY score DESC";
+            SQLiteCommand sqlcommand = new SQLiteCommand(query, _conn);
+            SQLiteDataReader r = sqlcommand.ExecuteReader();
+            while (r.Read())
+            {
+                Score s = new Score();
+                s.Username = (string)r["username"];
+                s.ScoreValue = (int)r["score"];
+                res.Add(s);
+            }
+            return res;
         }
 
         private static void Connect()
