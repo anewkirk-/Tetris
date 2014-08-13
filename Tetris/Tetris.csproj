@@ -92,8 +92,14 @@
     <Compile Include="Views\Overlays\AddHighScore.xaml.cs">
       <DependentUpon>AddHighScore.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Overlays\SinglePlayerGameSummary.xaml.cs">
+      <DependentUpon>SinglePlayerGameSummary.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Overlays\PauseScreen.xaml.cs">
       <DependentUpon>PauseScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Overlays\TwoPlayerGameSummary.xaml.cs">
+      <DependentUpon>TwoPlayerGameSummary.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -132,7 +138,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Overlays\SinglePlayerGameSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Overlays\PauseScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Overlays\TwoPlayerGameSummary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
