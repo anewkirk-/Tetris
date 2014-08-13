@@ -17,7 +17,7 @@ namespace Tetris.Controllers
         public static void Submit(Score s)
         {
             Connect();
-
+            SQLiteCommand insertComm = new SQLiteCommand("INSERT INTO scores (username, score) VALUES ('" + s.Username + "', " + s.ScoreValue + ");", _conn);
             Disconnect();
         }
 
@@ -46,6 +46,7 @@ namespace Tetris.Controllers
             if (_conn != null)
             {
                 _conn.Close();
+                _conn = null;
             }
         }
 
