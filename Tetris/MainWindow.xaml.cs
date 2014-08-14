@@ -31,11 +31,13 @@ namespace Tetris
             PauseScreen pause = new PauseScreen();
 
             Canvas back = new Canvas();
-            back.Background = new SolidColorBrush(Colors.Navy);
+            back.Background = new SolidColorBrush(Colors.Black);
             back.Background.Opacity = .25;
 
             mainPanel.Children.Add(back);
             mainPanel.Children.Add(pause);
+
+            
         }
     }
 }
