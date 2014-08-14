@@ -22,6 +22,13 @@ namespace Tetris
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        MainMenu mainMenu = new MainMenu();
+        SinglePlayerModeSelect SP_modeSelect = new SinglePlayerModeSelect();
+        TwoPlayerModeSelect SP_modeSelect = new TwoPlayerModeSelect();
+        ScoresMenu scoreBoard = new ScoresMenu();
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,10 +41,12 @@ namespace Tetris
             back.Background = new SolidColorBrush(Colors.Black);
             back.Background.Opacity = .25;
 
-            mainPanel.Children.Add(back);
-            mainPanel.Children.Add(pause);
+            //mainPanel.Children.Add(back);
+            //mainPanel.Children.Add(pause);
 
             
         }
+
+
     }
 }

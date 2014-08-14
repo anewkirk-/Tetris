@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Tetris.Views.GameScreens;
-using Tetris.Views.Overlays;
 
 namespace Tetris.Views.GameScreens
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for SinglePlayerModeSelect.xaml
     /// </summary>
-    public partial class MainMenu : UserControl
+    public partial class TwoPlayerModeSelect : UserControl
     {
-        public MainMenu()
+        public TwoPlayerModeSelect()
         {
             InitializeComponent();
-        }
-
-        private void MM_quit_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
         }
     }
 }

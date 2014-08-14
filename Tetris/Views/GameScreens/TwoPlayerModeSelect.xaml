@@ -1,37 +1,32 @@
-﻿<UserControl x:Class="Tetris.Views.GameScreens.MainMenu"
+﻿<UserControl x:Class="Tetris.Views.GameScreens.TwoPlayerModeSelect"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
-    
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Width" Value="125" />
             <Setter Property="Margin" Value="10" />
         </Style>
     </UserControl.Resources>
-    
-    <StackPanel x:Name="MM_mainPanel"
+
+    <StackPanel x:Name="MS_mainPanel"
                 Margin="50">
-        
+
         <!--Logo image to replace this-->
         <Label Content="dotTetris"
                HorizontalAlignment="Center"/>
         <!--Logo image to replace this-->
-        
-        <Button x:Name="MM_singlePlayer"
-                Content="Single Player"/>
-        <Button x:Name="MM_twoPlayer"
-                Content="Two Player"/>
-        <Button x:Name="MM_scoreBoards"
-                Content="High Scores"/>
-        <!--<Button x:Name="MM_options"
-                Content="Options"
-                Click="MM_options_Click"/>-->
-        <Button x:Name="MM_quit"
-                Content="Quit"
-                Click="MM_quit_Click"/>
+
+        <Button x:Name="MS_classic"
+                Content="Classic"/>
+        <Button x:Name="MS_timed"
+                Content="Timed"/>
+        <Button x:Name="MS_Marathon"
+                Content="Marathon"/>
+        <Button x:Name="MS_back"
+                Content="Back to Main Menu"/>
     </StackPanel>
 </UserControl>

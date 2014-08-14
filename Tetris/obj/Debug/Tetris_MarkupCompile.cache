@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\App.xaml
-10-1219049632
+11-1317610955
 
-271981544884
+28-566922161
 13-245623233
-MainWindow.xaml;Views\GameScreens\MainMenu.xaml;Views\GameScreens\ModeSelect.xaml;Views\GameScreens\ScoresMenu.xaml;Views\GameScreens\SinglePlayerGame.xaml;Views\GameScreens\TwoPlayerGame.xaml;Views\Overlays\AddHighScore.xaml;Views\Overlays\SinglePlayerGameSummary.xaml;Views\Overlays\PauseScreen.xaml;Views\Overlays\TwoPlayerGameSummary.xaml;
+MainWindow.xaml;Views\GameScreens\TwoPlayerModeSelect.xaml;Views\GameScreens\MainMenu.xaml;Views\GameScreens\SinglePlayerModeSelect.xaml;Views\GameScreens\ScoresMenu.xaml;Views\GameScreens\SinglePlayerGame.xaml;Views\GameScreens\TwoPlayerGame.xaml;Views\Overlays\AddHighScore.xaml;Views\Overlays\SinglePlayerGameSummary.xaml;Views\Overlays\PauseScreen.xaml;Views\Overlays\TwoPlayerGameSummary.xaml;
 
-False
+True
 
