@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tetris.Models;
+using Tetris.Models.TetriminoBag;
 
 namespace Tetris.Controllers
 {
@@ -11,6 +12,7 @@ namespace Tetris.Controllers
     {
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
+        private Tetrimino CurrentTetrimino { get; set; }
         
         //This method contains all the logic that happens in one discrete unit of time during a Tetris game
         public void Tick()
