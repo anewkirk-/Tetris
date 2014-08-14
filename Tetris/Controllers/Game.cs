@@ -28,37 +28,43 @@ namespace Tetris.Controllers
 
         public void StartMoveLeft()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < 4; i++)
+            {
+                CurrentTetrimino.Blocks[i].Y--;
+            }
         }
 
         public void StartMoveRight()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < 4; i++)
+            {
+                CurrentTetrimino.Blocks[i].Y++;
+            }
         }
 
-        public void StopMoveLeft()
-        {
-            throw new NotImplementedException();
-        }
+        //public void StopMoveLeft()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public void StopMoveRight()
-        {
-            throw new NotImplementedException();
-        }
+        //public void StopMoveRight()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public void StartHardDrop()
         {
-            throw new NotImplementedException();
+            CurrentTetrimino.Fall();
         }
 
-        public void StopHardDrop()
-        {
-            throw new NotImplementedException();
-        }
+        //public void StopHardDrop()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public void RotateCurrent()
         {
-            throw new NotImplementedException();
+            CurrentTetrimino.RotateRight();
         }
     }
 }
