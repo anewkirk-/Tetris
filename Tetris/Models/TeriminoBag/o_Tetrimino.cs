@@ -1,0 +1,68 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Tetris.Models.TeriminoBag
+{
+    public class o_Tetrimino : Tetrimino
+    {
+        private int position = 1;
+        public List<Point> Blocks = new List<Point>()
+        {
+            new Point { X = 1, Y = 0 },
+            new Point { X = 1, Y = 1 },
+            new Point { X = 0, Y = 1 },
+            new Point { X = 0, Y = 0 }
+        };
+
+        public void RotateRight()
+        {
+            if (position == 1)
+            {
+                Blocks[0].X--;
+                Blocks[1].Y--;
+                Blocks[2].X++;
+                Blocks[3].Y++;
+            }
+            if (position == 2)
+            {
+                Blocks[0].Y++;
+                Blocks[1].X--;
+                Blocks[2].Y--;
+                Blocks[3].X++;
+            }
+            if (position == 3)
+            {
+                Blocks[0].X++;
+                Blocks[1].Y++;
+                Blocks[2].X--;
+                Blocks[2].Y--;
+            }
+            if (position == 4)
+            {
+                Blocks[0].Y--;
+                Blocks[1].X++;
+                Blocks[2].Y++;
+                Blocks[3].X--;
+            }
+            if (position == 4)
+            {
+                position = 1;
+            }
+            else
+            {
+                position++;
+            }
+        }
+
+        public void Fall()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Blocks[i].X++;
+            }
+        }
+    }
+}
