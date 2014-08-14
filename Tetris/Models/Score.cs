@@ -9,13 +9,21 @@ namespace Tetris.Models
     public class Score
     {
         private string _username;
+        private int _scoreValue;
+
+        public Score() { }
+
+        public Score(string username, int scoreValue)
+        {
+            this.Username = username;
+            this.ScoreValue = ScoreValue;
+        }
 
         public string Username
         {
             get { return _username; }
             set { _username = value; }
         }
-        private int _scoreValue;
 
         public int ScoreValue
         {
