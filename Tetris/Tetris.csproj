@@ -74,14 +74,14 @@
     <Compile Include="Controllers\GameMode.cs" />
     <Compile Include="Controllers\ScoreManager.cs" />
     <Compile Include="Models\Score.cs" />
-    <Compile Include="Models\TeriminoBag\Tetrimino.cs" />
-    <Compile Include="Models\TeriminoBag\i_Tetrimino.cs" />
-    <Compile Include="Models\TeriminoBag\j_Tetrimino.cs" />
-    <Compile Include="Models\TeriminoBag\l_Tetrimino.cs" />
-    <Compile Include="Models\TeriminoBag\o_Tetrimino.cs" />
-    <Compile Include="Models\TeriminoBag\s_Tetrimino.cs" />
-    <Compile Include="Models\TeriminoBag\t_Tetrimino.cs" />
-    <Compile Include="Models\TeriminoBag\z_Tetrimino.cs" />
+    <Compile Include="Models\TetriminoBag\i_Tetrimino.cs" />
+    <Compile Include="Models\TetriminoBag\j_Tetrimino.cs" />
+    <Compile Include="Models\TetriminoBag\l_Tetrimino.cs" />
+    <Compile Include="Models\TetriminoBag\o_Tetrimino.cs" />
+    <Compile Include="Models\TetriminoBag\s_Tetrimino.cs" />
+    <Compile Include="Models\TetriminoBag\Tetrimino.cs" />
+    <Compile Include="Models\TetriminoBag\t_Tetrimino.cs" />
+    <Compile Include="Models\TetriminoBag\z_Tetrimino.cs" />
     <Compile Include="Views\GameScreens\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
