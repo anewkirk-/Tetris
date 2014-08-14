@@ -12,16 +12,16 @@ namespace Tetris.Controllers
     public class ScoreManager
     {
 
-        private static SQLiteConnection _conn;
+        private SQLiteConnection _conn;
 
-        public static void Submit(Score s)
+        public void Submit(Score s)
         {
             Connect();
             SQLiteCommand insertComm = new SQLiteCommand("INSERT INTO scores (username, score) VALUES ('" + s.Username + "', " + s.ScoreValue + ");", _conn);
             Disconnect();
         }
 
-        public static List<Score> GetAll()
+        public List<Score> GetAll()
         {
             Connect();
             List<Score> res = new List<Score>();
@@ -38,7 +38,7 @@ namespace Tetris.Controllers
             return res;
         }
 
-        private static void Connect()
+        private void Connect()
         {
             string filepath = "highscores.sqlite";
             if (!File.Exists(filepath))
@@ -53,7 +53,7 @@ namespace Tetris.Controllers
             }
         }
 
-        private static void Disconnect()
+        private void Disconnect()
         {
             if (_conn != null)
             {
@@ -62,7 +62,7 @@ namespace Tetris.Controllers
             }
         }
 
-        private static void CreateSchema()
+        private void CreateSchema()
         {
             Connect();
             SQLiteCommand createScoreTable = new SQLiteCommand("CREATE TABLE scores (username VARCHAR(10), score, INT);", _conn);
