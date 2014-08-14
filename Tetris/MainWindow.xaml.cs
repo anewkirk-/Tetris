@@ -24,27 +24,52 @@ namespace Tetris
     {
 
         MainMenu mainMenu = new MainMenu();
-        SinglePlayerModeSelect SP_modeSelect = new SinglePlayerModeSelect();
-        TwoPlayerModeSelect SP_modeSelect = new TwoPlayerModeSelect();
-        ScoresMenu scoreBoard = new ScoresMenu();
+            SinglePlayerModeSelect SP_modeSelect = new SinglePlayerModeSelect();
+            TwoPlayerModeSelect TP_modeSelect = new TwoPlayerModeSelect();
+            ScoresMenu scoreBoard = new ScoresMenu();
+
+            SinglePlayerGame SP_gameView = new SinglePlayerGame();
+            TwoPlayerGame TP_gameView = new TwoPlayerGame();
 
 
+        //Overlays
+        PauseScreen pause = new PauseScreen();
+        //Overlay Canvas
+        Canvas back = new Canvas();
+            
         public MainWindow()
         {
-            InitializeComponent();
-
-
-
-            PauseScreen pause = new PauseScreen();
-
-            Canvas back = new Canvas();
             back.Background = new SolidColorBrush(Colors.Black);
             back.Background.Opacity = .25;
+
+            
+            InitializeComponent();
+
+            mainMenu.MM_singlePlayer.Click += MM_singlePlayer_Click;
+
+            mainPanel.Children.Add(mainMenu);
+
+            
+
+            
 
             //mainPanel.Children.Add(back);
             //mainPanel.Children.Add(pause);
 
-            
+        }
+
+
+
+
+
+
+
+        //EVENT HANDLERS--------------------------------------------------------------------------------------------
+
+        void MM_singlePlayer_Click(object sender, RoutedEventArgs e)
+        {
+            mainPanel.Children.Remove(mainMenu);
+            mainPanel.Children.Add(SP_modeSelect);
         }
 
 
