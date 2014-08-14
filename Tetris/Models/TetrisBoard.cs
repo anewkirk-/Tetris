@@ -7,5 +7,5 @@ using Tetris.Models.TetriminoBag;
 
 namespace Tetris.Models
 {
-    class TetrisBoard : List<Tetrimino> { }
+    public class TetrisBoard : List<Tetrimino> { }
 }

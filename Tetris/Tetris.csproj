@@ -82,6 +82,7 @@
     <Compile Include="Models\TetriminoBag\Tetrimino.cs" />
     <Compile Include="Models\TetriminoBag\t_Tetrimino.cs" />
     <Compile Include="Models\TetriminoBag\z_Tetrimino.cs" />
+    <Compile Include="Models\TetrisBoard.cs" />
     <Compile Include="Views\GameScreens\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Tetris.GameScreens
+namespace Tetris.Views.GameScreens
 {
     /// <summary>
     /// Interaction logic for MainMenu.xaml
