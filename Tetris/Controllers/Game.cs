@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tetris.Models;
 
 namespace Tetris.Controllers
 {
     public class Game
     {
         public GameMode Mode { get; set; }
-        public bool isRunning { get; set; }
+        public TetrisBoard GameBoard { get; set; }
         
-        //
+        //This method contains all the logic that happens in one discrete unit of time during a Tetris game
         public void Tick()
         {
             throw new NotImplementedException();
