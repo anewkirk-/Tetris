@@ -18,6 +18,7 @@ namespace Tetris.Controllers
         {
             Connect();
             SQLiteCommand insertComm = new SQLiteCommand("INSERT INTO scores (username, score) VALUES ('" + s.Username + "', " + s.ScoreValue + ");", _conn);
+            insertComm.ExecuteNonQuery();
             Disconnect();
         }
 
@@ -35,7 +36,17 @@ namespace Tetris.Controllers
                 s.ScoreValue = (int)r["score"];
                 res.Add(s);
             }
+            Disconnect();
             return res;
+        }
+
+        public void ClearAll()
+        {
+            Connect();
+            SQLiteCommand delComm = new SQLiteCommand("DROP TABLE scores;", _conn);
+            delComm.ExecuteNonQuery();
+            Disconnect();
+            this.CreateSchema();
         }
 
         private void Connect()
@@ -65,7 +76,7 @@ namespace Tetris.Controllers
         private void CreateSchema()
         {
             Connect();
-            SQLiteCommand createScoreTable = new SQLiteCommand("CREATE TABLE scores (username VARCHAR(10), score, INT);", _conn);
+            SQLiteCommand createScoreTable = new SQLiteCommand("CREATE TABLE scores (username VARCHAR(10), score INT);", _conn);
             createScoreTable.ExecuteNonQuery();
             Disconnect();
         }

@@ -16,7 +16,12 @@ namespace Tetris.Models
         public Score(string username, int scoreValue)
         {
             this.Username = username;
-            this.ScoreValue = ScoreValue;
+            this.ScoreValue = scoreValue;
+        }
+
+        public override string ToString()
+        {
+            return this.Username + " " + this.ScoreValue.ToString();
         }
 
         public string Username
