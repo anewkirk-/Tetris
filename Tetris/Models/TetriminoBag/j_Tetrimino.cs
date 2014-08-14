@@ -11,10 +11,10 @@ namespace Tetris.Models.TetriminoBag
         public int position = 1;
         public List<Point> Blocks = new List<Point>()
         {
-            new Point { X = 2, Y = 2 },
-            new Point { X = 3, Y = 2 },
-            new Point { X = 3, Y = 3, isCenter = true },
-            new Point { X = 3, Y = 4 }
+            new Point { X = 0, Y = 0 },
+            new Point { X = 1, Y = 0 },
+            new Point { X = 1, Y = 1, isCenter = true },
+            new Point { X = 1, Y = 2 }
         };
 
         public void RotateRight()
