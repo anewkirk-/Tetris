@@ -35,7 +35,7 @@ namespace Tetris.Controllers
         //Get a random Tetrimino from the Tetrimino Bag
         public void RandomTetrimino()
         {
-            int index = rand.Next(tBag.Count);
+            int index = rand.Next(0, tBag.Count);
             Tetrimino randT = tBag[index];
             CurrentTetrimino = randT;
         }
