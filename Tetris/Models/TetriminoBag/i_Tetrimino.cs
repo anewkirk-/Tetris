@@ -24,8 +24,8 @@ namespace Tetris.Models.TetriminoBag
             {
                 Blocks[0].X--;
                 Blocks[0].Y++;
-                Blocks[2].X--;
-                Blocks[2].Y++;
+                Blocks[2].X++;
+                Blocks[2].Y--;
                 Blocks[3].X = Blocks[3].X + 2;
                 Blocks[3].Y = Blocks[3].Y - 2;
             }
@@ -45,7 +45,7 @@ namespace Tetris.Models.TetriminoBag
                 Blocks[2].X--;
                 Blocks[2].Y++;
                 Blocks[3].X = Blocks[3].X - 2;
-                Blocks[3].Y = Blocks[3].Y - 2;
+                Blocks[3].Y = Blocks[3].Y + 2;
             }
             if (position == 4)
             {

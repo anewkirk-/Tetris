@@ -38,7 +38,7 @@ namespace Tetris.Models.TetriminoBag
                 Blocks[0].X++;
                 Blocks[1].Y++;
                 Blocks[2].X--;
-                Blocks[2].Y--;
+                Blocks[3].Y--;
             }
             if (position == 4)
             {

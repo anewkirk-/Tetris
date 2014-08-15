@@ -21,15 +21,15 @@ namespace Tetris.Models.TetriminoBag
         {
             if (position == 1)
             {
-                Blocks[0].X--;
-                Blocks[0].Y--;
-                Blocks[1].X = Blocks[1].X - 2;
+                Blocks[1].X--;
+                Blocks[1].Y--;
+                Blocks[0].X = Blocks[0].X - 2;
                 Blocks[3].X++;
                 Blocks[3].Y--;
             }
             if (position == 2)
             {
-                Blocks[0].Y = Blocks[0].X + 2;
+                Blocks[0].Y = Blocks[0].Y + 2;
                 Blocks[1].X--;
                 Blocks[1].Y++;
                 Blocks[3].X--;
