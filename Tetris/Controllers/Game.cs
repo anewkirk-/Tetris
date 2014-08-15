@@ -33,7 +33,7 @@ namespace Tetris.Controllers
                 {
                     Point p = new Point();
                     p.X = 19;
-                    p.Y = randomY;
+                    p.Y = i;
                     Blocks.Add(p);
                 }
             }
