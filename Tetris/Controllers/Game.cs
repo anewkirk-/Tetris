@@ -14,6 +14,7 @@ namespace Tetris.Controllers
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
         private Tetrimino CurrentTetrimino { get; set; }
+        private List<Tetrimino> TetriminoOnGameBoard = new List<Tetrimino>();
 
         public List<Tetrimino> tBag = new List<Tetrimino>
         {
@@ -32,12 +33,13 @@ namespace Tetris.Controllers
             throw new NotImplementedException();
         }
 
-        //Get a random Tetrimino from the Tetrimino Bag
-        public void RandomTetrimino()
+        //Get a random Tetrimino from the Tetrimino Bag and add it to the TetriminoOnGameBoard list
+        public void AddRandomTetrimino()
         {
-            int index = rand.Next(0, tBag.Count);
+            int index = rand.Next(tBag.Count);
             Tetrimino randT = tBag[index];
             CurrentTetrimino = randT;
+            TetriminoOnGameBoard.Add(CurrentTetrimino);
         }
             
      
