@@ -10,6 +10,7 @@ namespace Tetris.Controllers
 {
     public class Game
     {
+        private Random rand = new Random();
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
         private Tetrimino CurrentTetrimino { get; set; }
@@ -20,10 +21,35 @@ namespace Tetris.Controllers
             throw new NotImplementedException();
         }
 
+        //Create a row of points leaving one space
+        public void RowOfBlocksMinusOne()
+        {
+            List<Point> Blocks = new List<Point>();
+            int randomY = rand.Next(0, 10);
+
+            for (int i = 0; i <= 9; i++)
+            {
+                if (i != randomY)
+                {
+                    Point p = new Point();
+                    p.X = 19;
+                    p.Y = randomY;
+                    Blocks.Add(p);
+                }
+            }
+        }
+
+        //Move all rows of Tetromino up one
+        public void MoveRowsUp()
+        {
+
+        }
+
         //Add a row of Tetrimino's with an empty space in the middle when a "Tetris" has occured on the other player's screen
         public void AddRowSansOne()
         {
-            throw new NotImplementedException();
+            MoveRowsUp();
+            RowOfBlocksMinusOne();
         }
 
         public void StartMoveLeft()
