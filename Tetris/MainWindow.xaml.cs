@@ -117,12 +117,16 @@ namespace Tetris
 
                     void SPMS_timed_Click(object sender, RoutedEventArgs e)
                     {
-                        throw new NotImplementedException();
+                        mainPanel.Children.Remove(SP_modeSelect);
+                        mainPanel.Children.Add(SP_gameView);
+                        //Game view gets new game
+                            //Thoughts: The game views manage the Game class, when they are called here, they start up a new game
                     }
 
                     void SPMS_Marathon_Click(object sender, RoutedEventArgs e)
                     {
-                        throw new NotImplementedException();
+                        mainPanel.Children.Remove(SP_modeSelect);
+                        mainPanel.Children.Add(SP_gameView);
                     }
                     
                     void SPMS_back_Click(object sender, RoutedEventArgs e)
@@ -134,17 +138,20 @@ namespace Tetris
                 //Two Player
                     void TPMS_classic_Click(object sender, RoutedEventArgs e)
                     {
-                        throw new NotImplementedException();
+                        mainPanel.Children.Remove(TP_modeSelect);
+                        mainPanel.Children.Add(TP_gameView);
                     }
 
                     void TPMS_timed_Click(object sender, RoutedEventArgs e)
                     {
-                        throw new NotImplementedException();
+                        mainPanel.Children.Remove(TP_modeSelect);
+                        mainPanel.Children.Add(TP_gameView);
                     }
 
                     void TPMS_marathon_Click(object sender, RoutedEventArgs e)
                     {
-                        throw new NotImplementedException();
+                        mainPanel.Children.Remove(TP_modeSelect);
+                        mainPanel.Children.Add(TP_gameView);
                     }
                     
                     void TPMS_back_Click(object sender, RoutedEventArgs e)
