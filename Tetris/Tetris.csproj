@@ -13,7 +13,6 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,6 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -83,11 +83,14 @@
     <Compile Include="Models\TetriminoBag\t_Tetrimino.cs" />
     <Compile Include="Models\TetriminoBag\z_Tetrimino.cs" />
     <Compile Include="Models\TetrisBoard.cs" />
+    <Compile Include="Views\GameScreens\TwoPlayerModeSelect.xaml.cs">
+      <DependentUpon>TwoPlayerModeSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GameScreens\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GameScreens\ModeSelect.xaml.cs">
-      <DependentUpon>ModeSelect.xaml</DependentUpon>
+    <Compile Include="Views\GameScreens\SinglePlayerModeSelect.xaml.cs">
+      <DependentUpon>SinglePlayerModeSelect.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameScreens\ScoresMenu.xaml.cs">
       <DependentUpon>ScoresMenu.xaml</DependentUpon>
@@ -123,11 +126,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\GameScreens\TwoPlayerModeSelect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\GameScreens\MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\GameScreens\ModeSelect.xaml">
+    <Page Include="Views\GameScreens\SinglePlayerModeSelect.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
