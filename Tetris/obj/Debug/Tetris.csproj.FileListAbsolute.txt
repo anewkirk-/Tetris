@@ -103,7 +103,6 @@ C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris_MarkupComp
 C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.g.resources
 C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.Properties.Resources.resources
 C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.csproj.GenerateResource.Cache
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.lref
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerModeSelect.baml
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerModeSelect.baml
