@@ -37,7 +37,7 @@ namespace Tetris
             SinglePlayerGameSummary SP_gameSummary = new SinglePlayerGameSummary();
             TwoPlayerGameSummary TP_gameSummary = new TwoPlayerGameSummary();
         //Overlay Canvas Background
-            Canvas back = new Canvas();
+            Canvas backCanvas = new Canvas();
             
         public MainWindow()
         {
@@ -60,26 +60,26 @@ namespace Tetris
 
                     scoreMenu.SM_back.Click += SM_back_Click;
 
+                //Games
+
+
+                //Overlays
+                    pause.pause_continue.Click += pause_continue_Click;
+
+
                 //Overlay Canvas Background
-                    back.Background = new SolidColorBrush(Colors.Black);
-                    back.Background.Opacity = .25;
+                    backCanvas.Background = new SolidColorBrush(Colors.Black);
+                    backCanvas.Background.Opacity = .25;
 
             
             InitializeComponent();
 
-            
-
             mainPanel.Children.Add(mainMenu);
 
 
-            //mainPanel.Children.Add(back);
-            //mainPanel.Children.Add(pause);
+            
 
         }
-
-        
-
-        
 
         
 
@@ -111,7 +111,8 @@ namespace Tetris
                 //Single Player
                     void SPMS_classic_Click(object sender, RoutedEventArgs e)
                     {
-                        throw new NotImplementedException();
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(pause);
                     }
 
                     void SPMS_timed_Click(object sender, RoutedEventArgs e)
@@ -157,6 +158,16 @@ namespace Tetris
                     {
                         mainPanel.Children.Remove(scoreMenu);
                         mainPanel.Children.Add(mainMenu);
+                    }
+
+
+            //Overlays
+
+                //Pause
+                    void pause_continue_Click(object sender, RoutedEventArgs e)
+                    {
+                        mainPanel.Children.Remove(backCanvas);
+                        mainPanel.Children.Remove(pause);
                     }
     }
 }

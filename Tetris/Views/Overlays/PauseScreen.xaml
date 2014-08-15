@@ -4,8 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Label Content="Game Paused" />
+             Height="200" Width="300">
+    <Grid Background="DeepPink">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            
+        </Grid.RowDefinitions>
+        <Label Content="Game Paused" 
+               FontSize="24"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Bottom"
+               Grid.Row="0"/>
+        
+        <Button x:Name="pause_continue"
+                Content="Continue"
+                Grid.Row="1"
+                Height="30"
+                Width="100"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="10"/>
     </Grid>
 </UserControl>
