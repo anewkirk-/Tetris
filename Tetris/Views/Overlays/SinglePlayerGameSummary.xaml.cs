@@ -18,9 +18,9 @@ namespace Tetris.Views.Overlays
     /// <summary>
     /// Interaction logic for GameSummary.xaml
     /// </summary>
-    public partial class GameSummary : UserControl
+    public partial class SinglePlayerGameSummary : UserControl
     {
-        public GameSummary()
+        public SinglePlayerGameSummary()
         {
             InitializeComponent();
         }

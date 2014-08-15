@@ -20,13 +20,13 @@
                HorizontalAlignment="Center"/>
         <!--Logo image to replace this-->
 
-        <Button x:Name="MS_classic"
+        <Button x:Name="SPMS_classic"
                 Content="Classic"/>
-        <Button x:Name="MS_timed"
+        <Button x:Name="SPMS_timed"
                 Content="Timed"/>
-        <Button x:Name="MS_Marathon"
+        <Button x:Name="SPMS_marathon"
                 Content="Marathon"/>
-        <Button x:Name="MS_back"
+        <Button x:Name="SPMS_back"
                 Content="Back to Main Menu"/>
     </StackPanel>
 </UserControl>

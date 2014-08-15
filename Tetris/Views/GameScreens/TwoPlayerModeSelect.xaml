@@ -12,7 +12,7 @@
         </Style>
     </UserControl.Resources>
 
-    <StackPanel x:Name="MS_mainPanel"
+    <StackPanel x:Name="TPMS_mainPanel"
                 Margin="50">
 
         <!--Logo image to replace this-->
@@ -20,13 +20,13 @@
                HorizontalAlignment="Center"/>
         <!--Logo image to replace this-->
 
-        <Button x:Name="MS_classic"
+        <Button x:Name="TPMS_classic"
                 Content="Classic"/>
-        <Button x:Name="MS_timed"
+        <Button x:Name="TPMS_timed"
                 Content="Timed"/>
-        <Button x:Name="MS_Marathon"
+        <Button x:Name="TPMS_marathon"
                 Content="Marathon"/>
-        <Button x:Name="MS_back"
+        <Button x:Name="TPMS_back"
                 Content="Back to Main Menu"/>
     </StackPanel>
 </UserControl>
