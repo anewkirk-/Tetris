@@ -15,7 +15,14 @@ namespace Tetris.Controllers
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
         private Tetrimino CurrentTetrimino { get; set; }
-        private Timer gameTimer = new Timer();
+        private Timer _gameTimer = new Timer();
+
+        public Game()
+        {
+            //default to 1 second intervals. This will be modified later.
+            _gameTimer.Interval = 1000;
+            _gameTimer.Elapsed += Tick;
+        }
 
         public List<Tetrimino> tBag = new List<Tetrimino>
         {
@@ -28,10 +35,19 @@ namespace Tetris.Controllers
             new z_Tetrimino()
         };
 
-        //This method contains all the logic that happens in one discrete unit of time during a Tetris game
-        public void Tick()
+        public void Tick(object sender, ElapsedEventArgs e)
         {
-            throw new NotImplementedException();
+            //Check if current tetrimino has fallen as far as it can and collided with blocks or the bottom of the board below it
+            
+            //If so, drop a new tetrimino
+
+            //if not, have it drop another row down
+
+            //check for lines filled and clear them
+
+            //add points for cleared lines
+
+
         }
 
         //Get a random Tetrimino from the Tetrimino Bag and add it to the TetriminoOnGameBoard list
@@ -92,16 +108,6 @@ namespace Tetris.Controllers
                 CurrentTetrimino.Blocks[i].Y++;
             }
         }
-
-        //public void StopMoveLeft()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public void StopMoveRight()
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public void StartHardDrop()
         {
