@@ -16,8 +16,8 @@
         <TextBox x:Name="AHS_name" />
         
         <StackPanel Orientation="Horizontal">
-            <Button x:Name="AHS_submit" Content="Submit" />
-            <Button x:Name="AHS_cancel" Content="Cancel" />
+            <Button x:Name="AHS_submit" Content="Submit" Click="AHS_submit_Click_1"/>
+            <Button x:Name="AHS_cancel" Content="Cancel" Click="AHS_cancel_Click_1"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

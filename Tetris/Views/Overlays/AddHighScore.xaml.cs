@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tetris.Controllers;
+using Tetris.Models;
 
 namespace Tetris.Views.Overlays
 {
@@ -20,9 +22,23 @@ namespace Tetris.Views.Overlays
     /// </summary>
     public partial class AddHighScore : UserControl
     {
+
+        private ScoreManager sm = new ScoreManager();
+
         public AddHighScore()
         {
             InitializeComponent();
+        }
+
+        private void AHS_submit_Click_1(object sender, RoutedEventArgs e)
+        {
+            Score newScore = new Score(AHS_name.ToString(), int.Parse(AHS_score.ToString()));
+            sm.Submit(newScore);
+        }
+
+        private void AHS_cancel_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
