@@ -8,8 +8,34 @@
     
     <UserControl.Resources>
         <Style TargetType="Button">
+            
+            
+            
             <Setter Property="Width" Value="125" />
             <Setter Property="Margin" Value="10" />
+            <Setter Property="Width" Value="200" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontFamily" Value="Miriam" />
+            <Setter Property="Background" Value="CornflowerBlue" />
+            <Setter Property="BorderBrush" Value="{x:Null}" />
+            <Setter Property="BorderThickness" Value="0" />
+
+
+            <!--<http://stackoverflow.com/questions/2064185/wpf-flat-button>-->
+            <Style.Triggers>
+                
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="CornflowerBlue" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="BorderThickness" Value="10" />
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="BorderThickness" Value="2" />
+                </Trigger>
+            </Style.Triggers>
+
         </Style>
     </UserControl.Resources>
     
@@ -17,8 +43,9 @@
                 Margin="50">
         
         <!--Logo image to replace this-->
-        <Label Content="dotTetris"
-               HorizontalAlignment="Center"/>
+        <Image Source="/Images/dotTetris.png" 
+               Width="400"
+               Margin="0,0,0,40"/>
         <!--Logo image to replace this-->
         
         <Button x:Name="MM_singlePlayer"
