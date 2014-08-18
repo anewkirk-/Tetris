@@ -116,8 +116,8 @@ namespace Tetris.Controllers
                 if (i != randomY)
                 {
                     Point p = new Point();
-                    p.X = 19;
-                    p.Y = i;
+                    p.Y = 19;
+                    p.X = i;
                     Blocks.Add(p);
                 }
             }
@@ -143,7 +143,7 @@ namespace Tetris.Controllers
             bool canMove = false;
             for (int i = 0; i < 4; i++)
             {
-                if (CurrentTetrimino.Blocks[i].Y == -1)
+                if (CurrentTetrimino.Blocks[i].X == -1)
                 {
                     canMove = false;
                     break;
@@ -158,7 +158,7 @@ namespace Tetris.Controllers
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    CurrentTetrimino.Blocks[i].Y--;
+                    CurrentTetrimino.Blocks[i].X--;
                 }
             }
         }
@@ -168,7 +168,7 @@ namespace Tetris.Controllers
             bool canMove = false;
             for (int i = 0; i < 4; i++)
             {
-                if (CurrentTetrimino.Blocks[i].Y == 20)
+                if (CurrentTetrimino.Blocks[i].X == 20)
                 {
                     canMove = false;
                     break;
@@ -183,7 +183,7 @@ namespace Tetris.Controllers
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    CurrentTetrimino.Blocks[i].Y++;
+                    CurrentTetrimino.Blocks[i].X++;
                 }
             }
         }
