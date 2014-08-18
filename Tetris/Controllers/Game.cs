@@ -61,20 +61,37 @@ namespace Tetris.Controllers
             {
                 AddRandomTetrimino();
             }
+            //if not, have it drop another row down
             else
             {
                 CurrentTetrimino.Fall();
             }
-            //if not, have it drop another row down
 
             //check for lines filled and clear them
+            List<int> rowNumbersCleared = new List<int>();
             for (int i = 0; i < 20; i++)
             {
-                bool rowFilled = false;
-
+                List<Point> blocksInRow = new List<Point>();
+                foreach (Tetrimino t in GameBoard)
+                {
+                    foreach (Point p in t.Blocks)
+                    {
+                        if (p.Y == i)
+                        {
+                            blocksInRow.Add(p);
+                        }
+                    }
+                }
+                if (blocksInRow.Count == 10)
+                {
+                    rowNumbersCleared.Add(i);
+                }
             }
             //add points for cleared lines
+            foreach (int i in rowNumbersCleared)
+            {
 
+            }
 
         }
 
