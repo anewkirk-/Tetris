@@ -140,17 +140,51 @@ namespace Tetris.Controllers
 
         public void StartMoveLeft()
         {
+            bool canMove = false;
             for (int i = 0; i < 4; i++)
             {
-                CurrentTetrimino.Blocks[i].Y--;
+                if (CurrentTetrimino.Blocks[i].Y == -1)
+                {
+                    canMove = false;
+                    break;
+                }
+                else
+                {
+                    canMove = true;
+                }
+            }
+
+            if (canMove)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    CurrentTetrimino.Blocks[i].Y--;
+                }
             }
         }
 
         public void StartMoveRight()
         {
+            bool canMove = false;
             for (int i = 0; i < 4; i++)
             {
-                CurrentTetrimino.Blocks[i].Y++;
+                if (CurrentTetrimino.Blocks[i].Y == 20)
+                {
+                    canMove = false;
+                    break;
+                }
+                else
+                {
+                    canMove = true;
+                }
+            }
+
+            if (canMove)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    CurrentTetrimino.Blocks[i].Y++;
+                }
             }
         }
 
