@@ -12,7 +12,7 @@ namespace Tetris.Models.TetriminoBag
         public List<Point> Blocks = new List<Point>()
         {
             new Point { X = 1, Y = 0 },
-            new Point { X = 1, Y = 1, isCenter = true },
+            new Point { X = 1, Y = 1 },
             new Point { X = 0, Y = 1 },
             new Point { X = 1, Y = 2 }
         };

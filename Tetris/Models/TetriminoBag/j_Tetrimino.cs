@@ -13,7 +13,7 @@ namespace Tetris.Models.TetriminoBag
         {
             new Point { X = 0, Y = 0 },
             new Point { X = 1, Y = 0 },
-            new Point { X = 1, Y = 1, isCenter = true },
+            new Point { X = 1, Y = 1 },
             new Point { X = 1, Y = 2 }
         };
 

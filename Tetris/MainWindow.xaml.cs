@@ -61,7 +61,13 @@ namespace Tetris
                     scoreMenu.SM_back.Click += SM_back_Click;
 
                 //Games
+                    SP_gameView.SPG_pause.Click += SPG_pause_Click;
+                    SP_gameView.SPG_save.Click += SPG_save_Click;
+                    SP_gameView.SPG_quit.Click += SPG_quit_Click;
 
+                    TP_gameView.TPG_pause.Click += TPG_pause_Click;
+                    TP_gameView.TPG_save.Click += TPG_save_Click;
+                    TP_gameView.TPG_quit.Click += TPG_quit_Click;
 
                 //Overlays
                     pause.pause_continue.Click += pause_continue_Click;
@@ -75,9 +81,6 @@ namespace Tetris
             InitializeComponent();
 
             mainPanel.Children.Add(mainMenu);
-
-
-            
 
         }
 
@@ -111,12 +114,14 @@ namespace Tetris
                 //Single Player
                     void SPMS_classic_Click(object sender, RoutedEventArgs e)
                     {
-                        mainPanel.Children.Add(backCanvas);
-                        mainPanel.Children.Add(pause);
+                        //Create Game
+                        mainPanel.Children.Remove(SP_modeSelect);
+                        mainPanel.Children.Add(SP_gameView);
                     }
 
                     void SPMS_timed_Click(object sender, RoutedEventArgs e)
                     {
+                        //Create Game
                         mainPanel.Children.Remove(SP_modeSelect);
                         mainPanel.Children.Add(SP_gameView);
                         //Game view gets new game
@@ -125,6 +130,7 @@ namespace Tetris
 
                     void SPMS_Marathon_Click(object sender, RoutedEventArgs e)
                     {
+                        //Create Game
                         mainPanel.Children.Remove(SP_modeSelect);
                         mainPanel.Children.Add(SP_gameView);
                     }
@@ -138,18 +144,21 @@ namespace Tetris
                 //Two Player
                     void TPMS_classic_Click(object sender, RoutedEventArgs e)
                     {
+                        //Create Game
                         mainPanel.Children.Remove(TP_modeSelect);
                         mainPanel.Children.Add(TP_gameView);
                     }
 
                     void TPMS_timed_Click(object sender, RoutedEventArgs e)
                     {
+                        //Create Game
                         mainPanel.Children.Remove(TP_modeSelect);
                         mainPanel.Children.Add(TP_gameView);
                     }
 
                     void TPMS_marathon_Click(object sender, RoutedEventArgs e)
                     {
+                        //Create Game
                         mainPanel.Children.Remove(TP_modeSelect);
                         mainPanel.Children.Add(TP_gameView);
                     }
@@ -167,12 +176,54 @@ namespace Tetris
                         mainPanel.Children.Add(mainMenu);
                     }
 
+            //Game Views
+
+                //Single Player
+                    void SPG_pause_Click(object sender, RoutedEventArgs e)
+                    {
+                        //Force Game to Pause
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(pause);
+                    }
+
+                    void SPG_save_Click(object sender, RoutedEventArgs e)
+                    {
+                        throw new NotImplementedException();
+                    }
+
+                    void SPG_quit_Click(object sender, RoutedEventArgs e)
+                    {
+                        //Remove Game
+                        mainPanel.Children.Remove(SP_gameView);
+                        mainPanel.Children.Add(mainMenu);
+                    }
+
+                // Two Player
+                    void TPG_pause_Click(object sender, RoutedEventArgs e)
+                    {
+                        //Force Game to Pause
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(pause);
+                    }
+
+                    void TPG_save_Click(object sender, RoutedEventArgs e)
+                    {
+                        throw new NotImplementedException();
+                    }
+
+                    void TPG_quit_Click(object sender, RoutedEventArgs e)
+                    {
+                        //Remove Game
+                        mainPanel.Children.Remove(TP_gameView);
+                        mainPanel.Children.Add(mainMenu);
+                    }
 
             //Overlays
 
                 //Pause
                     void pause_continue_Click(object sender, RoutedEventArgs e)
                     {
+                        //Force Game to Resume
                         mainPanel.Children.Remove(backCanvas);
                         mainPanel.Children.Remove(pause);
                     }
