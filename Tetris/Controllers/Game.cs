@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using Tetris.Models;
 using Tetris.Models.TetriminoBag;
 
@@ -14,7 +15,7 @@ namespace Tetris.Controllers
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
         private Tetrimino CurrentTetrimino { get; set; }
-        private List<Tetrimino> TetriminoOnGameBoard = new List<Tetrimino>();
+        private Timer gameTimer = new Timer();
 
         public List<Tetrimino> tBag = new List<Tetrimino>
         {
@@ -39,7 +40,7 @@ namespace Tetris.Controllers
             int index = rand.Next(tBag.Count);
             Tetrimino randT = tBag[index];
             CurrentTetrimino = randT;
-            TetriminoOnGameBoard.Add(CurrentTetrimino);
+            GameBoard.Add(CurrentTetrimino);
         }
             
      
