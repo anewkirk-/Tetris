@@ -38,13 +38,41 @@ namespace Tetris.Controllers
         public void Tick(object sender, ElapsedEventArgs e)
         {
             //Check if current tetrimino has fallen as far as it can and collided with blocks or the bottom of the board below it
-            
+            bool collision = false;
+            foreach (Point p in CurrentTetrimino.Blocks)
+            {
+                if (p.Y == 19)
+                {
+                    collision = true;
+                }
+                foreach (Tetrimino t in GameBoard)
+                {
+                    foreach (Point p2 in t.Blocks)
+                    {
+                        if (p.X == p2.X && p.Y == p2.Y - 1)
+                        {
+                            collision = true;
+                        }
+                    }
+                }
+            }
             //If so, drop a new tetrimino
-
+            if (collision)
+            {
+                AddRandomTetrimino();
+            }
+            else
+            {
+                CurrentTetrimino.Fall();
+            }
             //if not, have it drop another row down
 
             //check for lines filled and clear them
+            for (int i = 0; i < 20; i++)
+            {
+                bool rowFilled = false;
 
+            }
             //add points for cleared lines
 
 
