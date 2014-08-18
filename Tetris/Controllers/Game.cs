@@ -11,6 +11,7 @@ namespace Tetris.Controllers
 {
     public class Game
     {
+        public int CurrentScore { get; set; }
         private Random rand = new Random();
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
@@ -19,7 +20,7 @@ namespace Tetris.Controllers
 
         public Game()
         {
-            //default to 1 second intervals. This will be modified later.
+            //default to a 1 second interval
             _gameTimer.Interval = 1000;
             _gameTimer.Elapsed += Tick;
         }
@@ -37,7 +38,9 @@ namespace Tetris.Controllers
 
         public void Tick(object sender, ElapsedEventArgs e)
         {
-            //Check if current tetrimino has fallen as far as it can and collided with blocks or the bottom of the board below it
+
+            //Check if current tetrimino has fallen as far as it can and collided with blocks or the bottom of the board
+            bool topOut = false;
             bool collision = false;
             foreach (Point p in CurrentTetrimino.Blocks)
             {
@@ -56,43 +59,64 @@ namespace Tetris.Controllers
                     }
                 }
             }
-            //If so, drop a new tetrimino
-            if (collision)
-            {
-                AddRandomTetrimino();
-            }
-            //if not, have it drop another row down
-            else
-            {
-                CurrentTetrimino.Fall();
-            }
+            //If so, check for "top out"
 
-            //check for lines filled and clear them
-            List<int> rowNumbersCleared = new List<int>();
-            for (int i = 0; i < 20; i++)
+
+            //if no top out, drop a new tetrimino
+            if (!topOut)
             {
-                List<Point> blocksInRow = new List<Point>();
-                foreach (Tetrimino t in GameBoard)
+                if (collision)
                 {
-                    foreach (Point p in t.Blocks)
+                    AddRandomTetrimino();
+                }
+                //if no collision, have current tetrimino drop another row down
+                else
+                {
+                    CurrentTetrimino.Fall();
+                }
+
+                //check for lines filled and clear them
+                List<int> rowNumbersCleared = new List<int>();
+                for (int i = 0; i < 20; i++)
+                {
+                    List<Point> blocksInRow = new List<Point>();
+                    foreach (Tetrimino t in GameBoard)
                     {
-                        if (p.Y == i)
+                        foreach (Point p in t.Blocks)
                         {
-                            blocksInRow.Add(p);
+                            if (p.Y == i)
+                            {
+                                blocksInRow.Add(p);
+                            }
                         }
                     }
+                    if (blocksInRow.Count == 10)
+                    {
+                        rowNumbersCleared.Add(i);
+                    }
                 }
-                if (blocksInRow.Count == 10)
+                foreach (int i in rowNumbersCleared)
                 {
-                    rowNumbersCleared.Add(i);
+                    ClearRow(i);
+                }
+                //add points for cleared lines
+                switch (rowNumbersCleared.Count)
+                {
+                    default:
+                        break;
                 }
             }
-            //add points for cleared lines
-            foreach (int i in rowNumbersCleared)
+            //in the case of a "top out", the game is over
+            else
             {
 
             }
+        }
 
+        //Removes all blocks that have a given Y value
+        private void ClearRow(int y)
+        {
+            throw new NotImplementedException();
         }
 
         //Get a random Tetrimino from the Tetrimino Bag and add it to the TetriminoOnGameBoard list
