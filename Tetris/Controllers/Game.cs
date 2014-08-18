@@ -36,6 +36,9 @@ namespace Tetris.Controllers
             new z_Tetrimino()
         };
 
+        /// <summary>
+        /// This method contains the actual game logic, and will be called on each tick of the _gameTimer.
+        /// </summary>
         public void Tick(object sender, ElapsedEventArgs e)
         {
 
@@ -59,8 +62,9 @@ namespace Tetris.Controllers
                     }
                 }
             }
-            //If so, check for "top out"
-
+            //////////////////////////////
+            //If so, check for "top out"//
+            //////////////////////////////
 
             //if no top out, drop a new tetrimino
             if (!topOut)
@@ -109,7 +113,7 @@ namespace Tetris.Controllers
             //in the case of a "top out", the game is over
             else
             {
-
+                //submit score, end game
             }
         }
 
@@ -152,7 +156,7 @@ namespace Tetris.Controllers
         public void MoveRowsUp()
         {
             //For every Tetromino on Gameboard
-              //(X-1, y0)
+              //(x, y -= 1)
         }
 
         //Add a row of Tetrimino's with an empty space in the middle when a "Tetris" has occured on the other player's screen
@@ -162,7 +166,7 @@ namespace Tetris.Controllers
             RowOfBlocksMinusOne();
         }
 
-        public void StartMoveLeft()
+        public void MoveLeft()
         {
             bool canMove = false;
             for (int i = 0; i < 4; i++)
@@ -187,7 +191,7 @@ namespace Tetris.Controllers
             }
         }
 
-        public void StartMoveRight()
+        public void MoveRight()
         {
             bool canMove = false;
             for (int i = 0; i < 4; i++)
