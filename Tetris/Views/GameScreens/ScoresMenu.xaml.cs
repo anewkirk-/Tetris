@@ -22,12 +22,13 @@ namespace Tetris.Views.GameScreens
     /// </summary>
     public partial class ScoresMenu : UserControl
     {
+
+        private ScoreManager sm = new ScoreManager();
+
         public ScoresMenu()
         {
             InitializeComponent();
-            ScoreManager sm = new ScoreManager();
-            List<Score> topScores = sm.GetAll();
-            SM_grid.ItemsSource = topScores;
+            UpdateScores();
         }
 
         private void SM_grid_AutoGeneratingColumn_1(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -37,6 +38,12 @@ namespace Tetris.Views.GameScreens
                 e.Column.Header = "Score";
             }
             e.Column.Width = 387;
+        }
+
+        public void UpdateScores()
+        {
+            List<Score> topScores = sm.GetAll();
+            SM_grid.ItemsSource = topScores;
         }
     }
 }
