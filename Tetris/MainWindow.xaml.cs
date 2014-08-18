@@ -61,7 +61,8 @@ namespace Tetris
                     scoreMenu.SM_back.Click += SM_back_Click;
 
                 //Games
-
+                    SP_gameView.SPG_pause.Click += SPG_pause_Click;
+                    SP_gameView.SPG_save.Click += SPG_save_Click;
 
                 //Overlays
                     pause.pause_continue.Click += pause_continue_Click;
@@ -76,10 +77,11 @@ namespace Tetris
 
             mainPanel.Children.Add(mainMenu);
 
-
-            
-
         }
+
+        
+
+        
 
         
 
@@ -167,6 +169,17 @@ namespace Tetris
                         mainPanel.Children.Add(mainMenu);
                     }
 
+            //Game Views
+                //Single Player
+                    void SPG_pause_Click(object sender, RoutedEventArgs e)
+                    {
+                        throw new NotImplementedException();
+                    }
+
+                    void SPG_save_Click(object sender, RoutedEventArgs e)
+                    {
+                        throw new NotImplementedException();
+                    }
 
             //Overlays
 

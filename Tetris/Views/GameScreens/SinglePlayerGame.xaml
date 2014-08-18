@@ -6,13 +6,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
     
-    <StackPanel x:Name="TPG_mainPanel"
+    <StackPanel x:Name="SPG_mainPanel"
                 Orientation="Horizontal">
 
         
 
         <StackPanel>
-            <UniformGrid x:Name="TPG_playerOne_grid"
+            <UniformGrid x:Name="SPG_playerOne_grid"
                          Width="275" Height="550"
                          Columns="10" Rows="20">
 
@@ -21,16 +21,16 @@
 
         <StackPanel>
             <Label Content="Next Block" />
-            <Image x:Name="TPG_playerOne_nextBlock"/>
+            <Image x:Name="SPG_playerOne_nextBlock"/>
 
             <Label Content="Score" />
-            <Label x:Name="TPG_playerOne_score"
+            <Label x:Name="SPG_playerOne_score"
                    Content="1234" />
-            <Button x:Name="TPG_pause"
+            <Button x:Name="SPG_pause"
                     Content="Pause"/>
-            <Button x:Name="TPG_save"
+            <Button x:Name="SPG_save"
                     Content="Save"/>
-            <Button x:Name="TPG_quit"
+            <Button x:Name="SPG_quit"
                     Content="Quit"/>
         </StackPanel>
     
