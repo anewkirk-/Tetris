@@ -12,17 +12,23 @@ namespace Tetris.Controllers
     public class Game
     {
         public int CurrentScore { get; set; }
-        private Random rand = new Random();
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
+        public Timer GameTimer { get; set; }
+        private int TimeElapsed { get; set; }
+        private int LinesCleared { get; set; }
+        private Random rand = new Random();
         private Tetrimino CurrentTetrimino { get; set; }
-        private Timer _gameTimer = new Timer();
+        private ScoreManager _sm = new ScoreManager();
+        private int _timedModeTimeLimit = 120;
+        private int _marathonModeLineLimit = 50;
+        private int _linesBeforeSpeedUp = 10;
 
         public Game()
         {
             //default to a 1 second interval
-            _gameTimer.Interval = 1000;
-            _gameTimer.Elapsed += Tick;
+            GameTimer.Interval = 1000;
+            GameTimer.Elapsed += Tick;
         }
 
         public List<Tetrimino> tBag = new List<Tetrimino>
@@ -40,81 +46,111 @@ namespace Tetris.Controllers
         /// This method contains the actual game logic, and will be called on each tick of the _gameTimer.
         /// </summary>
         public void Tick(object sender, ElapsedEventArgs e)
-        {
+        {        
 
-            //Check if current tetrimino has fallen as far as it can and collided with blocks or the bottom of the board
-            bool topOut = false;
+            //Check for top out
+            bool topOut = IsToppedOut();
+
+            //Check for end game
+            bool endGame = EndConditionsMet();
+
+            //End game if any end conditions met
+            if (endGame || topOut)
+            {
+                //End game
+                GameTimer.Enabled = false;
+                //Submit score
+                ////Here, the window will have to switch views
+                ////to the AddHighScore overlay
+            }
+
+            //Keep track of how long the game has been running
+            TimeElapsed += (int)GameTimer.Interval;
+            
+            if (Mode == GameMode.Classic || Mode == GameMode.Timed)
+            {
+                //Check LinesCleared to see if the timer interval needs to be
+                //decreased
+                if (LinesCleared > 0 && LinesCleared % _linesBeforeSpeedUp == 0)
+                {
+                    //Makes the drop interval half a second shorter,
+                    //This will probably need to be adjusted
+                    GameTimer.Interval -= 500;
+                }
+            }
+
+            //Check for collision on currently falling tetrimino
             bool collision = false;
+
             foreach (Point p in CurrentTetrimino.Blocks)
             {
-                if (p.Y == 19)
+                if (!CanFall(p))
                 {
                     collision = true;
                 }
-                foreach (Tetrimino t in GameBoard)
-                {
-                    foreach (Point p2 in t.Blocks)
-                    {
-                        if (p.X == p2.X && p.Y == p2.Y - 1)
-                        {
-                            collision = true;
-                        }
-                    }
-                }
             }
-            //////////////////////////////
-            //If so, check for "top out"//
-            //////////////////////////////
 
-            //if no top out, drop a new tetrimino
-            if (!topOut)
+            //If there is a collision,
+            if (collision)
             {
-                if (collision)
+                //Check for rows cleared
+                List<int> rowsCleared = CheckRowsCleared();
+                //for all rows cleared
+                foreach (int i in rowsCleared)
                 {
-                    AddRandomTetrimino();
-                }
-                //if no collision, have current tetrimino drop another row down
-                else
-                {
-                    CurrentTetrimino.Fall();
-                }
+                    //remove blocks, add points
 
-                //check for lines filled and clear them
-                List<int> rowNumbersCleared = new List<int>();
-                for (int i = 0; i < 20; i++)
-                {
-                    List<Point> blocksInRow = new List<Point>();
-                    foreach (Tetrimino t in GameBoard)
-                    {
-                        foreach (Point p in t.Blocks)
-                        {
-                            if (p.Y == i)
-                            {
-                                blocksInRow.Add(p);
-                            }
-                        }
-                    }
-                    if (blocksInRow.Count == 10)
-                    {
-                        rowNumbersCleared.Add(i);
-                    }
                 }
-                foreach (int i in rowNumbersCleared)
-                {
-                    ClearRow(i);
-                }
-                //add points for cleared lines
-                switch (rowNumbersCleared.Count)
-                {
-                    default:
-                        break;
-                }
+                //drop new tetrimino
+                AddRandomTetrimino();
             }
-            //in the case of a "top out", the game is over
+            //If no collision
             else
             {
-                //submit score, end game
+                //Drop current tetrimino down one block
+                CurrentTetrimino.Fall();
             }
+        }
+
+        private List<int> CheckRowsCleared()
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool IsToppedOut()
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool EndConditionsMet()
+        {
+            bool endGame = false;
+            //Check all end conditions
+            switch (Mode)
+            {
+                case GameMode.Timed:
+                    //Check TimeElapsed to see if the time limit has been reached
+                    if (TimeElapsed >= _timedModeTimeLimit)
+                    {
+                        endGame = true;
+                    }
+                    break;
+                case GameMode.Marathon:
+                    //Check LinesCleared to see if limit has been reached
+                    if (LinesCleared >= _marathonModeLineLimit)
+                    {
+                        endGame = true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return endGame;
+        }
+
+        private bool CanFall(Point p)
+        {
+            throw new NotImplementedException();
         }
 
         //Removes all blocks that have a given Y value
