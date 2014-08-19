@@ -120,3 +120,5 @@ C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens
 C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerModeSelect.g.cs
 C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerModeSelect.g.cs
 C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.lref
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.baml
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.g.cs

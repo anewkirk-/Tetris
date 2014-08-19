@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,10 +35,15 @@ namespace Tetris
         //Overlays
             AddHighScore newHighScore = new AddHighScore();
             PauseScreen pause = new PauseScreen();
+            QuitConfirm quit = new QuitConfirm();
             SinglePlayerGameSummary SP_gameSummary = new SinglePlayerGameSummary();
             TwoPlayerGameSummary TP_gameSummary = new TwoPlayerGameSummary();
+        //Other
+            SaveFileDialog saveDialog = new SaveFileDialog();
         //Overlay Canvas Background
             Canvas backCanvas = new Canvas();
+            Canvas backCanvas2 = new Canvas();
+        
             
         public MainWindow()
         {
@@ -70,12 +76,30 @@ namespace Tetris
                     TP_gameView.TPG_quit.Click += TPG_quit_Click;
 
                 //Overlays
+                    pause.pause_quit.Click += pause_quit_Click;
                     pause.pause_continue.Click += pause_continue_Click;
 
+                    quit.quit_yes.Click += quit_yes_Click;
+                    quit.quit_no.Click += quit_no_Click;
+                    quit.Margin = new Thickness(0, 60, 0, 0);
+
+                //Other
+                    saveDialog.DefaultExt = ".tetris";
+                    saveDialog.Filter = "Tetris Games (.tetris)|*.tetris";
+                    saveDialog.ValidateNames = true;
+                    saveDialog.Title = "Save Tetris Game";
+                    saveDialog.OverwritePrompt = true;
+                    saveDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\SavedGames";
+                    saveDialog.CreatePrompt = true;
+                    saveDialog.AddExtension = true;
+                    saveDialog.CheckPathExists = true;
 
                 //Overlay Canvas Background
                     backCanvas.Background = new SolidColorBrush(Colors.Black);
                     backCanvas.Background.Opacity = .25;
+
+                    backCanvas2.Background = new SolidColorBrush(Colors.Black);
+                    backCanvas2.Background.Opacity = .25;
 
             
             InitializeComponent();
@@ -83,6 +107,10 @@ namespace Tetris
             mainPanel.Children.Add(mainMenu);
 
         }
+
+        
+
+        
 
         
 
@@ -188,14 +216,36 @@ namespace Tetris
 
                     void SPG_save_Click(object sender, RoutedEventArgs e)
                     {
-                        throw new NotImplementedException();
+                        //Force Game to Pause
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(pause);
+
+                        // http://stackoverflow.com/questions/5622854/how-do-i-show-a-save-as-dialog-in-wpf
+
+                        string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+                        file += " Solo ";
+                        //!!!!!!!!!!!!TODO file += TP_gameView.GameModeVar.ToString();
+
+                        saveDialog.FileName = file;
+
+                        Nullable<bool> result = saveDialog.ShowDialog();
+
+                        // Process save file dialog box results
+                        if (result == true)
+                        {
+                            file = saveDialog.FileName;
+                            // Save document
+                        }
                     }
 
                     void SPG_quit_Click(object sender, RoutedEventArgs e)
                     {
-                        //Remove Game
-                        mainPanel.Children.Remove(SP_gameView);
-                        mainPanel.Children.Add(mainMenu);
+                        //Force Game to Pause
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(pause);
+
+                        mainPanel.Children.Add(backCanvas2);
+                        mainPanel.Children.Add(quit);
                     }
 
                 // Two Player
@@ -208,24 +258,75 @@ namespace Tetris
 
                     void TPG_save_Click(object sender, RoutedEventArgs e)
                     {
-                        throw new NotImplementedException();
+                        //Force Game to Pause
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(pause);
+
+                        // http://stackoverflow.com/questions/5622854/how-do-i-show-a-save-as-dialog-in-wpf
+
+                        string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+                        file += " Double ";
+                        //!!!!!!!!!!!!TODO file += TP_gameView.GameModeVar.ToString();
+
+                        saveDialog.FileName = file;
+
+                        Nullable<bool> result = saveDialog.ShowDialog();
+
+                        // Process save file dialog box results
+                        if (result == true)
+                        {
+                            file = saveDialog.FileName;
+                            // Save document
+                        }
+                        
                     }
 
                     void TPG_quit_Click(object sender, RoutedEventArgs e)
                     {
-                        //Remove Game
-                        mainPanel.Children.Remove(TP_gameView);
-                        mainPanel.Children.Add(mainMenu);
+                        //Force Game to Pause
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(pause);
+
+                        mainPanel.Children.Add(backCanvas2);
+                        mainPanel.Children.Add(quit);
                     }
 
             //Overlays
 
                 //Pause
+                    void pause_quit_Click(object sender, RoutedEventArgs e)
+                    {
+                        mainPanel.Children.Add(backCanvas2);
+                        mainPanel.Children.Add(quit);
+                    }
+
                     void pause_continue_Click(object sender, RoutedEventArgs e)
                     {
                         //Force Game to Resume
                         mainPanel.Children.Remove(backCanvas);
                         mainPanel.Children.Remove(pause);
+                    }
+
+                //Quit
+
+                    void quit_yes_Click(object sender, RoutedEventArgs e)
+                    {
+                        //Remove Game
+                        mainPanel.Children.Remove(TP_gameView);
+                        mainPanel.Children.Remove(SP_gameView);
+                        mainPanel.Children.Add(mainMenu);
+
+                        mainPanel.Children.Remove(backCanvas);
+                        mainPanel.Children.Remove(pause);
+
+                        mainPanel.Children.Remove(backCanvas2);
+                        mainPanel.Children.Remove(quit);
+                    }
+
+                    void quit_no_Click(object sender, RoutedEventArgs e)
+                    {
+                        mainPanel.Children.Remove(backCanvas2);
+                        mainPanel.Children.Remove(quit);
                     }
     }
 }
