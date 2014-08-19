@@ -11,6 +11,7 @@ namespace Tetris.Controllers
 {
     public class Game
     {
+        public int CurrentScore { get; set; }
         private Random rand = new Random();
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
@@ -19,7 +20,7 @@ namespace Tetris.Controllers
 
         public Game()
         {
-            //default to 1 second intervals. This will be modified later.
+            //default to a 1 second interval
             _gameTimer.Interval = 1000;
             _gameTimer.Elapsed += Tick;
         }
@@ -35,9 +36,14 @@ namespace Tetris.Controllers
             new z_Tetrimino()
         };
 
+        /// <summary>
+        /// This method contains the actual game logic, and will be called on each tick of the _gameTimer.
+        /// </summary>
         public void Tick(object sender, ElapsedEventArgs e)
         {
-            //Check if current tetrimino has fallen as far as it can and collided with blocks or the bottom of the board below it
+
+            //Check if current tetrimino has fallen as far as it can and collided with blocks or the bottom of the board
+            bool topOut = false;
             bool collision = false;
             foreach (Point p in CurrentTetrimino.Blocks)
             {
@@ -56,43 +62,65 @@ namespace Tetris.Controllers
                     }
                 }
             }
-            //If so, drop a new tetrimino
-            if (collision)
-            {
-                AddRandomTetrimino();
-            }
-            //if not, have it drop another row down
-            else
-            {
-                CurrentTetrimino.Fall();
-            }
+            //////////////////////////////
+            //If so, check for "top out"//
+            //////////////////////////////
 
-            //check for lines filled and clear them
-            List<int> rowNumbersCleared = new List<int>();
-            for (int i = 0; i < 20; i++)
+            //if no top out, drop a new tetrimino
+            if (!topOut)
             {
-                List<Point> blocksInRow = new List<Point>();
-                foreach (Tetrimino t in GameBoard)
+                if (collision)
                 {
-                    foreach (Point p in t.Blocks)
+                    AddRandomTetrimino();
+                }
+                //if no collision, have current tetrimino drop another row down
+                else
+                {
+                    CurrentTetrimino.Fall();
+                }
+
+                //check for lines filled and clear them
+                List<int> rowNumbersCleared = new List<int>();
+                for (int i = 0; i < 20; i++)
+                {
+                    List<Point> blocksInRow = new List<Point>();
+                    foreach (Tetrimino t in GameBoard)
                     {
-                        if (p.Y == i)
+                        foreach (Point p in t.Blocks)
                         {
-                            blocksInRow.Add(p);
+                            if (p.Y == i)
+                            {
+                                blocksInRow.Add(p);
+                            }
                         }
                     }
+                    if (blocksInRow.Count == 10)
+                    {
+                        rowNumbersCleared.Add(i);
+                    }
                 }
-                if (blocksInRow.Count == 10)
+                foreach (int i in rowNumbersCleared)
                 {
-                    rowNumbersCleared.Add(i);
+                    ClearRow(i);
+                }
+                //add points for cleared lines
+                switch (rowNumbersCleared.Count)
+                {
+                    default:
+                        break;
                 }
             }
-            //add points for cleared lines
-            foreach (int i in rowNumbersCleared)
+            //in the case of a "top out", the game is over
+            else
             {
-
+                //submit score, end game
             }
+        }
 
+        //Removes all blocks that have a given Y value
+        private void ClearRow(int y)
+        {
+            throw new NotImplementedException();
         }
 
         //Get a random Tetrimino from the Tetrimino Bag and add it to the TetriminoOnGameBoard list
@@ -116,8 +144,8 @@ namespace Tetris.Controllers
                 if (i != randomY)
                 {
                     Point p = new Point();
-                    p.X = 19;
-                    p.Y = i;
+                    p.Y = 19;
+                    p.X = i;
                     Blocks.Add(p);
                 }
             }
@@ -128,7 +156,7 @@ namespace Tetris.Controllers
         public void MoveRowsUp()
         {
             //For every Tetromino on Gameboard
-              //(X-1, y0)
+              //(x, y -= 1)
         }
 
         //Add a row of Tetrimino's with an empty space in the middle when a "Tetris" has occured on the other player's screen
@@ -138,12 +166,12 @@ namespace Tetris.Controllers
             RowOfBlocksMinusOne();
         }
 
-        public void StartMoveLeft()
+        public void MoveLeft()
         {
             bool canMove = false;
             for (int i = 0; i < 4; i++)
             {
-                if (CurrentTetrimino.Blocks[i].Y == -1)
+                if (CurrentTetrimino.Blocks[i].X == -1)
                 {
                     canMove = false;
                     break;
@@ -158,17 +186,17 @@ namespace Tetris.Controllers
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    CurrentTetrimino.Blocks[i].Y--;
+                    CurrentTetrimino.Blocks[i].X--;
                 }
             }
         }
 
-        public void StartMoveRight()
+        public void MoveRight()
         {
             bool canMove = false;
             for (int i = 0; i < 4; i++)
             {
-                if (CurrentTetrimino.Blocks[i].Y == 20)
+                if (CurrentTetrimino.Blocks[i].X == 20)
                 {
                     canMove = false;
                     break;
@@ -183,7 +211,7 @@ namespace Tetris.Controllers
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    CurrentTetrimino.Blocks[i].Y++;
+                    CurrentTetrimino.Blocks[i].X++;
                 }
             }
         }
