@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,9 +38,12 @@ namespace Tetris
             QuitConfirm quit = new QuitConfirm();
             SinglePlayerGameSummary SP_gameSummary = new SinglePlayerGameSummary();
             TwoPlayerGameSummary TP_gameSummary = new TwoPlayerGameSummary();
+        //Other
+            SaveFileDialog saveDialog = new SaveFileDialog();
         //Overlay Canvas Background
             Canvas backCanvas = new Canvas();
             Canvas backCanvas2 = new Canvas();
+        
             
         public MainWindow()
         {
@@ -79,6 +83,16 @@ namespace Tetris
                     quit.quit_no.Click += quit_no_Click;
                     quit.Margin = new Thickness(0, 60, 0, 0);
 
+                //Other
+                    saveDialog.DefaultExt = ".tetris";
+                    saveDialog.Filter = "Tetris Games (.tetris)|*.tetris";
+                    saveDialog.ValidateNames = true;
+                    saveDialog.Title = "Save Tetris Game";
+                    saveDialog.OverwritePrompt = true;
+                    saveDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\SavedGames";
+                    saveDialog.CreatePrompt = true;
+                    saveDialog.AddExtension = true;
+                    saveDialog.CheckPathExists = true;
 
                 //Overlay Canvas Background
                     backCanvas.Background = new SolidColorBrush(Colors.Black);
@@ -202,7 +216,26 @@ namespace Tetris
 
                     void SPG_save_Click(object sender, RoutedEventArgs e)
                     {
-                        throw new NotImplementedException();
+                        //Force Game to Pause
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(pause);
+
+                        // http://stackoverflow.com/questions/5622854/how-do-i-show-a-save-as-dialog-in-wpf
+
+                        string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+                        file += " Solo ";
+                        //!!!!!!!!!!!!TODO file += TP_gameView.GameModeVar.ToString();
+
+                        saveDialog.FileName = file;
+
+                        Nullable<bool> result = saveDialog.ShowDialog();
+
+                        // Process save file dialog box results
+                        if (result == true)
+                        {
+                            file = saveDialog.FileName;
+                            // Save document
+                        }
                     }
 
                     void SPG_quit_Click(object sender, RoutedEventArgs e)
@@ -225,7 +258,27 @@ namespace Tetris
 
                     void TPG_save_Click(object sender, RoutedEventArgs e)
                     {
-                        throw new NotImplementedException();
+                        //Force Game to Pause
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(pause);
+
+                        // http://stackoverflow.com/questions/5622854/how-do-i-show-a-save-as-dialog-in-wpf
+
+                        string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+                        file += " Double ";
+                        //!!!!!!!!!!!!TODO file += TP_gameView.GameModeVar.ToString();
+
+                        saveDialog.FileName = file;
+
+                        Nullable<bool> result = saveDialog.ShowDialog();
+
+                        // Process save file dialog box results
+                        if (result == true)
+                        {
+                            file = saveDialog.FileName;
+                            // Save document
+                        }
+                        
                     }
 
                     void TPG_quit_Click(object sender, RoutedEventArgs e)
