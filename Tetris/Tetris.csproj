@@ -104,6 +104,9 @@
     <Compile Include="Views\Overlays\AddHighScore.xaml.cs">
       <DependentUpon>AddHighScore.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Overlays\QuitConfirm.xaml.cs">
+      <DependentUpon>QuitConfirm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Overlays\SinglePlayerGameSummary.xaml.cs">
       <DependentUpon>SinglePlayerGameSummary.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Overlays\AddHighScore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Overlays\QuitConfirm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

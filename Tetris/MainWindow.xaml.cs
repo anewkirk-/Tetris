@@ -34,10 +34,12 @@ namespace Tetris
         //Overlays
             AddHighScore newHighScore = new AddHighScore();
             PauseScreen pause = new PauseScreen();
+            QuitConfirm quit = new QuitConfirm();
             SinglePlayerGameSummary SP_gameSummary = new SinglePlayerGameSummary();
             TwoPlayerGameSummary TP_gameSummary = new TwoPlayerGameSummary();
         //Overlay Canvas Background
             Canvas backCanvas = new Canvas();
+            Canvas backCanvas2 = new Canvas();
             
         public MainWindow()
         {
@@ -70,12 +72,20 @@ namespace Tetris
                     TP_gameView.TPG_quit.Click += TPG_quit_Click;
 
                 //Overlays
+                    pause.pause_quit.Click += pause_quit_Click;
                     pause.pause_continue.Click += pause_continue_Click;
+
+                    quit.quit_yes.Click += quit_yes_Click;
+                    quit.quit_no.Click += quit_no_Click;
+                    quit.Margin = new Thickness(0, 60, 0, 0);
 
 
                 //Overlay Canvas Background
                     backCanvas.Background = new SolidColorBrush(Colors.Black);
                     backCanvas.Background.Opacity = .25;
+
+                    backCanvas2.Background = new SolidColorBrush(Colors.Black);
+                    backCanvas2.Background.Opacity = .25;
 
             
             InitializeComponent();
@@ -83,6 +93,10 @@ namespace Tetris
             mainPanel.Children.Add(mainMenu);
 
         }
+
+        
+
+        
 
         
 
@@ -193,9 +207,12 @@ namespace Tetris
 
                     void SPG_quit_Click(object sender, RoutedEventArgs e)
                     {
-                        //Remove Game
-                        mainPanel.Children.Remove(SP_gameView);
-                        mainPanel.Children.Add(mainMenu);
+                        //Force Game to Pause
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(pause);
+
+                        mainPanel.Children.Add(backCanvas2);
+                        mainPanel.Children.Add(quit);
                     }
 
                 // Two Player
@@ -213,19 +230,50 @@ namespace Tetris
 
                     void TPG_quit_Click(object sender, RoutedEventArgs e)
                     {
-                        //Remove Game
-                        mainPanel.Children.Remove(TP_gameView);
-                        mainPanel.Children.Add(mainMenu);
+                        //Force Game to Pause
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(pause);
+
+                        mainPanel.Children.Add(backCanvas2);
+                        mainPanel.Children.Add(quit);
                     }
 
             //Overlays
 
                 //Pause
+                    void pause_quit_Click(object sender, RoutedEventArgs e)
+                    {
+                        mainPanel.Children.Add(backCanvas2);
+                        mainPanel.Children.Add(quit);
+                    }
+
                     void pause_continue_Click(object sender, RoutedEventArgs e)
                     {
                         //Force Game to Resume
                         mainPanel.Children.Remove(backCanvas);
                         mainPanel.Children.Remove(pause);
+                    }
+
+                //Quit
+
+                    void quit_yes_Click(object sender, RoutedEventArgs e)
+                    {
+                        //Remove Game
+                        mainPanel.Children.Remove(TP_gameView);
+                        mainPanel.Children.Remove(SP_gameView);
+                        mainPanel.Children.Add(mainMenu);
+
+                        mainPanel.Children.Remove(backCanvas);
+                        mainPanel.Children.Remove(pause);
+
+                        mainPanel.Children.Remove(backCanvas2);
+                        mainPanel.Children.Remove(quit);
+                    }
+
+                    void quit_no_Click(object sender, RoutedEventArgs e)
+                    {
+                        mainPanel.Children.Remove(backCanvas2);
+                        mainPanel.Children.Remove(quit);
                     }
     }
 }
