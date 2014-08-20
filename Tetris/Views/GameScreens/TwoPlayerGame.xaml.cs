@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tetris.Controllers;
 
 namespace Tetris.Views.GameScreens
 {
@@ -20,9 +21,22 @@ namespace Tetris.Views.GameScreens
     /// </summary>
     public partial class TwoPlayerGame : UserControl
     {
+
+        Game duoGame;
+
         public TwoPlayerGame()
         {
             InitializeComponent();
+        }
+
+        public void NewGame(GameMode type)
+        {
+            duoGame = new Game(type);
+        }
+
+        public GameMode GetGameMode()
+        {
+            return duoGame.Mode;
         }
     }
 }

@@ -29,10 +29,14 @@ namespace Tetris.Views.GameScreens
             InitializeComponent();
         }
 
-
         public void NewGame(GameMode type)
         {
             soloGame = new Game(type);
+        }
+
+        public GameMode GetGameMode()
+        {
+            return soloGame.Mode;
         }
     }
 }
