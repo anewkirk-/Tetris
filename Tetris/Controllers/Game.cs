@@ -90,7 +90,7 @@ namespace Tetris.Controllers
             //Check for collision on currently falling tetrimino
             bool collision = false;
 
-            foreach (Point p in CurrentTetrimino.Blocks)
+            foreach (Points p in CurrentTetrimino.Blocks)
             {
                 if (!CanFall(p))
                 {
@@ -156,7 +156,7 @@ namespace Tetris.Controllers
             return endGame;
         }
 
-        private bool CanFall(Point p)
+        private bool CanFall(Points p)
         {
             //IEnumberable<Point> p =
             //    from t in GameBoard
@@ -181,16 +181,16 @@ namespace Tetris.Controllers
             
      
         //Create a row of points leaving one space
-        public List<Point> RowOfBlocksMinusOne()
+        public List<Points> RowOfBlocksMinusOne()
         {
-            List<Point> Blocks = new List<Point>();
+            List<Points> Blocks = new List<Points>();
             int randomY = rand.Next(0, 10);
             
             for (int i = 0; i <= 9; i++)
             {
                 if (i != randomY)
                 {
-                    Point p = new Point();
+                    Points p = new Points();
                     p.Y = 19;
                     p.X = i;
                     Blocks.Add(p);

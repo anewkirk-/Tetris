@@ -11,7 +11,7 @@ namespace Tetris.Models.TetriminoBag
     {
         public SolidColorBrush color;
 
-        public List<Point> Blocks;
+        public List<Points> Blocks;
 
         public void RotateRight()
         {
@@ -24,7 +24,7 @@ namespace Tetris.Models.TetriminoBag
         }
     }
 
-    public class Point
+    public class Points
     {
         public int X { get; set; }
         public int Y { get; set; }
