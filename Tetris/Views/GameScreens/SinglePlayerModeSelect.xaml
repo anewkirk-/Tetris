@@ -21,12 +21,16 @@
         <!--Logo image to replace this-->
 
         <Button x:Name="SPMS_classic"
+                Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Classic"/>
         <Button x:Name="SPMS_timed"
+                Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Timed"/>
         <Button x:Name="SPMS_marathon"
+                Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Marathon"/>
         <Button x:Name="SPMS_back"
+                Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Back to Main Menu"/>
     </StackPanel>
 </UserControl>
