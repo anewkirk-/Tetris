@@ -18,12 +18,12 @@ namespace Tetris.Models.TetriminoBag
         private int preX2 = 0;
         private int preY3 = 0;
         private int preX3 = 0;
-        public List<Point> Blocks = new List<Point>()
+        public List<Points> Blocks = new List<Points>()
         {
-            new Point { X = 0, Y = 0 },
-            new Point { X = 0, Y = 1 },
-            new Point { X = 1, Y = 1 },
-            new Point { X = 1, Y = 2 }
+            new Points { X = 0, Y = 0 },
+            new Points { X = 0, Y = 1 },
+            new Points { X = 1, Y = 1 },
+            new Points { X = 1, Y = 2 }
         };
 
         public void RotateRight()

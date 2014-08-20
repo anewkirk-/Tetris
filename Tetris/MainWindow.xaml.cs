@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tetris.Views.GameScreens;
 using Tetris.Views.Overlays;
+using Tetris.Controllers;
 
 namespace Tetris
 {
@@ -142,23 +143,21 @@ namespace Tetris
                 //Single Player
                     void SPMS_classic_Click(object sender, RoutedEventArgs e)
                     {
-                        //Create Game
+                        SP_gameView.NewGame(GameMode.Classic);
                         mainPanel.Children.Remove(SP_modeSelect);
                         mainPanel.Children.Add(SP_gameView);
                     }
 
                     void SPMS_timed_Click(object sender, RoutedEventArgs e)
                     {
-                        //Create Game
+                        SP_gameView.NewGame(GameMode.Timed);
                         mainPanel.Children.Remove(SP_modeSelect);
                         mainPanel.Children.Add(SP_gameView);
-                        //Game view gets new game
-                            //Thoughts: The game views manage the Game class, when they are called here, they start up a new game
                     }
 
                     void SPMS_Marathon_Click(object sender, RoutedEventArgs e)
                     {
-                        //Create Game
+                        SP_gameView.NewGame(GameMode.Marathon);
                         mainPanel.Children.Remove(SP_modeSelect);
                         mainPanel.Children.Add(SP_gameView);
                     }
@@ -172,21 +171,21 @@ namespace Tetris
                 //Two Player
                     void TPMS_classic_Click(object sender, RoutedEventArgs e)
                     {
-                        //Create Game
+                        TP_gameView.NewGame(GameMode.Classic);
                         mainPanel.Children.Remove(TP_modeSelect);
                         mainPanel.Children.Add(TP_gameView);
                     }
 
                     void TPMS_timed_Click(object sender, RoutedEventArgs e)
                     {
-                        //Create Game
+                        TP_gameView.NewGame(GameMode.Timed);
                         mainPanel.Children.Remove(TP_modeSelect);
                         mainPanel.Children.Add(TP_gameView);
                     }
 
                     void TPMS_marathon_Click(object sender, RoutedEventArgs e)
                     {
-                        //Create Game
+                        TP_gameView.NewGame(GameMode.Marathon);
                         mainPanel.Children.Remove(TP_modeSelect);
                         mainPanel.Children.Add(TP_gameView);
                     }
@@ -224,7 +223,7 @@ namespace Tetris
 
                         string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
                         file += " Solo ";
-                        //!!!!!!!!!!!!TODO file += TP_gameView.GameModeVar.ToString();
+                        file += (SP_gameView.GetGameMode()).ToString();
 
                         saveDialog.FileName = file;
 
@@ -266,8 +265,7 @@ namespace Tetris
 
                         string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
                         file += " Double ";
-                        //!!!!!!!!!!!!TODO file += TP_gameView.GameModeVar.ToString();
-
+                        file += (TP_gameView.GetGameMode()).ToString();
                         saveDialog.FileName = file;
 
                         Nullable<bool> result = saveDialog.ShowDialog();
