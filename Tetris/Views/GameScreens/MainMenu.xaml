@@ -6,39 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
     
-    <UserControl.Resources>
-        <Style TargetType="Button">
-            
-            
-            
-            <Setter Property="Width" Value="125" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="Width" Value="200" />
-            <Setter Property="Height" Value="50" />
-            <Setter Property="FontSize" Value="24" />
-            <Setter Property="FontFamily" Value="Miriam" />
-            <Setter Property="Background" Value="CornflowerBlue" />
-            <Setter Property="BorderBrush" Value="{x:Null}" />
-            <Setter Property="BorderThickness" Value="0" />
-
-
-            <!--<http://stackoverflow.com/questions/2064185/wpf-flat-button>-->
-            <Style.Triggers>
-                
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="CornflowerBlue" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="BorderThickness" Value="10" />
-                </Trigger>
-                <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="BorderThickness" Value="2" />
-                </Trigger>
-            </Style.Triggers>
-
-        </Style>
-    </UserControl.Resources>
-    
     <StackPanel x:Name="MM_mainPanel"
                 Margin="50">
         
@@ -49,15 +16,19 @@
         <!--Logo image to replace this-->
         
         <Button x:Name="MM_singlePlayer"
+                Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Single Player"/>
         <Button x:Name="MM_twoPlayer"
+                Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Two Player"/>
         <Button x:Name="MM_scoreBoards"
+                Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="High Scores"/>
         <!--<Button x:Name="MM_options"
                 Content="Options"
                 Click="MM_options_Click"/>-->
         <Button x:Name="MM_quit"
+                Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Quit"
                 Click="MM_quit_Click"/>
     </StackPanel>
