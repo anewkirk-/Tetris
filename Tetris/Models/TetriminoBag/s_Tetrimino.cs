@@ -10,7 +10,7 @@ namespace Tetris.Models.TetriminoBag
     public class s_Tetrimino : Tetrimino
     {
         public SolidColorBrush color = new SolidColorBrush(Color.FromRgb(0, 255, 0));
-        
+
         private int position = 1;
         private int preY0 = 0;
         private int preX0 = 0;
@@ -20,10 +20,10 @@ namespace Tetris.Models.TetriminoBag
         private int preX3 = 0;
         public List<Point> Blocks = new List<Point>()
         {
-            new Point { Y = 1, X = 0 },
-            new Point { Y = 1, X = 1 },
-            new Point { Y = 0, X = 1 },
-            new Point { Y = 0, X = 2 }
+            new Point { X = 1, Y = 4 },
+            new Point { X = 1, Y = 5 },
+            new Point { X = 0, Y = 5 },
+            new Point { X = 0, Y = 6 }
         };
 
         public void RotateRight()
@@ -33,34 +33,34 @@ namespace Tetris.Models.TetriminoBag
                 setPre();
                 Blocks[1].Y--;
                 Blocks[1].X--;
-                Blocks[0].Y = Blocks[0].Y - 2;
-                Blocks[3].Y++;
-                Blocks[3].X--;
+                Blocks[0].X = Blocks[0].X - 2;
+                Blocks[3].Y--;
+                Blocks[3].X++;
             }
             if (position == 2)
             {
                 setPre();
-                Blocks[0].X = Blocks[0].X + 2;
-                Blocks[1].Y--;
-                Blocks[1].X++;
+                Blocks[0].Y = Blocks[0].Y + 2;
+                Blocks[1].Y++;
+                Blocks[1].X--;
                 Blocks[3].Y--;
                 Blocks[3].X--;
             }
             if (position == 3)
             {
                 setPre();
-                Blocks[0].Y = Blocks[0].Y + 2;
+                Blocks[0].X = Blocks[0].X + 2;
                 Blocks[1].Y++;
                 Blocks[1].X++;
-                Blocks[3].Y--;
-                Blocks[3].X++;
+                Blocks[3].Y++;
+                Blocks[3].X--;
             }
             if (position == 4)
             {
                 setPre();
-                Blocks[0].X = Blocks[0].X - 2;
-                Blocks[1].Y++;
-                Blocks[1].X--;
+                Blocks[0].Y = Blocks[0].Y - 2;
+                Blocks[1].Y--;
+                Blocks[1].X++;
                 Blocks[3].Y++;
                 Blocks[3].X++;
             }
@@ -98,7 +98,7 @@ namespace Tetris.Models.TetriminoBag
         {
             for (int i = 0; i < 4; i++)
             {
-                Blocks[i].Y++;
+                Blocks[i].X++;
             }
         }
     }
