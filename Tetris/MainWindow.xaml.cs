@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tetris.Views.GameScreens;
 using Tetris.Views.Overlays;
+using Tetris.Controllers;
 
 namespace Tetris
 {
@@ -150,6 +151,8 @@ namespace Tetris
                     void SPMS_timed_Click(object sender, RoutedEventArgs e)
                     {
                         //Create Game
+
+                        SP_gameView.NewGame(GameMode.Timed);
                         mainPanel.Children.Remove(SP_modeSelect);
                         mainPanel.Children.Add(SP_gameView);
                         //Game view gets new game

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tetris.Controllers;
 
 namespace Tetris.Views.GameScreens
 {
@@ -20,9 +21,18 @@ namespace Tetris.Views.GameScreens
     /// </summary>
     public partial class SinglePlayerGame : UserControl
     {
+
+        Game soloGame;
+
         public SinglePlayerGame()
         {
             InitializeComponent();
+        }
+
+
+        public void NewGame(GameMode type)
+        {
+            soloGame = new Game(type);
         }
     }
 }
