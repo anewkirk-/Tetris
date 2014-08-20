@@ -14,7 +14,7 @@ namespace Tetris.Controllers
         public int CurrentScore { get; set; }
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
-        public Timer GameTimer { get; set; }
+        private Timer GameTimer { get; set; }
         private int TimeElapsed { get; set; }
         private int LinesCleared { get; set; }
         private Random rand = new Random();
@@ -27,6 +27,7 @@ namespace Tetris.Controllers
         public Game()
         {
             //default to a 1 second interval
+            GameTimer = new Timer();
             GameTimer.Interval = 1000;
             GameTimer.Elapsed += Tick;
         }
@@ -34,6 +35,7 @@ namespace Tetris.Controllers
         public Game(GameMode mode)
         {
             //default to a 1 second interval
+            GameTimer = new Timer();
             GameTimer.Interval = 1000;
             GameTimer.Elapsed += Tick;
             this.Mode = mode;
@@ -158,10 +160,20 @@ namespace Tetris.Controllers
 
         private bool CanFall(Point p)
         {
-            //IEnumberable<Point> p =
-            //    from t in GameBoard
-            //    where 
-            throw new NotImplementedException();
+            IEnumberable<Point> bl = (IEnumberable<Point>)
+                from t in GameBoard
+                from pt in t.Blocks
+                where pt.Y > p.Y
+                select pt;
+
+            foreach (Point p2 in bl)
+            {
+                if (p2.X == p.X)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         //Removes all blocks that have a given Y value
