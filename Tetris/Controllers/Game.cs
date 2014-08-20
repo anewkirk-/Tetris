@@ -18,7 +18,7 @@ namespace Tetris.Controllers
         private int TimeElapsed { get; set; }
         private int LinesCleared { get; set; }
         private Random rand = new Random();
-        private Tetrimino CurrentTetrimino { get; set; }
+        public Tetrimino CurrentTetrimino { get; set; }
         private ScoreManager _sm = new ScoreManager();
         private int _timedModeTimeLimit = 120;
         private int _marathonModeLineLimit = 50;
