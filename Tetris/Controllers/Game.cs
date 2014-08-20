@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -109,7 +109,7 @@ namespace Tetris.Controllers
                 foreach (int i in rowsCleared)
                 {
                     //remove blocks, add points
-
+                    ClearRow(i);
                 }
                 //drop new tetrimino
                 AddRandomTetrimino();
@@ -124,7 +124,26 @@ namespace Tetris.Controllers
 
         private List<int> CheckRowsCleared()
         {
-            throw new NotImplementedException();
+
+            List<int> rowsCleared = new List<int>();
+
+            IEnumerable<Points> allPoints =
+                from t in GameBoard
+                from pt in t.Blocks
+                select pt;
+
+            for (int i = 0; i < 20; i++)
+            {
+                IEnumerable<Points> rowsPoints =
+                    from b in allPoints
+                    where b.Y == i
+                    select b;
+                if (rowsPoints.Count() == 10)
+                {
+                    rowsCleared.Add(i);
+                }
+            }
+            return rowsCleared;
         }
 
         private bool IsToppedOut()
@@ -160,18 +179,22 @@ namespace Tetris.Controllers
 
         private bool CanFall(Points p)
         {
-            IEnumberable<Point> bl = (IEnumberable<Point>)
+            IEnumerable<Points> bl = (IEnumerable<Points>)
                 from t in GameBoard
                 from pt in t.Blocks
                 where pt.Y > p.Y
                 select pt;
 
-            foreach (Point p2 in bl)
+            foreach(Points ps in bl)
             {
-                if (p2.X == p.X)
+                if (ps.X == p.X && ps.Y == p.Y + 1)
                 {
                     return false;
                 }
+            }
+            if (p.Y >= 19)
+            {
+                return false;
             }
             return true;
         }
