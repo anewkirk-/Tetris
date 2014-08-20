@@ -72,7 +72,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\GameMode.cs" />
-    <Compile Include="Controllers\IEnumberable.cs" />
     <Compile Include="Controllers\ScoreManager.cs" />
     <Compile Include="Models\Score.cs" />
     <Compile Include="Models\TetriminoBag\i_Tetrimino.cs" />
