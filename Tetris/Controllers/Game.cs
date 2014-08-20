@@ -227,16 +227,53 @@ namespace Tetris.Controllers
 
         public void MoveLeft()
         {
+            int index = 0;
+            if ((CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[1].X) &&
+                (CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[2].X) &&
+                (CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[3].X))
+            {
+                index = 0;
+            }
+            else if ((CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[0].X) &&
+                (CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[2].X) &&
+                (CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[3].X))
+            {
+                index = 1;
+            }
+            else if ((CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[1].X) &&
+                (CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[0].X) &&
+                (CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[3].X))
+            {
+                index = 2;
+            }
+            else if ((CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[1].X) &&
+                (CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[2].X) &&
+                (CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[0].X))
+            {
+                index = 3;
+            }
+
             bool canMove = false;
             for (int i = 0; i < 4; i++)
             {
-                if (CurrentTetrimino.Blocks[i].X == -1)
+                if (CurrentTetrimino.Blocks[i].X == 0)
                 {
                     canMove = false;
                     break;
                 }
                 else
                 {
+                    foreach (var t in GameBoard)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            if (t.Blocks[j].X == CurrentTetrimino.Blocks[index].X - 1)
+                            {
+                                canMove = false;
+                                break;
+                            }
+                        }
+                    }
                     canMove = true;
                 }
             }
@@ -252,16 +289,53 @@ namespace Tetris.Controllers
 
         public void MoveRight()
         {
+            int index = 0;
+            if ((CurrentTetrimino.Blocks[0].X >= CurrentTetrimino.Blocks[1].X) &&
+                (CurrentTetrimino.Blocks[0].X >= CurrentTetrimino.Blocks[2].X) &&
+                (CurrentTetrimino.Blocks[0].X >= CurrentTetrimino.Blocks[3].X))
+            {
+                index = 0;
+            }
+            if ((CurrentTetrimino.Blocks[1].X >= CurrentTetrimino.Blocks[0].X) &&
+                (CurrentTetrimino.Blocks[1].X >= CurrentTetrimino.Blocks[2].X) &&
+                (CurrentTetrimino.Blocks[1].X >= CurrentTetrimino.Blocks[3].X))
+            {
+                index = 1;
+            }
+            if ((CurrentTetrimino.Blocks[2].X >= CurrentTetrimino.Blocks[1].X) &&
+                (CurrentTetrimino.Blocks[2].X >= CurrentTetrimino.Blocks[0].X) &&
+                (CurrentTetrimino.Blocks[2].X >= CurrentTetrimino.Blocks[3].X))
+            {
+                index = 2;
+            }
+            if ((CurrentTetrimino.Blocks[3].X >= CurrentTetrimino.Blocks[1].X) &&
+                (CurrentTetrimino.Blocks[3].X >= CurrentTetrimino.Blocks[2].X) &&
+                (CurrentTetrimino.Blocks[3].X >= CurrentTetrimino.Blocks[0].X))
+            {
+                index = 3;
+            }
+
             bool canMove = false;
             for (int i = 0; i < 4; i++)
             {
-                if (CurrentTetrimino.Blocks[i].X == 20)
+                if (CurrentTetrimino.Blocks[i].X == 9)
                 {
                     canMove = false;
                     break;
                 }
                 else
                 {
+                    foreach (var t in GameBoard)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            if (t.Blocks[j].X == CurrentTetrimino.Blocks[index].X + 1)
+                            {
+                                canMove = false;
+                                break;
+                            }
+                        }
+                    }
                     canMove = true;
                 }
             }
