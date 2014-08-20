@@ -22,7 +22,8 @@ namespace Tetris.Views.GameScreens
     public partial class TwoPlayerGame : UserControl
     {
 
-        Game duoGame;
+        Game PlayerOneGame;
+        Game PlayerTwoGame;
 
         public TwoPlayerGame()
         {
@@ -31,12 +32,13 @@ namespace Tetris.Views.GameScreens
 
         public void NewGame(GameMode type)
         {
-            duoGame = new Game(type);
+            PlayerOneGame = new Game(type);
+            PlayerTwoGame = new Game(type);
         }
 
         public GameMode GetGameMode()
         {
-            return duoGame.Mode;
+            return PlayerOneGame.Mode;
         }
     }
 }

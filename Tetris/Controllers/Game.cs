@@ -94,10 +94,10 @@ namespace Tetris.Controllers
 
             foreach (Points p in CurrentTetrimino.Blocks)
             {
-                if (!CanFall(p))
-                {
-                    collision = true;
-                }
+                //if (!CanFall(p))
+                //{
+                //    collision = true;
+                //}
             }
 
             //If there is a collision,
@@ -158,23 +158,23 @@ namespace Tetris.Controllers
             return endGame;
         }
 
-        private bool CanFall(Points p)
-        {
-            IEnumberable<Point> bl = (IEnumberable<Point>)
-                from t in GameBoard
-                from pt in t.Blocks
-                where pt.Y > p.Y
-                select pt;
+        //private bool CanFall(Points p)
+        //{
+        //    IEnumberable<Point> bl = (IEnumberable<Point>)
+        //        from t in GameBoard
+        //        from pt in t.Blocks
+        //        where pt.Y > p.Y
+        //        select pt;
 
-            foreach (Point p2 in bl)
-            {
-                if (p2.X == p.X)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        //    foreach (Point p2 in bl)
+        //    {
+        //        if (p2.X == p.X)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
 
         //Removes all blocks that have a given Y value
         private void ClearRow(int y)

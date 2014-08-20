@@ -208,23 +208,21 @@ namespace Tetris
                 //Single Player
                     void SPG_pause_Click(object sender, RoutedEventArgs e)
                     {
-                        //Force Game to Pause
+                        //TODO Pause Game
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
                     }
 
                     void SPG_save_Click(object sender, RoutedEventArgs e)
                     {
-                        //Force Game to Pause
+                        //TODO Pause Game
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
 
                         // http://stackoverflow.com/questions/5622854/how-do-i-show-a-save-as-dialog-in-wpf
-
                         string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
-                        file += " Solo ";
+                        file += " Solo";
                         file += (SP_gameView.GetGameMode()).ToString();
-
                         saveDialog.FileName = file;
 
                         Nullable<bool> result = saveDialog.ShowDialog();
@@ -233,13 +231,13 @@ namespace Tetris
                         if (result == true)
                         {
                             file = saveDialog.FileName;
-                            // Save document
+                            //TODO Save document
                         }
                     }
 
                     void SPG_quit_Click(object sender, RoutedEventArgs e)
                     {
-                        //Force Game to Pause
+                        //TODO Pause Game
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
 
@@ -250,21 +248,21 @@ namespace Tetris
                 // Two Player
                     void TPG_pause_Click(object sender, RoutedEventArgs e)
                     {
-                        //Force Game to Pause
+                        //TODO Pause Game
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
                     }
 
                     void TPG_save_Click(object sender, RoutedEventArgs e)
                     {
-                        //Force Game to Pause
+                        //TODO Pause Game
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
 
                         // http://stackoverflow.com/questions/5622854/how-do-i-show-a-save-as-dialog-in-wpf
 
                         string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
-                        file += " Double ";
+                        file += " Duo";
                         file += (TP_gameView.GetGameMode()).ToString();
                         saveDialog.FileName = file;
 
@@ -274,14 +272,14 @@ namespace Tetris
                         if (result == true)
                         {
                             file = saveDialog.FileName;
-                            // Save document
+                            //TODO Save document
                         }
                         
                     }
 
                     void TPG_quit_Click(object sender, RoutedEventArgs e)
                     {
-                        //Force Game to Pause
+                        //TODO Pause Game
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
 
@@ -297,10 +295,9 @@ namespace Tetris
                         mainPanel.Children.Add(backCanvas2);
                         mainPanel.Children.Add(quit);
                     }
-
                     void pause_continue_Click(object sender, RoutedEventArgs e)
                     {
-                        //Force Game to Resume
+                        //TODO Resume Game
                         mainPanel.Children.Remove(backCanvas);
                         mainPanel.Children.Remove(pause);
                     }
@@ -309,7 +306,7 @@ namespace Tetris
 
                     void quit_yes_Click(object sender, RoutedEventArgs e)
                     {
-                        //Remove Game
+                        //TODO End Game
                         mainPanel.Children.Remove(TP_gameView);
                         mainPanel.Children.Remove(SP_gameView);
                         mainPanel.Children.Add(mainMenu);
@@ -320,7 +317,6 @@ namespace Tetris
                         mainPanel.Children.Remove(backCanvas2);
                         mainPanel.Children.Remove(quit);
                     }
-
                     void quit_no_Click(object sender, RoutedEventArgs e)
                     {
                         mainPanel.Children.Remove(backCanvas2);
