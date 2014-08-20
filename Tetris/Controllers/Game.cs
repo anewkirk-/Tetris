@@ -31,6 +31,14 @@ namespace Tetris.Controllers
             GameTimer.Elapsed += Tick;
         }
 
+        public Game(GameMode mode)
+        {
+            //default to a 1 second interval
+            GameTimer.Interval = 1000;
+            GameTimer.Elapsed += Tick;
+            this.Mode = mode;
+        }
+
         public List<Tetrimino> tBag = new List<Tetrimino>
         {
             new i_Tetrimino(),
@@ -150,6 +158,9 @@ namespace Tetris.Controllers
 
         private bool CanFall(Point p)
         {
+            //IEnumberable<Point> p =
+            //    from t in GameBoard
+            //    where 
             throw new NotImplementedException();
         }
 
