@@ -23,6 +23,7 @@ namespace Tetris.Controllers
         private int _timedModeTimeLimit = 120;
         private int _marathonModeLineLimit = 50;
         private int _linesBeforeSpeedUp = 10;
+        private bool _isToppedOut = false;
 
         public Game()
         {
@@ -53,19 +54,16 @@ namespace Tetris.Controllers
         };
 
         /// <summary>
-        /// This method contains the actual game logic, and will be called on each tick of the _gameTimer.
+        /// This method contains the actual game logic, and will be called on each tick of the GameTimer.
         /// </summary>
         public void Tick(object sender, ElapsedEventArgs e)
         {        
-
-            //Check for top out
-            bool topOut = IsToppedOut();
 
             //Check for end game
             bool endGame = EndConditionsMet();
 
             //End game if any end conditions met
-            if (endGame || topOut)
+            if (endGame || _isToppedOut)
             {
                 //End game
                 GameTimer.Enabled = false;
@@ -146,11 +144,6 @@ namespace Tetris.Controllers
             return rowsCleared;
         }
 
-        private bool IsToppedOut()
-        {
-            throw new NotImplementedException();
-        }
-
         private bool EndConditionsMet()
         {
             bool endGame = false;
@@ -202,7 +195,16 @@ namespace Tetris.Controllers
         //Removes all blocks that have a given Y value
         private void ClearRow(int y)
         {
-            throw new NotImplementedException();
+            foreach (Tetrimino t in GameBoard)
+            {
+                foreach (Points p in t.Blocks)
+                {
+                    if (p.Y == y)
+                    {
+                        t.Blocks.Remove(p);
+                    }
+                }
+            }
         }
 
         //Get a random Tetrimino from the Tetrimino Bag and add it to the TetriminoOnGameBoard list
@@ -212,6 +214,19 @@ namespace Tetris.Controllers
             Tetrimino randT = tBag[index];
             CurrentTetrimino = randT;
             GameBoard.Add(CurrentTetrimino);
+            foreach (Tetrimino t in GameBoard)
+            {
+                foreach (Points p in t.Blocks)
+                {
+                    foreach (Points newPoint in CurrentTetrimino.Blocks)
+                    {
+                        if (newPoint.X == p.X && newPoint.Y == p.Y)
+                        {
+                            _isToppedOut = true;
+                        }
+                    }
+                }
+            }
         }
             
      
@@ -237,8 +252,16 @@ namespace Tetris.Controllers
         //Move all rows of Tetromino up one
         public void MoveRowsUp()
         {
-            //For every Tetromino on Gameboard
-              //(x, y -= 1)
+            foreach (Tetrimino t in GameBoard)
+            {
+                if (t != CurrentTetrimino)
+                {
+                    foreach (Points p in t.Blocks)
+                    {
+                        p.Y = p.Y - 1;
+                    }
+                }
+            }
         }
 
         //Add a row of Tetrimino's with an empty space in the middle when a "Tetris" has occured on the other player's screen
