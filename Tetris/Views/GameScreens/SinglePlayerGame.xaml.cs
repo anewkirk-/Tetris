@@ -33,7 +33,12 @@ namespace Tetris.Views.GameScreens
         public void NewGame(GameMode type)
         {
             soloGame = new Game(type);
+            soloGame.GameTimer.Elapsed += GameTimer_Elapsed;
             soloGame.Start();
+        }
+
+        void GameTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
             DisplayTetriminos();
         }
 
