@@ -69,7 +69,11 @@ namespace Tetris.Controllers
         /// This method contains the actual game logic, and will be called on each tick of the GameTimer.
         /// </summary>
         public void Tick(object sender, ElapsedEventArgs e)
-        {        
+        {
+            if (CurrentTetrimino == null)
+            {
+                AddRandomTetrimino();
+            }
 
             //Check for end game
             bool endGame = EndConditionsMet();
