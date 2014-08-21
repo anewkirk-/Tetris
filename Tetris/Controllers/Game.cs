@@ -54,6 +54,17 @@ namespace Tetris.Controllers
             new z_Tetrimino()
         };
 
+        public void Start()
+        {
+            GameTimer.Enabled = true;
+        }
+
+        public void Stop()
+        {
+            GameTimer.Enabled = false;
+
+        }
+
         /// <summary>
         /// This method contains the actual game logic, and will be called on each tick of the GameTimer.
         /// </summary>
