@@ -13,7 +13,7 @@ namespace Tetris.Models.TetriminoBag
 
         public List<Points> Blocks;
 
-        public void RotateRight()
+        public void Right()
         {
 
         }

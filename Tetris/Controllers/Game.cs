@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tetris.Models;
 using Tetris.Models.TetriminoBag;
+using Tetris.Views.GameScreens;
 
 namespace Tetris.Controllers
 {
@@ -279,6 +280,8 @@ namespace Tetris.Controllers
         {
             MoveRowsUp();
             RowOfBlocksMinusOne();
+            SinglePlayerGame spg = new SinglePlayerGame();
+            spg.DisplayRowOfBlocksMinusOne();
         }
 
         public void MoveLeft()
@@ -435,7 +438,7 @@ namespace Tetris.Controllers
 
         public void RotateCurrent()
         {
-            CurrentTetrimino.RotateRight();
+            CurrentTetrimino.Right();
         }
     }
 }
