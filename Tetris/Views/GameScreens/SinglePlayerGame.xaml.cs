@@ -33,6 +33,7 @@ namespace Tetris.Views.GameScreens
         public void NewGame(GameMode type)
         {
             soloGame = new Game(type);
+            soloGame.Start();
             //DisplayTetrimino();
         }
 
@@ -49,61 +50,62 @@ namespace Tetris.Views.GameScreens
             return rect;
         }
 
-        public Rectangle DisplayTetrimino()
+        public void DisplayTetriminos()
         {
-            Rectangle rect = new Rectangle();
-            Tetrimino t = soloGame.CurrentTetrimino;
-            foreach (Tetris.Models.TetriminoBag.Points p in t.Blocks)
+            Rectangle rect = null;
+            foreach(Tetrimino t in soloGame.GameBoard)
             {
-                rect = CreateRectangle();
-                //Color i Tetrimino
-                if (soloGame.CurrentTetrimino == soloGame.tBag[0])
+                foreach (Tetris.Models.TetriminoBag.Points p in t.Blocks)
                 {
-                    rect.Fill = (new SolidColorBrush(Colors.Cyan));
+                    rect = CreateRectangle();
+                    //Color i Tetrimino
+                    if (soloGame.CurrentTetrimino == soloGame.tBag[0])
+                    {
+                        rect.Fill = (new SolidColorBrush(Colors.Cyan));
 
+                    }
+                    //Color j Tetrimino
+                    if (soloGame.CurrentTetrimino == soloGame.tBag[1])
+                    {
+                        rect.Fill = (new SolidColorBrush(Colors.Blue));
+
+                    }
+                    //Color l Tetrimino
+                    if (soloGame.CurrentTetrimino == soloGame.tBag[2])
+                    {
+                        rect.Fill = (new SolidColorBrush(Colors.Orange));
+
+                    }
+                    //Color o Tetrimino
+                    if (soloGame.CurrentTetrimino == soloGame.tBag[3])
+                    {
+                        rect.Fill = (new SolidColorBrush(Colors.Yellow));
+
+                    }
+                    //Color s Tetrimino
+                    if (soloGame.CurrentTetrimino == soloGame.tBag[4])
+                    {
+                        rect.Fill = (new SolidColorBrush(Colors.Lime));
+
+                    }
+                    //Color t Tetrimino
+                    if (soloGame.CurrentTetrimino == soloGame.tBag[5])
+                    {
+                        rect.Fill = (new SolidColorBrush(Colors.DarkMagenta));
+
+                    }
+                    //Color z Tetrimino
+                    if (soloGame.CurrentTetrimino == soloGame.tBag[6])
+                    {
+                        rect.Fill = (new SolidColorBrush(Colors.Red));
+
+                    }
+
+                    SPG_playerOne_grid.Children.Add(rect);
+                    Grid.SetColumn(rect, p.Y);
+                    Grid.SetRow(rect, p.X);
                 }
-                //Color j Tetrimino
-                if (soloGame.CurrentTetrimino == soloGame.tBag[1])
-                {
-                    rect.Fill = (new SolidColorBrush(Colors.Blue));
-
-                }
-                //Color l Tetrimino
-                if (soloGame.CurrentTetrimino == soloGame.tBag[2])
-                {
-                    rect.Fill = (new SolidColorBrush(Colors.Orange));
-
-                }
-                //Color o Tetrimino
-                if (soloGame.CurrentTetrimino == soloGame.tBag[3])
-                {
-                    rect.Fill = (new SolidColorBrush(Colors.Yellow));
-
-                }
-                //Color s Tetrimino
-                if (soloGame.CurrentTetrimino == soloGame.tBag[4])
-                {
-                    rect.Fill = (new SolidColorBrush(Colors.Lime));
-
-                }
-                //Color t Tetrimino
-                if (soloGame.CurrentTetrimino == soloGame.tBag[5])
-                {
-                    rect.Fill = (new SolidColorBrush(Colors.DarkMagenta));
-
-                }
-                //Color z Tetrimino
-                if (soloGame.CurrentTetrimino == soloGame.tBag[6])
-                {
-                    rect.Fill = (new SolidColorBrush(Colors.Red));
-
-                }
-
-                SPG_playerOne_grid.Children.Add(rect);
-                Grid.SetColumn(rect, p.Y);
-                Grid.SetRow(rect, p.X);
             }
-            return rect;
         }
 
         //Display the Row of blocks that are added when a "Tetris" occurs during multiplayer games
