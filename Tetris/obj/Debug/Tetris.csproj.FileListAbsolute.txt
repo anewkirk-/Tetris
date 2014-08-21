@@ -125,3 +125,4 @@ C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\D
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.baml
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.g.cs
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\App.baml
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\App.baml
