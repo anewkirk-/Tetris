@@ -43,7 +43,9 @@ namespace Tetris.Views.GameScreens
         public void UpdateScores()
         {
             List<Score> topScores = sm.GetAll();
-            SM_grid.ItemsSource = topScores;
+            SM_grid.Rows = topScores.Count;
+            
+            
         }
     }
 }

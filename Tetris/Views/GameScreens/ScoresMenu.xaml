@@ -8,7 +8,25 @@
     <StackPanel>
         <Label Content="Scores" />
         
-        <DataGrid x:Name="SM_grid" IsReadOnly="True" AutoGeneratingColumn="SM_grid_AutoGeneratingColumn_1"></DataGrid>
+        <!--<ItemsControl x:Name="SM_grid"
+                      BorderBrush="Black"
+                      BorderThickness="2"
+                      Margin="50">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <UniformGrid Columns="2"
+                                    SnapsToDevicePixels="True">
+                        <Label Content="{Binding Path=Username}" />
+                        <Label Content="{Binding Path=ScoreValue}" />
+                    </UniformGrid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>-->
+        
+        <UniformGrid x:Name="SM_grid">
+            
+            
+        </UniformGrid>
         
         <Button x:Name="SM_back"
                 Style="{StaticResource ResourceKey=MenuButtons}"
