@@ -33,7 +33,8 @@ namespace Tetris.Views.GameScreens
         public void NewGame(GameMode type)
         {
             soloGame = new Game(type);
-            //DisplayTetrimino();
+            soloGame.Start();
+            DisplayTetrimino();
         }
 
         public GameMode GetGameMode()
