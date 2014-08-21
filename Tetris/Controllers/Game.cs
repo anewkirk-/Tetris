@@ -43,16 +43,6 @@ namespace Tetris.Controllers
             this.Mode = mode;
         }
 
-        public void Start()
-        {
-            GameTimer.Enabled = true;
-        }
-
-        public void Stop()
-        {
-            GameTimer.Enabled = false;
-        }
-
         public List<Tetrimino> tBag = new List<Tetrimino>
         {
             new i_Tetrimino(),
