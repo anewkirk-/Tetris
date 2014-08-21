@@ -29,6 +29,7 @@ namespace Tetris.Controllers
         public Game()
         {
             //default to a 1 second interval
+            GameBoard = new TetrisBoard();
             GameTimer = new Timer();
             GameTimer.Interval = 1000;
             GameTimer.Elapsed += Tick;
@@ -37,6 +38,7 @@ namespace Tetris.Controllers
         public Game(GameMode mode)
         {
             //default to a 1 second interval
+            GameBoard = new TetrisBoard();
             GameTimer = new Timer();
             GameTimer.Interval = 1000;
             GameTimer.Elapsed += Tick;
