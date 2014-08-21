@@ -13,7 +13,8 @@
 
         <StackPanel>
             <Grid x:Name="SPG_playerOne_grid"
-                         Width="275" Height="550">
+                         Width="275" Height="550"
+                         ShowGridLines="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>

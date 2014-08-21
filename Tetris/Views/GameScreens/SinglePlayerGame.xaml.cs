@@ -33,19 +33,20 @@ namespace Tetris.Views.GameScreens
         public void NewGame(GameMode type)
         {
             soloGame = new Game(type);
+            //DisplayTetrimino();
         }
 
         public GameMode GetGameMode()
         {
             return soloGame.Mode;
         }
+
         public Rectangle CreateRectangle()
         {
             Rectangle rect = new Rectangle();
             rect.Fill = (new SolidColorBrush(Colors.AliceBlue));
 
             return rect;
-
         }
 
         public Rectangle DisplayTetrimino()
