@@ -443,7 +443,36 @@ namespace Tetris.Controllers
 
         public void RotateCurrent()
         {
-            CurrentTetrimino.Right();
+            CurrentTetrimino.Rotate();
+
+            List<Points> block1 = (List<Points>)
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[0].X) && (pt.Y == CurrentTetrimino.Blocks[0].Y)
+                        select pt;
+            List<Points> block2 = (List<Points>)
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[1].X) && (pt.Y == CurrentTetrimino.Blocks[1].Y)
+                        select pt;
+            List<Points> block3 = (List<Points>)
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[2].X) && (pt.Y == CurrentTetrimino.Blocks[2].Y)
+                        select pt;
+            List<Points> block4 = (List<Points>)
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[3].X) && (pt.Y == CurrentTetrimino.Blocks[3].Y)
+                        select pt;
+
+            if ((block1.Count == 0) &&
+                (block2.Count == 0) &&
+                (block3.Count == 0) &&
+                (block4.Count == 0))
+            {
+                CurrentTetrimino.RotateBack();
+            }
         }
     }
 }
