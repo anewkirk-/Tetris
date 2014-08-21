@@ -26,7 +26,7 @@ namespace Tetris.Models.TetriminoBag
             new Points { X = 1, Y = 6 }
         };
 
-        public void RotateRight()
+        public void Rotate()
         {
             if (position == 1)
             {

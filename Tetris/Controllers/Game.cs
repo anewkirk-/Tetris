@@ -425,7 +425,7 @@ namespace Tetris.Controllers
 
         public void RotateCurrent()
         {
-            CurrentTetrimino.RotateRight();
+            CurrentTetrimino.Right();
         }
     }
 }
