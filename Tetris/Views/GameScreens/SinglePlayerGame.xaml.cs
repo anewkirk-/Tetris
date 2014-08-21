@@ -34,11 +34,7 @@ namespace Tetris.Views.GameScreens
         {
             soloGame = new Game(type);
             soloGame.Start();
-<<<<<<< HEAD
-            //DisplayTetrimino();
-=======
-            DisplayTetrimino();
->>>>>>> 7a04875b6f0563f7d733393389d5480bd8d7aaa5
+            DisplayTetriminos();
         }
 
         public GameMode GetGameMode()
