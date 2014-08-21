@@ -18,7 +18,7 @@ namespace Tetris.Controllers
         private int TimeElapsed { get; set; }
         private int LinesCleared { get; set; }
         private Random rand = new Random();
-        private Tetrimino CurrentTetrimino { get; set; }
+        public Tetrimino CurrentTetrimino { get; set; }
         private ScoreManager _sm = new ScoreManager();
         private int _timedModeTimeLimit = 120;
         private int _marathonModeLineLimit = 50;
@@ -273,33 +273,34 @@ namespace Tetris.Controllers
 
         public void MoveLeft()
         {
-            int index = 0;
+            List<int> indexes = new List<int>();
+
             if ((CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[1].X) &&
                 (CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[2].X) &&
                 (CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[3].X))
             {
-                index = 0;
+                indexes.Add(0);
             }
-            else if ((CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[0].X) &&
+            if ((CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[0].X) &&
                 (CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[2].X) &&
                 (CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[3].X))
             {
-                index = 1;
+                indexes.Add(1);
             }
-            else if ((CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[1].X) &&
+            if ((CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[1].X) &&
                 (CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[0].X) &&
                 (CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[3].X))
             {
-                index = 2;
+                indexes.Add(2);
             }
-            else if ((CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[1].X) &&
+            if ((CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[1].X) &&
                 (CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[2].X) &&
                 (CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[0].X))
             {
-                index = 3;
+                indexes.Add(3);
             }
 
-            bool canMove = false;
+            bool canMove = true;
             for (int i = 0; i < 4; i++)
             {
                 if (CurrentTetrimino.Blocks[i].X == 0)
@@ -307,20 +308,28 @@ namespace Tetris.Controllers
                     canMove = false;
                     break;
                 }
-                else
+            }
+            if (canMove == true)
+            {
+                foreach (int num in indexes)
                 {
-                    foreach (var t in GameBoard)
+                    int index = num;
+                    List<Points> b = (List<Points>)
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[index].X - 1) && (pt.Y == CurrentTetrimino.Blocks[index].Y)
+                        select pt;
+
+                    int count = 0;
+                    foreach (Points p in b)
                     {
-                        for (int j = 0; j < 4; j++)
-                        {
-                            if (t.Blocks[j].X == CurrentTetrimino.Blocks[index].X - 1)
-                            {
-                                canMove = false;
-                                break;
-                            }
-                        }
+                        count++;
                     }
-                    canMove = true;
+
+                    if (count > 0)
+                        canMove = false;
+                    else
+                        canMove = true;
                 }
             }
 
@@ -335,33 +344,34 @@ namespace Tetris.Controllers
 
         public void MoveRight()
         {
-            int index = 0;
+            List<int> indexes = new List<int>();
+
             if ((CurrentTetrimino.Blocks[0].X >= CurrentTetrimino.Blocks[1].X) &&
                 (CurrentTetrimino.Blocks[0].X >= CurrentTetrimino.Blocks[2].X) &&
                 (CurrentTetrimino.Blocks[0].X >= CurrentTetrimino.Blocks[3].X))
             {
-                index = 0;
+                indexes.Add(0);
             }
             if ((CurrentTetrimino.Blocks[1].X >= CurrentTetrimino.Blocks[0].X) &&
                 (CurrentTetrimino.Blocks[1].X >= CurrentTetrimino.Blocks[2].X) &&
                 (CurrentTetrimino.Blocks[1].X >= CurrentTetrimino.Blocks[3].X))
             {
-                index = 1;
+                indexes.Add(1);
             }
             if ((CurrentTetrimino.Blocks[2].X >= CurrentTetrimino.Blocks[1].X) &&
                 (CurrentTetrimino.Blocks[2].X >= CurrentTetrimino.Blocks[0].X) &&
                 (CurrentTetrimino.Blocks[2].X >= CurrentTetrimino.Blocks[3].X))
             {
-                index = 2;
+                indexes.Add(2);
             }
             if ((CurrentTetrimino.Blocks[3].X >= CurrentTetrimino.Blocks[1].X) &&
                 (CurrentTetrimino.Blocks[3].X >= CurrentTetrimino.Blocks[2].X) &&
                 (CurrentTetrimino.Blocks[3].X >= CurrentTetrimino.Blocks[0].X))
             {
-                index = 3;
+                indexes.Add(3);
             }
 
-            bool canMove = false;
+            bool canMove = true;
             for (int i = 0; i < 4; i++)
             {
                 if (CurrentTetrimino.Blocks[i].X == 9)
@@ -369,20 +379,28 @@ namespace Tetris.Controllers
                     canMove = false;
                     break;
                 }
-                else
+            }
+            if (canMove == true)
+            {
+                foreach (int num in indexes)
                 {
-                    foreach (var t in GameBoard)
+                    int index = num;
+                    List<Points> b = (List<Points>)
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[index].X + 1) && (pt.Y == CurrentTetrimino.Blocks[index].Y)
+                        select pt;
+
+                    int count = 0;
+                    foreach (Points p in b)
                     {
-                        for (int j = 0; j < 4; j++)
-                        {
-                            if (t.Blocks[j].X == CurrentTetrimino.Blocks[index].X + 1)
-                            {
-                                canMove = false;
-                                break;
-                            }
-                        }
+                        count++;
                     }
-                    canMove = true;
+
+                    if (count > 0)
+                        canMove = false;
+                    else
+                        canMove = true;
                 }
             }
 

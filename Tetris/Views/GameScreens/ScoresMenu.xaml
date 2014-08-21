@@ -11,6 +11,7 @@
         <DataGrid x:Name="SM_grid" IsReadOnly="True" AutoGeneratingColumn="SM_grid_AutoGeneratingColumn_1"></DataGrid>
         
         <Button x:Name="SM_back"
+                Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Back to Main Menu" />
         
     </StackPanel>

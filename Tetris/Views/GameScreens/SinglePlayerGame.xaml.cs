@@ -105,5 +105,19 @@ namespace Tetris.Views.GameScreens
             //return rect;
             throw new NotImplementedException();
         }
+
+        //Display the Row of blocks that are added when a "Tetris" occurs during multiplayer games
+        public Rectangle DisplayRowOfBlocksMinusOne()
+        {
+            Rectangle rect = new Rectangle();
+            foreach (Points pt in soloGame.RowOfBlocksMinusOne())
+            {
+                rect.Fill = (new SolidColorBrush(Colors.Green));
+                SPG_playerOne_grid.Children.Add(rect);
+                Grid.SetColumn(rect, pt.Y);
+                Grid.SetRow(rect, pt.X);
+            }
+            return rect;
+        }
     }
 }
