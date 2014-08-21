@@ -13,15 +13,11 @@ namespace Tetris.Models.TetriminoBag
 
         public List<Points> Blocks;
 
-        public void RotateRight()
-        {
+        public virtual void Rotate() { }
 
-        }
+        public virtual void Fall() { }
 
-        public void Fall()
-        {
-
-        }
+        public virtual void RotateBack() { }
     }
 
     public class Points

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tetris.Models;
 using Tetris.Models.TetriminoBag;
+using Tetris.Views.GameScreens;
 
 namespace Tetris.Controllers
 {
@@ -14,7 +15,7 @@ namespace Tetris.Controllers
         public int CurrentScore { get; set; }
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
-        private Timer GameTimer { get; set; }
+        public Timer GameTimer { get; set; }
         private int TimeElapsed { get; set; }
         private int LinesCleared { get; set; }
         private Random rand = new Random();
@@ -28,6 +29,7 @@ namespace Tetris.Controllers
         public Game()
         {
             //default to a 1 second interval
+            GameBoard = new TetrisBoard();
             GameTimer = new Timer();
             GameTimer.Interval = 1000;
             GameTimer.Elapsed += Tick;
@@ -36,6 +38,7 @@ namespace Tetris.Controllers
         public Game(GameMode mode)
         {
             //default to a 1 second interval
+            GameBoard = new TetrisBoard();
             GameTimer = new Timer();
             GameTimer.Interval = 1000;
             GameTimer.Elapsed += Tick;
@@ -53,11 +56,26 @@ namespace Tetris.Controllers
             new z_Tetrimino()
         };
 
+        public void Start()
+        {
+            GameTimer.Enabled = true;
+        }
+
+        public void Stop()
+        {
+            GameTimer.Enabled = false;
+
+        }
+
         /// <summary>
         /// This method contains the actual game logic, and will be called on each tick of the GameTimer.
         /// </summary>
         public void Tick(object sender, ElapsedEventArgs e)
-        {        
+        {
+            if (CurrentTetrimino == null)
+            {
+                AddRandomTetrimino();
+            }
 
             //Check for end game
             bool endGame = EndConditionsMet();
@@ -269,6 +287,8 @@ namespace Tetris.Controllers
         {
             MoveRowsUp();
             RowOfBlocksMinusOne();
+            SinglePlayerGame spg = new SinglePlayerGame();
+            spg.DisplayRowOfBlocksMinusOne();
         }
 
         public void MoveLeft()
@@ -425,7 +445,36 @@ namespace Tetris.Controllers
 
         public void RotateCurrent()
         {
-            CurrentTetrimino.RotateRight();
+            CurrentTetrimino.Rotate();
+
+            List<Points> block1 = (List<Points>)
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[0].X) && (pt.Y == CurrentTetrimino.Blocks[0].Y)
+                        select pt;
+            List<Points> block2 = (List<Points>)
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[1].X) && (pt.Y == CurrentTetrimino.Blocks[1].Y)
+                        select pt;
+            List<Points> block3 = (List<Points>)
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[2].X) && (pt.Y == CurrentTetrimino.Blocks[2].Y)
+                        select pt;
+            List<Points> block4 = (List<Points>)
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[3].X) && (pt.Y == CurrentTetrimino.Blocks[3].Y)
+                        select pt;
+
+            if ((block1.Count == 0) &&
+                (block2.Count == 0) &&
+                (block3.Count == 0) &&
+                (block4.Count == 0))
+            {
+                CurrentTetrimino.RotateBack();
+            }
         }
     }
 }
