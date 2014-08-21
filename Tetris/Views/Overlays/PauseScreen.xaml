@@ -4,8 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Height="200" Width="300">
-    <Grid Background="DeepPink">
+             Height="200" Width="300"
+             BorderBrush="Black"
+             BorderThickness="1">
+    
+    <Grid Background="{StaticResource ResourceKey=MainBackground}">
         
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -26,19 +29,11 @@
             
             <Button x:Name="pause_quit"
                     Content="Quit"
-                    Height="30"
-                    Width="100"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Margin="0,0,10,15"/>
+                    Style="{StaticResource ResourceKey=OverlayButtons}"/>
 
             <Button x:Name="pause_continue"
                     Content="Continue"
-                    Height="30"
-                    Width="100"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Margin="10,0,0,15"/>
+                    Style="{StaticResource ResourceKey=OverlayButtons}"/>
         </StackPanel>
 
 
