@@ -9,7 +9,18 @@ namespace Tetris.Models.TetriminoBag
 {
     public class i_Tetrimino : Tetrimino
     {
-        public SolidColorBrush color = new SolidColorBrush(Color.FromRgb(0, 255, 255));
+        public i_Tetrimino ()
+	    {
+
+            color = new SolidColorBrush(Color.FromRgb(0, 255, 255));
+            Blocks = new List<Points>()
+            {
+                new Points { X = 0, Y = 3 },
+                new Points { X = 0, Y = 4 },
+                new Points { X = 0, Y = 5 },
+                new Points { X = 0, Y = 6 }
+            };
+	    }
 
         private int position = 1;
         private int preY0 = 0;
@@ -18,13 +29,7 @@ namespace Tetris.Models.TetriminoBag
         private int preX2 = 0;
         private int preY3 = 0;
         private int preX3 = 0;
-        public List<Points> Blocks = new List<Points>()
-        {
-             new Points { X = 0, Y = 3 },
-             new Points { X = 0, Y = 4 },
-             new Points { X = 0, Y = 5 },
-             new Points { X = 0, Y = 6 }
-        };
+
 
         public override void Rotate()
         {
