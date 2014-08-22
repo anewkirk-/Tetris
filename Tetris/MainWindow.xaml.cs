@@ -203,14 +203,14 @@ namespace Tetris
                 //Single Player
                     void SPG_pause_Click(object sender, RoutedEventArgs e)
                     {
-                        //TODO Pause Game
+                        SP_gameView.PauseGame();
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
                     }
 
                     void SPG_save_Click(object sender, RoutedEventArgs e)
                     {
-                        //TODO Pause Game
+                        SP_gameView.PauseGame();
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
 
@@ -232,7 +232,7 @@ namespace Tetris
 
                     void SPG_quit_Click(object sender, RoutedEventArgs e)
                     {
-                        //TODO Pause Game
+                        SP_gameView.PauseGame();
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
 
@@ -292,7 +292,14 @@ namespace Tetris
                     }
                     void pause_continue_Click(object sender, RoutedEventArgs e)
                     {
-                        //TODO Resume Game
+                        if (SP_gameView.soloGame != null)
+                        {
+                            SP_gameView.ResumeGame();
+                        }
+                        else
+                        {
+                            TP_gameView.ResumeGame();
+                        }
                         mainPanel.Children.Remove(backCanvas);
                         mainPanel.Children.Remove(pause);
                     }
