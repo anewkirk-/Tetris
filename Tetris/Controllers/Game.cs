@@ -232,11 +232,11 @@ namespace Tetris.Controllers
             Tetrimino randT = tBag[index];
             CurrentTetrimino = randT;
             GameBoard.Add(CurrentTetrimino);
-            foreach (Tetrimino t in GameBoard)
+            foreach (Tetrimino t in GameBoard.ToList())
             {
-                foreach (Points p in t.Blocks)
+                foreach (Points p in t.Blocks.ToList())
                 {
-                    foreach (Points newPoint in CurrentTetrimino.Blocks)
+                    foreach (Points newPoint in CurrentTetrimino.Blocks.ToList())
                     {
                         if (newPoint.X == p.X && newPoint.Y == p.Y)
                         {

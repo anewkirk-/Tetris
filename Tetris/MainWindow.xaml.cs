@@ -322,5 +322,21 @@ namespace Tetris
                         mainPanel.Children.Remove(backCanvas2);
                         mainPanel.Children.Remove(quit);
                     }
+
+                    private void Window_KeyDown_1(object sender, KeyEventArgs e)
+                    {
+                        switch (e.Key)
+                        {
+                            case Key.V:
+                                SP_gameView.soloGame.Tick(null,null);
+                                break;
+                            case Key.Space:
+                                SP_gameView.DisplayTetriminos();
+                                break;
+                            case Key.Escape:
+                                Environment.Exit(0);
+                                break;
+                        }
+                    }
     }
 }
