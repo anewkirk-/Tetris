@@ -15,7 +15,7 @@ namespace Tetris.Controllers
         public int CurrentScore { get; set; }
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
-        private Timer GameTimer { get; set; }
+        public Timer GameTimer { get; set; }
         private int TimeElapsed { get; set; }
         private int LinesCleared { get; set; }
         private Random rand = new Random();

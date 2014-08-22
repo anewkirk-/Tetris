@@ -31,19 +31,32 @@ namespace Tetris.Views.GameScreens
             UpdateScores();
         }
 
-        private void SM_grid_AutoGeneratingColumn_1(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-            if (e.Column.Header.ToString() == "ScoreValue")
-            {
-                e.Column.Header = "Score";
-            }
-            e.Column.Width = 387;
-        }
+        //private void SM_grid_AutoGeneratingColumn_1(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        //{
+        //    if (e.Column.Header.ToString() == "ScoreValue")
+        //    {
+        //        e.Column.Header = "Score";
+        //    }
+        //    e.Column.Width = 387;
+        //}
 
         public void UpdateScores()
         {
             List<Score> topScores = sm.GetAll();
-            SM_grid.ItemsSource = topScores;
+            SM_grid.Rows = topScores.Count + 1;
+
+            foreach (Score score in topScores)
+            {
+                Label username = new Label();
+                username.Content = score.Username;
+                username.Style = Application.Current.FindResource("Scores") as Style;
+                Label theirScore = new Label();
+                theirScore.Content = score.ScoreValue;
+                theirScore.Style = Application.Current.FindResource("Scores") as Style;
+
+                SM_grid.Children.Add(username);
+                SM_grid.Children.Add(theirScore);
+            }
         }
     }
 }
