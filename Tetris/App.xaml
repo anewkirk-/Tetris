@@ -7,7 +7,7 @@
             
             <SolidColorBrush x:Key="MainBackground">
                 <SolidColorBrush.Color>
-                    <Color A="255" R="245" G="245" B="245" />
+                    <Color A="255" R="32" G="106" B="135" />
                 </SolidColorBrush.Color>
             </SolidColorBrush>
             
@@ -76,6 +76,10 @@
                 </Style.Triggers>
             </Style>
 
+            <Style x:Key="Scores" TargetType="Label">
+                <Setter Property="Margin" Value="20,0,0,20" />
+                <Setter Property="FontSize" Value="24" />
+            </Style>
 
         </ResourceDictionary>
     </Application.Resources>
