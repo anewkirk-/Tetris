@@ -109,8 +109,8 @@ namespace Tetris.Views.GameScreens
                     }
 
                     SPG_playerOne_grid.Children.Add(rect);
-                    Grid.SetColumn(rect, p.Y);
-                    Grid.SetRow(rect, p.X);
+                    Grid.SetColumn(rect, p.X);
+                    Grid.SetRow(rect, p.Y);
                 }
             }
         }
