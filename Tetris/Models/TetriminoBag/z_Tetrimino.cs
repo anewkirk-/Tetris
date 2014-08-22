@@ -15,9 +15,9 @@ namespace Tetris.Models.TetriminoBag
             Blocks = new List<Points>()
             {
                 new Points { X = 0, Y = 0 },
-                new Points { X = 0, Y = 1 },
+                new Points { X = 1, Y = 0 },
                 new Points { X = 1, Y = 1 },
-                new Points { X = 1, Y = 2 }
+                new Points { X = 2, Y = 1 }
             };
         }
 
