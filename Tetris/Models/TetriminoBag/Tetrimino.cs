@@ -15,7 +15,13 @@ namespace Tetris.Models.TetriminoBag
 
         public virtual void Rotate() { }
 
-        public virtual void Fall() { }
+        public void Fall() 
+        {
+            foreach (Points p in Blocks.ToList())
+            {
+                p.Y++;
+            }
+        }
 
         public virtual void RotateBack() { }
     }
