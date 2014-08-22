@@ -205,6 +205,7 @@ namespace Tetris.Controllers
                     }
                 }
             }
+            LinesCleared++;
         }
 
         //Get a random Tetrimino from the Tetrimino Bag and add it to the TetriminoOnGameBoard list

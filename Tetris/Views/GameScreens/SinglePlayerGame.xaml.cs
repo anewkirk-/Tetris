@@ -76,43 +76,43 @@ namespace Tetris.Views.GameScreens
                     rect = CreateRectangle();
                     rs.Add(rect);
                     //Color i Tetrimino
-                    if (soloGame.CurrentTetrimino == soloGame.tBag[0])
+                    if (t == soloGame.tBag[0])
                     {
                         rect.Fill = (new SolidColorBrush(Colors.Cyan));
 
                     }
                     //Color j Tetrimino
-                    if (soloGame.CurrentTetrimino == soloGame.tBag[1])
+                    if (t == soloGame.tBag[1])
                     {
                         rect.Fill = (new SolidColorBrush(Colors.Blue));
 
                     }
                     //Color l Tetrimino
-                    if (soloGame.CurrentTetrimino == soloGame.tBag[2])
+                    if (t == soloGame.tBag[2])
                     {
                         rect.Fill = (new SolidColorBrush(Colors.Orange));
 
                     }
                     //Color o Tetrimino
-                    if (soloGame.CurrentTetrimino == soloGame.tBag[3])
+                    if (t == soloGame.tBag[3])
                     {
                         rect.Fill = (new SolidColorBrush(Colors.Yellow));
 
                     }
                     //Color s Tetrimino
-                    if (soloGame.CurrentTetrimino == soloGame.tBag[4])
+                    if (t == soloGame.tBag[4])
                     {
                         rect.Fill = (new SolidColorBrush(Colors.Lime));
 
                     }
                     //Color t Tetrimino
-                    if (soloGame.CurrentTetrimino == soloGame.tBag[5])
+                    if (t == soloGame.tBag[5])
                     {
                         rect.Fill = (new SolidColorBrush(Colors.DarkMagenta));
 
                     }
                     //Color z Tetrimino
-                    if (soloGame.CurrentTetrimino == soloGame.tBag[5])//6])
+                    if (t == soloGame.tBag[6])
                     {
                         rect.Fill = (new SolidColorBrush(Colors.Red));
 

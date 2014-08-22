@@ -322,6 +322,12 @@ namespace Tetris
                     {
                         switch (e.Key)
                         {
+                            case Key.Left:
+                                SP_gameView.soloGame.MoveLeft();
+                                break;
+                            case Key.Right:
+                                SP_gameView.soloGame.MoveRight();
+                                break;
                             case Key.V:
                                 SP_gameView.soloGame.Tick(null,null);
                                 break;
