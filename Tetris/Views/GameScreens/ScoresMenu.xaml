@@ -14,31 +14,57 @@
     <StackPanel>
         <Label Content="Scores" />
         
-        <!--<ItemsControl x:Name="SM_grid"
-                      BorderBrush="Black"
-                      BorderThickness="2"
-                      Margin="50">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <UniformGrid Columns="2"
-                                    SnapsToDevicePixels="True">
-                        <Label Content="{Binding Path=Username}" />
-                        <Label Content="{Binding Path=ScoreValue}" />
-                    </UniformGrid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>-->
         
-        <UniformGrid x:Name="SM_grid"
-                     Columns="2"
-                     Margin="50">
+        <Border BorderBrush="Black" BorderThickness="3" 
+                Margin="50"
+                Width="600">
+            <Grid x:Name="SM_grid"
+                  Width="600"
+                  MaxHeight="400">
             
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
             
-        </UniformGrid>
-        
+                <Border Grid.Column="0" Grid.Row="0"
+                        BorderBrush="Black"
+                        BorderThickness="0,0,1,1">
+                    <Rectangle Fill="CornflowerBlue" />
+                </Border>
+                <Border Grid.Column="1" Grid.Row="0"
+                        BorderBrush="Black"
+                        BorderThickness="1,0,1,1">
+                    <Rectangle Fill="CornflowerBlue" />
+                </Border>
+
+                <Label Content="Username"
+                       Grid.Column="0" Grid.Row="0"
+                       Style="{StaticResource ResourceKey=Scores}"
+                       HorizontalContentAlignment="Right"
+                       FontSize="24"
+                       FontWeight="Bold"/>
+            
+                <Label Content="Score"
+                       Grid.Column="1" Grid.Row="0"
+                       Style="{StaticResource ResourceKey=Scores}"
+                       FontSize="24"
+                       FontWeight="Bold"/>
+            
+            </Grid>
+
+        </Border>
+
         <Button x:Name="SM_back"
                 Style="{StaticResource ResourceKey=MenuButtons}"
-                Content="Back to Main Menu" />
+                Content="Back to Main Menu" 
+                Margin="0,20,0,0"/>
+
+
         
+
     </StackPanel>
 </UserControl>
