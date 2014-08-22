@@ -40,5 +40,17 @@ namespace Tetris.Views.GameScreens
         {
             return PlayerOneGame.Mode;
         }
+
+        public void PauseGame()
+        {
+            PlayerOneGame.Stop();
+            PlayerTwoGame.Stop();
+        }
+
+        public void ResumeGame()
+        {
+            PlayerOneGame.Start();
+            PlayerTwoGame.Start();
+        }
     }
 }

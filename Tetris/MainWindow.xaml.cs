@@ -108,11 +108,6 @@ namespace Tetris
             mainPanel.Children.Add(mainMenu);
 
         }
-
-        
-
-        
-
         
 
         
@@ -248,14 +243,14 @@ namespace Tetris
                 // Two Player
                     void TPG_pause_Click(object sender, RoutedEventArgs e)
                     {
-                        //TODO Pause Game
+                        TP_gameView.PauseGame();
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
                     }
 
                     void TPG_save_Click(object sender, RoutedEventArgs e)
                     {
-                        //TODO Pause Game
+                        TP_gameView.PauseGame();
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
 
@@ -279,7 +274,7 @@ namespace Tetris
 
                     void TPG_quit_Click(object sender, RoutedEventArgs e)
                     {
-                        //TODO Pause Game
+                        TP_gameView.PauseGame();
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(pause);
 
