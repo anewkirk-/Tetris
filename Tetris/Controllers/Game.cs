@@ -77,38 +77,32 @@ namespace Tetris.Controllers
                 AddRandomTetrimino();
             }
 
-            //Check for end game
             bool endGame = EndConditionsMet();
 
-            //End game if any end conditions met
             if (endGame || _isToppedOut)
             {
-                //End game
-                GameTimer.Enabled = false;
-                //Submit score
-                ////Here, the window will have to switch views
-                ////to the AddHighScore overlay
+                GameTimer.Stop();
             }
 
-            //Keep track of how long the game has been running
             TimeElapsed += (int)GameTimer.Interval;
-            
-            if (Mode == GameMode.Classic || Mode == GameMode.Timed)
+
+
+
+            bool collision = false;
+
+            List<Points> lowestPoints = new List<Points>(CurrentTetrimino.Blocks);
+            foreach (Points p in lowestPoints.ToList())
             {
-                //Check LinesCleared to see if the timer interval needs to be
-                //decreased
-                if (LinesCleared > 0 && LinesCleared % _linesBeforeSpeedUp == 0)
+                foreach (Points p2 in lowestPoints.ToList())
                 {
-                    //Makes the drop interval half a second shorter,
-                    //This will probably need to be adjusted
-                    GameTimer.Interval -= 500;
+                    if (p.X == p2.X && p.Y > p2.Y)
+                    {
+                        lowestPoints.Remove(p2);
+                    }
                 }
             }
 
-            //Check for collision on currently falling tetrimino
-            bool collision = false;
-
-            foreach (Points p in CurrentTetrimino.Blocks)
+            foreach (Points p in lowestPoints)
             {
                 if (!CanFall(p))
                 {
@@ -116,24 +110,12 @@ namespace Tetris.Controllers
                 }
             }
 
-            //If there is a collision,
             if (collision)
             {
-                //Check for rows cleared
-                List<int> rowsCleared = CheckRowsCleared();
-                //for all rows cleared
-                foreach (int i in rowsCleared)
-                {
-                    //remove blocks, add points
-                    ClearRow(i);
-                }
-                //drop new tetrimino
                 AddRandomTetrimino();
             }
-            //If no collision
             else
             {
-                //Drop current tetrimino down one block
                 CurrentTetrimino.Fall();
             }
         }
@@ -213,9 +195,9 @@ namespace Tetris.Controllers
         //Removes all blocks that have a given Y value
         private void ClearRow(int y)
         {
-            foreach (Tetrimino t in GameBoard)
+            foreach (Tetrimino t in GameBoard.ToList())
             {
-                foreach (Points p in t.Blocks)
+                foreach (Points p in t.Blocks.ToList())
                 {
                     if (p.Y == y)
                     {
