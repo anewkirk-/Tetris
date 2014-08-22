@@ -108,7 +108,7 @@ namespace Tetris.Controllers
             //Check for collision on currently falling tetrimino
             bool collision = false;
 
-            foreach (Points p in CurrentTetrimino.Blocks)
+            foreach (Points p in CurrentTetrimino.Blocks.ToList())
             {
                 if (!CanFall(p))
                 {
@@ -213,9 +213,9 @@ namespace Tetris.Controllers
         //Removes all blocks that have a given Y value
         private void ClearRow(int y)
         {
-            foreach (Tetrimino t in GameBoard)
+            foreach (Tetrimino t in GameBoard.ToList())
             {
-                foreach (Points p in t.Blocks)
+                foreach (Points p in t.Blocks.ToList())
                 {
                     if (p.Y == y)
                     {
