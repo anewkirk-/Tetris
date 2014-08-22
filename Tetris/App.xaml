@@ -7,7 +7,8 @@
             
             <SolidColorBrush x:Key="MainBackground">
                 <SolidColorBrush.Color>
-                    <Color A="255" R="32" G="106" B="135" />
+                    <!--<Color A="255" R="32" G="106" B="135" />-->
+                    <Color A="255" R="235" G="240" B="255" />
                 </SolidColorBrush.Color>
             </SolidColorBrush>
             

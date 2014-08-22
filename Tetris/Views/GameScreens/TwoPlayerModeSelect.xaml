@@ -4,21 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800">
-    <UserControl.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Width" Value="125" />
-            <Setter Property="Margin" Value="10" />
-        </Style>
-    </UserControl.Resources>
+             d:DesignHeight="600" d:DesignWidth="800"
+             Background="{StaticResource ResourceKey=MainBackground}">
 
     <StackPanel x:Name="TPMS_mainPanel"
                 Margin="50">
 
-        <!--Logo image to replace this-->
-        <Label Content="dotTetris"
-               HorizontalAlignment="Center"/>
-        <!--Logo image to replace this-->
+        <Image Source="/Images/vsLogo.png" 
+               Width="500"
+               Margin="0,0,0,30"/>
 
         <Button x:Name="TPMS_classic"
                 Style="{StaticResource ResourceKey=MenuButtons}"
