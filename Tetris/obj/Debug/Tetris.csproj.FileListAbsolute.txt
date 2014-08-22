@@ -152,3 +152,6 @@ C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\P
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\TwoPlayerGameSummary.g.cs
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.lref
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\App.baml
+C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.baml
+C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\App.baml
+C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.g.cs
