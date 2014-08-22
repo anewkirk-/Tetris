@@ -44,6 +44,16 @@ namespace Tetris.Views.GameScreens
             return soloGame.Mode;
         }
 
+        public void PauseGame()
+        {
+            soloGame.Stop();
+        }
+
+        public void ResumeGame()
+        {
+            soloGame.Start();
+        }
+
         public Rectangle CreateRectangle()
         {
             Rectangle rect = new Rectangle();
