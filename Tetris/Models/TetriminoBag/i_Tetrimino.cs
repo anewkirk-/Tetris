@@ -93,14 +93,6 @@ namespace Tetris.Models.TetriminoBag
             Blocks[3].X = preX3;
         }
 
-        public override void Fall()
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                Blocks[i].X++;
-            }
-        }
-
         public void setPre()
         {
             preY0 = Blocks[0].Y;

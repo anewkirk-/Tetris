@@ -81,7 +81,7 @@
     <Compile Include="Models\TetriminoBag\s_Tetrimino.cs" />
     <Compile Include="Models\TetriminoBag\Tetrimino.cs" />
     <Compile Include="Models\TetriminoBag\t_Tetrimino.cs" />
-    <Compile Include="obj\z_Tetrimino.cs" />
+    <Compile Include="Models\TetriminoBag\z_Tetrimino.cs" />
     <Compile Include="Models\TetrisBoard.cs" />
     <Compile Include="Views\GameScreens\TwoPlayerModeSelect.xaml.cs">
       <DependentUpon>TwoPlayerModeSelect.xaml</DependentUpon>
@@ -226,6 +226,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\vsLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

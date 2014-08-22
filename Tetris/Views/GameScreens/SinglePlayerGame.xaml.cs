@@ -25,8 +25,8 @@ namespace Tetris.Views.GameScreens
     /// </summary>
     public partial class SinglePlayerGame : UserControl
     {
-
-        Game soloGame;
+        public Game soloGame { get; set; }
+        private List<Rectangle> rs = new List<Rectangle>();
 
         public SinglePlayerGame()
         {
@@ -36,13 +36,7 @@ namespace Tetris.Views.GameScreens
         public void NewGame(GameMode type)
         {
             soloGame = new Game(type);
-            soloGame.GameTimer.Elapsed += GameTimer_Elapsed;
-            soloGame.Start();
-        }
-
-        void GameTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            DisplayTetriminos();
+            //soloGame.Start();
         }
 
         public GameMode GetGameMode()
@@ -59,12 +53,18 @@ namespace Tetris.Views.GameScreens
 
         public void DisplayTetriminos()
         {
+            foreach (Rectangle r in rs)
+            {
+                SPG_playerOne_grid.Children.Remove(r);
+            }
+
             Rectangle rect = null;
-            foreach(Tetrimino t in soloGame.GameBoard)
+            foreach (Tetrimino t in soloGame.GameBoard)
             {
                 foreach (Tetris.Models.TetriminoBag.Points p in t.Blocks)
                 {
                     rect = CreateRectangle();
+                    rs.Add(rect);
                     //Color i Tetrimino
                     if (soloGame.CurrentTetrimino == soloGame.tBag[0])
                     {
@@ -102,7 +102,7 @@ namespace Tetris.Views.GameScreens
 
                     }
                     //Color z Tetrimino
-                    if (soloGame.CurrentTetrimino == soloGame.tBag[6])
+                    if (soloGame.CurrentTetrimino == soloGame.tBag[5])//6])
                     {
                         rect.Fill = (new SolidColorBrush(Colors.Red));
 
