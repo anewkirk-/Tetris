@@ -11,8 +11,15 @@
                     <Color A="255" R="235" G="240" B="255" />
                 </SolidColorBrush.Color>
             </SolidColorBrush>
-            
-            
+
+            <SolidColorBrush x:Key="GameBackground">
+                <SolidColorBrush.Color>
+                    <!--<Color A="255" R="32" G="106" B="135" />-->
+                    <Color A="255" R="255" G="250" B="240" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+
+
             <Style x:Key="MenuButtons" TargetType="{x:Type Button}">
                 <Setter Property="Margin" Value="10" />
                 <Setter Property="Width" Value="200" />
