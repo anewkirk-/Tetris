@@ -34,38 +34,40 @@ namespace Tetris.Models.TetriminoBag
             if (position == 1)
             {
                 setPre();
-                Blocks[0].X = Blocks[0].X + 2;
-                Blocks[1].Y++;
+                Blocks[0].Y+=2;
                 Blocks[1].X++;
+                Blocks[1].Y++;
                 Blocks[3].Y--;
                 Blocks[3].X--;
             }
             if (position == 2)
             {
                 setPre();
-                Blocks[0].Y = Blocks[0].Y + 2;
-                Blocks[1].Y++;
-                Blocks[1].X--;
-                Blocks[3].Y--;
-                Blocks[3].X++;
+                Blocks[0].X += 2;
+                Blocks[1].Y--;
+                Blocks[1].X++;
+                Blocks[3].Y++;
+                Blocks[3].X--;
             }
             if (position == 3)
             {
                 setPre();
-                Blocks[0].X = Blocks[0].X - 2;
+                Blocks[0].X++;
+                Blocks[0].Y -= 2;
+                Blocks[1].X -= 2;
                 Blocks[1].Y--;
-                Blocks[1].X--;
                 Blocks[3].Y++;
                 Blocks[3].X++;
             }
             if (position == 4)
             {
                 setPre();
-                Blocks[0].Y = Blocks[0].Y - 2;
-                Blocks[1].Y--;
-                Blocks[1].X++;
-                Blocks[3].Y++;
-                Blocks[3].X--;
+                Blocks[0].X -= 2;
+                Blocks[0].Y += 1;
+                Blocks[1].Y++;
+                Blocks[1].X--;
+                Blocks[3].Y--;
+                Blocks[3].X++;
             }
 
             if (position == 4)

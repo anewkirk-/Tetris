@@ -31,9 +31,7 @@ namespace Tetris.Models.TetriminoBag
         private int preY1 = 0;
         private int preX1 = 0;
 
-        public override void Rotate()
-        {
-        }
+        public override void Rotate() { }
 
         public override void RotateBack()
         {

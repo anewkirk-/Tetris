@@ -131,6 +131,11 @@ namespace Tetris.Controllers
 
             if (collision)
             {
+                List<int> cleared = CheckRowsCleared();
+                foreach (int i in cleared)
+                {
+                    ClearRow(i);
+                }
                 AddRandomTetrimino();
             }
             else
@@ -221,6 +226,10 @@ namespace Tetris.Controllers
                     if (p.Y == y)
                     {
                         t.Blocks.Remove(p);
+                    }
+                    else if (p.Y <= 18)
+                    {
+                        p.Y++;
                     }
                 }
             }
