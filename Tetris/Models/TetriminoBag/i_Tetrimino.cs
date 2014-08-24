@@ -36,12 +36,12 @@ namespace Tetris.Models.TetriminoBag
             if (position == 1)
             {
                 setPre();
-                Blocks[0].X--;
-                Blocks[0].Y++;
-                Blocks[2].X++;
-                Blocks[2].Y--;
-                Blocks[3].X = Blocks[3].X + 2;
-                Blocks[3].Y = Blocks[3].Y - 2;
+                Blocks[0].X++;
+                Blocks[0].Y--;
+                Blocks[2].X--;
+                Blocks[2].Y++;
+                Blocks[3].X = Blocks[3].X - 2;
+                Blocks[3].Y = Blocks[3].Y + 2;
             }
             if (position == 2)
             {
@@ -56,12 +56,12 @@ namespace Tetris.Models.TetriminoBag
             if (position == 3)
             {
                 setPre();
-                Blocks[0].X++;
-                Blocks[0].Y--;
-                Blocks[2].X--;
-                Blocks[2].Y++;
-                Blocks[3].X = Blocks[3].X - 2;
-                Blocks[3].Y = Blocks[3].Y + 2;
+                Blocks[0].X--;
+                Blocks[0].Y++;
+                Blocks[2].X++;
+                Blocks[2].Y--;
+                Blocks[3].X = Blocks[3].X + 2;
+                Blocks[3].Y = Blocks[3].Y - 2;
             }
             if (position == 4)
             {
