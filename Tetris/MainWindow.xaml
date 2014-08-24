@@ -4,7 +4,7 @@
         xmlns:gs="clr-namespace:Tetris.Views.GameScreens"
         xmlns:ov="clr-namespace:Tetris.Views.Overlays"
         Title="Tetris" Height="600" Width="800"
-        KeyDown="Window_KeyDown_1" KeyUp="Window_KeyUp_1" PreviewKeyDown="PreviewKeyDown_1" PreviewKeyUp="Window_PreviewKeyUp_1" >
+        KeyDown="Window_KeyDown_1" KeyUp="Window_KeyUp_1" PreviewKeyDown="PreviewKeyDown_1">
     <Grid x:Name="mainPanel">
         
     </Grid>

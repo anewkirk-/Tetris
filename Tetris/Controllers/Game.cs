@@ -307,86 +307,79 @@ namespace Tetris.Controllers
         {
             MoveRowsUp();
             RowOfBlocksMinusOne();
+            SinglePlayerGame spg = new SinglePlayerGame();
+            spg.DisplayRowOfBlocksMinusOne();
         }
 
         public void MoveLeft()
         {
-            if (CurrentTetrimino != null)
+            bool canMove = true;
+            IEnumerable<Points> allBlocksExceptCurrent =
+                from tet in GameBoard
+                from pt in tet.Blocks
+                where tet != CurrentTetrimino
+                select pt;
+
+            foreach (Points p in CurrentTetrimino.Blocks.ToList())
             {
-                bool canMove = true;
-                IEnumerable<Points> allBlocksExceptCurrent =
-                    from tet in GameBoard
-                    from pt in tet.Blocks
-                    where tet != CurrentTetrimino
-                    select pt;
-
-                foreach (Points p in CurrentTetrimino.Blocks.ToList())
+                foreach (Points p2 in allBlocksExceptCurrent.ToList())
                 {
-                    foreach (Points p2 in allBlocksExceptCurrent.ToList())
-                    {
-                        if (p.Y == p2.Y && p.X == p2.X + 1)
-                        {
-                            canMove = false;
-                        }
-                    }
-
-                    if (p.X <= 0)
+                    if (p.Y == p2.Y && p.X == p2.X + 1)
                     {
                         canMove = false;
                     }
                 }
-                if (canMove)
+
+                if (p.X <= 0)
                 {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        CurrentTetrimino.Blocks[i].X--;
-                    }
+                    canMove = false;
+                }
+            }
+            if (canMove)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    CurrentTetrimino.Blocks[i].X--;
                 }
             }
         }
 
         public void MoveRight()
         {
-            if (CurrentTetrimino != null)
+            bool canMove = true;
+            IEnumerable<Points> allBlocksExceptCurrent =
+                from tet in GameBoard
+                from pt in tet.Blocks
+                where tet != CurrentTetrimino
+                select pt;
+
+            foreach (Points p in CurrentTetrimino.Blocks.ToList())
             {
-                bool canMove = true;
-                IEnumerable<Points> allBlocksExceptCurrent =
-                    from tet in GameBoard
-                    from pt in tet.Blocks
-                    where tet != CurrentTetrimino
-                    select pt;
-
-                foreach (Points p in CurrentTetrimino.Blocks.ToList())
+                foreach (Points p2 in allBlocksExceptCurrent.ToList())
                 {
-                    foreach (Points p2 in allBlocksExceptCurrent.ToList())
-                    {
-                        if (p.Y == p2.Y && p.X == p2.X - 1)
-                        {
-                            canMove = false;
-                        }
-                    }
-
-                    if (p.X >= 9)
+                    if (p.Y == p2.Y && p.X == p2.X - 1)
                     {
                         canMove = false;
                     }
                 }
-                if (canMove)
+
+                if (p.X >= 9)
                 {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        CurrentTetrimino.Blocks[i].X++;
-                    }
+                    canMove = false;
+                }
+            }
+            if (canMove)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    CurrentTetrimino.Blocks[i].X++;
                 }
             }
         }
 
         public void StartHardDrop()
         {
-            if (CurrentTetrimino != null)
-            {
-                CurrentTetrimino.Fall();
-            }
+            CurrentTetrimino.Fall();
         }
 
         //public void StopHardDrop()

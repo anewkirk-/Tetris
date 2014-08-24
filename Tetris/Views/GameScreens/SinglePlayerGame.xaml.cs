@@ -95,6 +95,7 @@ namespace Tetris.Views.GameScreens
                 foreach (Tetris.Models.TetriminoBag.Points p in t.Blocks)
                 {
                     rect = CreateRectangle();
+                    //rect.Fill = 
                     if (t.GetType() == typeof(i_Tetrimino))
                     {
                         rect.Fill = TetriminoColors.ElementAt(0);
@@ -129,6 +130,20 @@ namespace Tetris.Views.GameScreens
                     Grid.SetRow(rect, p.Y);
                 }
             }
+        }
+
+        //Display the Row of blocks that are added when a "Tetris" occurs during multiplayer games
+        public Rectangle DisplayRowOfBlocksMinusOne()
+        {
+            Rectangle rect = new Rectangle();
+            foreach (Points pt in soloGame.RowOfBlocksMinusOne())
+            {
+                rect.Fill = (new SolidColorBrush(Colors.Green));
+                SPG_playerOne_grid.Children.Add(rect);
+                Grid.SetColumn(rect, pt.Y);
+                Grid.SetRow(rect, pt.X);
+            }
+            return rect;
         }
     }
 }
