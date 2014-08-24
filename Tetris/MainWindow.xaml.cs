@@ -335,11 +335,15 @@ namespace Tetris
                             case Key.Right:
                                 SP_gameView.soloGame.MoveRight();
                                 break;
+                            case Key.Up:
+                                SP_gameView.soloGame.RotateCurrent();
+                                break;
                             case Key.V:
                                 SP_gameView.soloGame.Tick(null,null);
                                 break;
                             case Key.Space:
                                 SP_gameView.DisplayTetriminos();
+                                SP_gameView.PaintTimer_Elapsed(null,null);
                                 break;
                             case Key.Escape:
                                 Environment.Exit(0);
