@@ -80,7 +80,7 @@ namespace Tetris.Views.GameScreens
             }
 
             Rectangle rect = null;
-            foreach (Tetrimino t in soloGame.GameBoard)
+            foreach (Tetrimino t in soloGame.GameBoard.ToList())
             {
                 foreach (Tetris.Models.TetriminoBag.Points p in t.Blocks)
                 {
