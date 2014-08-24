@@ -14,10 +14,10 @@ namespace Tetris.Models.TetriminoBag
             color = new SolidColorBrush(Color.FromRgb(255, 0, 0));
             Blocks = new List<Points>()
             {
+                new Points { X = 3, Y = 0 },
                 new Points { X = 4, Y = 0 },
-                new Points { X = 5, Y = 0 },
-                new Points { X = 5, Y = 1 },
-                new Points { X = 6, Y = 1 }
+                new Points { X = 4, Y = 1 },
+                new Points { X = 5, Y = 1 }
             };
         }
 
@@ -28,7 +28,7 @@ namespace Tetris.Models.TetriminoBag
         private int preX2 = 0;
         private int preY3 = 0;
         private int preX3 = 0;
-        
+
         public override void Rotate()
         {
             if (position == 1)

@@ -33,7 +33,6 @@ namespace Tetris.Models.TetriminoBag
 
         public override void Rotate()
         {
-<<<<<<< HEAD
             if (position == 1)
             {
                 setPre();
@@ -74,9 +73,8 @@ namespace Tetris.Models.TetriminoBag
             {
                 position++;
             }
-=======
->>>>>>> origin/master
         }
+
 
         public override void RotateBack()
         {
