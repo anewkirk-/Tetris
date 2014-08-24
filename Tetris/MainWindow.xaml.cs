@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Tetris.Views.GameScreens;
 using Tetris.Views.Overlays;
 using Tetris.Controllers;
+using System.Timers;
 
 namespace Tetris
 {
@@ -339,7 +340,11 @@ namespace Tetris
                                 SP_gameView.soloGame.RotateCurrent();
                                 break;
                             case Key.Down:
-                                SP_gameView.soloGame.GameTimer.Interval *= 0.95;
+                                Timer t = SP_gameView.soloGame.GameTimer;
+                                t.Stop();
+                                t.Interval *= 0.60;
+                                SP_gameView.soloGame.Tick(null, null);
+                                t.Start();
                                 break;
                             case Key.V:
                                 SP_gameView.soloGame.Tick(null,null);
@@ -359,7 +364,11 @@ namespace Tetris
                         switch (e.Key)
                         {
                             case Key.Down:
-                                SP_gameView.soloGame.GameTimer.Interval /= 0.95;
+                                Timer t = SP_gameView.soloGame.GameTimer;
+                                t.Stop();
+                                t.Interval /= 0.60;
+                                SP_gameView.soloGame.Tick(null, null);
+                                t.Start();
                                 break;
 
                         }
@@ -367,6 +376,14 @@ namespace Tetris
                     }
 
                     private void PreviewKeyDown_1(object sender, KeyEventArgs e)
+                    {
+                        if (e.IsRepeat)
+                        {
+                            e.Handled = true;
+                        }
+                    }
+
+                    private void Window_PreviewKeyUp_1(object sender, KeyEventArgs e)
                     {
                         if (e.IsRepeat)
                         {
