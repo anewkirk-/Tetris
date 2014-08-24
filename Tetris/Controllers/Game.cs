@@ -392,76 +392,28 @@ namespace Tetris.Controllers
 
         public void MoveRight()
         {
-            //Holds the indexes inside of the current tetrimino that are the farthest right.
-            List<int> indexes = new List<int>();
-
-            //Checks index 0 block of the tetrimino
-            if ((CurrentTetrimino.Blocks[0].X >= CurrentTetrimino.Blocks[1].X) &&
-                (CurrentTetrimino.Blocks[0].X >= CurrentTetrimino.Blocks[2].X) &&
-                (CurrentTetrimino.Blocks[0].X >= CurrentTetrimino.Blocks[3].X))
-            {
-                indexes.Add(0);
-            }
-            //Checks index 1 block of the tetrimino
-            if ((CurrentTetrimino.Blocks[1].X >= CurrentTetrimino.Blocks[0].X) &&
-                (CurrentTetrimino.Blocks[1].X >= CurrentTetrimino.Blocks[2].X) &&
-                (CurrentTetrimino.Blocks[1].X >= CurrentTetrimino.Blocks[3].X))
-            {
-                indexes.Add(1);
-            }
-            //Checks index 2 block of the tetrimino
-            if ((CurrentTetrimino.Blocks[2].X >= CurrentTetrimino.Blocks[1].X) &&
-                (CurrentTetrimino.Blocks[2].X >= CurrentTetrimino.Blocks[0].X) &&
-                (CurrentTetrimino.Blocks[2].X >= CurrentTetrimino.Blocks[3].X))
-            {
-                indexes.Add(2);
-            }
-            //Checks index 3 block of the tetrimino
-            if ((CurrentTetrimino.Blocks[3].X >= CurrentTetrimino.Blocks[1].X) &&
-                (CurrentTetrimino.Blocks[3].X >= CurrentTetrimino.Blocks[2].X) &&
-                (CurrentTetrimino.Blocks[3].X >= CurrentTetrimino.Blocks[0].X))
-            {
-                indexes.Add(3);
-            }
-
             bool canMove = true;
+            IEnumerable<Points> allBlocksExceptCurrent =
+                from tet in GameBoard
+                from pt in tet.Blocks
+                where tet != CurrentTetrimino
+                select pt;
 
-            //Checks if the blocks are already at the farthest left
-            for (int i = 0; i < 4; i++)
+            foreach (Points p in CurrentTetrimino.Blocks.ToList())
             {
-                if (CurrentTetrimino.Blocks[i].X == 9)
+                foreach (Points p2 in allBlocksExceptCurrent.ToList())
+                {
+                    if (p.Y == p2.Y && p.X == p2.X - 1)
+                    {
+                        canMove = false;
+                    }
+                }
+
+                if (p.X >= 9)
                 {
                     canMove = false;
-                    break;
                 }
             }
-            if (canMove == true)
-            {
-                foreach (int num in indexes)
-                {
-                    int index = num;
-
-                    //Checks to see if there are tetriminos directly right the the current tetrimino
-                    IEnumerable<Points> b =
-                        from t in GameBoard
-                        from pt in t.Blocks
-                        where (pt.X == CurrentTetrimino.Blocks[index].X + 1) && (pt.Y == CurrentTetrimino.Blocks[index].Y)
-                        select pt;
-
-                    int count = 0;
-                    foreach (Points p in b)
-                    {
-                        count++;
-                    }
-
-                    if (count > 0)
-                        canMove = false;
-                    else
-                        canMove = true;
-                }
-            }
-
-            //Moves the tetrimino one spot right
             if (canMove)
             {
                 for (int i = 0; i < 4; i++)
