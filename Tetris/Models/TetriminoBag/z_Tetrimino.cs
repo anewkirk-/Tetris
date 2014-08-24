@@ -14,10 +14,10 @@ namespace Tetris.Models.TetriminoBag
             color = new SolidColorBrush(Color.FromRgb(255, 0, 0));
             Blocks = new List<Points>()
             {
-                new Points { X = 3, Y = 0 },
                 new Points { X = 4, Y = 0 },
-                new Points { X = 4, Y = 1 },
-                new Points { X = 5, Y = 1 }
+                new Points { X = 5, Y = 0 },
+                new Points { X = 5, Y = 1 },
+                new Points { X = 6, Y = 1 }
             };
         }
 
