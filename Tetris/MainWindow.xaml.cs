@@ -338,6 +338,9 @@ namespace Tetris
                             case Key.Up:
                                 SP_gameView.soloGame.RotateCurrent();
                                 break;
+                            case Key.Down:
+                                SP_gameView.soloGame.GameTimer.Interval *= 0.95;
+                                break;
                             case Key.V:
                                 SP_gameView.soloGame.Tick(null,null);
                                 break;
@@ -348,6 +351,26 @@ namespace Tetris
                             case Key.Escape:
                                 Environment.Exit(0);
                                 break;
+                        }
+                    }
+
+                    private void Window_KeyUp_1(object sender, KeyEventArgs e)
+                    {
+                        switch (e.Key)
+                        {
+                            case Key.Down:
+                                SP_gameView.soloGame.GameTimer.Interval /= 0.95;
+                                break;
+
+                        }
+
+                    }
+
+                    private void PreviewKeyDown_1(object sender, KeyEventArgs e)
+                    {
+                        if (e.IsRepeat)
+                        {
+                            e.Handled = true;
                         }
                     }
     }

@@ -36,7 +36,7 @@ namespace Tetris.Views.GameScreens
 
         public void NewGame(GameMode type)
         {
-            PaintTimer = new System.Timers.Timer(250);
+            PaintTimer = new System.Timers.Timer(100);
             PaintTimer.Elapsed += PaintTimer_Elapsed;
             soloGame = new Game(type);
             soloGame.Start();
@@ -80,55 +80,51 @@ namespace Tetris.Views.GameScreens
             }
 
             Rectangle rect = null;
+
+            List<SolidColorBrush> TetriminoColors = new List<SolidColorBrush>();
+            TetriminoColors.Add(new SolidColorBrush(Colors.Cyan));
+            TetriminoColors.Add(new SolidColorBrush(Colors.Blue));
+            TetriminoColors.Add(new SolidColorBrush(Colors.Orange));
+            TetriminoColors.Add(new SolidColorBrush(Colors.Yellow));
+            TetriminoColors.Add(new SolidColorBrush(Colors.Lime));
+            TetriminoColors.Add(new SolidColorBrush(Colors.DarkMagenta));
+            TetriminoColors.Add(new SolidColorBrush(Colors.Red));
+
             foreach (Tetrimino t in soloGame.GameBoard.ToList())
             {
                 foreach (Tetris.Models.TetriminoBag.Points p in t.Blocks)
                 {
                     rect = CreateRectangle();
+                    //rect.Fill = 
+                    if (t.GetType() == typeof(i_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(0);
+                    }
+                    if (t.GetType() == typeof(j_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(1);
+                    }
+                    if (t.GetType() == typeof(l_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(2);
+                    }
+                    if (t.GetType() == typeof(o_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(3);
+                    }
+                    if (t.GetType() == typeof(s_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(4);
+                    }
+                    if (t.GetType() == typeof(t_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(5);
+                    }
+                    if (t.GetType() == typeof(z_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(6);
+                    }
                     rs.Add(rect);
-                    //Color i Tetrimino
-                    if (t == soloGame.tBag[0])
-                    {
-                        rect.Fill = (new SolidColorBrush(Colors.Cyan));
-
-                    }
-                    //Color j Tetrimino
-                    if (t == soloGame.tBag[1])
-                    {
-                        rect.Fill = (new SolidColorBrush(Colors.Blue));
-
-                    }
-                    //Color l Tetrimino
-                    if (t == soloGame.tBag[2])
-                    {
-                        rect.Fill = (new SolidColorBrush(Colors.Orange));
-
-                    }
-                    //Color o Tetrimino
-                    if (t == soloGame.tBag[3])
-                    {
-                        rect.Fill = (new SolidColorBrush(Colors.Yellow));
-
-                    }
-                    //Color s Tetrimino
-                    if (t == soloGame.tBag[4])
-                    {
-                        rect.Fill = (new SolidColorBrush(Colors.Lime));
-
-                    }
-                    //Color t Tetrimino
-                    if (t == soloGame.tBag[5])
-                    {
-                        rect.Fill = (new SolidColorBrush(Colors.DarkMagenta));
-
-                    }
-                    //Color z Tetrimino
-                    if (t == soloGame.tBag[6])
-                    {
-                        rect.Fill = (new SolidColorBrush(Colors.Red));
-
-                    }
-
                     SPG_playerOne_grid.Children.Add(rect);
                     Grid.SetColumn(rect, p.X);
                     Grid.SetRow(rect, p.Y);

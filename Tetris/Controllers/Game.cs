@@ -44,7 +44,7 @@ namespace Tetris.Controllers
             //default to a 1 second interval
             GameBoard = new TetrisBoard();
             GameTimer = new Timer();
-            GameTimer.Interval = 750;
+            GameTimer.Interval = 500;
             GameTimer.Elapsed += Tick;
             this.Mode = mode;
         }
@@ -103,7 +103,7 @@ namespace Tetris.Controllers
                 {
                     //Makes the drop interval half a second shorter,
                     //This will probably need to be adjusted
-                    GameTimer.Interval -= 500;
+                    GameTimer.Interval -= 50;
                 }
             }
 
@@ -227,11 +227,29 @@ namespace Tetris.Controllers
             LinesCleared++;
         }
 
-        //Get a random Tetrimino from the Tetrimino Bag and add it to the TetriminoOnGameBoard list
         public void AddRandomTetrimino()
         {
             int index = rand.Next(tBag.Count);
-            Tetrimino randT = tBag[index];
+
+            Tetrimino randT = null;
+            switch (index)
+            {
+                case 0: randT = new i_Tetrimino();
+                    break;
+                case 1: randT = new j_Tetrimino();
+                    break;
+                case 2: randT = new l_Tetrimino();
+                    break;
+                case 3: randT = new o_Tetrimino();
+                    break;
+                case 4: randT = new s_Tetrimino();
+                    break;
+                case 5: randT = new t_Tetrimino();
+                    break;
+                case 6: randT = new z_Tetrimino();
+                    break;
+            }
+
             CurrentTetrimino = randT;
             GameBoard.Add(CurrentTetrimino);
             foreach (Tetrimino t in GameBoard.ToList())
@@ -296,36 +314,39 @@ namespace Tetris.Controllers
         public void MoveLeft()
         {
             //Holds the indexes inside of the current tetrimino that are the farthest left.
-            List<int> indexes = new List<int>();
+            //List<int> indexes = new List<int>();
 
-            //Checks index 0 block of the tetrimino
-            if ((CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[1].X) &&
-                (CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[2].X) &&
-                (CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[3].X))
-            {
-                indexes.Add(0);
-            }
-            //Checks index 1 block of the tetrimino
-            if ((CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[0].X) &&
-                (CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[2].X) &&
-                (CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[3].X))
-            {
-                indexes.Add(1);
-            }
-            //Checks index 2 block of the tetrimino
-            if ((CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[1].X) &&
-                (CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[0].X) &&
-                (CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[3].X))
-            {
-                indexes.Add(2);
-            }
-            //Checks index 3 block of the tetrimino
-            if ((CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[1].X) &&
-                (CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[2].X) &&
-                (CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[0].X))
-            {
-                indexes.Add(3);
-            }
+            List<int> indexes = new List<int>() { 0, 1, 2, 3 };
+
+
+            ////Checks index 0 block of the tetrimino
+            //if ((CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[1].X) &&
+            //    (CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[2].X) &&
+            //    (CurrentTetrimino.Blocks[0].X <= CurrentTetrimino.Blocks[3].X))
+            //{
+            //    indexes.Add(0);
+            //}
+            ////Checks index 1 block of the tetrimino
+            //if ((CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[0].X) &&
+            //    (CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[2].X) &&
+            //    (CurrentTetrimino.Blocks[1].X <= CurrentTetrimino.Blocks[3].X))
+            //{
+            //    indexes.Add(1);
+            //}
+            ////Checks index 2 block of the tetrimino
+            //if ((CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[1].X) &&
+            //    (CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[0].X) &&
+            //    (CurrentTetrimino.Blocks[2].X <= CurrentTetrimino.Blocks[3].X))
+            //{
+            //    indexes.Add(2);
+            //}
+            ////Checks index 3 block of the tetrimino
+            //if ((CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[1].X) &&
+            //    (CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[2].X) &&
+            //    (CurrentTetrimino.Blocks[3].X <= CurrentTetrimino.Blocks[0].X))
+            //{
+            //    indexes.Add(3);
+            //}
 
             bool canMove = true;
 
@@ -344,7 +365,7 @@ namespace Tetris.Controllers
                 foreach (int num in indexes)
                 {
                     int index = num;
-                    List<Points> b = (List<Points>)
+                    IEnumerable<Points> b =
                         from t in GameBoard
                         from pt in t.Blocks
                         where (pt.X == CurrentTetrimino.Blocks[index].X - 1) && (pt.Y == CurrentTetrimino.Blocks[index].Y)
@@ -355,11 +376,7 @@ namespace Tetris.Controllers
                     {
                         count++;
                     }
-
-                    if (count > 0)
-                        canMove = false;
-                    else
-                        canMove = true;
+                    canMove = b.Count() > 0 ? false : true;                    
                 }
             }
 
@@ -425,7 +442,7 @@ namespace Tetris.Controllers
                     int index = num;
 
                     //Checks to see if there are tetriminos directly right the the current tetrimino
-                    List<Points> b = (List<Points>)
+                    IEnumerable<Points> b =
                         from t in GameBoard
                         from pt in t.Blocks
                         where (pt.X == CurrentTetrimino.Blocks[index].X + 1) && (pt.Y == CurrentTetrimino.Blocks[index].Y)
