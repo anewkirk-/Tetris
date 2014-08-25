@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Tetris.Views.GameScreens;
 using Tetris.Views.Overlays;
 using Tetris.Controllers;
+using System.Timers;
 
 namespace Tetris
 {
@@ -329,15 +330,64 @@ namespace Tetris
                     {
                         switch (e.Key)
                         {
+                            case Key.Left:
+                                SP_gameView.soloGame.MoveLeft();
+                                break;
+                            case Key.Right:
+                                SP_gameView.soloGame.MoveRight();
+                                break;
+                            case Key.Up:
+                                SP_gameView.soloGame.RotateCurrent();
+                                break;
+                            case Key.Down:
+                                Timer t = SP_gameView.soloGame.GameTimer;
+                                t.Stop();
+                                t.Interval *= 0.60;
+                                SP_gameView.soloGame.Tick(null, null);
+                                t.Start();
+                                break;
                             case Key.V:
                                 SP_gameView.soloGame.Tick(null,null);
                                 break;
                             case Key.Space:
                                 SP_gameView.DisplayTetriminos();
+                                SP_gameView.PaintTimer_Elapsed(null,null);
                                 break;
                             case Key.Escape:
                                 Environment.Exit(0);
                                 break;
+                        }
+                    }
+
+                    private void Window_KeyUp_1(object sender, KeyEventArgs e)
+                    {
+                        switch (e.Key)
+                        {
+                            case Key.Down:
+                                Timer t = SP_gameView.soloGame.GameTimer;
+                                t.Stop();
+                                t.Interval /= 0.60;
+                                SP_gameView.soloGame.Tick(null, null);
+                                t.Start();
+                                break;
+
+                        }
+
+                    }
+
+                    private void PreviewKeyDown_1(object sender, KeyEventArgs e)
+                    {
+                        if (e.IsRepeat)
+                        {
+                            e.Handled = true;
+                        }
+                    }
+
+                    private void Window_PreviewKeyUp_1(object sender, KeyEventArgs e)
+                    {
+                        if (e.IsRepeat)
+                        {
+                            e.Handled = true;
                         }
                     }
     }

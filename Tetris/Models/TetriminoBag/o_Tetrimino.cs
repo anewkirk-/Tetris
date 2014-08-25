@@ -14,10 +14,10 @@ namespace Tetris.Models.TetriminoBag
             color = new SolidColorBrush(Color.FromRgb(255, 255, 0));
             Blocks = new List<Points>()
             {
-                new Points { X = 1, Y = 4 },
-                new Points { X = 1, Y = 5 },
-                new Points { X = 0, Y = 5 },
-                new Points { X = 0, Y = 4 }
+                new Points { X = 4, Y = 1 },
+                new Points { X = 5, Y = 1 },
+                new Points { X = 5, Y = 0 },
+                new Points { X = 4, Y = 0 }
             };
         }
 
@@ -36,34 +36,34 @@ namespace Tetris.Models.TetriminoBag
             if (position == 1)
             {
                 setPre();
-                Blocks[0].X--;
-                Blocks[1].Y--;
-                Blocks[2].X++;
-                Blocks[3].Y++;
+                Blocks[0].Y--;
+                Blocks[1].X--;
+                Blocks[2].Y++;
+                Blocks[3].X++;
             }
             if (position == 2)
             {
                 setPre();
-                Blocks[0].Y++;
-                Blocks[1].X--;
-                Blocks[2].Y--;
-                Blocks[3].X++;
+                Blocks[0].X++;
+                Blocks[1].Y--;
+                Blocks[2].X--;
+                Blocks[3].Y++;
             }
             if (position == 3)
             {
                 setPre();
-                Blocks[0].X++;
-                Blocks[1].Y++;
-                Blocks[2].X--;
-                Blocks[3].Y--;
+                Blocks[0].Y++;
+                Blocks[1].X++;
+                Blocks[2].Y--;
+                Blocks[3].X--;
             }
             if (position == 4)
             {
                 setPre();
-                Blocks[0].Y--;
-                Blocks[1].X++;
-                Blocks[2].Y++;
-                Blocks[3].X--;
+                Blocks[0].X--;
+                Blocks[1].Y++;
+                Blocks[2].X++;
+                Blocks[3].Y--;
             }
             if (position == 4)
             {
@@ -74,6 +74,7 @@ namespace Tetris.Models.TetriminoBag
                 position++;
             }
         }
+
 
         public override void RotateBack()
         {

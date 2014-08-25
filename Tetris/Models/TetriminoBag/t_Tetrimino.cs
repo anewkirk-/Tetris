@@ -14,10 +14,10 @@ namespace Tetris.Models.TetriminoBag
             color = new SolidColorBrush(Color.FromRgb(152, 0, 255));
             Blocks = new List<Points>()
             {
-                new Points { X = 1, Y = 3 },
-                new Points { X = 1, Y = 4 },
-                new Points { X = 0, Y = 4 },
-                new Points { X = 1, Y = 5 }
+                new Points { X = 3, Y = 1 },
+                new Points { X = 4, Y = 1 },
+                new Points { X = 4, Y = 0 },
+                new Points { X = 5, Y = 1 }
             };
         }
 
@@ -34,40 +34,40 @@ namespace Tetris.Models.TetriminoBag
             if (position == 1)
             {
                 setPre();
-                Blocks[0].X--;
-                Blocks[0].Y++;
+                Blocks[0].Y--;
+                Blocks[0].X++;
                 Blocks[2].X++;
                 Blocks[2].Y++;
-                Blocks[3].X++;
-                Blocks[3].Y--;
+                Blocks[3].X--;
+                Blocks[3].Y++;
             }
             if (position == 2)
             {
                 setPre();
                 Blocks[0].Y++;
                 Blocks[0].X++;
-                Blocks[2].X++;
-                Blocks[2].Y--;
+                Blocks[2].X--;
+                Blocks[2].Y++;
                 Blocks[3].Y--;
                 Blocks[3].X--;
             }
             if (position == 3)
             {
                 setPre();
-                Blocks[0].X++;
-                Blocks[0].Y--;
+                Blocks[0].X--;
+                Blocks[0].Y++;
                 Blocks[2].Y--;
                 Blocks[2].X--;
-                Blocks[3].Y++;
-                Blocks[3].X--;
+                Blocks[3].X++;
+                Blocks[3].Y--;
             }
             if (position == 4)
             {
                 setPre();
                 Blocks[0].Y--;
                 Blocks[0].X--;
-                Blocks[2].X--;
-                Blocks[2].Y++;
+                Blocks[2].X++;
+                Blocks[2].Y--;
                 Blocks[3].Y++;
                 Blocks[3].X++;
             }

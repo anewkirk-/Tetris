@@ -14,10 +14,10 @@ namespace Tetris.Models.TetriminoBag
             color = new SolidColorBrush(Color.FromRgb(0, 25, 255));
             Blocks = new List<Points>()
             {
-                new Points { X = 0, Y = 4 },
-                new Points { X = 1, Y = 4 },
-                new Points { X = 1, Y = 5 },
-                new Points { X = 1, Y = 6 }
+                new Points { X = 4, Y = 0 },
+                new Points { X = 4, Y = 1 },
+                new Points { X = 5, Y = 1 },
+                new Points { X = 6, Y = 1 }
             };
         }
 
@@ -35,9 +35,9 @@ namespace Tetris.Models.TetriminoBag
             {
                 setPre();
                 Blocks[0].X = Blocks[0].X + 2;
-                Blocks[1].Y++;
+                Blocks[1].Y--;
                 Blocks[1].X++;
-                Blocks[3].Y--;
+                Blocks[3].Y++;
                 Blocks[3].X--;
             }
             if (position == 2)
@@ -45,17 +45,17 @@ namespace Tetris.Models.TetriminoBag
                 setPre();
                 Blocks[0].Y = Blocks[0].Y + 2;
                 Blocks[1].Y++;
-                Blocks[1].X--;
+                Blocks[1].X++;
                 Blocks[3].Y--;
-                Blocks[3].X++;
+                Blocks[3].X--;
             }
             if (position == 3)
             {
                 setPre();
                 Blocks[0].X = Blocks[0].X - 2;
-                Blocks[1].Y--;
+                Blocks[1].Y++;
                 Blocks[1].X--;
-                Blocks[3].Y++;
+                Blocks[3].Y--;
                 Blocks[3].X++;
             }
             if (position == 4)
@@ -63,9 +63,9 @@ namespace Tetris.Models.TetriminoBag
                 setPre();
                 Blocks[0].Y = Blocks[0].Y - 2;
                 Blocks[1].Y--;
-                Blocks[1].X++;
+                Blocks[1].X--;
                 Blocks[3].Y++;
-                Blocks[3].X--;
+                Blocks[3].X++;
             }
 
             if (position == 4)

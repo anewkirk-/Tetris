@@ -9,18 +9,18 @@ namespace Tetris.Models.TetriminoBag
 {
     public class i_Tetrimino : Tetrimino
     {
-        public i_Tetrimino ()
-	    {
+        public i_Tetrimino()
+        {
 
             color = new SolidColorBrush(Color.FromRgb(0, 255, 255));
             Blocks = new List<Points>()
             {
-                new Points { X = 0, Y = 3 },
-                new Points { X = 0, Y = 4 },
-                new Points { X = 0, Y = 5 },
-                new Points { X = 0, Y = 6 }
+                new Points { X = 3, Y = 0 },
+                new Points { X = 4, Y = 0 },
+                new Points { X = 5, Y = 0 },
+                new Points { X = 6, Y = 0 }
             };
-	    }
+        }
 
         private int position = 1;
         private int preY0 = 0;
@@ -36,32 +36,32 @@ namespace Tetris.Models.TetriminoBag
             if (position == 1)
             {
                 setPre();
-                Blocks[0].X--;
-                Blocks[0].Y++;
-                Blocks[2].X++;
-                Blocks[2].Y--;
-                Blocks[3].X = Blocks[3].X + 2;
-                Blocks[3].Y = Blocks[3].Y - 2;
-            }
-            if (position == 2)
-            {
-                setPre();
-                Blocks[0].Y++;
-                Blocks[0].X++;
-                Blocks[2].Y--;
-                Blocks[2].X--;
-                Blocks[3].Y = Blocks[3].Y - 2;
-                Blocks[3].X = Blocks[3].X - 2;
-            }
-            if (position == 3)
-            {
-                setPre();
                 Blocks[0].X++;
                 Blocks[0].Y--;
                 Blocks[2].X--;
                 Blocks[2].Y++;
                 Blocks[3].X = Blocks[3].X - 2;
                 Blocks[3].Y = Blocks[3].Y + 2;
+            }
+            if (position == 2)
+            {
+                setPre();
+                Blocks[0].X++;
+                Blocks[0].Y++;
+                Blocks[2].X--;
+                Blocks[2].Y--;
+                Blocks[3].X -= 2;
+                Blocks[3].Y -= 2;
+            }
+            if (position == 3)
+            {
+                setPre();
+                Blocks[0].X--;
+                Blocks[0].Y++;
+                Blocks[2].X++;
+                Blocks[2].Y--;
+                Blocks[3].X = Blocks[3].X + 2;
+                Blocks[3].Y = Blocks[3].Y - 2;
             }
             if (position == 4)
             {
