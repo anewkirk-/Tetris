@@ -27,8 +27,7 @@ namespace Tetris.Views.GameScreens
     {
         public Game soloGame { get; set; }
         public System.Timers.Timer PaintTimer { get; set; }
-        private List<Rectangle> rs = new List<Rectangle>();
-        private int rectanglesCreated = 0;
+        private Rectangle[,] rectangleBoard = new Rectangle[10, 20];
 
         List<SolidColorBrush> _tetriminoColors = new List<SolidColorBrush>() {
             new SolidColorBrush(Colors.Cyan),
@@ -37,7 +36,9 @@ namespace Tetris.Views.GameScreens
             new SolidColorBrush(Colors.Yellow),
             new SolidColorBrush(Colors.Lime),
             new SolidColorBrush(Colors.DarkMagenta),
-            new SolidColorBrush(Colors.Red)
+            new SolidColorBrush(Colors.Red),
+            new SolidColorBrush(Colors.White),
+            new SolidColorBrush(Colors.Black)
     };
         SolidColorBrush _borderBrush = new SolidColorBrush(Colors.Black);
 
@@ -48,6 +49,17 @@ namespace Tetris.Views.GameScreens
 
         public void NewGame(GameMode type)
         {
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 20; j++)
+                {
+                    Rectangle r = new Rectangle();
+                    rectangleBoard[i, j] = r;
+                    SPG_playerOne_grid.Children.Add(r);
+                    Grid.SetColumn(r, i);
+                    Grid.SetRow(r, j);
+                }
+            }
             PaintTimer = new System.Timers.Timer(100);
             PaintTimer.Elapsed += PaintTimer_Elapsed;
             soloGame = new Game(type);
@@ -86,55 +98,53 @@ namespace Tetris.Views.GameScreens
 
         public void DisplayTetriminos()
         {
-            foreach (Rectangle r in rs)
+            for (int i = 0; i < 10; i++)
             {
-                SPG_playerOne_grid.Children.Remove(r);
+                for (int j = 0; j < 20; j++)
+                {
+                    rectangleBoard[i, j].Fill = _tetriminoColors.ElementAt(7);
+                    rectangleBoard[i, j].Stroke = _tetriminoColors.ElementAt(8);
+                    rectangleBoard[i, j].StrokeThickness = 0.3;
+                }
             }
-
-            Rectangle rect = null;
 
             foreach (Tetrimino t in soloGame.GameBoard.ToList())
             {
                 foreach (Tetris.Models.TetriminoBag.Points p in t.Blocks.ToList())
                 {
 
-                    rect = CreateRectangle();
-                    rectanglesCreated++;
-                    RectangleTracker.Content = rectanglesCreated.ToString();
+                    Rectangle currentRectangle = rectangleBoard[p.X, p.Y];
+
                     if (t.GetType() == typeof(i_Tetrimino))
                     {
-                        rect.Fill = _tetriminoColors.ElementAt(0);
+                        currentRectangle.Fill = _tetriminoColors.ElementAt(0);
                     }
                     if (t.GetType() == typeof(j_Tetrimino))
                     {
-                        rect.Fill = _tetriminoColors.ElementAt(1);
+                        currentRectangle.Fill = _tetriminoColors.ElementAt(1);
                     }
                     if (t.GetType() == typeof(l_Tetrimino))
                     {
-                        rect.Fill = _tetriminoColors.ElementAt(2);
+                        currentRectangle.Fill = _tetriminoColors.ElementAt(2);
                     }
                     if (t.GetType() == typeof(o_Tetrimino))
                     {
-                        rect.Fill = _tetriminoColors.ElementAt(3);
+                        currentRectangle.Fill = _tetriminoColors.ElementAt(3);
                     }
                     if (t.GetType() == typeof(s_Tetrimino))
                     {
-                        rect.Fill = _tetriminoColors.ElementAt(4);
+                        currentRectangle.Fill = _tetriminoColors.ElementAt(4);
                     }
                     if (t.GetType() == typeof(t_Tetrimino))
                     {
-                        rect.Fill = _tetriminoColors.ElementAt(5);
+                        currentRectangle.Fill = _tetriminoColors.ElementAt(5);
                     }
                     if (t.GetType() == typeof(z_Tetrimino))
                     {
-                        rect.Fill = _tetriminoColors.ElementAt(6);
+                        currentRectangle.Fill = _tetriminoColors.ElementAt(6);
                     }
-                    rect.Stroke = _borderBrush;
-                    rect.StrokeThickness = 2.5;
-                    rs.Add(rect);
-                    SPG_playerOne_grid.Children.Add(rect);
-                    Grid.SetColumn(rect, p.X);
-                    Grid.SetRow(rect, p.Y);
+                    currentRectangle.Stroke = _borderBrush;
+                    currentRectangle.StrokeThickness = 2.5;                    
                 }
             }
         }
