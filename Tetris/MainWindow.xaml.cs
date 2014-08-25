@@ -116,12 +116,18 @@ namespace Tetris
             void soloGame_GameEnd()
             {
                 SP_gameView.soloGame.Stop();
+
+                //BROKEN////////////////////////////////////
                 SP_gameSummary.SPGS_score.Content = SP_gameView.soloGame.CurrentScore;
                 SP_gameSummary.SPGS_lines.Content = SP_gameView.soloGame.LinesCleared;
+                ////////////////////////////////////////////
                 //TODO SP_gameSummary.SPGS_time.Content = SP_gameView.soloGame.;
 
+
+                //BROKEN////////////////////////////////
                 mainPanel.Children.Add(backCanvas);
                 mainPanel.Children.Add(SP_gameSummary);
+                ///////////////////////////////////////
 
                 if (/*Check for High Score*/true)
                 {
