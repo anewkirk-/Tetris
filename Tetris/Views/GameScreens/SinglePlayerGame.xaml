@@ -58,7 +58,7 @@
 
             <Label Content="Score" />
             <Label x:Name="SPG_playerOne_score"
-                   Content="1234" />
+                   Content="{Binding Path=CurrentScore}" />
             <Button x:Name="SPG_pause"
                     Content="Pause"/>
             <Button x:Name="SPG_save"

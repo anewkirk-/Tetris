@@ -63,6 +63,7 @@ namespace Tetris.Views.GameScreens
             PaintTimer = new System.Timers.Timer(100);
             PaintTimer.Elapsed += PaintTimer_Elapsed;
             soloGame = new Game(type);
+            SPG_playerOne_score.DataContext = soloGame;
             soloGame.Start();
             PaintTimer.Start();
         }

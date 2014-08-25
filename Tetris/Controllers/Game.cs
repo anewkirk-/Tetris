@@ -37,6 +37,7 @@ namespace Tetris.Controllers
             GameTimer = new Timer();
             GameTimer.Interval = 1000;
             GameTimer.Elapsed += Tick;
+            CurrentScore = 0;
         }
 
         public Game(GameMode mode)
@@ -47,6 +48,7 @@ namespace Tetris.Controllers
             GameTimer.Interval = 500;
             GameTimer.Elapsed += Tick;
             this.Mode = mode;
+            CurrentScore = 0;
         }
 
         public List<Tetrimino> tBag = new List<Tetrimino>
@@ -136,6 +138,9 @@ namespace Tetris.Controllers
             if (collision)
             {
                 List<int> cleared = CheckRowsCleared();
+                //
+
+                //
                 foreach (int i in cleared)
                 {
                     ClearRow(i);
