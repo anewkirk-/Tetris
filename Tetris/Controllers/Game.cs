@@ -131,6 +131,12 @@ namespace Tetris.Controllers
 
             if (collision)
             {
+                List<int> cleared = CheckRowsCleared();
+                foreach (int i in cleared)
+                {
+                    ClearRow(i);
+                    LinesCleared++;
+                }
                 AddRandomTetrimino();
             }
             else
@@ -161,6 +167,19 @@ namespace Tetris.Controllers
                 }
             }
             return rowsCleared;
+        }
+
+        private void MoveDownStartingFrom(int i)
+        {
+            IEnumerable<Points> p =
+                from Tetrimino t in GameBoard
+                from Points pt in t.Blocks
+                where pt.Y < i && pt.Y > 0
+                select pt;
+            foreach (Points point in p.ToList())
+            {
+                point.Y--;
+            }
         }
 
         private bool EndConditionsMet()
