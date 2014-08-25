@@ -28,6 +28,7 @@ namespace Tetris.Views.GameScreens
         public Game soloGame { get; set; }
         public System.Timers.Timer PaintTimer { get; set; }
         private List<Rectangle> rs = new List<Rectangle>();
+        private int rectanglesCreated = 0;
 
         List<SolidColorBrush> _tetriminoColors = new List<SolidColorBrush>() {
             new SolidColorBrush(Colors.Cyan),
@@ -96,7 +97,10 @@ namespace Tetris.Views.GameScreens
             {
                 foreach (Tetris.Models.TetriminoBag.Points p in t.Blocks.ToList())
                 {
+
                     rect = CreateRectangle();
+                    rectanglesCreated++;
+                    RectangleTracker.Content = "Rectangles instantiated:" + rectanglesCreated.ToString();
                     if (t.GetType() == typeof(i_Tetrimino))
                     {
                         rect.Fill = _tetriminoColors.ElementAt(0);
