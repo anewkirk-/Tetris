@@ -83,6 +83,8 @@ namespace Tetris
                     quit.quit_no.Click += quit_no_Click;
                     quit.Margin = new Thickness(0, 60, 0, 0);
 
+                    newScore.AHS_submit.Click += AHS_submit_Click;
+
                 //Other
                     saveDialog.DefaultExt = ".tetris";
                     saveDialog.Filter = "Tetris Games (.tetris)|*.tetris";
@@ -107,12 +109,16 @@ namespace Tetris
             mainPanel.Children.Add(mainMenu);
 
         }
+
+        
         
         //GAME END-------------------------------------------------------------------------------------------------
             void soloGame_GameEnd()
             {
                 SP_gameView.soloGame.Stop();
                 SP_gameSummary.SPGS_score.Content = SP_gameView.soloGame.CurrentScore;
+                SP_gameSummary.SPGS_lines.Content = SP_gameView.soloGame.LinesCleared;
+                //TODO SP_gameSummary.SPGS_time.Content = SP_gameView.soloGame.;
 
                 mainPanel.Children.Add(backCanvas);
                 mainPanel.Children.Add(SP_gameSummary);
@@ -125,6 +131,7 @@ namespace Tetris
                 {
                     newScore.AHS_type.Content = "Enter your score:";
                 }
+                newScore.AHS_score.Content = SP_gameView.soloGame.CurrentScore;
 
                 mainPanel.Children.Add(backCanvas2);
                 mainPanel.Children.Add(newScore);
@@ -344,7 +351,14 @@ namespace Tetris
 
                     void quit_yes_Click(object sender, RoutedEventArgs e)
                     {
-                        //TODO End Game
+                        if (SP_gameView.soloGame != null)
+                        {
+                            SP_gameView.soloGame.QuitGame();
+                        }
+                        else
+                        {
+                            TP_gameView.PlayerOneGame.QuitGame();
+                        }
                         mainPanel.Children.Remove(TP_gameView);
                         mainPanel.Children.Remove(SP_gameView);
                         mainPanel.Children.Add(mainMenu);
@@ -360,6 +374,17 @@ namespace Tetris
                         mainPanel.Children.Remove(backCanvas2);
                         mainPanel.Children.Remove(quit);
                     }
+
+                //Add Score
+                    void AHS_submit_Click(object sender, RoutedEventArgs e)
+                    {
+                        throw new NotImplementedException();
+                        //TODO Add score
+                    }
+
+
+
+
 
                     private void Window_KeyDown_1(object sender, KeyEventArgs e)
                     {
