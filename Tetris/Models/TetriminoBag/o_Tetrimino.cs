@@ -86,6 +86,14 @@ namespace Tetris.Models.TetriminoBag
             Blocks[3].X = preX3;
             Blocks[1].Y = preY1;
             Blocks[1].X = preX1;
+            if (position == 1)
+            {
+                position = 4;
+            }
+            else
+            {
+                position--;
+            }
         }
 
         public void setPre()
