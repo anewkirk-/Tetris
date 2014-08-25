@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="300">
     <StackPanel>
-        <Label Content="New High Score!" />
+        <Label x:Name="AHS_type" Content="New High Score!" />
         
         <Label x:Name="AHS_score" Content="SCORE HERE" />
 

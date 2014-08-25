@@ -21,9 +21,8 @@ namespace Tetris.Views.GameScreens
     /// </summary>
     public partial class TwoPlayerGame : UserControl
     {
-
-        Game PlayerOneGame;
-        Game PlayerTwoGame;
+        public Game PlayerOneGame { get; set; }
+        public Game PlayerTwoGame { get; set; }
 
         public TwoPlayerGame()
         {
