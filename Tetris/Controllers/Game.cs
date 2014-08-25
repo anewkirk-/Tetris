@@ -307,9 +307,9 @@ namespace Tetris.Controllers
             
      
         //Create a row of points leaving one space
-        public List<Points> RowOfBlocksMinusOne()
+        public Tetrimino RowOfBlocksMinusOne()
         {
-            List<Points> Blocks = new List<Points>();
+            Tetrimino t = new Tetrimino();
             int randomY = rand.Next(0, 10);
             
             for (int i = 0; i <= 9; i++)
@@ -319,10 +319,10 @@ namespace Tetris.Controllers
                     Points p = new Points();
                     p.Y = 19;
                     p.X = i;
-                    Blocks.Add(p);
+                    t.Blocks.Add(p);
                 }
             }
-            return Blocks;
+            return t;
         }
 
         //Move all rows of Tetromino up one
@@ -344,7 +344,8 @@ namespace Tetris.Controllers
         public void AddRowSansOne()
         {
             MoveRowsUp();
-            RowOfBlocksMinusOne();
+            Tetrimino newRow = RowOfBlocksMinusOne();
+            GameBoard.Add(newRow);
         }
 
         public void MoveLeft()
