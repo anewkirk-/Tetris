@@ -21,7 +21,7 @@ namespace Tetris.Controllers
         public TetrisBoard GameBoard { get; set; }
         public Timer GameTimer { get; set; }
         private int TimeElapsed { get; set; }
-        private int LinesCleared { get; set; }
+        public int LinesCleared { get; set; }
         private Random rand = new Random();
         public Tetrimino CurrentTetrimino { get; set; }
         private ScoreManager _sm = new ScoreManager();
@@ -491,6 +491,11 @@ namespace Tetris.Controllers
                 CurrentTetrimino.RotateBack();
             }
            
+        }
+
+        public void QuitGame()
+        {
+            GameEnd();
         }
     }
 }
