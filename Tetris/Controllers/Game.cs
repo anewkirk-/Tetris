@@ -85,7 +85,7 @@ namespace Tetris.Controllers
             bool endGame = EndConditionsMet();
             if (endGame || _isToppedOut)
             {
-                //GameTimer.Stop();
+                GameTimer.Stop();
                 if (GameEnd != null)
                 {
                     GameEnd();
@@ -263,13 +263,16 @@ namespace Tetris.Controllers
             GameBoard.Add(CurrentTetrimino);
             foreach (Tetrimino t in GameBoard.ToList())
             {
-                foreach (Points p in t.Blocks.ToList())
+                if (t != CurrentTetrimino)
                 {
-                    foreach (Points newPoint in CurrentTetrimino.Blocks.ToList())
+                    foreach (Points p in t.Blocks.ToList())
                     {
-                        if (newPoint.X == p.X && newPoint.Y == p.Y)
+                        foreach (Points newPoint in CurrentTetrimino.Blocks.ToList())
                         {
-                            _isToppedOut = true;
+                            if (newPoint.X == p.X && newPoint.Y == p.Y)
+                            {
+                                _isToppedOut = true;
+                            }
                         }
                     }
                 }
