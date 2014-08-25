@@ -14,8 +14,7 @@
 
         <StackPanel>
             <Grid x:Name="SPG_playerOne_grid"
-                         Width="275" Height="550"
-                         ShowGridLines="True">
+                         Width="275" Height="550">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -59,15 +58,13 @@
 
             <Label Content="Score" />
             <Label x:Name="SPG_playerOne_score"
-                   Content="1234" />
+                   Content="{Binding Path=CurrentScore}" />
             <Button x:Name="SPG_pause"
                     Content="Pause"/>
             <Button x:Name="SPG_save"
                     Content="Save"/>
             <Button x:Name="SPG_quit"
                     Content="Quit"/>
-            <Label>Rectangles Instantiated:</Label>
-            <Label x:Name="RectangleTracker"></Label>
         </StackPanel>
     
     </StackPanel>

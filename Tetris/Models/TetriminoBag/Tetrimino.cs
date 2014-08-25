@@ -9,6 +9,12 @@ namespace Tetris.Models.TetriminoBag
 {
     public class Tetrimino
     {
+
+        public Tetrimino()
+        {
+            this.Blocks = new List<Points>();
+        }
+
         public SolidColorBrush color;
 
         public List<Points> Blocks;

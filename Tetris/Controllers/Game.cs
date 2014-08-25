@@ -37,6 +37,7 @@ namespace Tetris.Controllers
             GameTimer = new Timer();
             GameTimer.Interval = 1000;
             GameTimer.Elapsed += Tick;
+            CurrentScore = 0;
         }
 
         public Game(GameMode mode)
@@ -47,6 +48,7 @@ namespace Tetris.Controllers
             GameTimer.Interval = 500;
             GameTimer.Elapsed += Tick;
             this.Mode = mode;
+            CurrentScore = 0;
         }
 
         public List<Tetrimino> tBag = new List<Tetrimino>
@@ -82,6 +84,7 @@ namespace Tetris.Controllers
                 AddRandomTetrimino();
             }
 
+            //check for end game conditions
             bool endGame = EndConditionsMet();
             if (endGame || _isToppedOut)
             {
@@ -111,8 +114,8 @@ namespace Tetris.Controllers
                 }
             }
 
+            //Check for collisions on the current tetrimino
             bool collision = false;
-
             List<Points> lowestPoints = new List<Points>(CurrentTetrimino.Blocks);
             foreach (Points p in lowestPoints.ToList())
             {
@@ -136,6 +139,9 @@ namespace Tetris.Controllers
             if (collision)
             {
                 List<int> cleared = CheckRowsCleared();
+                //Add to CurrentScore here!
+                
+                //Clear lines
                 foreach (int i in cleared)
                 {
                     ClearRow(i);
@@ -146,10 +152,12 @@ namespace Tetris.Controllers
             }
             else
             {
+                //if no collision, let the current tetrimino keep falling
                 CurrentTetrimino.Fall();
             }
         }
 
+        //returns a list of Y coordinates of full rows
         private List<int> CheckRowsCleared()
         {
 
@@ -174,6 +182,7 @@ namespace Tetris.Controllers
             return rowsCleared;
         }
 
+        //moves all tetriminos down that are above the given rows
         private void MoveDownStartingFrom(int i)
         {
             IEnumerable<Points> p =
@@ -187,6 +196,7 @@ namespace Tetris.Controllers
             }
         }
 
+        //checks if any end-game conditions are met
         private bool EndConditionsMet()
         {
             bool endGame = false;
@@ -213,6 +223,7 @@ namespace Tetris.Controllers
             return endGame;
         }
 
+        //determines if a given block can move down by one cell
         private bool CanFall(Points p)
         {
             IEnumerable<Points> bl = (IEnumerable<Points>)
@@ -296,9 +307,9 @@ namespace Tetris.Controllers
             
      
         //Create a row of points leaving one space
-        public List<Points> RowOfBlocksMinusOne()
+        public Tetrimino RowOfBlocksMinusOne()
         {
-            List<Points> Blocks = new List<Points>();
+            Tetrimino t = new Tetrimino();
             int randomY = rand.Next(0, 10);
             
             for (int i = 0; i <= 9; i++)
@@ -308,10 +319,10 @@ namespace Tetris.Controllers
                     Points p = new Points();
                     p.Y = 19;
                     p.X = i;
-                    Blocks.Add(p);
+                    t.Blocks.Add(p);
                 }
             }
-            return Blocks;
+            return t;
         }
 
         //Move all rows of Tetromino up one
@@ -333,7 +344,8 @@ namespace Tetris.Controllers
         public void AddRowSansOne()
         {
             MoveRowsUp();
-            RowOfBlocksMinusOne();
+            Tetrimino newRow = RowOfBlocksMinusOne();
+            GameBoard.Add(newRow);
         }
 
         public void MoveLeft()
