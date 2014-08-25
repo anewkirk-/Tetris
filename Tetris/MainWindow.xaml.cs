@@ -384,6 +384,9 @@ namespace Tetris
                             case Key.V:
                                 SP_gameView.soloGame.Tick(null,null);
                                 break;
+                            case Key.A:
+                                SP_gameView.soloGame.AddRowSansOne();
+                                break;
                             case Key.Space:
                                 SP_gameView.DisplayTetriminos();
                                 SP_gameView.PaintTimer_Elapsed(null,null);
