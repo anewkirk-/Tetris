@@ -94,46 +94,39 @@ namespace Tetris.Views.GameScreens
             {
                 foreach (Tetris.Models.TetriminoBag.Points p in t.Blocks)
                 {
-                    if (p.X >= 0 &&
-                        p.Y >= 0 &&
-                        p.X <= 9 &&
-                        p.Y <= 19)
+                    rect = CreateRectangle();
+                    if (t.GetType() == typeof(i_Tetrimino))
                     {
-                        rect = CreateRectangle();
-                        if (t.GetType() == typeof(i_Tetrimino))
-                        {
-                            rect.Fill = TetriminoColors.ElementAt(0);
-                        }
-                        if (t.GetType() == typeof(j_Tetrimino))
-                        {
-                            rect.Fill = TetriminoColors.ElementAt(1);
-                        }
-                        if (t.GetType() == typeof(l_Tetrimino))
-                        {
-                            rect.Fill = TetriminoColors.ElementAt(2);
-                        }
-                        if (t.GetType() == typeof(o_Tetrimino))
-                        {
-                            rect.Fill = TetriminoColors.ElementAt(3);
-                        }
-                        if (t.GetType() == typeof(s_Tetrimino))
-                        {
-                            rect.Fill = TetriminoColors.ElementAt(4);
-                        }
-                        if (t.GetType() == typeof(t_Tetrimino))
-                        {
-                            rect.Fill = TetriminoColors.ElementAt(5);
-                        }
-                        if (t.GetType() == typeof(z_Tetrimino))
-                        {
-                            rect.Fill = TetriminoColors.ElementAt(6);
-                        }
-                        rs.Add(rect);
-                        SPG_playerOne_grid.Children.Add(rect);
-
-                        Grid.SetColumn(rect, p.X);
-                        Grid.SetRow(rect, p.Y);
+                        rect.Fill = TetriminoColors.ElementAt(0);
                     }
+                    if (t.GetType() == typeof(j_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(1);
+                    }
+                    if (t.GetType() == typeof(l_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(2);
+                    }
+                    if (t.GetType() == typeof(o_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(3);
+                    }
+                    if (t.GetType() == typeof(s_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(4);
+                    }
+                    if (t.GetType() == typeof(t_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(5);
+                    }
+                    if (t.GetType() == typeof(z_Tetrimino))
+                    {
+                        rect.Fill = TetriminoColors.ElementAt(6);
+                    }
+                    rs.Add(rect);
+                    SPG_playerOne_grid.Children.Add(rect);
+                    Grid.SetColumn(rect, p.X);
+                    Grid.SetRow(rect, p.Y);
                 }
             }
         }

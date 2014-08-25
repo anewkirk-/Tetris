@@ -31,7 +31,50 @@ namespace Tetris.Models.TetriminoBag
         private int preY1 = 0;
         private int preX1 = 0;
 
-        public override void Rotate() { }
+        public override void Rotate()
+        {
+            if (position == 1)
+            {
+                setPre();
+                Blocks[0].Y--;
+                Blocks[1].X--;
+                Blocks[2].Y++;
+                Blocks[3].X++;
+            }
+            if (position == 2)
+            {
+                setPre();
+                Blocks[0].X++;
+                Blocks[1].Y--;
+                Blocks[2].X--;
+                Blocks[3].Y++;
+            }
+            if (position == 3)
+            {
+                setPre();
+                Blocks[0].Y++;
+                Blocks[1].X++;
+                Blocks[2].Y--;
+                Blocks[3].X--;
+            }
+            if (position == 4)
+            {
+                setPre();
+                Blocks[0].X--;
+                Blocks[1].Y++;
+                Blocks[2].X++;
+                Blocks[3].Y--;
+            }
+            if (position == 4)
+            {
+                position = 1;
+            }
+            else
+            {
+                position++;
+            }
+        }
+
 
         public override void RotateBack()
         {
