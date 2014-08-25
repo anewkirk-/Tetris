@@ -26,6 +26,7 @@ namespace Tetris.Views.GameScreens
         public Game soloGame { get; set; }
         public System.Timers.Timer PaintTimer { get; set; }
         private Rectangle[,] rectangleBoard = new Rectangle[10, 20];
+        private Random gen = new Random();
 
         List<SolidColorBrush> _tetriminoColors = new List<SolidColorBrush>() {
             new SolidColorBrush(Colors.Cyan),
@@ -113,30 +114,35 @@ namespace Tetris.Views.GameScreens
                     {
                         currentRectangle.Fill = _tetriminoColors.ElementAt(0);
                     }
-                    if (t.GetType() == typeof(j_Tetrimino))
+                    else if (t.GetType() == typeof(j_Tetrimino))
                     {
                         currentRectangle.Fill = _tetriminoColors.ElementAt(1);
                     }
-                    if (t.GetType() == typeof(l_Tetrimino))
+                    else if (t.GetType() == typeof(l_Tetrimino))
                     {
                         currentRectangle.Fill = _tetriminoColors.ElementAt(2);
                     }
-                    if (t.GetType() == typeof(o_Tetrimino))
+                    else if (t.GetType() == typeof(o_Tetrimino))
                     {
                         currentRectangle.Fill = _tetriminoColors.ElementAt(3);
                     }
-                    if (t.GetType() == typeof(s_Tetrimino))
+                    else if (t.GetType() == typeof(s_Tetrimino))
                     {
                         currentRectangle.Fill = _tetriminoColors.ElementAt(4);
                     }
-                    if (t.GetType() == typeof(t_Tetrimino))
+                    else if (t.GetType() == typeof(t_Tetrimino))
                     {
                         currentRectangle.Fill = _tetriminoColors.ElementAt(5);
                     }
-                    if (t.GetType() == typeof(z_Tetrimino))
+                    else if (t.GetType() == typeof(z_Tetrimino))
                     {
                         currentRectangle.Fill = _tetriminoColors.ElementAt(6);
                     }
+                    else
+                    {
+                        currentRectangle.Fill = _tetriminoColors.ElementAt(gen.Next(0, 7));
+                    }
+                    
                     currentRectangle.Stroke = _borderBrush;
                     currentRectangle.StrokeThickness = 2.5;                    
                 }
