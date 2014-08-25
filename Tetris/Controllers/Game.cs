@@ -22,9 +22,9 @@ namespace Tetris.Controllers
         public Timer GameTimer { get; set; }
         private int TimeElapsed { get; set; }
         private int LinesCleared { get; set; }
-        private Random rand = new Random();
         public Tetrimino CurrentTetrimino { get; set; }
         private ScoreManager _sm = new ScoreManager();
+        private Random _rand = new Random();
         private int _timedModeTimeLimit = 120;
         private int _marathonModeLineLimit = 50;
         private int _linesBeforeSpeedUp = 5;
@@ -264,7 +264,7 @@ namespace Tetris.Controllers
 
         public void AddRandomTetrimino()
         {
-            int index = rand.Next(tBag.Count);
+            int index = _rand.Next(tBag.Count);
 
             Tetrimino randT = null;
             switch (index)
@@ -310,7 +310,7 @@ namespace Tetris.Controllers
         public Tetrimino RowOfBlocksMinusOne()
         {
             Tetrimino t = new Tetrimino();
-            int randomY = rand.Next(0, 10);
+            int randomY = _rand.Next(0, 10);
             
             for (int i = 0; i <= 9; i++)
             {
