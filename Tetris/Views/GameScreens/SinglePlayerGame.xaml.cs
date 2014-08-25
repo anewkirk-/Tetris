@@ -100,7 +100,7 @@ namespace Tetris.Views.GameScreens
 
                     rect = CreateRectangle();
                     rectanglesCreated++;
-                    RectangleTracker.Content = "Rectangles instantiated:" + rectanglesCreated.ToString();
+                    RectangleTracker.Content = rectanglesCreated.ToString();
                     if (t.GetType() == typeof(i_Tetrimino))
                     {
                         rect.Fill = _tetriminoColors.ElementAt(0);

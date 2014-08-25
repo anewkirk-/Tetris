@@ -66,6 +66,7 @@
                     Content="Save"/>
             <Button x:Name="SPG_quit"
                     Content="Quit"/>
+            <Label>Rectangles Instantiated:</Label>
             <Label x:Name="RectangleTracker"></Label>
         </StackPanel>
     
