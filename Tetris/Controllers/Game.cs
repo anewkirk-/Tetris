@@ -103,7 +103,10 @@ namespace Tetris.Controllers
                 {
                     //Makes the drop interval half a second shorter,
                     //This will probably need to be adjusted
-                    GameTimer.Interval -= 50;
+                    if (GameTimer.Interval > 50)
+                    {
+                        GameTimer.Interval -= 50;
+                    }
                 }
             }
 
@@ -136,6 +139,7 @@ namespace Tetris.Controllers
                 {
                     ClearRow(i);
                     LinesCleared++;
+                    MoveDownStartingFrom(i);
                 }
                 AddRandomTetrimino();
             }
@@ -178,7 +182,7 @@ namespace Tetris.Controllers
                 select pt;
             foreach (Points point in p.ToList())
             {
-                point.Y--;
+                point.Y++;
             }
         }
 
