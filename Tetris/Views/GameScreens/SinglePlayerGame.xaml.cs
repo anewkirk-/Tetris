@@ -4,8 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Timers;
-//using System.Threading;
-//using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -90,15 +88,9 @@ namespace Tetris.Views.GameScreens
             soloGame.Start();
         }
 
-        public Rectangle CreateRectangle()
-        {
-            Rectangle rect = new Rectangle();
-            rect.Fill = (new SolidColorBrush(Colors.AliceBlue));
-            return rect;
-        }
-
         public void DisplayTetriminos()
         {
+            //Set all rectangles to a white fill and thin border
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 20; j++)
@@ -109,6 +101,7 @@ namespace Tetris.Views.GameScreens
                 }
             }
 
+            //Color in rectangles according to game state
             foreach (Tetrimino t in soloGame.GameBoard.ToList())
             {
                 foreach (Tetris.Models.TetriminoBag.Points p in t.Blocks.ToList())

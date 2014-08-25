@@ -84,6 +84,7 @@ namespace Tetris.Controllers
                 AddRandomTetrimino();
             }
 
+            //check for end game conditions
             bool endGame = EndConditionsMet();
             if (endGame || _isToppedOut)
             {
@@ -113,8 +114,8 @@ namespace Tetris.Controllers
                 }
             }
 
+            //Check for collisions on the current tetrimino
             bool collision = false;
-
             List<Points> lowestPoints = new List<Points>(CurrentTetrimino.Blocks);
             foreach (Points p in lowestPoints.ToList())
             {
@@ -138,9 +139,9 @@ namespace Tetris.Controllers
             if (collision)
             {
                 List<int> cleared = CheckRowsCleared();
-                //
-
-                //
+                //Add to CurrentScore here!
+                
+                //Clear lines
                 foreach (int i in cleared)
                 {
                     ClearRow(i);
@@ -151,10 +152,12 @@ namespace Tetris.Controllers
             }
             else
             {
+                //if no collision, let the current tetrimino keep falling
                 CurrentTetrimino.Fall();
             }
         }
 
+        //returns a list of Y coordinates of full rows
         private List<int> CheckRowsCleared()
         {
 
@@ -179,6 +182,7 @@ namespace Tetris.Controllers
             return rowsCleared;
         }
 
+        //moves all tetriminos down that are above the given rows
         private void MoveDownStartingFrom(int i)
         {
             IEnumerable<Points> p =
@@ -192,6 +196,7 @@ namespace Tetris.Controllers
             }
         }
 
+        //checks if any end-game conditions are met
         private bool EndConditionsMet()
         {
             bool endGame = false;
@@ -218,6 +223,7 @@ namespace Tetris.Controllers
             return endGame;
         }
 
+        //determines if a given block can move down by one cell
         private bool CanFall(Points p)
         {
             IEnumerable<Points> bl = (IEnumerable<Points>)
