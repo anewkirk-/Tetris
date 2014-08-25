@@ -330,6 +330,7 @@ namespace Tetris
                     {
                         switch (e.Key)
                         {
+                                //Control keys
                             case Key.Left:
                                 SP_gameView.soloGame.MoveLeft();
                                 break;
@@ -346,18 +347,16 @@ namespace Tetris
                                 SP_gameView.soloGame.Tick(null, null);
                                 t.Start();
                                 break;
-                            case Key.V:
-                                SP_gameView.soloGame.Tick(null,null);
-                                break;
-                            case Key.A:
-                                SP_gameView.soloGame.AddRowSansOne();
-                                break;
-                            case Key.Space:
-                                SP_gameView.DisplayTetriminos();
-                                SP_gameView.PaintTimer_Elapsed(null,null);
+                            case Key.R:
+                                SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
                                 break;
                             case Key.Escape:
                                 Environment.Exit(0);
+                                break;
+
+                                //Debug control keys
+                            case Key.A:
+                                SP_gameView.soloGame.AddRowSansOne();
                                 break;
                         }
                     }
