@@ -443,38 +443,53 @@ namespace Tetris.Controllers
              * 
              * 
              */
-            ////Checks to see if there are any non-current tetriminos that are in the same space as block 1 of the current tetrimino
-            //List<Points> block1 = (List<Points>)
-            //            from t in GameBoard
-            //            from pt in t.Blocks
-            //            where (pt.X == CurrentTetrimino.Blocks[0].X) && (pt.Y == CurrentTetrimino.Blocks[0].Y)
-            //            select pt;
-            ////Checks to see if there are any non-current tetriminos that are in the same space as block 2 of the current tetrimino
-            //List<Points> block2 = (List<Points>)
-            //            from t in GameBoard
-            //            from pt in t.Blocks
-            //            where (pt.X == CurrentTetrimino.Blocks[1].X) && (pt.Y == CurrentTetrimino.Blocks[1].Y)
-            //            select pt;
-            ////Checks to see if there are any non-current tetriminos that are in the same space as block 3 of the current tetrimino
-            //List<Points> block3 = (List<Points>)
-            //            from t in GameBoard
-            //            from pt in t.Blocks
-            //            where (pt.X == CurrentTetrimino.Blocks[2].X) && (pt.Y == CurrentTetrimino.Blocks[2].Y)
-            //            select pt;
-            ////Checks to see if there are any non-current tetriminos that are in the same space as block 4 of the current tetrimino
-            //List<Points> block4 = (List<Points>)
-            //            from t in GameBoard
-            //            from pt in t.Blocks
-            //            where (pt.X == CurrentTetrimino.Blocks[3].X) && (pt.Y == CurrentTetrimino.Blocks[3].Y)
-            //            select pt;
+            //Checks to see if there are any non-current tetriminos that are in the same space as block 1 of the current tetrimino
+            IEnumerable<Points> block1 =
+                    from tet in GameBoard
+                    from pt in tet.Blocks
+                    where pt.X.Equals(CurrentTetrimino.Blocks[0].X) && pt.Y.Equals(CurrentTetrimino.Blocks[0].Y)
+                    select pt;
+            //Checks to see if there are any non-current tetriminos that are in the same space as block 2 of the current tetrimino
+            IEnumerable<Points> block2 =
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[1].X) && (pt.Y == CurrentTetrimino.Blocks[1].Y)
+                        select pt;
+            //Checks to see if there are any non-current tetriminos that are in the same space as block 3 of the current tetrimino
+            IEnumerable<Points> block3 =
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[2].X) && (pt.Y == CurrentTetrimino.Blocks[2].Y)
+                        select pt;
+            //Checks to see if there are any non-current tetriminos that are in the same space as block 4 of the current tetrimino
+            IEnumerable<Points> block4 =
+                        from t in GameBoard
+                        from pt in t.Blocks
+                        where (pt.X == CurrentTetrimino.Blocks[3].X) && (pt.Y == CurrentTetrimino.Blocks[3].Y)
+                        select pt;
 
-            ////Rotates the current tetrimino back to its previous position if collision is founds
-            //if ((block1.Count == 0) &&
-            //    (block2.Count == 0) &&
-            //    (block3.Count == 0) &&
-            //    (block4.Count == 0))
-            //{
-            //    CurrentTetrimino.RotateBack();
+            for (int i = 0; i < 4; i++)
+            {
+                if ((CurrentTetrimino.Blocks[i].Y < 0) || (CurrentTetrimino.Blocks[i].Y > 19))
+                {
+                    CurrentTetrimino.RotateBack();
+                    break;
+                }
+                if ((CurrentTetrimino.Blocks[i].X < 0) || (CurrentTetrimino.Blocks[i].X > 9))
+                {
+                    CurrentTetrimino.RotateBack();
+                    break;
+                }
+            }
+
+            //Rotates the current tetrimino back to its previous position if collision is founds
+            if ((block1.Count() != 1) ||
+                (block2.Count() != 1) ||
+                (block3.Count() != 1) ||
+                (block4.Count() != 1))
+            {
+                CurrentTetrimino.RotateBack();
+            }
            
         }
     }

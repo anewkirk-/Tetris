@@ -12,10 +12,18 @@
     <StackPanel>
         <Label Content="Game Summary" />
 
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Score:" />
-                    <Label x:Name="SPGS_score" Content="SCORE" />
-                </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Score:" />
+            <Label x:Name="SPGS_score" Content="SCORE" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Lines Cleared:" />
+            <Label x:Name="SPGS_lines" Content="LINES" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Time Taken:" />
+            <Label x:Name="SPGS_time" Content="TIME" />
+        </StackPanel>
 
         <StackPanel Orientation="Horizontal">
             <Button x:Name="SPGS_playAgain" Content="Play Again" />
