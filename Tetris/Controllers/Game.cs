@@ -27,7 +27,7 @@ namespace Tetris.Controllers
         private ScoreManager _sm = new ScoreManager();
         private int _timedModeTimeLimit = 120;
         private int _marathonModeLineLimit = 50;
-        private int _linesBeforeSpeedUp = 10;
+        private int _linesBeforeSpeedUp = 5;
         private bool _isToppedOut = false;
 
         public Game()
@@ -106,6 +106,7 @@ namespace Tetris.Controllers
                     if (GameTimer.Interval > 50)
                     {
                         GameTimer.Interval -= 50;
+                        LinesCleared = 0;
                     }
                 }
             }
