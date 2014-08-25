@@ -25,7 +25,7 @@ namespace Tetris
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        //Instantiate
         MainMenu mainMenu = new MainMenu();
         //Menus
             SinglePlayerModeSelect SP_modeSelect = new SinglePlayerModeSelect();
@@ -35,7 +35,7 @@ namespace Tetris
             SinglePlayerGame SP_gameView = new SinglePlayerGame();
             TwoPlayerGame TP_gameView = new TwoPlayerGame();
         //Overlays
-            AddHighScore newHighScore = new AddHighScore();
+            AddHighScore newScore = new AddHighScore();
             PauseScreen pause = new PauseScreen();
             QuitConfirm quit = new QuitConfirm();
             SinglePlayerGameSummary SP_gameSummary = new SinglePlayerGameSummary();
@@ -45,11 +45,9 @@ namespace Tetris
         //Overlay Canvas Background
             Canvas backCanvas = new Canvas();
             Canvas backCanvas2 = new Canvas();
-        
             
         public MainWindow()
         {
-
             //MODIFY ALL UI ELEMENTS
                 //MainMenu
                     mainMenu.MM_singlePlayer.Click += MM_singlePlayer_Click;
@@ -110,8 +108,38 @@ namespace Tetris
 
         }
         
+        //GAME END-------------------------------------------------------------------------------------------------
+            void soloGame_GameEnd()
+            {
+                SP_gameView.soloGame.Stop();
+                SP_gameSummary.SPGS_score.Content = SP_gameView.soloGame.CurrentScore;
 
-        
+                mainPanel.Children.Add(backCanvas);
+                mainPanel.Children.Add(SP_gameSummary);
+
+                if (/*Check for High Score*/true)
+                {
+                    newScore.AHS_type.Content = "New High Score!!";
+                }
+                else
+                {
+                    newScore.AHS_type.Content = "Enter your score:";
+                }
+
+                mainPanel.Children.Add(backCanvas2);
+                mainPanel.Children.Add(newScore);
+                
+            }
+
+            void PlayerTwoGame_GameEnd()
+            {
+                throw new NotImplementedException();
+            }
+
+            void PlayerOneGame_GameEnd()
+            {
+                throw new NotImplementedException();
+            }
 
         //EVENT HANDLERS--------------------------------------------------------------------------------------------
 
@@ -140,6 +168,7 @@ namespace Tetris
                     void SPMS_classic_Click(object sender, RoutedEventArgs e)
                     {
                         SP_gameView.NewGame(GameMode.Classic);
+                        SP_gameView.soloGame.GameEnd += soloGame_GameEnd;
                         mainPanel.Children.Remove(SP_modeSelect);
                         mainPanel.Children.Add(SP_gameView);
                     }
@@ -147,6 +176,7 @@ namespace Tetris
                     void SPMS_timed_Click(object sender, RoutedEventArgs e)
                     {
                         SP_gameView.NewGame(GameMode.Timed);
+                        SP_gameView.soloGame.GameEnd += soloGame_GameEnd;
                         mainPanel.Children.Remove(SP_modeSelect);
                         mainPanel.Children.Add(SP_gameView);
                     }
@@ -154,9 +184,12 @@ namespace Tetris
                     void SPMS_Marathon_Click(object sender, RoutedEventArgs e)
                     {
                         SP_gameView.NewGame(GameMode.Marathon);
+                        SP_gameView.soloGame.GameEnd += soloGame_GameEnd;
                         mainPanel.Children.Remove(SP_modeSelect);
                         mainPanel.Children.Add(SP_gameView);
                     }
+
+                    
                     
                     void SPMS_back_Click(object sender, RoutedEventArgs e)
                     {
@@ -168,6 +201,8 @@ namespace Tetris
                     void TPMS_classic_Click(object sender, RoutedEventArgs e)
                     {
                         TP_gameView.NewGame(GameMode.Classic);
+                        TP_gameView.PlayerOneGame.GameEnd += PlayerOneGame_GameEnd;
+                        TP_gameView.PlayerTwoGame.GameEnd += PlayerTwoGame_GameEnd;
                         mainPanel.Children.Remove(TP_modeSelect);
                         mainPanel.Children.Add(TP_gameView);
                     }
