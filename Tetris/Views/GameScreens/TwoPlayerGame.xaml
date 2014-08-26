@@ -15,7 +15,7 @@
             
             <Label Content="Score" />
             <Label x:Name="TPG_playerOne_score"
-                   Content="1234" />
+                   Content="" />
         </StackPanel>
         
         <StackPanel>
@@ -115,7 +115,7 @@
 
             <Label Content="Score" />
             <Label x:Name="TPG_playerTwo_score"
-                   Content="1234" />
+                   Content="" />
         </StackPanel>
 
     </StackPanel>

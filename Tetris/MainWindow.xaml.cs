@@ -99,8 +99,8 @@ namespace Tetris
             quit.quit_no.Click += quit_no_Click;
             quit.Margin = new Thickness(0, 60, 0, 0);
 
-            newScore.AHS_submit.Click += AHS_submit_Click;
-
+            SP_gameSummary.SPGS_mainMenu.Click += SPGS_mainMenu_Click;
+            SP_gameSummary.SPGS_playAgain.Click += SPGS_playAgain_Click;
             //Other
             saveDialog.DefaultExt = ".tetris";
             saveDialog.Filter = "Tetris Games (.tetris)|*.tetris";
@@ -143,7 +143,7 @@ namespace Tetris
                     int finalScore = SP_gameView.SoloGame.CurrentScore;
                     SP_gameSummary.SPGS_score.Content = finalScore;
                     SP_gameSummary.SPGS_lines.Content = SP_gameView.SoloGame.LinesCleared;
-                    //TODO SP_gameSummary.SPGS_time.Content = SP_gameView.soloGame.;
+                    //SP_gameSummary.SPGS_time.Content = SP_gameView.soloGame.TimeElapsed;
 
 
                     /*
@@ -160,23 +160,15 @@ namespace Tetris
 
                     if (csm.IsHighScore(finalScore))
                     {
-                        newScore.AHS_type.Content = "New High Score!!";
+                        SP_gameSummary.AHS_type.Content = "New High Score!!";
                     }
                     else
                     {
-                        newScore.AHS_type.Content = "Enter your score:";
+                        SP_gameSummary.AHS_type.Content = "Enter your score:";
                     }
 
                     newScore.AHS_score.Content = SP_gameView.SoloGame.CurrentScore;
 
-                    mainPanel.Children.Remove(backCanvas2);
-                    mainPanel.Children.Add(backCanvas2);
-
-                    mainPanel.Children.Remove(newScore);
-                    mainPanel.Children.Add(newScore);
-
-                    //This is for the key event handlers
-                    SP_gameView.SoloGame = null;
                 }
             ));
 
@@ -407,15 +399,6 @@ namespace Tetris
             {
                 TP_gameView.PlayerOneGame.QuitGame();
             }
-            mainPanel.Children.Remove(TP_gameView);
-            mainPanel.Children.Remove(SP_gameView);
-            mainPanel.Children.Add(mainMenu);
-
-            mainPanel.Children.Remove(backCanvas);
-            mainPanel.Children.Remove(pause);
-
-            mainPanel.Children.Remove(backCanvas2);
-            mainPanel.Children.Remove(quit);
         }
         void quit_no_Click(object sender, RoutedEventArgs e)
         {
@@ -423,15 +406,65 @@ namespace Tetris
             mainPanel.Children.Remove(quit);
         }
 
-        //Add Score
-        void AHS_submit_Click(object sender, RoutedEventArgs e)
+        //Single Player Game Summary
+
+        void SPGS_mainMenu_Click(object sender, RoutedEventArgs e)
         {
-            /*
-             * This is already being handled in AddHighScore.xaml.cs,
-             * feel free to move it if need be.
-             * -a
-             */
+            if (SP_gameSummary.AHS_name.Text.ToCharArray().Length > 10)
+            {
+                SP_gameSummary.AHS_chars.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(SP_gameSummary.AHS_name.Text))
+                {
+                    SP_gameSummary.AddScore();
+                }
+                mainPanel.Children.Remove(backCanvas);
+                mainPanel.Children.Remove(SP_gameSummary);
+                SP_gameSummary.AHS_chars.Visibility = System.Windows.Visibility.Collapsed;
+
+                mainPanel.Children.Add(mainMenu);
+            }
         }
+
+        void SPGS_playAgain_Click(object sender, RoutedEventArgs e)
+        {
+            if (SP_gameSummary.AHS_name.Text.ToCharArray().Length > 10)
+            {
+                SP_gameSummary.AHS_chars.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(SP_gameSummary.AHS_name.Text))
+                {
+                    SP_gameSummary.AddScore();
+                }
+                mainPanel.Children.Remove(SP_gameView);
+                mainPanel.Children.Remove(backCanvas);
+                mainPanel.Children.Remove(SP_gameSummary);
+                SP_gameSummary.AHS_chars.Visibility = System.Windows.Visibility.Collapsed;
+
+                if (SP_gameView.GetGameMode() == GameMode.Classic)
+                {
+                    SP_gameView.SoloGame = null;
+                    SPMS_classic_Click(null, null);
+                }
+                else if (SP_gameView.GetGameMode() == GameMode.Marathon)
+                {
+                    SP_gameView.SoloGame = null;
+                    SPMS_Marathon_Click(null, null);
+                }
+                else
+                {
+                    SP_gameView.SoloGame = null;
+                    SPMS_timed_Click(null, null);
+                }
+            }
+        }
+
+
+        //KEY BINDINGS--------------------------------------------------------------------
 
         private void Window_KeyDown_1(object sender, KeyEventArgs e)
         {
@@ -452,11 +485,7 @@ namespace Tetris
                         SP_gameView.SoloGame.RotateCurrent();
                         break;
                     case Key.Down:
-                        System.Timers.Timer t = SP_gameView.SoloGame.GameTimer;
-                        t.Stop();
-                        t.Interval *= 0.60;
-                        SP_gameView.SoloGame.Tick(null, null);
-                        t.Start();
+                        //Fix hard drop!
                         break;
                     case Key.R:
                         SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
@@ -500,37 +529,14 @@ namespace Tetris
                     case Key.Down:
                         //Fix hard drop!!
                         break;
-                }
-            }
-        }
-
-        private void Window_KeyUp_1(object sender, KeyEventArgs e)
-        {
-            if (SP_gameView.SoloGame != null)
-            {
-                switch (e.Key)
-                {
-                    case Key.Down:
-                        System.Timers.Timer t = SP_gameView.SoloGame.GameTimer;
-                        t.Stop();
-                        t.Interval /= 0.60;
-                        SP_gameView.SoloGame.Tick(null, null);
-                        t.Start();
+                    case Key.Escape:
+                        Environment.Exit(0);
                         break;
-
                 }
             }
         }
 
         private void PreviewKeyDown_1(object sender, KeyEventArgs e)
-        {
-            if (e.IsRepeat)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void Window_PreviewKeyUp_1(object sender, KeyEventArgs e)
         {
             if (e.IsRepeat)
             {

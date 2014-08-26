@@ -7,14 +7,17 @@ using System.Timers;
 using Tetris.Models;
 using Tetris.Models.TetriminoBag;
 using Tetris.Views.GameScreens;
+using System.Windows.Threading;
 
 namespace Tetris.Controllers
 {
 
     public delegate void GameEndHandler();
+    public delegate void TetrisHandler();
 
     public class Game
     {
+        public event TetrisHandler ScoredTetris;
         public event GameEndHandler GameEnd;
         public int CurrentScore { get; set; }
         public GameMode Mode { get; set; }
@@ -22,9 +25,9 @@ namespace Tetris.Controllers
         public Timer GameTimer { get; set; }
         public Tetrimino CurrentTetrimino { get; set; }
         public int LinesCleared { get; set; }
-        private int TimeElapsed { get; set; }
-        private Random _rand = new Random();
-        private int _timedModeTimeLimit = 120;
+        public int TimeElapsed { get; set; }
+        private Random _gen = new Random(Guid.NewGuid().GetHashCode());
+        private int _timedModeTimeLimit = 120000;
         private int _marathonModeLineLimit = 50;
         private int _linesBeforeSpeedUp = 5;
         private int _currentLevel = 1;
@@ -60,7 +63,6 @@ namespace Tetris.Controllers
         public void Stop()
         {
             GameTimer.Enabled = false;
-
         }
 
         /// <summary>
@@ -148,6 +150,7 @@ namespace Tetris.Controllers
                     //Four lines cleared ("Tetris")
                     case 4:
                         CurrentScore += (_currentLevel * 1200) + 1200;
+                        ScoredTetris();
                         break;
                 }
                 //Clear lines
@@ -278,6 +281,7 @@ namespace Tetris.Controllers
         //Populates the randomBag with the randomly ordered Tetriminos
         private void MakeTetriminoBag()
         {
+<<<<<<< HEAD
             //Temorary bag of Tetriminos that will be pulled from so
             //that no duplicates will be added to the bag
             List<Tetrimino> Bag = new List<Tetrimino>
@@ -331,6 +335,9 @@ namespace Tetris.Controllers
                 i++;
             }
         }
+=======
+            int index = _gen.Next(tBag.Count);
+>>>>>>> origin/master
 
         public void AddRandomTetrimino()
         {
@@ -370,7 +377,7 @@ namespace Tetris.Controllers
         public Tetrimino RowOfBlocksMinusOne()
         {
             Tetrimino t = new Tetrimino();
-            int randomY = _rand.Next(0, 10);
+            int randomY = _gen.Next(0, 10);
             
             for (int i = 0; i <= 9; i++)
             {
