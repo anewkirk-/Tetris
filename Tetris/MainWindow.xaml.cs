@@ -452,11 +452,7 @@ namespace Tetris
                         SP_gameView.SoloGame.RotateCurrent();
                         break;
                     case Key.Down:
-                        System.Timers.Timer t = SP_gameView.SoloGame.GameTimer;
-                        t.Stop();
-                        t.Interval *= 0.60;
-                        SP_gameView.SoloGame.Tick(null, null);
-                        t.Start();
+                        SP_gameView.SoloGame.HardDrop = true;
                         break;
                     case Key.R:
                         SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
@@ -507,33 +503,7 @@ namespace Tetris
             }
         }
 
-        private void Window_KeyUp_1(object sender, KeyEventArgs e)
-        {
-            if (SP_gameView.SoloGame != null)
-            {
-                switch (e.Key)
-                {
-                    case Key.Down:
-                        System.Timers.Timer t = SP_gameView.SoloGame.GameTimer;
-                        t.Stop();
-                        t.Interval /= 0.60;
-                        SP_gameView.SoloGame.Tick(null, null);
-                        t.Start();
-                        break;
-
-                }
-            }
-        }
-
         private void PreviewKeyDown_1(object sender, KeyEventArgs e)
-        {
-            if (e.IsRepeat)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void Window_PreviewKeyUp_1(object sender, KeyEventArgs e)
         {
             if (e.IsRepeat)
             {
