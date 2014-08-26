@@ -36,7 +36,7 @@
             <!--Hint text: http://stackoverflow.com/questions/7425618/how-can-i-add-a-hint-text-to-wpf-textbox -->
             <Label Content="Enter your name:" />
             <TextBox x:Name="AHS_name" Width="150"/>
-            <Label x:Name="AHS_required" Content="This field is required"
+            <Label x:Name="AHS_chars" Content="No more than 10 characters"
                    Visibility="Collapsed"/>
         </StackPanel>
 
