@@ -175,6 +175,9 @@ namespace Tetris
 
                     mainPanel.Children.Remove(newScore);
                     mainPanel.Children.Add(newScore);
+
+                    //This is for the key event handlers
+                    SP_gameView.SoloGame = null;
                 }
             ));
 
@@ -183,11 +186,17 @@ namespace Tetris
         void PlayerTwoGame_GameEnd()
         {
             throw new NotImplementedException();
+
+            //This is for the key event handlers
+            TP_gameView.PlayerTwoGame = null;            
         }
 
         void PlayerOneGame_GameEnd()
         {
             throw new NotImplementedException();
+
+            //This is for the key event handlers
+            TP_gameView.PlayerTwoGame = null;
         }
 
         //EVENT HANDLERS--------------------------------------------------------------------------------------------
