@@ -120,14 +120,15 @@ namespace Tetris
                 Dispatcher.BeginInvoke(DispatcherPriority.Input, new ThreadStart(() =>
                     {
                         SP_gameView.soloGame.Stop();
-                        SP_gameSummary.SPGS_score.Content = SP_gameView.soloGame.CurrentScore;
+                        int finalScore = SP_gameView.soloGame.CurrentScore;
+                        SP_gameSummary.SPGS_score.Content = finalScore;
                         SP_gameSummary.SPGS_lines.Content = SP_gameView.soloGame.LinesCleared;
                         //TODO SP_gameSummary.SPGS_time.Content = SP_gameView.soloGame.;
 
                         mainPanel.Children.Add(backCanvas);
                         mainPanel.Children.Add(SP_gameSummary);
-
-                        if (/*Check for High Score*/true)
+                        ScoreManager csm = (ScoreManager)FindResource("CurrentScoreManager");
+                        if (csm.IsHighScore(finalScore))
                         {
                             newScore.AHS_type.Content = "New High Score!!";
                         }

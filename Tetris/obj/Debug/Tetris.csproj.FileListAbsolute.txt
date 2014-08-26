@@ -155,3 +155,4 @@ C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug
 C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.baml
 C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\App.baml
 C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.g.cs
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\GeneratedInternalTypeHelper.g.cs
