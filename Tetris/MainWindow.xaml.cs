@@ -17,6 +17,8 @@ using Tetris.Views.GameScreens;
 using Tetris.Views.Overlays;
 using Tetris.Controllers;
 using System.Timers;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace Tetris
 {
@@ -115,32 +117,30 @@ namespace Tetris
         //GAME END-------------------------------------------------------------------------------------------------
             void soloGame_GameEnd()
             {
-                SP_gameView.soloGame.Stop();
+                Dispatcher.BeginInvoke(DispatcherPriority.Input, new ThreadStart(() =>
+                    {
+                        SP_gameView.soloGame.Stop();
+                        SP_gameSummary.SPGS_score.Content = SP_gameView.soloGame.CurrentScore;
+                        SP_gameSummary.SPGS_lines.Content = SP_gameView.soloGame.LinesCleared;
+                        //TODO SP_gameSummary.SPGS_time.Content = SP_gameView.soloGame.;
 
-                //BROKEN////////////////////////////////////
-                SP_gameSummary.SPGS_score.Content = SP_gameView.soloGame.CurrentScore;
-                SP_gameSummary.SPGS_lines.Content = SP_gameView.soloGame.LinesCleared;
-                ////////////////////////////////////////////
-                //TODO SP_gameSummary.SPGS_time.Content = SP_gameView.soloGame.;
+                        mainPanel.Children.Add(backCanvas);
+                        mainPanel.Children.Add(SP_gameSummary);
 
+                        if (/*Check for High Score*/true)
+                        {
+                            newScore.AHS_type.Content = "New High Score!!";
+                        }
+                        else
+                        {
+                            newScore.AHS_type.Content = "Enter your score:";
+                        }
+                        newScore.AHS_score.Content = SP_gameView.soloGame.CurrentScore;
 
-                //BROKEN////////////////////////////////
-                mainPanel.Children.Add(backCanvas);
-                mainPanel.Children.Add(SP_gameSummary);
-                ///////////////////////////////////////
-
-                if (/*Check for High Score*/true)
-                {
-                    newScore.AHS_type.Content = "New High Score!!";
-                }
-                else
-                {
-                    newScore.AHS_type.Content = "Enter your score:";
-                }
-                newScore.AHS_score.Content = SP_gameView.soloGame.CurrentScore;
-
-                mainPanel.Children.Add(backCanvas2);
-                mainPanel.Children.Add(newScore);
+                        mainPanel.Children.Add(backCanvas2);
+                        mainPanel.Children.Add(newScore);
+                    }
+                ));
                 
             }
 
@@ -407,7 +407,7 @@ namespace Tetris
                                 SP_gameView.soloGame.RotateCurrent();
                                 break;
                             case Key.Down:
-                                Timer t = SP_gameView.soloGame.GameTimer;
+                                System.Timers.Timer t = SP_gameView.soloGame.GameTimer;
                                 t.Stop();
                                 t.Interval *= 0.60;
                                 SP_gameView.soloGame.Tick(null, null);
@@ -432,7 +432,7 @@ namespace Tetris
                         switch (e.Key)
                         {
                             case Key.Down:
-                                Timer t = SP_gameView.soloGame.GameTimer;
+                                System.Timers.Timer t = SP_gameView.soloGame.GameTimer;
                                 t.Stop();
                                 t.Interval /= 0.60;
                                 SP_gameView.soloGame.Tick(null, null);
