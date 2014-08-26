@@ -124,12 +124,11 @@ namespace Tetris
             InitializeComponent();
 
             mainPanel.Children.Add(mainMenu);
-
         }
 
-
-
-        //GAME END-------------------------------------------------------------------------------------------------
+        /************
+         * GAME END
+         ************/
         void soloGame_GameEnd()
         {
             /*
@@ -188,7 +187,7 @@ namespace Tetris
             throw new NotImplementedException();
 
             //This is for the key event handlers
-            TP_gameView.PlayerTwoGame = null;            
+            TP_gameView.PlayerTwoGame = null;
         }
 
         void PlayerOneGame_GameEnd()
@@ -363,7 +362,6 @@ namespace Tetris
                 file = saveDialog.FileName;
                 //TODO Save document
             }
-
         }
 
         void TPG_quit_Click(object sender, RoutedEventArgs e)
@@ -399,7 +397,6 @@ namespace Tetris
         }
 
         //Quit
-
         void quit_yes_Click(object sender, RoutedEventArgs e)
         {
             if (SP_gameView.SoloGame != null)
@@ -443,9 +440,7 @@ namespace Tetris
                 switch (e.Key)
                 {
                     /*
-                     * _Control keys_
-                     * These will need to be modified later, to accomadate two-player functionality.
-                     * -a
+                     * _Single Player control keys_
                      */
                     case Key.Left:
                         SP_gameView.SoloGame.MoveLeft();
@@ -471,9 +466,14 @@ namespace Tetris
                         break;
                 }
             }
-            else if(TP_gameView.PlayerOneGame != null
+            else if (TP_gameView.PlayerOneGame != null
                 && TP_gameView.PlayerTwoGame != null)
             {
+                /*
+                 * _Two Player control keys_
+                 * Player 1 has WASD
+                 * Player 2 has arrow keys
+                 */
                 switch (e.Key)
                 {
                     case Key.W:
@@ -500,7 +500,6 @@ namespace Tetris
                     case Key.Down:
                         //Fix hard drop!!
                         break;
-
                 }
             }
         }
@@ -521,7 +520,6 @@ namespace Tetris
 
                 }
             }
-
         }
 
         private void PreviewKeyDown_1(object sender, KeyEventArgs e)
