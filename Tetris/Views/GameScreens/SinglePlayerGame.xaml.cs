@@ -63,7 +63,6 @@ namespace Tetris.Views.GameScreens
             PaintTimer = new System.Timers.Timer(100);
             PaintTimer.Elapsed += PaintTimer_Elapsed;
             soloGame = new Game(type);
-            SPG_playerOne_score.DataContext = soloGame;
             soloGame.Start();
             PaintTimer.Start();
         }
@@ -92,6 +91,9 @@ namespace Tetris.Views.GameScreens
 
         public void DisplayTetriminos()
         {
+            //Display user's current score
+            SPG_playerOne_score.Content = soloGame.CurrentScore.ToString();
+
             //Set all rectangles to a white fill and thin border
             for (int i = 0; i < 10; i++)
             {

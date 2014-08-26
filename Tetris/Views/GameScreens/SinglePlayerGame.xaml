@@ -57,8 +57,7 @@
             <Image x:Name="SPG_playerOne_nextBlock"/>
 
             <Label Content="Score" />
-            <Label x:Name="SPG_playerOne_score"
-                   Content="{Binding Path=CurrentScore}" />
+            <Label x:Name="SPG_playerOne_score" />
             <Button x:Name="SPG_pause"
                     Content="Pause"/>
             <Button x:Name="SPG_save"
