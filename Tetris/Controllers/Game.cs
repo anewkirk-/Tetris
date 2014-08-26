@@ -30,6 +30,7 @@ namespace Tetris.Controllers
         private int _marathonModeLineLimit = 50;
         private int _linesBeforeSpeedUp = 5;
         private bool _isToppedOut = false;
+        private int _currentLevel = 1;
 
         public Game()
         {
@@ -141,7 +142,26 @@ namespace Tetris.Controllers
             {
                 List<int> cleared = CheckRowsCleared();
                 //Add to CurrentScore here!
-                
+                //Determine score
+                switch (cleared.Count())
+                {
+                    //Single line cleared
+                    case 1:
+                        CurrentScore += (_currentLevel * 40) + 40;
+                        break;
+                    //Two lines cleared
+                    case 2:
+                        CurrentScore += (_currentLevel * 100) + 100;
+                        break;
+                    //Three lines cleared
+                    case 3:
+                        CurrentScore += (_currentLevel * 300) + 300;
+                        break;
+                    //Four lines cleared ("Tetris")
+                    case 4:
+                        CurrentScore += (_currentLevel * 1200) + 1200;
+                        break;
+                }
                 //Clear lines
                 foreach (int i in cleared)
                 {
