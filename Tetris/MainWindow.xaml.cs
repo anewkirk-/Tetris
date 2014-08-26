@@ -19,6 +19,7 @@ using Tetris.Controllers;
 using System.Timers;
 using System.Threading;
 using System.Windows.Threading;
+using Tetris.Models;
 
 namespace Tetris
 {
@@ -27,6 +28,11 @@ namespace Tetris
     /// </summary>
     public partial class MainWindow : Window
     {
+        /*
+         * Is all of this supposed to be default visibility?
+         * -a
+         */
+
         //Instantiate
         MainMenu mainMenu = new MainMenu();
         //Menus
@@ -47,7 +53,9 @@ namespace Tetris
         //Overlay Canvas Background
             Canvas backCanvas = new Canvas();
             Canvas backCanvas2 = new Canvas();
-            
+        //Score Manager
+            private ScoreManager csm;
+
         public MainWindow()
         {
             //MODIFY ALL UI ELEMENTS
@@ -105,7 +113,8 @@ namespace Tetris
                     backCanvas2.Background = new SolidColorBrush(Colors.Black);
                     backCanvas2.Background.Opacity = .25;
 
-            
+                    csm = new ScoreManager();
+                
             InitializeComponent();
 
             mainPanel.Children.Add(mainMenu);
@@ -117,17 +126,33 @@ namespace Tetris
         //GAME END-------------------------------------------------------------------------------------------------
             void soloGame_GameEnd()
             {
+                /*
+                 * These statements must be dispatched out of this thread
+                 * -a
+                 */
+
                 Dispatcher.BeginInvoke(DispatcherPriority.Input, new ThreadStart(() =>
                     {
                         SP_gameView.soloGame.Stop();
+                        SP_gameView.PaintTimer.Stop();
                         int finalScore = SP_gameView.soloGame.CurrentScore;
                         SP_gameSummary.SPGS_score.Content = finalScore;
                         SP_gameSummary.SPGS_lines.Content = SP_gameView.soloGame.LinesCleared;
                         //TODO SP_gameSummary.SPGS_time.Content = SP_gameView.soloGame.;
 
+
+                        /*
+                         * It appears that these elements are already in mainPanel.Children,
+                         * but if they need to be added again for some reason I've added
+                         * remove statements so it runs.
+                         * -a
+                         */
+                        mainPanel.Children.Remove(backCanvas);
                         mainPanel.Children.Add(backCanvas);
+
+                        mainPanel.Children.Remove(SP_gameSummary);
                         mainPanel.Children.Add(SP_gameSummary);
-                        ScoreManager csm = (ScoreManager)FindResource("CurrentScoreManager");
+
                         if (csm.IsHighScore(finalScore))
                         {
                             newScore.AHS_type.Content = "New High Score!!";
@@ -136,9 +161,13 @@ namespace Tetris
                         {
                             newScore.AHS_type.Content = "Enter your score:";
                         }
+
                         newScore.AHS_score.Content = SP_gameView.soloGame.CurrentScore;
 
+                        mainPanel.Children.Remove(backCanvas2);
                         mainPanel.Children.Add(backCanvas2);
+
+                        mainPanel.Children.Remove(newScore);
                         mainPanel.Children.Add(newScore);
                     }
                 ));
@@ -385,13 +414,11 @@ namespace Tetris
                 //Add Score
                     void AHS_submit_Click(object sender, RoutedEventArgs e)
                     {
-                        throw new NotImplementedException();
-                        //TODO Add score
+                        /*
+                         * This is already being handled in AddHighScore.xaml.cs,
+                         * feel free to move it if need be.
+                         */
                     }
-
-
-
-
 
                     private void Window_KeyDown_1(object sender, KeyEventArgs e)
                     {

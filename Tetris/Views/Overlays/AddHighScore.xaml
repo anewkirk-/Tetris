@@ -6,9 +6,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="300">
     <StackPanel>
-        <Label x:Name="AHS_type" Content="New High Score!" />
+        <Label x:Name="AHS_type" x:FieldModifier="public" Content="New High Score!" />
         
-        <Label x:Name="AHS_score" Content="SCORE HERE" />
+        <Label x:Name="AHS_score" x:FieldModifier="public" Content="SCORE HERE" />
 
 
         <!--Hint text: http://stackoverflow.com/questions/7425618/how-can-i-add-a-hint-text-to-wpf-textbox -->

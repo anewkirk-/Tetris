@@ -1,8 +1,8 @@
 ﻿<Application x:Class="Tetris.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:controllers="clr-namespace:Tetris.Controllers"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MainWindow.xaml"
+             xmlns:controllers="clr-namespace:Tetris.Controllers">
     <Application.Resources>
         <ResourceDictionary>
             
@@ -20,9 +20,6 @@
                 </SolidColorBrush.Color>
             </SolidColorBrush>
             
-            <controllers:ScoreManager x:Key="CurrentScoreManager"></controllers:ScoreManager>
-
-
             <Style x:Key="MenuButtons" TargetType="{x:Type Button}">
                 <Setter Property="Margin" Value="10" />
                 <Setter Property="Width" Value="200" />

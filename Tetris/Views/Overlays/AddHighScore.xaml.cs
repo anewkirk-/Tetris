@@ -32,7 +32,11 @@ namespace Tetris.Views.Overlays
 
         private void AHS_submit_Click_1(object sender, RoutedEventArgs e)
         {
-            Score newScore = new Score(AHS_name.ToString(), int.Parse(AHS_score.ToString()));
+            /*
+             * Looks like this is being handled in MainWindow instead?
+             * -alex
+             */
+            Score newScore = new Score(AHS_name.Text, int.Parse(AHS_score.Content.ToString()));
             sm.Submit(newScore);
         }
 
