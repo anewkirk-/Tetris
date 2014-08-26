@@ -25,9 +25,9 @@ namespace Tetris.Controllers
         public Timer GameTimer { get; set; }
         public Tetrimino CurrentTetrimino { get; set; }
         public int LinesCleared { get; set; }
-        public int TimeElapsed { get; set; }
-        private Random _gen = new Random(Guid.NewGuid().GetHashCode());
-        private int _timedModeTimeLimit = 120000;
+        private int TimeElapsed { get; set; }
+        private Random _rand = new Random();
+        private int _timedModeTimeLimit = 120;
         private int _marathonModeLineLimit = 50;
         private int _linesBeforeSpeedUp = 5;
         private int _currentLevel = 1;
@@ -281,7 +281,6 @@ namespace Tetris.Controllers
         //Populates the randomBag with the randomly ordered Tetriminos
         private void MakeTetriminoBag()
         {
-<<<<<<< HEAD
             //Temorary bag of Tetriminos that will be pulled from so
             //that no duplicates will be added to the bag
             List<Tetrimino> Bag = new List<Tetrimino>
@@ -335,9 +334,6 @@ namespace Tetris.Controllers
                 i++;
             }
         }
-=======
-            int index = _gen.Next(tBag.Count);
->>>>>>> origin/master
 
         public void AddRandomTetrimino()
         {
@@ -377,7 +373,7 @@ namespace Tetris.Controllers
         public Tetrimino RowOfBlocksMinusOne()
         {
             Tetrimino t = new Tetrimino();
-            int randomY = _gen.Next(0, 10);
+            int randomY = _rand.Next(0, 10);
             
             for (int i = 0; i <= 9; i++)
             {
