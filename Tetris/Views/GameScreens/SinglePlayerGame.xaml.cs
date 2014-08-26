@@ -23,13 +23,13 @@ namespace Tetris.Views.GameScreens
     /// </summary>
     public partial class SinglePlayerGame : UserControl
     {
-        public Game soloGame { get; set; }
+        public Game SoloGame { get; set; }
         public System.Timers.Timer PaintTimer { get; set; }
         public bool _rainbowMode = false;
         private Rectangle[,] _rectangleBoard = new Rectangle[10, 20];
         private Random _gen = new Random();
 
-        List<SolidColorBrush> _tetriminoColors = new List<SolidColorBrush>() {
+        private List<SolidColorBrush> _tetriminoColors = new List<SolidColorBrush>() {
             new SolidColorBrush(Colors.Cyan),
             new SolidColorBrush(Colors.Blue),
             new SolidColorBrush(Colors.Orange),
@@ -40,7 +40,7 @@ namespace Tetris.Views.GameScreens
             new SolidColorBrush(Colors.White),
             new SolidColorBrush(Colors.Black)
     };
-        SolidColorBrush _borderBrush = new SolidColorBrush(Colors.Black);
+        private SolidColorBrush _borderBrush = new SolidColorBrush(Colors.Black);
 
         public SinglePlayerGame()
         {
@@ -62,8 +62,8 @@ namespace Tetris.Views.GameScreens
             }
             PaintTimer = new System.Timers.Timer(100);
             PaintTimer.Elapsed += PaintTimer_Elapsed;
-            soloGame = new Game(type);
-            soloGame.Start();
+            SoloGame = new Game(type);
+            SoloGame.Start();
             PaintTimer.Start();
         }
 
@@ -74,25 +74,25 @@ namespace Tetris.Views.GameScreens
 
         public GameMode GetGameMode()
         {
-            return soloGame.Mode;
+            return SoloGame.Mode;
         }
 
         public void PauseGame()
         {
             PaintTimer.Stop();
-            soloGame.Stop();
+            SoloGame.Stop();
         }
 
         public void ResumeGame()
         {
             PaintTimer.Start();
-            soloGame.Start();
+            SoloGame.Start();
         }
 
         public void DisplayTetriminos()
         {
             //Display user's current score
-            SPG_playerOne_score.Content = soloGame.CurrentScore.ToString();
+            SPG_playerOne_score.Content = SoloGame.CurrentScore.ToString();
 
             //Set all rectangles to a white fill and thin border
             for (int i = 0; i < 10; i++)
@@ -106,7 +106,7 @@ namespace Tetris.Views.GameScreens
             }
 
             //Color in rectangles according to game state
-            foreach (Tetrimino t in soloGame.GameBoard.ToList())
+            foreach (Tetrimino t in SoloGame.GameBoard.ToList())
             {
                 foreach (Tetris.Models.TetriminoBag.Points p in t.Blocks.ToList())
                 {

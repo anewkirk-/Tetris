@@ -139,11 +139,11 @@ namespace Tetris
 
             Dispatcher.BeginInvoke(DispatcherPriority.Input, new ThreadStart(() =>
                 {
-                    SP_gameView.soloGame.Stop();
+                    SP_gameView.SoloGame.Stop();
                     SP_gameView.PaintTimer.Stop();
-                    int finalScore = SP_gameView.soloGame.CurrentScore;
+                    int finalScore = SP_gameView.SoloGame.CurrentScore;
                     SP_gameSummary.SPGS_score.Content = finalScore;
-                    SP_gameSummary.SPGS_lines.Content = SP_gameView.soloGame.LinesCleared;
+                    SP_gameSummary.SPGS_lines.Content = SP_gameView.SoloGame.LinesCleared;
                     //TODO SP_gameSummary.SPGS_time.Content = SP_gameView.soloGame.;
 
 
@@ -168,7 +168,7 @@ namespace Tetris
                         newScore.AHS_type.Content = "Enter your score:";
                     }
 
-                    newScore.AHS_score.Content = SP_gameView.soloGame.CurrentScore;
+                    newScore.AHS_score.Content = SP_gameView.SoloGame.CurrentScore;
 
                     mainPanel.Children.Remove(backCanvas2);
                     mainPanel.Children.Add(backCanvas2);
@@ -217,7 +217,7 @@ namespace Tetris
         void SPMS_classic_Click(object sender, RoutedEventArgs e)
         {
             SP_gameView.NewGame(GameMode.Classic);
-            SP_gameView.soloGame.GameEnd += soloGame_GameEnd;
+            SP_gameView.SoloGame.GameEnd += soloGame_GameEnd;
             mainPanel.Children.Remove(SP_modeSelect);
             mainPanel.Children.Add(SP_gameView);
         }
@@ -225,7 +225,7 @@ namespace Tetris
         void SPMS_timed_Click(object sender, RoutedEventArgs e)
         {
             SP_gameView.NewGame(GameMode.Timed);
-            SP_gameView.soloGame.GameEnd += soloGame_GameEnd;
+            SP_gameView.SoloGame.GameEnd += soloGame_GameEnd;
             mainPanel.Children.Remove(SP_modeSelect);
             mainPanel.Children.Add(SP_gameView);
         }
@@ -233,7 +233,7 @@ namespace Tetris
         void SPMS_Marathon_Click(object sender, RoutedEventArgs e)
         {
             SP_gameView.NewGame(GameMode.Marathon);
-            SP_gameView.soloGame.GameEnd += soloGame_GameEnd;
+            SP_gameView.SoloGame.GameEnd += soloGame_GameEnd;
             mainPanel.Children.Remove(SP_modeSelect);
             mainPanel.Children.Add(SP_gameView);
         }
@@ -377,7 +377,7 @@ namespace Tetris
         }
         void pause_continue_Click(object sender, RoutedEventArgs e)
         {
-            if (SP_gameView.soloGame != null)
+            if (SP_gameView.SoloGame != null)
             {
                 SP_gameView.ResumeGame();
             }
@@ -393,9 +393,9 @@ namespace Tetris
 
         void quit_yes_Click(object sender, RoutedEventArgs e)
         {
-            if (SP_gameView.soloGame != null)
+            if (SP_gameView.SoloGame != null)
             {
-                SP_gameView.soloGame.QuitGame();
+                SP_gameView.SoloGame.QuitGame();
             }
             else
             {
@@ -429,50 +429,88 @@ namespace Tetris
 
         private void Window_KeyDown_1(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
+            if (SP_gameView.SoloGame != null)
             {
-                /*
-                 * _Control keys_
-                 * These will need to be modified later, to accomadate two-player functionality.
-                 * -a
-                 */
-                case Key.Left:
-                    SP_gameView.soloGame.MoveLeft();
-                    break;
-                case Key.Right:
-                    SP_gameView.soloGame.MoveRight();
-                    break;
-                case Key.Up:
-                    SP_gameView.soloGame.RotateCurrent();
-                    break;
-                case Key.Down:
-                    System.Timers.Timer t = SP_gameView.soloGame.GameTimer;
-                    t.Stop();
-                    t.Interval *= 0.60;
-                    SP_gameView.soloGame.Tick(null, null);
-                    t.Start();
-                    break;
-                case Key.R:
-                    SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
-                    break;
-                case Key.Escape:
-                    Environment.Exit(0);
-                    break;
+                switch (e.Key)
+                {
+                    /*
+                     * _Control keys_
+                     * These will need to be modified later, to accomadate two-player functionality.
+                     * -a
+                     */
+                    case Key.Left:
+                        SP_gameView.SoloGame.MoveLeft();
+                        break;
+                    case Key.Right:
+                        SP_gameView.SoloGame.MoveRight();
+                        break;
+                    case Key.Up:
+                        SP_gameView.SoloGame.RotateCurrent();
+                        break;
+                    case Key.Down:
+                        System.Timers.Timer t = SP_gameView.SoloGame.GameTimer;
+                        t.Stop();
+                        t.Interval *= 0.60;
+                        SP_gameView.SoloGame.Tick(null, null);
+                        t.Start();
+                        break;
+                    case Key.R:
+                        SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
+                        break;
+                    case Key.Escape:
+                        Environment.Exit(0);
+                        break;
+                }
+            }
+            else if(TP_gameView.PlayerOneGame != null
+                && TP_gameView.PlayerTwoGame != null)
+            {
+                switch (e.Key)
+                {
+                    case Key.W:
+                        TP_gameView.PlayerOneGame.RotateCurrent();
+                        break;
+                    case Key.A:
+                        TP_gameView.PlayerOneGame.MoveLeft();
+                        break;
+                    case Key.D:
+                        TP_gameView.PlayerOneGame.MoveRight();
+                        break;
+                    case Key.S:
+                        //Fix hard drop!!
+                        break;
+                    case Key.Up:
+                        TP_gameView.PlayerTwoGame.RotateCurrent();
+                        break;
+                    case Key.Left:
+                        TP_gameView.PlayerTwoGame.MoveLeft();
+                        break;
+                    case Key.Right:
+                        TP_gameView.PlayerTwoGame.MoveRight();
+                        break;
+                    case Key.Down:
+                        //Fix hard drop!!
+                        break;
+
+                }
             }
         }
 
         private void Window_KeyUp_1(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
+            if (SP_gameView.SoloGame != null)
             {
-                case Key.Down:
-                    System.Timers.Timer t = SP_gameView.soloGame.GameTimer;
-                    t.Stop();
-                    t.Interval /= 0.60;
-                    SP_gameView.soloGame.Tick(null, null);
-                    t.Start();
-                    break;
+                switch (e.Key)
+                {
+                    case Key.Down:
+                        System.Timers.Timer t = SP_gameView.SoloGame.GameTimer;
+                        t.Stop();
+                        t.Interval /= 0.60;
+                        SP_gameView.SoloGame.Tick(null, null);
+                        t.Start();
+                        break;
 
+                }
             }
 
         }
