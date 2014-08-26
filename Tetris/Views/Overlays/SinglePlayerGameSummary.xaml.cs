@@ -31,7 +31,7 @@ namespace Tetris.Views.Overlays
 
         public void AddScore()
         {
-            Score newScore = new Score(AHS_name.Text, int.Parse(AHS_score.Content.ToString()));
+            Score newScore = new Score(AHS_name.Text, int.Parse(SPGS_score.Content.ToString()));
             sm.Submit(newScore);
         }
     }
