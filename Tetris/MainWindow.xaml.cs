@@ -489,7 +489,7 @@ namespace Tetris
                         SP_gameView.SoloGame.RotateCurrent();
                         break;
                     case Key.Down:
-                        SP_gameView.SoloGame.HardDrop = true;
+                        //Fix hard drop!
                         break;
                     case Key.R:
                         SP_gameView._rainbowMode = !SP_gameView._rainbowMode;

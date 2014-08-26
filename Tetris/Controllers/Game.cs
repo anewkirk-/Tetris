@@ -24,9 +24,8 @@ namespace Tetris.Controllers
         public TetrisBoard GameBoard { get; set; }
         public Timer GameTimer { get; set; }
         public Tetrimino CurrentTetrimino { get; set; }
-        public bool HardDrop { get; set; }
         public int LinesCleared { get; set; }
-        private int TimeElapsed { get; set; }
+        public int TimeElapsed { get; set; }
         private Random _gen = new Random(Guid.NewGuid().GetHashCode());
         private int _timedModeTimeLimit = 120000;
         private int _marathonModeLineLimit = 50;
@@ -43,7 +42,6 @@ namespace Tetris.Controllers
             GameTimer.Elapsed += Tick;
             this.Mode = mode;
             CurrentScore = 0;
-            HardDrop = false;
         }
 
         public List<Tetrimino> tBag = new List<Tetrimino>
@@ -132,7 +130,6 @@ namespace Tetris.Controllers
 
             if (collision)
             {
-                HardDrop = false;
                 List<int> cleared = CheckRowsCleared();
                 //Add to CurrentScore here!
                 //Determine score
@@ -169,10 +166,6 @@ namespace Tetris.Controllers
             {
                 //if no collision, let the current tetrimino keep falling
                 CurrentTetrimino.Fall();
-                if(HardDrop)
-                {
-                    this.Tick(null, null);
-                }
             }
         }
 
