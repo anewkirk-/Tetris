@@ -19,6 +19,8 @@ namespace Tetris.Models.TetriminoBag
 
         public List<Points> Blocks;
 
+        public string Name;
+
         public virtual void Rotate() { }
 
         public void Fall() 

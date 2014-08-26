@@ -271,28 +271,79 @@ namespace Tetris.Controllers
             LinesCleared++;
         }
 
+        //Bag of Tetriminos that holds the preset random order of 
+        //the Tetriminos that are to be spawned in that order
+        public List<Tetrimino> randomBag = new List<Tetrimino>();
+
+        //Populates the randomBag with the randomly ordered Tetriminos
+        private void MakeTetriminoBag()
+        {
+            //Temorary bag of Tetriminos that will be pulled from so
+            //that no duplicates will be added to the bag
+            List<Tetrimino> Bag = new List<Tetrimino>
+                {
+                    new i_Tetrimino(),
+                    new j_Tetrimino(),
+                    new l_Tetrimino(),
+                    new o_Tetrimino(),
+                    new s_Tetrimino(),
+                    new t_Tetrimino(),
+                    new z_Tetrimino()
+                };
+
+            //Loop that populates the bag
+            int i = 0;
+            while (i < 7)
+            {
+                //Randomly grabs an index from Bag 
+                int index = _rand.Next(0, Bag.Count);
+                //Temp tetrimino that is set to the random index from the Bag
+                Tetrimino tracker = Bag[index];
+                //Removes the tetrimino at the index so that is will not be used again
+                Bag.RemoveAt(index);
+
+                //Checks what kind of tetrimino the random tetrimino is and adds the
+                //that kind of tetrimino to the randomBag
+                switch (tracker.Name)
+                {
+                    case "i_Tetrimino":
+                        randomBag.Add(new i_Tetrimino());
+                        break;
+                    case "j_Tetrimino":
+                        randomBag.Add(new j_Tetrimino());
+                        break;
+                    case "l_Tetrimino":
+                        randomBag.Add(new l_Tetrimino());
+                        break;
+                    case "o_Tetrimino":
+                        randomBag.Add(new o_Tetrimino());
+                        break;
+                    case "s_Tetrimino":
+                        randomBag.Add(new s_Tetrimino());
+                        break;
+                    case "t_Tetrimino":
+                        randomBag.Add(new t_Tetrimino());
+                        break;
+                    case "z_Tetrimino":
+                        randomBag.Add(new z_Tetrimino());
+                        break;
+                }
+                i++;
+            }
+        }
+
         public void AddRandomTetrimino()
         {
-            int index = _rand.Next(tBag.Count);
-
-            Tetrimino randT = null;
-            switch (index)
+            //Check to see if the randomBag is empty
+            if (randomBag.Count == 0 )
             {
-                case 0: randT = new i_Tetrimino();
-                    break;
-                case 1: randT = new j_Tetrimino();
-                    break;
-                case 2: randT = new l_Tetrimino();
-                    break;
-                case 3: randT = new o_Tetrimino();
-                    break;
-                case 4: randT = new s_Tetrimino();
-                    break;
-                case 5: randT = new t_Tetrimino();
-                    break;
-                case 6: randT = new z_Tetrimino();
-                    break;
+                MakeTetriminoBag();
             }
+
+            //Sets randT to the first tetrimino in the randomBag
+            Tetrimino randT = randomBag[0];
+            //Removes the first tetrimino
+            randomBag.RemoveAt(0);
 
             CurrentTetrimino = randT;
             GameBoard.Add(CurrentTetrimino);
