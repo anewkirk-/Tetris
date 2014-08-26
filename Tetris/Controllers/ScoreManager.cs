@@ -26,7 +26,7 @@ namespace Tetris.Controllers
         {
             Connect();
             List<Score> res = new List<Score>();
-            string query = "SELECT * FROM scores ORDER BY score DESC";
+            string query = "SELECT * FROM scores ORDER BY score DESC LIMIT 10;";
             SQLiteCommand sqlcommand = new SQLiteCommand(query, _conn);
             SQLiteDataReader r = sqlcommand.ExecuteReader();
             while (r.Read())
@@ -37,6 +37,22 @@ namespace Tetris.Controllers
                 res.Add(s);
             }
             Disconnect();
+            return res;
+        }
+
+        public bool IsHighScore(int score)
+        {
+            bool res = false;
+            this.Connect();
+            List<Score> highScores = this.GetAll();
+            foreach (Score s in highScores)
+            {
+                if (s.ScoreValue < score)
+                {
+                    res = true;
+                }
+            }
+            this.Disconnect();
             return res;
         }
 
