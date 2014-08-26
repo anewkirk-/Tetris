@@ -12,9 +12,11 @@ namespace Tetris.Controllers
 {
 
     public delegate void GameEndHandler();
+    public delegate void TetrisHandler();
 
     public class Game
     {
+        public event TetrisHandler ScoredTetris;
         public event GameEndHandler GameEnd;
         public int CurrentScore { get; set; }
         public GameMode Mode { get; set; }
@@ -23,8 +25,8 @@ namespace Tetris.Controllers
         public Tetrimino CurrentTetrimino { get; set; }
         public int LinesCleared { get; set; }
         private int TimeElapsed { get; set; }
-        private Random _rand = new Random();
-        private int _timedModeTimeLimit = 120;
+        private Random _gen = new Random(Guid.NewGuid().GetHashCode());
+        private int _timedModeTimeLimit = 12000;
         private int _marathonModeLineLimit = 50;
         private int _linesBeforeSpeedUp = 5;
         private int _currentLevel = 1;
@@ -148,6 +150,7 @@ namespace Tetris.Controllers
                     //Four lines cleared ("Tetris")
                     case 4:
                         CurrentScore += (_currentLevel * 1200) + 1200;
+                        ScoredTetris();
                         break;
                 }
                 //Clear lines
@@ -273,7 +276,7 @@ namespace Tetris.Controllers
 
         public void AddRandomTetrimino()
         {
-            int index = _rand.Next(tBag.Count);
+            int index = _gen.Next(tBag.Count);
 
             Tetrimino randT = null;
             switch (index)
@@ -319,7 +322,7 @@ namespace Tetris.Controllers
         public Tetrimino RowOfBlocksMinusOne()
         {
             Tetrimino t = new Tetrimino();
-            int randomY = _rand.Next(0, 10);
+            int randomY = _gen.Next(0, 10);
             
             for (int i = 0; i <= 9; i++)
             {

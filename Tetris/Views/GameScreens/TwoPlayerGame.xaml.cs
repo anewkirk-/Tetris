@@ -52,6 +52,8 @@ namespace Tetris.Views.GameScreens
         {
             PlayerOneGame = new Game(type);
             PlayerTwoGame = new Game(type);
+            PlayerOneGame.ScoredTetris += PlayerOneTetris;
+            PlayerTwoGame.ScoredTetris += PlayerTwoTetris;
             SetUpGameBoards();
             PaintTimer = new System.Timers.Timer(100);
             PaintTimer.Elapsed += PaintTimer_Elapsed;
@@ -100,7 +102,24 @@ namespace Tetris.Views.GameScreens
 
         public void PaintTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Dispatcher.Invoke((Action)(() => { DisplayTetriminos(); }));
+            try
+            {
+                Dispatcher.Invoke((Action)(() => { DisplayTetriminos(); }));
+            }
+            catch 
+            {
+                //Task was cancelled, nothing to do here. Probably.
+            }
+        }
+
+        private void PlayerOneTetris()
+        {
+            PlayerTwoGame.AddRowSansOne();
+        }
+
+        private void PlayerTwoTetris()
+        {
+            PlayerOneGame.AddRowSansOne();
         }
 
         private void DisplayTetriminos()

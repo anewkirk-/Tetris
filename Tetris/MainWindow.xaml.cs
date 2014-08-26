@@ -500,6 +500,9 @@ namespace Tetris
                     case Key.Down:
                         //Fix hard drop!!
                         break;
+                    case Key.Escape:
+                        Environment.Exit(0);
+                        break;
                 }
             }
         }
