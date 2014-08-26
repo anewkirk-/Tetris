@@ -7,6 +7,7 @@ using System.Timers;
 using Tetris.Models;
 using Tetris.Models.TetriminoBag;
 using Tetris.Views.GameScreens;
+using System.Windows.Threading;
 
 namespace Tetris.Controllers
 {
@@ -24,9 +25,9 @@ namespace Tetris.Controllers
         public Timer GameTimer { get; set; }
         public Tetrimino CurrentTetrimino { get; set; }
         public int LinesCleared { get; set; }
-        private int TimeElapsed { get; set; }
+        public int TimeElapsed { get; set; }
         private Random _gen = new Random(Guid.NewGuid().GetHashCode());
-        private int _timedModeTimeLimit = 12000;
+        private int _timedModeTimeLimit = 120000;
         private int _marathonModeLineLimit = 50;
         private int _linesBeforeSpeedUp = 5;
         private int _currentLevel = 1;
@@ -62,7 +63,6 @@ namespace Tetris.Controllers
         public void Stop()
         {
             GameTimer.Enabled = false;
-
         }
 
         /// <summary>
