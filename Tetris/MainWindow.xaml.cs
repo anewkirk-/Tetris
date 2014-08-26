@@ -99,8 +99,8 @@ namespace Tetris
             quit.quit_no.Click += quit_no_Click;
             quit.Margin = new Thickness(0, 60, 0, 0);
 
-            newScore.AHS_submit.Click += AHS_submit_Click;
-
+            SP_gameSummary.SPGS_mainMenu.Click += SPGS_mainMenu_Click;
+            SP_gameSummary.SPGS_playAgain.Click += SPGS_playAgain_Click;
             //Other
             saveDialog.DefaultExt = ".tetris";
             saveDialog.Filter = "Tetris Games (.tetris)|*.tetris";
@@ -160,20 +160,14 @@ namespace Tetris
 
                     if (csm.IsHighScore(finalScore))
                     {
-                        newScore.AHS_type.Content = "New High Score!!";
+                        SP_gameSummary.AHS_type.Content = "New High Score!!";
                     }
                     else
                     {
-                        newScore.AHS_type.Content = "Enter your score:";
+                        SP_gameSummary.AHS_type.Content = "Enter your score:";
                     }
 
                     newScore.AHS_score.Content = SP_gameView.SoloGame.CurrentScore;
-
-                    mainPanel.Children.Remove(backCanvas2);
-                    mainPanel.Children.Add(backCanvas2);
-
-                    mainPanel.Children.Remove(newScore);
-                    mainPanel.Children.Add(newScore);
 
                     //This is for the key event handlers
                     SP_gameView.SoloGame = null;
@@ -423,15 +417,58 @@ namespace Tetris
             mainPanel.Children.Remove(quit);
         }
 
-        //Add Score
-        void AHS_submit_Click(object sender, RoutedEventArgs e)
+        //Single Player Game Summary
+
+        void SPGS_mainMenu_Click(object sender, RoutedEventArgs e)
         {
-            /*
-             * This is already being handled in AddHighScore.xaml.cs,
-             * feel free to move it if need be.
-             * -a
-             */
+            if (String.IsNullOrEmpty(SP_gameSummary.AHS_name.Text))
+            {
+                SP_gameSummary.AHS_required.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                SP_gameSummary.AddScore();
+                mainPanel.Children.Remove(backCanvas);
+                mainPanel.Children.Remove(SP_gameSummary);
+                SP_gameSummary.AHS_required.Visibility = System.Windows.Visibility.Collapsed;
+
+                mainPanel.Children.Add(mainMenu);
+            }
         }
+
+        void SPGS_playAgain_Click(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(SP_gameSummary.AHS_name.Text))
+            {
+                SP_gameSummary.AHS_required.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                SP_gameSummary.AddScore();
+                mainPanel.Children.Remove(backCanvas);
+                mainPanel.Children.Remove(SP_gameSummary);
+                SP_gameSummary.AHS_required.Visibility = System.Windows.Visibility.Collapsed;
+
+                if (SP_gameView.GetGameMode() == GameMode.Classic)
+                {
+                    SP_gameView.SoloGame = null;
+                    SPMS_classic_Click(null, null);
+                }
+                else if (SP_gameView.GetGameMode() == GameMode.Marathon)
+                {
+                    SP_gameView.SoloGame = null;
+                    SPMS_Marathon_Click(null, null);
+                }
+                else
+                {
+                    SP_gameView.SoloGame = null;
+                    SPMS_timed_Click(null, null);
+                }
+            }
+        }
+
+
+        //KEY BINDINGS--------------------------------------------------------------------
 
         private void Window_KeyDown_1(object sender, KeyEventArgs e)
         {

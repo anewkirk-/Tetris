@@ -4,10 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             Height="300" Width="300"
+             Background="{StaticResource ResourceKey=MainBackground}"
+             BorderBrush="Black"
+             BorderThickness="1">
 
     <!-- http://stackoverflow.com/questions/5450985/how-to-make-overlay-control-above-all-other-controls -->
-    
     
     <StackPanel>
         <Label Content="Game Summary" />
@@ -23,6 +25,19 @@
         <StackPanel Orientation="Horizontal">
             <Label Content="Time Taken:" />
             <Label x:Name="SPGS_time" Content="TIME" />
+        </StackPanel>
+
+        <StackPanel>
+            <Label x:Name="AHS_type" Content="New High Score!" />
+
+            <Label x:Name="AHS_score" Content="SCORE HERE" />
+
+
+            <!--Hint text: http://stackoverflow.com/questions/7425618/how-can-i-add-a-hint-text-to-wpf-textbox -->
+            <Label Content="Enter your name:" />
+            <TextBox x:Name="AHS_name" Width="150"/>
+            <Label x:Name="AHS_required" Content="This field is required"
+                   Visibility="Collapsed"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
