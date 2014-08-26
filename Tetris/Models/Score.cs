@@ -10,8 +10,13 @@ namespace Tetris.Models
     {
         private string _username;
         private int _scoreValue;
-        private System.Windows.Controls.TextBox AHS_name;
-        private int p;
+
+        /*
+         * Do these need to be here?
+         * -a
+         */
+        //private System.Windows.Controls.TextBox AHS_name;
+        //private int p;
 
         public Score() { }
 

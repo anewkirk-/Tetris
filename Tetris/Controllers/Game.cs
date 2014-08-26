@@ -20,28 +20,17 @@ namespace Tetris.Controllers
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
         public Timer GameTimer { get; set; }
-        private int TimeElapsed { get; set; }
-        public int LinesCleared { get; set; }
-        private Random rand = new Random();
         public Tetrimino CurrentTetrimino { get; set; }
+        public int LinesCleared { get; set; }
+        private int TimeElapsed { get; set; }
         private Random _rand = new Random();
         private int _timedModeTimeLimit = 120;
         private int _marathonModeLineLimit = 50;
         private int _linesBeforeSpeedUp = 5;
-        private bool _isToppedOut = false;
         private int _currentLevel = 1;
+        private bool _isToppedOut = false;
 
-        public Game()
-        {
-            //default to a 1 second interval
-            GameBoard = new TetrisBoard();
-            GameTimer = new Timer();
-            GameTimer.Interval = 1000;
-            GameTimer.Elapsed += Tick;
-            CurrentScore = 0;
-        }
-
-        public Game(GameMode mode)
+        public Game(GameMode mode = GameMode.Classic)
         {
             //default to a 1 second interval
             GameBoard = new TetrisBoard();
