@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="300">
+             Height="200" Width="300"
+             Background="{StaticResource ResourceKey=GameBackground}"
+             HorizontalAlignment="Center" VerticalAlignment="Center">
     <StackPanel>
         <Label x:Name="AHS_type" Content="New High Score!" />
         
@@ -13,7 +15,7 @@
 
         <!--Hint text: http://stackoverflow.com/questions/7425618/how-can-i-add-a-hint-text-to-wpf-textbox -->
         <Label Content="Enter your name:" />
-        <TextBox x:Name="AHS_name" />
+        <TextBox x:Name="AHS_name" Width="150"/>
         
         <StackPanel Orientation="Horizontal">
             <Button x:Name="AHS_submit" Content="Submit" Click="AHS_submit_Click_1"/>

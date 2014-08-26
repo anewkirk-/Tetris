@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tetris.Controllers;
+using Tetris.Models;
 
 namespace Tetris.Views.Overlays
 {
@@ -20,9 +22,17 @@ namespace Tetris.Views.Overlays
     /// </summary>
     public partial class SinglePlayerGameSummary : UserControl
     {
+        private ScoreManager sm = new ScoreManager();
+
         public SinglePlayerGameSummary()
         {
             InitializeComponent();
+        }
+
+        public void AddScore()
+        {
+            Score newScore = new Score(AHS_name.Text, int.Parse(AHS_score.Content.ToString()));
+            sm.Submit(newScore);
         }
     }
 }
