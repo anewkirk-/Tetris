@@ -20,6 +20,7 @@ namespace Tetris.Models.TetriminoBag
                 new Points { X = 5, Y = 0 },
                 new Points { X = 6, Y = 0 }
             };
+            Name = "i_Tetrimino";
         }
 
         private int position = 1;
