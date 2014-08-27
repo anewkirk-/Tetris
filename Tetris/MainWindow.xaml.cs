@@ -178,12 +178,12 @@ namespace Tetris
                     if (csm.IsHighScore(finalScore))
                     {
                         SP_gameSummary.AHS_type.Content = "New High Score!!";
-                        SP_gameSummary.AHS_type.FontWeight = FontWeights.ExtraBold;
+                        //SP_gameSummary.AHS_type.FontWeight = FontWeights.Bold;
                     }
                     else
                     {
                         SP_gameSummary.AHS_type.Content = "Enter your score:";
-                        SP_gameSummary.AHS_type.FontWeight = FontWeights.Normal;
+                        //SP_gameSummary.AHS_type.FontWeight = FontWeights.Normal;
                     }
 
                     mainPanel.Children.Remove(backCanvas);
@@ -219,22 +219,22 @@ namespace Tetris
                 if (csm.IsHighScore(playerOneScore))
                 {
                     TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
-                    TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.ExtraBold;
+                    //TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.Bold;
                 }
                 else
                 {
                     TP_gameSummary.AHS_playerOne_type.Content = "Submit your score:";
-                    TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.Normal;
+                    //TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.Normal;
                 }
                 if (csm.IsHighScore(playerTwoScore))
                 {
                     TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
-                    TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.ExtraBold;
+                    //TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.Bold;
                 }
                 else
                 {
                     TP_gameSummary.AHS_playerTwo_type.Content = "Submit your score:";
-                    TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.Normal;
+                    //TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.Normal;
                 }
 
                 mainPanel.Children.Remove(backCanvas);
@@ -270,22 +270,22 @@ namespace Tetris
                 if (csm.IsHighScore(playerOneScore))
                 {
                     TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
-                    TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.ExtraBold;
+                    //TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.Bold;
                 }
                 else
                 {
                     TP_gameSummary.AHS_playerOne_type.Content = "Submit your score:";
-                    TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.Normal;
+                    //TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.Normal;
                 }
                 if (csm.IsHighScore(playerTwoScore))
                 {
                     TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
-                    TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.ExtraBold;
+                    //TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.Bold;
                 }
                 else
                 {
                     TP_gameSummary.AHS_playerTwo_type.Content = "Submit your score:";
-                    TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.Normal;
+                    //TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.Normal;
                 }
 
                 mainPanel.Children.Remove(backCanvas);
