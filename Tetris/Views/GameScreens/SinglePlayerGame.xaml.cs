@@ -173,6 +173,18 @@ namespace Tetris.Views.GameScreens
                     currentRectangle.StrokeThickness = 2.5;                    
                 }
             }
+
+            //Highlight current tetrimino hard drop
+            if (SoloGame.CurrentTetrimino != null)
+            {
+                List<Points> highlight = new List<Points>(SoloGame.CurrentTetrimino.Blocks);
+                int d = SoloGame.FindDistanceCurrentCanFall();
+                foreach (Points p in highlight)
+                {
+                    Rectangle currentRectangle = _rectangleBoard[p.X, p.Y + d];
+                    currentRectangle.StrokeThickness = 2.5;
+                }
+            }
         }
     }
 }

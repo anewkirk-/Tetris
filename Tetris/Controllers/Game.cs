@@ -107,17 +107,7 @@ namespace Tetris.Controllers
 
             //Check for collisions on the current tetrimino
             bool collision = false;
-            List<Points> lowestPoints = new List<Points>(CurrentTetrimino.Blocks);
-            foreach (Points p in lowestPoints.ToList())
-            {
-                foreach (Points p2 in lowestPoints.ToList())
-                {
-                    if (p.X == p2.X && p.Y > p2.Y)
-                    {
-                        lowestPoints.Remove(p2);
-                    }
-                }
-            }
+            List<Points> lowestPoints = FindLowestPoints(CurrentTetrimino);
 
             foreach (Points p in lowestPoints)
             {
@@ -174,6 +164,47 @@ namespace Tetris.Controllers
             {
                 ScoredTetris();
             }
+        }
+
+        private List<Points> FindLowestPoints(Tetrimino t)
+        {
+            List<Points> lowestPoints = new List<Points>(CurrentTetrimino.Blocks);
+            foreach (Points p in lowestPoints.ToList())
+            {
+                foreach (Points p2 in lowestPoints.ToList())
+                {
+                    if (p.X == p2.X && p.Y > p2.Y)
+                    {
+                        lowestPoints.Remove(p2);
+                    }
+                }
+            }
+            return lowestPoints;
+        }
+
+        public int FindDistanceCurrentCanFall()
+        {
+            List<Points> lowestPoints = FindLowestPoints(CurrentTetrimino);
+            int lowest = lowestPoints.OrderByDescending(a => a.Y).First().Y;
+            int distance = 19 - lowest;
+            IEnumerable<Points> blocksBelow;
+            foreach (Points p in lowestPoints)
+            {
+                blocksBelow = from t in GameBoard
+                              from pt in t.Blocks
+                              where pt.X == p.X
+                              where t != CurrentTetrimino
+                              select pt;
+                if (blocksBelow.Count() > 0)
+                {
+                    Points highest = blocksBelow.OrderBy(a => a.Y).First();
+                    if (highest.Y - p.Y - 1 < distance)
+                    {
+                        distance = highest.Y - p.Y - 1;
+                    }
+                }
+            }
+            return distance;
         }
 
         //returns a list of Y coordinates of full rows
@@ -488,7 +519,11 @@ namespace Tetris.Controllers
         {
             if (CurrentTetrimino != null)
             {
-                //TODO
+                int d = FindDistanceCurrentCanFall();
+                foreach (Points p in CurrentTetrimino.Blocks)
+                {
+                    p.Y += d;
+                }
             }
         }
 
