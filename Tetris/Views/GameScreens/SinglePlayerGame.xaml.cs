@@ -182,8 +182,12 @@ namespace Tetris.Views.GameScreens
                 int d = SoloGame.FindDistanceCurrentCanFall();
                 foreach (Points p in highlight)
                 {
-                    Rectangle currentRectangle = _rectangleBoard[p.X, p.Y + d];
-                    currentRectangle.StrokeThickness = 1.8;
+                    int newY = p.Y + d;
+                    if (newY >= 0 && newY <= 19)
+                    {
+                        Rectangle currentRectangle = _rectangleBoard[p.X, p.Y + d];
+                        currentRectangle.StrokeThickness = 1.8;
+                    }
                 }
             }
         }
