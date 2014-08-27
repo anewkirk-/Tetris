@@ -142,7 +142,7 @@ namespace Tetris
                     int finalScore = SP_gameView.SoloGame.CurrentScore;
                     SP_gameSummary.SPGS_score.Content = finalScore;
                     SP_gameSummary.SPGS_lines.Content = SP_gameView.SoloGame.LinesCleared;
-                    //TODO SP_gameSummary.SPGS_time.Content = SP_gameView.soloGame.;
+                    SP_gameSummary.SPGS_time.Content = SP_gameView.SoloGame.TimeElapsed;
 
 
                     /*
@@ -168,8 +168,6 @@ namespace Tetris
 
                     newScore.AHS_score.Content = SP_gameView.SoloGame.CurrentScore;
 
-                    //This is for the key event handlers
-                    SP_gameView.SoloGame = null;
                 }
             ));
 
@@ -197,18 +195,21 @@ namespace Tetris
         void MM_singlePlayer_Click(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Remove(mainMenu);
+            mainPanel.Children.Remove(SP_modeSelect);
             mainPanel.Children.Add(SP_modeSelect);
         }
 
         void MM_twoPlayer_Click(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Remove(mainMenu);
+            mainPanel.Children.Remove(TP_modeSelect);
             mainPanel.Children.Add(TP_modeSelect);
         }
 
         void MM_scoreBoards_Click(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Remove(mainMenu);
+            mainPanel.Children.Remove(scoreMenu);
             mainPanel.Children.Add(scoreMenu);
         }
 
@@ -220,6 +221,7 @@ namespace Tetris
             SP_gameView.NewGame(GameMode.Classic);
             SP_gameView.SoloGame.GameEnd += soloGame_GameEnd;
             mainPanel.Children.Remove(SP_modeSelect);
+            mainPanel.Children.Remove(SP_gameView);
             mainPanel.Children.Add(SP_gameView);
         }
 
@@ -228,6 +230,7 @@ namespace Tetris
             SP_gameView.NewGame(GameMode.Timed);
             SP_gameView.SoloGame.GameEnd += soloGame_GameEnd;
             mainPanel.Children.Remove(SP_modeSelect);
+            mainPanel.Children.Remove(SP_gameView);
             mainPanel.Children.Add(SP_gameView);
         }
 
@@ -236,14 +239,14 @@ namespace Tetris
             SP_gameView.NewGame(GameMode.Marathon);
             SP_gameView.SoloGame.GameEnd += soloGame_GameEnd;
             mainPanel.Children.Remove(SP_modeSelect);
+            mainPanel.Children.Remove(SP_gameView);
             mainPanel.Children.Add(SP_gameView);
         }
-
-
 
         void SPMS_back_Click(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Remove(SP_modeSelect);
+            mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Add(mainMenu);
         }
 
@@ -254,6 +257,8 @@ namespace Tetris
             TP_gameView.PlayerOneGame.GameEnd += PlayerOneGame_GameEnd;
             TP_gameView.PlayerTwoGame.GameEnd += PlayerTwoGame_GameEnd;
             mainPanel.Children.Remove(TP_modeSelect);
+
+            mainPanel.Children.Remove(TP_gameView);
             mainPanel.Children.Add(TP_gameView);
         }
 
@@ -261,6 +266,8 @@ namespace Tetris
         {
             TP_gameView.NewGame(GameMode.Timed);
             mainPanel.Children.Remove(TP_modeSelect);
+
+            mainPanel.Children.Remove(TP_gameView);
             mainPanel.Children.Add(TP_gameView);
         }
 
@@ -268,12 +275,14 @@ namespace Tetris
         {
             TP_gameView.NewGame(GameMode.Marathon);
             mainPanel.Children.Remove(TP_modeSelect);
+            mainPanel.Children.Remove(TP_gameView);
             mainPanel.Children.Add(TP_gameView);
         }
 
         void TPMS_back_Click(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Remove(TP_modeSelect);
+            mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Add(mainMenu);
         }
 
@@ -281,6 +290,7 @@ namespace Tetris
         void SM_back_Click(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Remove(scoreMenu);
+            mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Add(mainMenu);
         }
 
@@ -290,6 +300,8 @@ namespace Tetris
         void SPG_pause_Click(object sender, RoutedEventArgs e)
         {
             SP_gameView.PauseGame();
+            mainPanel.Children.Remove(backCanvas);
+            mainPanel.Children.Remove(pause);
             mainPanel.Children.Add(backCanvas);
             mainPanel.Children.Add(pause);
         }
@@ -297,6 +309,8 @@ namespace Tetris
         void SPG_save_Click(object sender, RoutedEventArgs e)
         {
             SP_gameView.PauseGame();
+            mainPanel.Children.Remove(backCanvas);
+            mainPanel.Children.Remove(pause);
             mainPanel.Children.Add(backCanvas);
             mainPanel.Children.Add(pause);
 
@@ -319,9 +333,13 @@ namespace Tetris
         void SPG_quit_Click(object sender, RoutedEventArgs e)
         {
             SP_gameView.PauseGame();
+            mainPanel.Children.Remove(backCanvas);
+            mainPanel.Children.Remove(pause);
             mainPanel.Children.Add(backCanvas);
             mainPanel.Children.Add(pause);
 
+            mainPanel.Children.Remove(backCanvas2);
+            mainPanel.Children.Remove(quit);
             mainPanel.Children.Add(backCanvas2);
             mainPanel.Children.Add(quit);
         }
@@ -330,6 +348,8 @@ namespace Tetris
         void TPG_pause_Click(object sender, RoutedEventArgs e)
         {
             TP_gameView.PauseGame();
+            mainPanel.Children.Remove(backCanvas);
+            mainPanel.Children.Remove(pause);
             mainPanel.Children.Add(backCanvas);
             mainPanel.Children.Add(pause);
         }
@@ -337,6 +357,8 @@ namespace Tetris
         void TPG_save_Click(object sender, RoutedEventArgs e)
         {
             TP_gameView.PauseGame();
+            mainPanel.Children.Remove(backCanvas);
+            mainPanel.Children.Remove(pause);
             mainPanel.Children.Add(backCanvas);
             mainPanel.Children.Add(pause);
 
@@ -360,9 +382,13 @@ namespace Tetris
         void TPG_quit_Click(object sender, RoutedEventArgs e)
         {
             TP_gameView.PauseGame();
+            mainPanel.Children.Remove(backCanvas);
+            mainPanel.Children.Remove(pause);
             mainPanel.Children.Add(backCanvas);
             mainPanel.Children.Add(pause);
 
+            mainPanel.Children.Remove(backCanvas2);
+            mainPanel.Children.Remove(quit);
             mainPanel.Children.Add(backCanvas2);
             mainPanel.Children.Add(quit);
         }
@@ -372,6 +398,8 @@ namespace Tetris
         //Pause
         void pause_quit_Click(object sender, RoutedEventArgs e)
         {
+            mainPanel.Children.Remove(backCanvas2);
+            mainPanel.Children.Remove(quit);
             mainPanel.Children.Add(backCanvas2);
             mainPanel.Children.Add(quit);
         }
@@ -400,15 +428,6 @@ namespace Tetris
             {
                 TP_gameView.PlayerOneGame.QuitGame();
             }
-            mainPanel.Children.Remove(TP_gameView);
-            mainPanel.Children.Remove(SP_gameView);
-            mainPanel.Children.Add(mainMenu);
-
-            mainPanel.Children.Remove(backCanvas);
-            mainPanel.Children.Remove(pause);
-
-            mainPanel.Children.Remove(backCanvas2);
-            mainPanel.Children.Remove(quit);
         }
         void quit_no_Click(object sender, RoutedEventArgs e)
         {
@@ -420,33 +439,41 @@ namespace Tetris
 
         void SPGS_mainMenu_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(SP_gameSummary.AHS_name.Text))
+            if (SP_gameSummary.AHS_name.Text.ToCharArray().Length > 10)
             {
-                SP_gameSummary.AHS_required.Visibility = System.Windows.Visibility.Visible;
+                SP_gameSummary.AHS_chars.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {
-                SP_gameSummary.AddScore();
+                if (!String.IsNullOrEmpty(SP_gameSummary.AHS_name.Text))
+                {
+                    SP_gameSummary.AddScore();
+                }
                 mainPanel.Children.Remove(backCanvas);
                 mainPanel.Children.Remove(SP_gameSummary);
-                SP_gameSummary.AHS_required.Visibility = System.Windows.Visibility.Collapsed;
+                SP_gameSummary.AHS_chars.Visibility = System.Windows.Visibility.Collapsed;
 
+                mainPanel.Children.Remove(mainMenu);
                 mainPanel.Children.Add(mainMenu);
             }
         }
 
         void SPGS_playAgain_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(SP_gameSummary.AHS_name.Text))
+            if (SP_gameSummary.AHS_name.Text.ToCharArray().Length > 10)
             {
-                SP_gameSummary.AHS_required.Visibility = System.Windows.Visibility.Visible;
+                SP_gameSummary.AHS_chars.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {
-                SP_gameSummary.AddScore();
+                if (!String.IsNullOrEmpty(SP_gameSummary.AHS_name.Text))
+                {
+                    SP_gameSummary.AddScore();
+                }
+                mainPanel.Children.Remove(SP_gameView);
                 mainPanel.Children.Remove(backCanvas);
                 mainPanel.Children.Remove(SP_gameSummary);
-                SP_gameSummary.AHS_required.Visibility = System.Windows.Visibility.Collapsed;
+                SP_gameSummary.AHS_chars.Visibility = System.Windows.Visibility.Collapsed;
 
                 if (SP_gameView.GetGameMode() == GameMode.Classic)
                 {
