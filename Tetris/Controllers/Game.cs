@@ -32,7 +32,7 @@ namespace Tetris.Controllers
         private int _linesBeforeSpeedUp = 5;
         private int _currentLevel = 1;
         private bool _isToppedOut = false;
-        public static Tetrimino NextTetrimino { get; set; }
+        public Tetrimino NextTetrimino { get; set; }
 
         public Game(GameMode mode = GameMode.Classic)
         {
@@ -43,6 +43,7 @@ namespace Tetris.Controllers
             GameTimer.Elapsed += Tick;
             this.Mode = mode;
             CurrentScore = 0;
+            randomBag = new List<Tetrimino>();
         }
 
         public List<Tetrimino> tBag = new List<Tetrimino>
@@ -310,10 +311,10 @@ namespace Tetris.Controllers
 
         //Bag of Tetriminos that holds the preset random order of 
         //the Tetriminos that are to be spawned in that order
-        public static List<Tetrimino> randomBag = new List<Tetrimino>();
+        public List<Tetrimino> randomBag { get; set; }
 
         //Populates the randomBag with the randomly ordered Tetriminos
-        public static void MakeTetriminoBag()
+        public void MakeTetriminoBag()
         {
             //Temorary bag of Tetriminos that will be pulled from so
             //that no duplicates will be added to the bag
