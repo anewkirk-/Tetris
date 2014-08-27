@@ -65,6 +65,7 @@ namespace Tetris.Views.GameScreens
             SoloGame = new Game(type);
             SoloGame.Start();
             PaintTimer.Start();
+            Tetris.Controllers.Game.MakeTetriminoBag();
         }
 
         public void PaintTimer_Elapsed(object sender, ElapsedEventArgs e)
