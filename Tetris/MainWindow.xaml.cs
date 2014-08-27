@@ -164,15 +164,8 @@ namespace Tetris
                     int finalScore = SP_gameView.SoloGame.CurrentScore;
                     SP_gameSummary.SPGS_score.Content = finalScore;
                     SP_gameSummary.SPGS_lines.Content = SP_gameView.SoloGame.LinesCleared;
-                    SP_gameSummary.SPGS_time.Content = SP_gameView.SoloGame.TimeElapsed;
+                    SP_gameSummary.SPGS_time.Content = SP_gameView.TimerLabel.Content;
 
-
-                    /*
-                     * It appears that these elements are already in mainPanel.Children,
-                     * but if they need to be added again for some reason I've added
-                     * remove statements so it runs.
-                     * -a
-                     */
                     mainPanel.Children.Remove(backCanvas);
                     mainPanel.Children.Add(backCanvas);
 
@@ -189,10 +182,8 @@ namespace Tetris
                     }
 
                     newScore.AHS_score.Content = SP_gameView.SoloGame.CurrentScore;
-
                 }
             ));
-
         }
 
         void PlayerTwoGame_GameEnd()

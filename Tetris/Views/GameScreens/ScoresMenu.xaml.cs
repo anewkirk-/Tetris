@@ -72,7 +72,7 @@ namespace Tetris.Views.GameScreens
 
             Label scoreHeader = new Label();
             scoreHeader.Style = Application.Current.FindResource("Scores") as Style;
-            scoreHeader.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            scoreHeader.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
             scoreHeader.VerticalAlignment = System.Windows.VerticalAlignment.Top;
             scoreHeader.FontSize = 24;
             scoreHeader.FontWeight = FontWeights.Bold;
