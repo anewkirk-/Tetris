@@ -186,6 +186,31 @@ namespace Tetris.Views.GameScreens
                     ColorBlock(t, currentRectangle);
                 }
             }
+
+            //Highlight hard drop locations
+            //player 1
+            if (PlayerOneGame.CurrentTetrimino != null)
+            {
+                List<Points> highlight = new List<Points>(PlayerOneGame.CurrentTetrimino.Blocks);
+                int d = PlayerOneGame.FindDistanceCurrentCanFall();
+                foreach (Points p in highlight)
+                {
+                    Rectangle currentRectangle = _playerOneRectangles[p.X, p.Y + d];
+                    currentRectangle.StrokeThickness = 2.5;
+                }
+            }
+
+            //player 2
+            if (PlayerTwoGame.CurrentTetrimino != null)
+            {
+                List<Points> highlight = new List<Points>(PlayerTwoGame.CurrentTetrimino.Blocks);
+                int d = PlayerTwoGame.FindDistanceCurrentCanFall();
+                foreach (Points p in highlight)
+                {
+                    Rectangle currentRectangle = _playerTwoRectangles[p.X, p.Y + d];
+                    currentRectangle.StrokeThickness = 2.5;
+                }
+            }
         }
 
         private void ColorBlock(Tetrimino t, Rectangle r)
