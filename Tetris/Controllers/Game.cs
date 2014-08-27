@@ -25,7 +25,7 @@ namespace Tetris.Controllers
         public Timer GameTimer { get; set; }
         public Tetrimino CurrentTetrimino { get; set; }
         public int LinesCleared { get; set; }
-        private int TimeElapsed { get; set; }
+        public int TimeElapsed { get; set; }
         private Random _rand = new Random();
         private int _timedModeTimeLimit = 120;
         private int _marathonModeLineLimit = 50;
@@ -150,7 +150,10 @@ namespace Tetris.Controllers
                     //Four lines cleared ("Tetris")
                     case 4:
                         CurrentScore += (_currentLevel * 1200) + 1200;
-                        ScoredTetris();
+                        if (ScoredTetris != null)
+                        {
+                            ScoredTetris();
+                        }
                         break;
                 }
                 //Clear lines
