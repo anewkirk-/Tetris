@@ -54,8 +54,27 @@
 
         <StackPanel>
             <Label Content="Next Block" />
-            <Image x:Name="SPG_playerOne_nextBlock"/>
-
+            <Label BorderBrush="Black"
+                   BorderThickness="1">
+                <Grid x:Name="NextTetriminoGrid"
+                      Height="30"
+                      Width="106"
+                      Margin="-45,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/> <!--3-->
+                        <ColumnDefinition/> <!--4-->
+                        <ColumnDefinition/> <!--5-->
+                        <ColumnDefinition/> <!--6-->
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Label>
             <Label Content="Score" />
             <Label x:Name="SPG_playerOne_score" />
             <Button x:Name="SPG_pause"

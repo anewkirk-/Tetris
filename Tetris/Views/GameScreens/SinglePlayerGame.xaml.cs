@@ -27,6 +27,7 @@ namespace Tetris.Views.GameScreens
         public System.Timers.Timer PaintTimer { get; set; }
         public bool _rainbowMode = false;
         private Rectangle[,] _rectangleBoard = new Rectangle[10, 20];
+        private Rectangle[,] _nextBoard = new Rectangle[7, 2];
         private Random _gen = new Random();
 
         private List<SolidColorBrush> _tetriminoColors = new List<SolidColorBrush>() {
@@ -56,6 +57,18 @@ namespace Tetris.Views.GameScreens
                     Rectangle r = new Rectangle();
                     _rectangleBoard[i, j] = r;
                     SPG_playerOne_grid.Children.Add(r);
+                    Grid.SetColumn(r, i);
+                    Grid.SetRow(r, j);
+                }
+            }
+
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    Rectangle r = new Rectangle();
+                    _nextBoard[i, j] = r;
+                    NextTetriminoGrid.Children.Add(r);
                     Grid.SetColumn(r, i);
                     Grid.SetRow(r, j);
                 }
