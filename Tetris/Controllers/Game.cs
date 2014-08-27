@@ -78,7 +78,7 @@ namespace Tetris.Controllers
 
             //check for end game conditions
             bool endGame = EndConditionsMet();
-            if (endGame || _isToppedOut)
+            if (endGame)
             {
                 GameTimer.Stop();
                 if (GameEnd != null)
@@ -230,16 +230,11 @@ namespace Tetris.Controllers
                         endGame = true;
                     }
                     break;
-                case GameMode.Marathon:
-                    //Check LinesCleared to see if limit has been reached
-                    if (LinesCleared >= _marathonModeLineLimit)
-                    {
-                        endGame = true;
-                    }
-                    break;
                 default:
                     break;
             }
+            if (_isToppedOut)
+                endGame = true;
             return endGame;
         }
 
@@ -491,18 +486,13 @@ namespace Tetris.Controllers
             }
         }
 
-        public void StartHardDrop()
+        public void HardDrop()
         {
             if (CurrentTetrimino != null)
             {
-                CurrentTetrimino.Fall();
+                //TODO
             }
         }
-
-        //public void StopHardDrop()
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public void RotateCurrent()
         {
@@ -547,7 +537,7 @@ namespace Tetris.Controllers
                 }
             }
 
-            //Rotates the current tetrimino back to its previous position if collision is founds
+            //Rotates the current tetrimino back to its previous position if collision is found
             if ((block1.Count() != 1) ||
                 (block2.Count() != 1) ||
                 (block3.Count() != 1) ||
