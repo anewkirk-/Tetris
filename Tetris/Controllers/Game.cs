@@ -32,6 +32,7 @@ namespace Tetris.Controllers
         private int _linesBeforeSpeedUp = 5;
         private int _currentLevel = 1;
         private bool _isToppedOut = false;
+        public static Tetrimino NextTetrimino { get; set; }
 
         public Game(GameMode mode = GameMode.Classic)
         {
@@ -108,17 +109,7 @@ namespace Tetris.Controllers
 
             //Check for collisions on the current tetrimino
             bool collision = false;
-            List<Points> lowestPoints = new List<Points>(CurrentTetrimino.Blocks);
-            foreach (Points p in lowestPoints.ToList())
-            {
-                foreach (Points p2 in lowestPoints.ToList())
-                {
-                    if (p.X == p2.X && p.Y > p2.Y)
-                    {
-                        lowestPoints.Remove(p2);
-                    }
-                }
-            }
+            List<Points> lowestPoints = FindLowestPoints(CurrentTetrimino);
 
             foreach (Points p in lowestPoints)
             {
@@ -175,6 +166,47 @@ namespace Tetris.Controllers
             {
                 ScoredTetris();
             }
+        }
+
+        private List<Points> FindLowestPoints(Tetrimino t)
+        {
+            List<Points> lowestPoints = new List<Points>(CurrentTetrimino.Blocks);
+            foreach (Points p in lowestPoints.ToList())
+            {
+                foreach (Points p2 in lowestPoints.ToList())
+                {
+                    if (p.X == p2.X && p.Y > p2.Y)
+                    {
+                        lowestPoints.Remove(p2);
+                    }
+                }
+            }
+            return lowestPoints;
+        }
+
+        public int FindDistanceCurrentCanFall()
+        {
+            List<Points> lowestPoints = FindLowestPoints(CurrentTetrimino);
+            int lowest = lowestPoints.OrderByDescending(a => a.Y).First().Y;
+            int distance = 19 - lowest;
+            IEnumerable<Points> blocksBelow;
+            foreach (Points p in lowestPoints)
+            {
+                blocksBelow = from t in GameBoard
+                              from pt in t.Blocks
+                              where pt.X == p.X
+                              where t != CurrentTetrimino
+                              select pt;
+                if (blocksBelow.Count() > 0)
+                {
+                    Points highest = blocksBelow.OrderBy(a => a.Y).First();
+                    if (highest.Y - p.Y - 1 < distance)
+                    {
+                        distance = highest.Y - p.Y - 1;
+                    }
+                }
+            }
+            return distance;
         }
 
         //returns a list of Y coordinates of full rows
@@ -278,10 +310,10 @@ namespace Tetris.Controllers
 
         //Bag of Tetriminos that holds the preset random order of 
         //the Tetriminos that are to be spawned in that order
-        public List<Tetrimino> randomBag = new List<Tetrimino>();
+        public static List<Tetrimino> randomBag = new List<Tetrimino>();
 
         //Populates the randomBag with the randomly ordered Tetriminos
-        private void MakeTetriminoBag()
+        public static void MakeTetriminoBag()
         {
             //Temorary bag of Tetriminos that will be pulled from so
             //that no duplicates will be added to the bag
@@ -297,11 +329,12 @@ namespace Tetris.Controllers
                 };
 
             //Loop that populates the bag
+            Random rnd = new Random();
             int i = 0;
             while (i < 7)
             {
                 //Randomly grabs an index from Bag 
-                int index = _rand.Next(0, Bag.Count);
+                int index = rnd.Next(0, Bag.Count);
                 //Temp tetrimino that is set to the random index from the Bag
                 Tetrimino tracker = Bag[index];
                 //Removes the tetrimino at the index so that is will not be used again
@@ -335,19 +368,15 @@ namespace Tetris.Controllers
                 }
                 i++;
             }
+            //Sets NextTetrimino to the first tetrimino in the randomBag
+            NextTetrimino = randomBag[0];
         }
 
         public void AddRandomTetrimino()
         {
-            //Check to see if the randomBag is empty
-            if (randomBag.Count == 0 )
-            {
-                MakeTetriminoBag();
-            }
-
-            //Sets randT to the first tetrimino in the randomBag
-            Tetrimino randT = randomBag[0];
-            //Removes the first tetrimino
+            //Sets randT to the NextTetrimino
+            Tetrimino randT = NextTetrimino;
+            //Removes the first tetrimino in the bag
             randomBag.RemoveAt(0);
 
             CurrentTetrimino = randT;
@@ -368,6 +397,14 @@ namespace Tetris.Controllers
                     }
                 }
             }
+
+            //Check to see if the randomBag is empty
+            //If it is not, set Nexttetrimino to the first tetrimino in the randomBag
+            //If it is then it makes a new randomBag
+            if (randomBag.Count != 0)
+                NextTetrimino = randomBag[0];
+            else
+                MakeTetriminoBag();
         }
             
      
@@ -489,7 +526,11 @@ namespace Tetris.Controllers
         {
             if (CurrentTetrimino != null)
             {
-                //TODO
+                int d = FindDistanceCurrentCanFall();
+                foreach (Points p in CurrentTetrimino.Blocks)
+                {
+                    p.Y += d;
+                }
             }
         }
 

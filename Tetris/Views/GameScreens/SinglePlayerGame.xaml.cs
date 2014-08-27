@@ -65,6 +65,7 @@ namespace Tetris.Views.GameScreens
             SoloGame = new Game(type);
             SoloGame.Start();
             PaintTimer.Start();
+            Tetris.Controllers.Game.MakeTetriminoBag();
         }
 
         public void PaintTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -171,6 +172,18 @@ namespace Tetris.Views.GameScreens
                     }
                     currentRectangle.Stroke = _borderBrush;
                     currentRectangle.StrokeThickness = 2.5;                    
+                }
+            }
+
+            //Highlight current tetrimino hard drop
+            if (SoloGame.CurrentTetrimino != null)
+            {
+                List<Points> highlight = new List<Points>(SoloGame.CurrentTetrimino.Blocks);
+                int d = SoloGame.FindDistanceCurrentCanFall();
+                foreach (Points p in highlight)
+                {
+                    Rectangle currentRectangle = _rectangleBoard[p.X, p.Y + d];
+                    currentRectangle.StrokeThickness = 2.5;
                 }
             }
         }
