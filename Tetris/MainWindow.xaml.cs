@@ -166,22 +166,31 @@ namespace Tetris
                     int finalScore = SP_gameView.SoloGame.CurrentScore;
                     SP_gameSummary.SPGS_score.Content = finalScore;
                     SP_gameSummary.SPGS_lines.Content = SP_gameView.SoloGame.LinesCleared;
-                    SP_gameSummary.SPGS_time.Content = SP_gameView.TimerLabel.Content;
+                    if (TP_gameView.GetGameMode() == GameMode.Timed)
+                    {
+                        SP_gameSummary.SPGS_time.Content = "02:00";
+                    }
+                    else
+                    {
+                        SP_gameSummary.SPGS_time.Content = SP_gameView.TimerLabel.Content;
+                    }
+
+                    if (csm.IsHighScore(finalScore))
+                    {
+                        SP_gameSummary.AHS_type.Content = "New High Score!!";
+                        SP_gameSummary.AHS_type.FontWeight = FontWeights.ExtraBold;
+                    }
+                    else
+                    {
+                        SP_gameSummary.AHS_type.Content = "Enter your score:";
+                        SP_gameSummary.AHS_type.FontWeight = FontWeights.Normal;
+                    }
 
                     mainPanel.Children.Remove(backCanvas);
                     mainPanel.Children.Add(backCanvas);
 
                     mainPanel.Children.Remove(SP_gameSummary);
                     mainPanel.Children.Add(SP_gameSummary);
-
-                    if (csm.IsHighScore(finalScore))
-                    {
-                        SP_gameSummary.AHS_type.Content = "New High Score!!";
-                    }
-                    else
-                    {
-                        SP_gameSummary.AHS_type.Content = "Enter your score:";
-                    }
                 }
             ));
         }
@@ -198,30 +207,41 @@ namespace Tetris
                 TP_gameSummary.TPGS_playerTwo_score.Content = playerTwoScore;
                 TP_gameSummary.TPGS_playerOne_lines.Content = TP_gameView.PlayerOneGame.LinesCleared;
                 TP_gameSummary.TPGS_playerTwo_lines.Content = TP_gameView.PlayerTwoGame.LinesCleared;
-                TP_gameSummary.TPGS_time.Content = TP_gameView.TimerLabel.Content;
+                if (TP_gameView.GetGameMode() == GameMode.Timed)
+                {
+                    TP_gameSummary.TPGS_time.Content = "02:00";
+                }
+                else
+                {
+                    TP_gameSummary.TPGS_time.Content = TP_gameView.TimerLabel.Content;
+                }
+
+                if (csm.IsHighScore(playerOneScore))
+                {
+                    TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
+                    TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.ExtraBold;
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerOne_type.Content = "Submit your score:";
+                    TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.Normal;
+                }
+                if (csm.IsHighScore(playerTwoScore))
+                {
+                    TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
+                    TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.ExtraBold;
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerTwo_type.Content = "Submit your score:";
+                    TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.Normal;
+                }
 
                 mainPanel.Children.Remove(backCanvas);
                 mainPanel.Children.Add(backCanvas);
 
                 mainPanel.Children.Remove(TP_gameSummary);
                 mainPanel.Children.Add(TP_gameSummary);
-
-                if (csm.IsHighScore(playerOneScore))
-                {
-                    TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
-                }
-                else
-                {
-                    TP_gameSummary.AHS_playerOne_type.Content = "Enter your score:";
-                }
-                if (csm.IsHighScore(playerTwoScore))
-                {
-                    TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
-                }
-                else
-                {
-                    TP_gameSummary.AHS_playerTwo_type.Content = "Enter your score:";
-                }
             }
             ));
         }
@@ -238,30 +258,41 @@ namespace Tetris
                 TP_gameSummary.TPGS_playerTwo_score.Content = playerTwoScore;
                 TP_gameSummary.TPGS_playerOne_lines.Content = TP_gameView.PlayerOneGame.LinesCleared;
                 TP_gameSummary.TPGS_playerTwo_lines.Content = TP_gameView.PlayerTwoGame.LinesCleared;
-                TP_gameSummary.TPGS_time.Content = TP_gameView.TimerLabel.Content;
+                if (TP_gameView.GetGameMode() == GameMode.Timed)
+                {
+                    TP_gameSummary.TPGS_time.Content = "02:00";
+                }
+                else
+                {
+                    TP_gameSummary.TPGS_time.Content = TP_gameView.TimerLabel.Content;
+                }
+
+                if (csm.IsHighScore(playerOneScore))
+                {
+                    TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
+                    TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.ExtraBold;
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerOne_type.Content = "Submit your score:";
+                    TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.Normal;
+                }
+                if (csm.IsHighScore(playerTwoScore))
+                {
+                    TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
+                    TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.ExtraBold;
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerTwo_type.Content = "Submit your score:";
+                    TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.Normal;
+                }
 
                 mainPanel.Children.Remove(backCanvas);
                 mainPanel.Children.Add(backCanvas);
 
                 mainPanel.Children.Remove(TP_gameSummary);
                 mainPanel.Children.Add(TP_gameSummary);
-
-                if (csm.IsHighScore(playerOneScore))
-                {
-                    TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
-                }
-                else
-                {
-                    TP_gameSummary.AHS_playerOne_type.Content = "Enter your score:";
-                }
-                if (csm.IsHighScore(playerTwoScore))
-                {
-                    TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
-                }
-                else
-                {
-                    TP_gameSummary.AHS_playerTwo_type.Content = "Enter your score:";
-                }
             }
             ));
         }
