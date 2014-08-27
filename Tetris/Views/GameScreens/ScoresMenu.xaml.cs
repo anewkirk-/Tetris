@@ -35,12 +35,60 @@ namespace Tetris.Views.GameScreens
         public void UpdateScores()
         {
             List<Score> topScores = sm.GetAll();
+            SM_grid.Children.Clear();
+            SM_grid.ColumnDefinitions.Clear();
+            SM_grid.RowDefinitions.Clear();
+
+            SM_grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            SM_grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            SM_grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(40) });
+
+            Border mainBorder1 = new Border();
+            mainBorder1.BorderBrush = new SolidColorBrush(Colors.Black);
+            mainBorder1.BorderThickness = new Thickness(0,0,1,1);
+            mainBorder1.Child = new Rectangle { Fill = new SolidColorBrush(Colors.CornflowerBlue) };
+            Grid.SetColumn(mainBorder1, 0);
+            Grid.SetRow(mainBorder1, 0);
+
+            Border mainBorder2 = new Border();
+            mainBorder2.BorderBrush = new SolidColorBrush(Colors.Black);
+            mainBorder2.BorderThickness = new Thickness(1, 0, 1, 1);
+            mainBorder2.Child = new Rectangle { Fill = new SolidColorBrush(Colors.CornflowerBlue) };
+            Grid.SetColumn(mainBorder2, 1);
+            Grid.SetRow(mainBorder2, 0);
+
+            SM_grid.Children.Add(mainBorder1);
+            SM_grid.Children.Add(mainBorder2);
+
+            Label usernameHeader = new Label();
+            usernameHeader.Style = Application.Current.FindResource("Scores") as Style;
+            usernameHeader.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            usernameHeader.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+            usernameHeader.FontSize = 22;
+            usernameHeader.FontWeight = FontWeights.Bold;
+            usernameHeader.Content = "Username";
+            Grid.SetColumn(usernameHeader, 0);
+            Grid.SetRow(usernameHeader, 0);
+
+            Label scoreHeader = new Label();
+            scoreHeader.Style = Application.Current.FindResource("Scores") as Style;
+            scoreHeader.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            scoreHeader.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+            scoreHeader.FontSize = 24;
+            scoreHeader.FontWeight = FontWeights.Bold;
+            scoreHeader.Content = "Score";
+            Grid.SetColumn(scoreHeader, 1);
+            Grid.SetRow(scoreHeader, 0);
+
+            SM_grid.Children.Add(usernameHeader);
+            SM_grid.Children.Add(scoreHeader);
 
             for (int i = 0; i < topScores.Count; i++)
             {
                 Score score = topScores[i];
 
-                SM_grid.RowDefinitions.Add(new RowDefinition());
+                SM_grid.RowDefinitions.Add(new RowDefinition { Style = this.FindResource("score") as Style });
+                //SM_grid.RowDefinitions.Add(new RowDefinition());
 
                 Border border1 = new Border();
                 border1.BorderBrush = new SolidColorBrush(Colors.Black);

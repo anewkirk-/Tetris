@@ -230,6 +230,7 @@ namespace Tetris
 
         void MM_scoreBoards_Click(object sender, RoutedEventArgs e)
         {
+            scoreMenu.UpdateScores();
             mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Remove(scoreMenu);
             mainPanel.Children.Add(scoreMenu);
@@ -287,6 +288,8 @@ namespace Tetris
         void TPMS_timed_Click(object sender, RoutedEventArgs e)
         {
             TP_gameView.NewGame(GameMode.Timed);
+            TP_gameView.PlayerOneGame.GameEnd += PlayerOneGame_GameEnd;
+            TP_gameView.PlayerTwoGame.GameEnd += PlayerTwoGame_GameEnd;
             mainPanel.Children.Remove(TP_modeSelect);
 
             mainPanel.Children.Remove(TP_gameView);
@@ -296,6 +299,8 @@ namespace Tetris
         void TPMS_marathon_Click(object sender, RoutedEventArgs e)
         {
             TP_gameView.NewGame(GameMode.Marathon);
+            TP_gameView.PlayerOneGame.GameEnd += PlayerOneGame_GameEnd;
+            TP_gameView.PlayerTwoGame.GameEnd += PlayerTwoGame_GameEnd;
             mainPanel.Children.Remove(TP_modeSelect);
             mainPanel.Children.Remove(TP_gameView);
             mainPanel.Children.Add(TP_gameView);

@@ -26,8 +26,13 @@ namespace Tetris.Controllers
         public Tetrimino CurrentTetrimino { get; set; }
         public int LinesCleared { get; set; }
         public int TimeElapsed { get; set; }
+<<<<<<< HEAD
+        private Random _rand = new Random();
+        private int _timedModeTimeLimit = 120;
+=======
         public int _timedModeTimeLimit = 120000;
         private Random _rand = new Random(Guid.NewGuid().GetHashCode());
+>>>>>>> origin/master
         private int _marathonModeLineLimit = 50;
         private int _linesBeforeSpeedUp = 5;
         private int _currentLevel = 1;
