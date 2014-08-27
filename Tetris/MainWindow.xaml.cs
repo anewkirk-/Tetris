@@ -521,6 +521,9 @@ namespace Tetris
                         SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
                         break;
                     case Key.Escape:
+                        SPG_pause_Click(null, null);
+                        break;
+                    case Key.F12:
                         Environment.Exit(0);
                         break;
                 }
@@ -560,6 +563,9 @@ namespace Tetris
                         //Fix hard drop!!
                         break;
                     case Key.Escape:
+                        TPG_pause_Click(null, null);
+                        break;
+                    case Key.F12:
                         Environment.Exit(0);
                         break;
                 }
