@@ -183,7 +183,7 @@ namespace Tetris.Views.GameScreens
                 foreach (Points p in highlight)
                 {
                     Rectangle currentRectangle = _rectangleBoard[p.X, p.Y + d];
-                    currentRectangle.StrokeThickness = 2.5;
+                    currentRectangle.StrokeThickness = 1.8;
                 }
             }
         }

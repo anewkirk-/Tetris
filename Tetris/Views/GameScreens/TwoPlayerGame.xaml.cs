@@ -248,7 +248,7 @@ namespace Tetris.Views.GameScreens
                 r.Fill = _tetriminoColors.ElementAt(_gen.Next(0, 7));
             }
             r.Stroke = _borderBrush;
-            r.StrokeThickness = 2.5; 
+            r.StrokeThickness = 1.8; 
         }
     }
 }
