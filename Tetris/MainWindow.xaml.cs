@@ -562,6 +562,14 @@ namespace Tetris
                     case Key.Escape:
                         Environment.Exit(0);
                         break;
+
+                    case Key.T:
+                        TP_gameView.PlayerTwoGame.FireScoredTetris();
+                        break;
+                    case Key.Y:
+                        TP_gameView.PlayerOneGame.FireScoredTetris();
+                        break;
+
                 }
             }
         }

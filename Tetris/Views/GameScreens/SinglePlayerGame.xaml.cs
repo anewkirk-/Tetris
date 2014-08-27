@@ -69,7 +69,7 @@ namespace Tetris.Views.GameScreens
 
         public void PaintTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Dispatcher.Invoke((Action)(() => { DisplayTetriminos(); }));
+            Dispatcher.Invoke((Action)(() => { UpdateUI(); }));
         }
 
         public GameMode GetGameMode()
@@ -89,10 +89,26 @@ namespace Tetris.Views.GameScreens
             SoloGame.Start();
         }
 
-        public void DisplayTetriminos()
+        public void UpdateUI()
         {
             //Display user's current score
             SPG_playerOne_score.Content = SoloGame.CurrentScore.ToString();
+
+            //Display lines cleared
+            LinesClearedLabel.Content = SoloGame.LinesCleared.ToString();
+
+            //Display timer
+            switch (SoloGame.Mode)
+            {
+                case GameMode.Timed:
+                    break;
+                default:
+                    TimeSpan time = TimeSpan.FromMilliseconds(SoloGame.TimeElapsed);
+                    string mins = time.Minutes > 9 ? time.Minutes.ToString() : "0" + time.Minutes.ToString();
+                    string secs = time.Seconds > 9 ? time.Seconds.ToString() : "0" + time.Seconds.ToString();
+                    TimerLabel.Content = string.Concat(mins, ":" + secs);
+                    break;
+            }
 
             //Set all rectangles to a white fill and thin border
             for (int i = 0; i < 10; i++)

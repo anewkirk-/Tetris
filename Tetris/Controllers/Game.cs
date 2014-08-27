@@ -150,10 +150,7 @@ namespace Tetris.Controllers
                     //Four lines cleared ("Tetris")
                     case 4:
                         CurrentScore += (_currentLevel * 1200) + 1200;
-                        if (ScoredTetris != null)
-                        {
-                            ScoredTetris();
-                        }
+                        FireScoredTetris();
                         break;
                 }
                 //Clear lines
@@ -169,6 +166,14 @@ namespace Tetris.Controllers
             {
                 //if no collision, let the current tetrimino keep falling
                 CurrentTetrimino.Fall();
+            }
+        }
+
+        public void FireScoredTetris()
+        {
+            if (ScoredTetris != null)
+            {
+                ScoredTetris();
             }
         }
 
