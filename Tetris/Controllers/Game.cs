@@ -274,7 +274,6 @@ namespace Tetris.Controllers
                     }
                 }
             }
-            LinesCleared++;
         }
 
         //Bag of Tetriminos that holds the preset random order of 
