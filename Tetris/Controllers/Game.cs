@@ -393,6 +393,7 @@ namespace Tetris.Controllers
                             if (newPoint.X == p.X && newPoint.Y == p.Y)
                             {
                                 _isToppedOut = true;
+                                GameBoard.Remove(CurrentTetrimino);
                             }
                         }
                     }
