@@ -517,7 +517,6 @@ namespace Tetris
 
 
         //KEY BINDINGS--------------------------------------------------------------------
-
         private void Window_KeyDown_1(object sender, KeyEventArgs e)
         {
             /*By default:
@@ -560,6 +559,10 @@ namespace Tetris
                 {
                     TP_gameView.PlayerTwoGame.RotateCurrent();
                 }
+                else if (k == PauseKey)
+                {
+                    TPG_pause_Click(null, null);
+                }
             }
             else
             {
@@ -579,10 +582,10 @@ namespace Tetris
                 {
                     SP_gameView.SoloGame.RotateCurrent();
                 }
-            }
-            if (k == PauseKey)
-            {
-                TPG_pause_Click(null, null);
+                else if (k == PauseKey)
+                {
+                    SPG_pause_Click(null, null);
+                }
             }
         }
 
