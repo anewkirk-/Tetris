@@ -135,7 +135,6 @@ namespace Tetris
              * These statements must be dispatched out of this thread
              * -a
              */
-
             Dispatcher.BeginInvoke(DispatcherPriority.Input, new ThreadStart(() =>
                 {
                     SP_gameView.SoloGame.Stop();
