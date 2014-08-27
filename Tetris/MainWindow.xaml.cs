@@ -591,6 +591,10 @@ namespace Tetris
                 {
                     SPG_pause_Click(null, null);
                 }
+                else if (k == Key.R)
+                {
+                    SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
+                }
             }
         }
 
