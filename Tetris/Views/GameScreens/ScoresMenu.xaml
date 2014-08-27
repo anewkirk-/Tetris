@@ -8,7 +8,9 @@
              Background="{StaticResource ResourceKey=MainBackground}">
     
     <UserControl.Resources>
-        
+        <Style TargetType="RowDefinition" x:Key="score">
+            <Setter Property="Height" Value="35" />
+        </Style>
     </UserControl.Resources>
     
     <StackPanel>
@@ -16,43 +18,10 @@
         
         
         <Border BorderBrush="Black" BorderThickness="3" 
-                Margin="50"
+                Margin="50,10,50,0"
                 Width="600">
             <Grid x:Name="SM_grid"
-                  Width="600"
-                  MaxHeight="400">
-            
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-            
-                <Border Grid.Column="0" Grid.Row="0"
-                        BorderBrush="Black"
-                        BorderThickness="0,0,1,1">
-                    <Rectangle Fill="CornflowerBlue" />
-                </Border>
-                <Border Grid.Column="1" Grid.Row="0"
-                        BorderBrush="Black"
-                        BorderThickness="1,0,1,1">
-                    <Rectangle Fill="CornflowerBlue" />
-                </Border>
-
-                <Label Content="Username"
-                       Grid.Column="0" Grid.Row="0"
-                       Style="{StaticResource ResourceKey=Scores}"
-                       HorizontalContentAlignment="Right"
-                       FontSize="24"
-                       FontWeight="Bold"/>
-            
-                <Label Content="Score"
-                       Grid.Column="1" Grid.Row="0"
-                       Style="{StaticResource ResourceKey=Scores}"
-                       FontSize="24"
-                       FontWeight="Bold"/>
+                  Width="600">
             
             </Grid>
 

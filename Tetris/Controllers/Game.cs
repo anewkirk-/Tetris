@@ -25,7 +25,7 @@ namespace Tetris.Controllers
         public Timer GameTimer { get; set; }
         public Tetrimino CurrentTetrimino { get; set; }
         public int LinesCleared { get; set; }
-        private int TimeElapsed { get; set; }
+        public int TimeElapsed { get; set; }
         private Random _rand = new Random();
         private int _timedModeTimeLimit = 120;
         private int _marathonModeLineLimit = 50;
