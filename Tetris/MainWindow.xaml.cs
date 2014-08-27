@@ -62,6 +62,17 @@ namespace Tetris
         //Score Manager
         private ScoreManager csm;
 
+        //Keymaps
+        public Key P1Left { get; set; }
+        public Key P1Right { get; set; }
+        public Key P1Drop { get; set; }
+        public Key P1Rotate { get; set; }
+        public Key P2Left { get; set; }
+        public Key P2Right { get; set; }
+        public Key P2Drop { get; set; }
+        public Key P2Rotate { get; set; }
+        public Key PauseKey { get; set; }
+
         public MainWindow()
         {
             //MODIFY ALL UI ELEMENTS
@@ -119,10 +130,21 @@ namespace Tetris
             backCanvas2.Background = new SolidColorBrush(Colors.Black);
             backCanvas2.Background.Opacity = .25;
 
+            //Instantiate score manager
             csm = new ScoreManager();
 
-            InitializeComponent();
+            //Key defaults
+            P1Left = Key.A;
+            P1Right = Key.D;
+            P1Drop = Key.S;
+            P1Rotate = Key.W;
+            P2Left = Key.Left;
+            P2Right = Key.Right;
+            P2Drop = Key.Down;
+            P2Rotate = Key.Up;
+            PauseKey = Key.Escape;
 
+            InitializeComponent();
             mainPanel.Children.Add(mainMenu);
         }
 
@@ -135,7 +157,6 @@ namespace Tetris
              * These statements must be dispatched out of this thread
              * -a
              */
-
             Dispatcher.BeginInvoke(DispatcherPriority.Input, new ThreadStart(() =>
                 {
                     SP_gameView.SoloGame.Stop();
@@ -501,73 +522,74 @@ namespace Tetris
 
 
         //KEY BINDINGS--------------------------------------------------------------------
-
         private void Window_KeyDown_1(object sender, KeyEventArgs e)
         {
-            if (SP_gameView.SoloGame != null)
+            /*By default:
+            * Player 1 has WASD
+            * Player 2 has arrow keys
+            */
+            bool isTwoPlayerGame = TP_gameView.PlayerOneGame == null ? false : true;
+            Key k = e.Key;
+            if (isTwoPlayerGame)
             {
-                switch (e.Key)
+                if (k == P1Left)
                 {
-                    /*
-                     * _Single Player control keys_
-                     */
-                    case Key.Left:
-                        SP_gameView.SoloGame.MoveLeft();
-                        break;
-                    case Key.Right:
-                        SP_gameView.SoloGame.MoveRight();
-                        break;
-                    case Key.Up:
-                        SP_gameView.SoloGame.RotateCurrent();
-                        break;
-                    case Key.Down:
-                        //Fix hard drop!
-                        break;
-                    case Key.R:
-                        SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
-                        break;
-                    case Key.Escape:
-                        Environment.Exit(0);
-                        break;
+                    TP_gameView.PlayerOneGame.MoveLeft();
+                }
+                else if (k == P1Right)
+                {
+                    TP_gameView.PlayerOneGame.MoveRight();
+                }
+                else if (k == P1Drop)
+                {
+                    TP_gameView.PlayerOneGame.HardDrop();
+                }
+                else if (k == P1Rotate)
+                {
+                    TP_gameView.PlayerOneGame.RotateCurrent();
+                }
+                else if (k == P2Left)
+                {
+                    TP_gameView.PlayerTwoGame.MoveLeft();
+                }
+                else if (k == P2Right)
+                {
+                    TP_gameView.PlayerTwoGame.MoveRight();
+                }
+                else if (k == P2Drop)
+                {
+                    TP_gameView.PlayerTwoGame.HardDrop();
+                }
+                else if (k == P2Rotate)
+                {
+                    TP_gameView.PlayerTwoGame.RotateCurrent();
+                }
+                else if (k == PauseKey)
+                {
+                    TPG_pause_Click(null, null);
                 }
             }
-            else if (TP_gameView.PlayerOneGame != null
-                && TP_gameView.PlayerTwoGame != null)
+            else
             {
-                /*
-                 * _Two Player control keys_
-                 * Player 1 has WASD
-                 * Player 2 has arrow keys
-                 */
-                switch (e.Key)
+                if (k == P1Left)
                 {
-                    case Key.W:
-                        TP_gameView.PlayerOneGame.RotateCurrent();
-                        break;
-                    case Key.A:
-                        TP_gameView.PlayerOneGame.MoveLeft();
-                        break;
-                    case Key.D:
-                        TP_gameView.PlayerOneGame.MoveRight();
-                        break;
-                    case Key.S:
-                        //Fix hard drop!!
-                        break;
-                    case Key.Up:
-                        TP_gameView.PlayerTwoGame.RotateCurrent();
-                        break;
-                    case Key.Left:
-                        TP_gameView.PlayerTwoGame.MoveLeft();
-                        break;
-                    case Key.Right:
-                        TP_gameView.PlayerTwoGame.MoveRight();
-                        break;
-                    case Key.Down:
-                        //Fix hard drop!!
-                        break;
-                    case Key.Escape:
-                        Environment.Exit(0);
-                        break;
+                    SP_gameView.SoloGame.MoveLeft();
+                }
+                else if (k == P1Right)
+                {
+                    SP_gameView.SoloGame.MoveRight();
+                }
+                else if (k == P1Drop)
+                {
+                    SP_gameView.SoloGame.HardDrop();
+                }
+                else if (k == P1Rotate)
+                {
+                    SP_gameView.SoloGame.RotateCurrent();
+                }
+                else if (k == PauseKey)
+                {
+                    SPG_pause_Click(null, null);
                 }
             }
         }

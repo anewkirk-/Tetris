@@ -64,6 +64,8 @@
                     Content="Save"/>
             <Button x:Name="SPG_quit"
                     Content="Quit"/>
+            <Label x:Name="TimerLabel"></Label>
+            <Label x:Name="LinesClearedLabel"></Label>
         </StackPanel>
     
     </StackPanel>

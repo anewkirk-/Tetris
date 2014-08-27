@@ -104,7 +104,7 @@ namespace Tetris.Views.GameScreens
         {
             try
             {
-                Dispatcher.Invoke((Action)(() => { DisplayTetriminos(); }));
+                Dispatcher.Invoke((Action)(() => { UpdateUI(); }));
             }
             catch 
             {
@@ -122,11 +122,32 @@ namespace Tetris.Views.GameScreens
             PlayerOneGame.AddRowSansOne();
         }
 
-        private void DisplayTetriminos()
+        private void UpdateUI()
         {
             //Display current scores
             TPG_playerOne_score.Content = PlayerOneGame.CurrentScore.ToString();
             TPG_playerTwo_score.Content = PlayerTwoGame.CurrentScore.ToString();
+
+            //Display lines cleared
+            p1_LinesClearedLabel.Content = PlayerOneGame.LinesCleared.ToString();
+            p2_LinesClearedLabel.Content = PlayerTwoGame.LinesCleared.ToString();
+
+            //Display timer
+            //Display timer
+            TimeSpan time;
+            switch (PlayerOneGame.Mode)
+            {
+                case GameMode.Timed:
+                    time = TimeSpan.FromMilliseconds(PlayerOneGame._timedModeTimeLimit - PlayerOneGame.TimeElapsed);
+                    break;
+                default:
+                    time = TimeSpan.FromMilliseconds(PlayerOneGame.TimeElapsed);
+                    break;
+            }
+            string mins = time.Minutes > 9 ? time.Minutes.ToString() : "0" + time.Minutes.ToString();
+            string secs = time.Seconds > 9 ? time.Seconds.ToString() : "0" + time.Seconds.ToString();
+            TimerLabel.Content = string.Concat(mins, ":" + secs);
+
 
             //Empty grids
             for (int i = 0; i < 10; i++)
