@@ -27,7 +27,7 @@ namespace Tetris.Controllers
         public int LinesCleared { get; set; }
         public int TimeElapsed { get; set; }
         public int _timedModeTimeLimit = 120000;
-        private Random _rand = new Random();
+        private Random _rand = new Random(Guid.NewGuid().GetHashCode());
         private int _marathonModeLineLimit = 50;
         private int _linesBeforeSpeedUp = 5;
         private int _currentLevel = 1;
