@@ -188,74 +188,82 @@ namespace Tetris
 
         void PlayerTwoGame_GameEnd()
         {
-            TP_gameView.PauseGame();
-            TP_gameView.PaintTimer.Stop();
-            int playerOneScore = TP_gameView.PlayerOneGame.CurrentScore;
-            int playerTwoScore = TP_gameView.PlayerTwoGame.CurrentScore;
-            TP_gameSummary.TPGS_playerOne_score.Content = playerOneScore;
-            TP_gameSummary.TPGS_playerTwo_score.Content = playerTwoScore;
-            TP_gameSummary.TPGS_playerOne_lines.Content = TP_gameView.PlayerOneGame.LinesCleared;
-            TP_gameSummary.TPGS_playerTwo_lines.Content = TP_gameView.PlayerTwoGame.LinesCleared;
-            TP_gameSummary.TPGS_time.Content = TP_gameView.TimerLabel.Content;
+            Dispatcher.BeginInvoke(DispatcherPriority.Input, new ThreadStart(() =>
+            {
+                TP_gameView.PauseGame();
+                TP_gameView.PaintTimer.Stop();
+                int playerOneScore = TP_gameView.PlayerOneGame.CurrentScore;
+                int playerTwoScore = TP_gameView.PlayerTwoGame.CurrentScore;
+                TP_gameSummary.TPGS_playerOne_score.Content = playerOneScore;
+                TP_gameSummary.TPGS_playerTwo_score.Content = playerTwoScore;
+                TP_gameSummary.TPGS_playerOne_lines.Content = TP_gameView.PlayerOneGame.LinesCleared;
+                TP_gameSummary.TPGS_playerTwo_lines.Content = TP_gameView.PlayerTwoGame.LinesCleared;
+                TP_gameSummary.TPGS_time.Content = TP_gameView.TimerLabel.Content;
 
-            mainPanel.Children.Remove(backCanvas);
-            mainPanel.Children.Add(backCanvas);
+                mainPanel.Children.Remove(backCanvas);
+                mainPanel.Children.Add(backCanvas);
 
-            mainPanel.Children.Remove(TP_gameSummary);
-            mainPanel.Children.Add(TP_gameSummary);
+                mainPanel.Children.Remove(TP_gameSummary);
+                mainPanel.Children.Add(TP_gameSummary);
 
-            if (csm.IsHighScore(playerOneScore))
-            {
-                TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
+                if (csm.IsHighScore(playerOneScore))
+                {
+                    TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerOne_type.Content = "Enter your score:";
+                }
+                if (csm.IsHighScore(playerTwoScore))
+                {
+                    TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerTwo_type.Content = "Enter your score:";
+                }
             }
-            else
-            {
-                TP_gameSummary.AHS_playerOne_type.Content = "Enter your score:";
-            }
-            if (csm.IsHighScore(playerTwoScore))
-            {
-                TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
-            }
-            else
-            {
-                TP_gameSummary.AHS_playerTwo_type.Content = "Enter your score:";
-            }
+            ));
         }
 
         void PlayerOneGame_GameEnd()
         {
-            TP_gameView.PauseGame();
-            TP_gameView.PaintTimer.Stop();
-            int playerOneScore = TP_gameView.PlayerOneGame.CurrentScore;
-            int playerTwoScore = TP_gameView.PlayerTwoGame.CurrentScore;
-            TP_gameSummary.TPGS_playerOne_score.Content = playerOneScore;
-            TP_gameSummary.TPGS_playerTwo_score.Content = playerTwoScore;
-            TP_gameSummary.TPGS_playerOne_lines.Content = TP_gameView.PlayerOneGame.LinesCleared;
-            TP_gameSummary.TPGS_playerTwo_lines.Content = TP_gameView.PlayerTwoGame.LinesCleared;
-            TP_gameSummary.TPGS_time.Content = TP_gameView.TimerLabel.Content;
+            Dispatcher.BeginInvoke(DispatcherPriority.Input, new ThreadStart(() =>
+            {
+                TP_gameView.PauseGame();
+                TP_gameView.PaintTimer.Stop();
+                int playerOneScore = TP_gameView.PlayerOneGame.CurrentScore;
+                int playerTwoScore = TP_gameView.PlayerTwoGame.CurrentScore;
+                TP_gameSummary.TPGS_playerOne_score.Content = playerOneScore;
+                TP_gameSummary.TPGS_playerTwo_score.Content = playerTwoScore;
+                TP_gameSummary.TPGS_playerOne_lines.Content = TP_gameView.PlayerOneGame.LinesCleared;
+                TP_gameSummary.TPGS_playerTwo_lines.Content = TP_gameView.PlayerTwoGame.LinesCleared;
+                TP_gameSummary.TPGS_time.Content = TP_gameView.TimerLabel.Content;
 
-            mainPanel.Children.Remove(backCanvas);
-            mainPanel.Children.Add(backCanvas);
+                mainPanel.Children.Remove(backCanvas);
+                mainPanel.Children.Add(backCanvas);
 
-            mainPanel.Children.Remove(TP_gameSummary);
-            mainPanel.Children.Add(TP_gameSummary);
+                mainPanel.Children.Remove(TP_gameSummary);
+                mainPanel.Children.Add(TP_gameSummary);
 
-            if (csm.IsHighScore(playerOneScore))
-            {
-                TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
+                if (csm.IsHighScore(playerOneScore))
+                {
+                    TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerOne_type.Content = "Enter your score:";
+                }
+                if (csm.IsHighScore(playerTwoScore))
+                {
+                    TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerTwo_type.Content = "Enter your score:";
+                }
             }
-            else
-            {
-                TP_gameSummary.AHS_playerOne_type.Content = "Enter your score:";
-            }
-            if (csm.IsHighScore(playerTwoScore))
-            {
-                TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
-            }
-            else
-            {
-                TP_gameSummary.AHS_playerTwo_type.Content = "Enter your score:";
-            }
+            ));
         }
 
         //EVENT HANDLERS--------------------------------------------------------------------------------------------
@@ -610,7 +618,52 @@ namespace Tetris
 
         void TPGS_playAgain_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (TP_gameSummary.AHS_playerOne_name.Text.ToCharArray().Length > 10 || TP_gameSummary.AHS_playerTwo_name.Text.ToCharArray().Length > 10)
+            {
+                if (TP_gameSummary.AHS_playerOne_name.Text.ToCharArray().Length > 10)
+                {
+                    TP_gameSummary.AHS_playerOne_chars.Visibility = System.Windows.Visibility.Visible;
+                }
+
+                if (TP_gameSummary.AHS_playerTwo_name.Text.ToCharArray().Length > 10)
+                {
+                    TP_gameSummary.AHS_playerTwo_chars.Visibility = System.Windows.Visibility.Visible;
+                }
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(TP_gameSummary.AHS_playerOne_name.Text))
+                {
+                    TP_gameSummary.PlayerOne_AddScore();
+                }
+                if (!String.IsNullOrEmpty(TP_gameSummary.AHS_playerTwo_name.Text))
+                {
+                    TP_gameSummary.PlayerTwo_AddScore();
+                }
+                mainPanel.Children.Remove(backCanvas);
+                mainPanel.Children.Remove(TP_gameSummary);
+                TP_gameSummary.AHS_playerOne_chars.Visibility = System.Windows.Visibility.Collapsed;
+                TP_gameSummary.AHS_playerTwo_chars.Visibility = System.Windows.Visibility.Collapsed;
+
+                if (TP_gameView.GetGameMode() == GameMode.Classic)
+                {
+                    TP_gameView.PlayerOneGame = null;
+                    TP_gameView.PlayerTwoGame = null;
+                    TPMS_classic_Click(null, null);
+                }
+                else if (TP_gameView.GetGameMode() == GameMode.Marathon)
+                {
+                    TP_gameView.PlayerOneGame = null;
+                    TP_gameView.PlayerTwoGame = null;
+                    TPMS_marathon_Click(null, null);
+                }
+                else
+                {
+                    TP_gameView.PlayerOneGame = null;
+                    TP_gameView.PlayerTwoGame = null;
+                    TPMS_timed_Click(null, null);
+                }
+            }
         }
 
 
