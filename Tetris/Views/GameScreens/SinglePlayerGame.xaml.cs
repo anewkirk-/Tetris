@@ -98,17 +98,19 @@ namespace Tetris.Views.GameScreens
             LinesClearedLabel.Content = SoloGame.LinesCleared.ToString();
 
             //Display timer
+            TimeSpan time;
             switch (SoloGame.Mode)
             {
                 case GameMode.Timed:
+                    time = TimeSpan.FromMilliseconds(SoloGame._timedModeTimeLimit - SoloGame.TimeElapsed);
                     break;
                 default:
-                    TimeSpan time = TimeSpan.FromMilliseconds(SoloGame.TimeElapsed);
-                    string mins = time.Minutes > 9 ? time.Minutes.ToString() : "0" + time.Minutes.ToString();
-                    string secs = time.Seconds > 9 ? time.Seconds.ToString() : "0" + time.Seconds.ToString();
-                    TimerLabel.Content = string.Concat(mins, ":" + secs);
+                    time = TimeSpan.FromMilliseconds(SoloGame.TimeElapsed);
                     break;
             }
+            string mins = time.Minutes > 9 ? time.Minutes.ToString() : "0" + time.Minutes.ToString();
+            string secs = time.Seconds > 9 ? time.Seconds.ToString() : "0" + time.Seconds.ToString();
+            TimerLabel.Content = string.Concat(mins, ":" + secs);
 
             //Set all rectangles to a white fill and thin border
             for (int i = 0; i < 10; i++)
