@@ -4,36 +4,96 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             Height="300" Width="400"
+             Background="{StaticResource ResourceKey=MainBackground}">
+
+    <UserControl.Resources>
+        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+            <Style.Resources>
+                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None" >
+                    <VisualBrush.Visual>
+                        <Label Content="Enter your name" Foreground="LightGray" Background="White" Width="200"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Style.Resources>
+            <Style.Triggers>
+                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                </Trigger>
+                <Trigger Property="Text" Value="{x:Null}">
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter Property="Background" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
     <StackPanel>
         <Label x:Name="TPGS_winner" Content="Player One Wins!" />
         <Label Content="Game Summary" />
-        
+
         <StackPanel Orientation="Horizontal">
-            
+            <Label Content="Time Taken:" />
+            <Label x:Name="TPGS_time" Content="TIME" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <!--PLAYER ONE-->
-            <StackPanel>
+            <StackPanel Margin="10">
                 <Label Content="Player One Summary" />
+
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Score:" />
                     <Label x:Name="TPGS_playerOne_score" Content="SCORE" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Lines Cleared:" />
+                    <Label x:Name="TPGS_playerOne_lines" Content="LINES" />
+                </StackPanel>
+                <StackPanel>
+                    <Label x:Name="AHS_playerOne_type" Content="New High Score!" />
+
+                    <!--Hint text: http://stackoverflow.com/questions/7425618/how-can-i-add-a-hint-text-to-wpf-textbox -->
+                    <TextBox x:Name="AHS_playerOne_name" Width="150"/>
+                    <Label x:Name="AHS_playerOne_chars" Content="No more than 10 characters"
+                   Visibility="Collapsed"/>
                 </StackPanel>
             </StackPanel>
             
             
             <!--PLAYER TWO-->
-            <StackPanel>
+            <StackPanel Margin="10">
                 <Label Content="Player Two Summary" />
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Score:" />
                     <Label x:Name="TPGS_playerTwo_score" Content="SCORE" />
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Lines Cleared:" />
+                    <Label x:Name="TPGS_playerTwo_lines" Content="LINES" />
+                </StackPanel>
+                <StackPanel>
+                    <Label x:Name="AHS_playerTwo_type" Content="New High Score!" />
+
+                    <!--Hint text: http://stackoverflow.com/questions/7425618/how-can-i-add-a-hint-text-to-wpf-textbox -->
+                    <TextBox x:Name="AHS_playerTwo_name" Width="150"/>
+                    <Label x:Name="AHS_playerTwo_chars" Content="No more than 10 characters"
+                   Visibility="Collapsed"/>
+                </StackPanel>
             </StackPanel>
             
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Button x:Name="TPGS_playAgain" Content="Play Again" />
-            <Button x:Name="TPGS_mainMenu" Content="Back to Main Menu" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="TPGS_playAgain" Content="Play Again"
+                    Style="{StaticResource ResourceKey=OverlayButtons}"
+                    FontSize="18"
+                    Margin="10"/>
+            <Button x:Name="TPGS_mainMenu" Content="Main Menu" 
+                    Style="{StaticResource ResourceKey=OverlayButtons}"
+                    FontSize="18"
+                    Margin="10"/>
         </StackPanel>
     </StackPanel>
 </UserControl>
