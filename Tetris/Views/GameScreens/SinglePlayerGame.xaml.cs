@@ -178,7 +178,7 @@ namespace Tetris.Views.GameScreens
                     currentRectangle.Stroke = _borderBrush;
                     currentRectangle.StrokeThickness = 2.5;                    
                 }
-                UpdateNexttetrimino();
+                UpdateNextTetrimino();
             }
 
             //Highlight current tetrimino hard drop
@@ -198,7 +198,7 @@ namespace Tetris.Views.GameScreens
             }
         }
 
-        public void UpdateNexttetrimino()
+        public void UpdateNextTetrimino()
         {
             for (int i = 0; i < 7; i++)
             {

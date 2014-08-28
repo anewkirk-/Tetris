@@ -11,8 +11,28 @@
         
         <StackPanel>
             <Label Content="Next Block" />
-            <Image x:Name="TPG_playerOne_nextBlock"/>
-            
+            <Label BorderBrush="Black"
+                   BorderThickness="1">
+                <Grid x:Name="P1NextTetriminoGrid"
+                      Height="30"
+                      Width="106"
+                      Margin="-40,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/><!--3-->
+                        <ColumnDefinition/><!--4-->
+                        <ColumnDefinition/><!--5-->
+                        <ColumnDefinition/><!--6-->
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Label>
+
             <Label Content="Score" />
             <Label x:Name="TPG_playerOne_score"
                    Content="" />
@@ -114,7 +134,27 @@
 
         <StackPanel>
             <Label Content="Next Block" />
-            <Image x:Name="TPG_playerTwo_nextBlock"/>
+            <Label BorderBrush="Black"
+                   BorderThickness="1">
+                <Grid x:Name="P2NextTetriminoGrid"
+                      Height="30"
+                      Width="106"
+                      Margin="-40,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Label>
 
             <Label Content="Score" />
             <Label x:Name="TPG_playerTwo_score"
