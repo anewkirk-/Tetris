@@ -20,6 +20,7 @@ using System.Timers;
 using System.Threading;
 using System.Windows.Threading;
 using Tetris.Models;
+using System.Media;
 
 namespace Tetris
 {
@@ -149,6 +150,12 @@ namespace Tetris
             PauseKey = Key.Escape;
 
             InitializeComponent();
+
+            //Play background music
+            string songPath = "Sound\\TetrisThemeSong.wav";
+            SoundPlayer player = new SoundPlayer(songPath);
+            player.PlayLooping();
+
             mainPanel.Children.Add(mainMenu);
         }        
 
