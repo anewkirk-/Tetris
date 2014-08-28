@@ -8,7 +8,7 @@
              Background="{StaticResource ResourceKey=MainBackground}">
     
     <StackPanel x:Name="MM_mainPanel"
-                Margin="50">
+                Margin="40">
         
         <Image Source="/Images/dotTetrisLogo.png" 
                Width="500"
