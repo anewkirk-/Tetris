@@ -42,6 +42,7 @@ namespace Tetris.Views.GameScreens
             new SolidColorBrush(Colors.Black)
     };
         private SolidColorBrush _borderBrush = new SolidColorBrush(Colors.Black);
+        private SolidColorBrush _nxtBorderBrush = new SolidColorBrush(Color.FromArgb(144,0,0,0));
 
         public SinglePlayerGame()
         {
@@ -177,6 +178,7 @@ namespace Tetris.Views.GameScreens
                     currentRectangle.Stroke = _borderBrush;
                     currentRectangle.StrokeThickness = 2.5;                    
                 }
+                UpdateNexttetrimino();
             }
 
             //Highlight current tetrimino hard drop
@@ -193,6 +195,61 @@ namespace Tetris.Views.GameScreens
                         currentRectangle.StrokeThickness = 1.8;
                     }
                 }
+            }
+        }
+
+        public void UpdateNexttetrimino()
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    if (i >= 3)
+                    {
+                        Rectangle rct = _nextBoard[i, j];
+                        rct.Fill = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                        rct.StrokeThickness = 0;
+                    }
+                }
+            }
+
+            foreach (Tetris.Models.TetriminoBag.Points p in SoloGame.NextTetrimino.Blocks.ToList())
+            {
+                Rectangle nxtRectangle = _nextBoard[p.X, p.Y];
+                if (SoloGame.NextTetrimino.GetType() == typeof(i_Tetrimino))
+                {
+                    nxtRectangle.Fill = _tetriminoColors.ElementAt(0);
+                }
+                else if (SoloGame.NextTetrimino.GetType() == typeof(j_Tetrimino))
+                {
+                    nxtRectangle.Fill = _tetriminoColors.ElementAt(1);
+                }
+                else if (SoloGame.NextTetrimino.GetType() == typeof(l_Tetrimino))
+                {
+                    nxtRectangle.Fill = _tetriminoColors.ElementAt(2);
+                }
+                else if (SoloGame.NextTetrimino.GetType() == typeof(o_Tetrimino))
+                {
+                    nxtRectangle.Fill = _tetriminoColors.ElementAt(3);
+                }
+                else if (SoloGame.NextTetrimino.GetType() == typeof(s_Tetrimino))
+                {
+                    nxtRectangle.Fill = _tetriminoColors.ElementAt(4);
+                }
+                else if (SoloGame.NextTetrimino.GetType() == typeof(t_Tetrimino))
+                {
+                    nxtRectangle.Fill = _tetriminoColors.ElementAt(5);
+                }
+                else if (SoloGame.NextTetrimino.GetType() == typeof(z_Tetrimino))
+                {
+                    nxtRectangle.Fill = _tetriminoColors.ElementAt(6);
+                }
+                else
+                {
+                    nxtRectangle.Fill = _tetriminoColors.ElementAt(_gen.Next(0, 7));
+                }
+                nxtRectangle.Stroke = _borderBrush;
+                nxtRectangle.StrokeThickness = 1;
             }
         }
 
