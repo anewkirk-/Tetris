@@ -85,7 +85,7 @@
                    Foreground="Red"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
             <Button x:Name="SPGS_playAgain" Content="Play Again" 
                     Style="{StaticResource ResourceKey=OverlayButtons}"
                     FontSize="18"
