@@ -102,7 +102,6 @@ namespace Tetris.Controllers
                     if (GameTimer.Interval > 50)
                     {
                         GameTimer.Interval -= 50;
-                        LinesCleared = 0;
                     }
                 }
             }
@@ -190,6 +189,7 @@ namespace Tetris.Controllers
             int lowest = lowestPoints.OrderByDescending(a => a.Y).First().Y;
             int distance = 19 - lowest;
             IEnumerable<Points> blocksBelow;
+            //This needs to be in a try/catch block
             foreach (Points p in lowestPoints)
             {
                 blocksBelow = from t in GameBoard

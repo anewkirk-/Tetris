@@ -1,82 +1,8 @@
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\bin\Debug\Tetris.exe.config
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\bin\Debug\Tetris.exe
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\bin\Debug\Tetris.pdb
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\MainWindow.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\MainWindow.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\App.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.cache
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.g.resources
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.Properties.Resources.resources
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.csproj.GenerateResource.Cache
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.exe
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.pdb
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\bin\Debug\Tetris.exe.config
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.exe
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.pdb
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\bin\Debug\Tetris.exe
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\bin\Debug\Tetris.pdb
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\bin\Debug\System.Data.SQLite.pdb
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\bin\Debug\System.Data.SQLite.xml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\MainWindow.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\MainMenu.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\ScoresMenu.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerGame.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerGame.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\AddHighScore.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\SinglePlayerGameSummary.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\PauseScreen.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\TwoPlayerGameSummary.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\MainWindow.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\MainMenu.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\ScoresMenu.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerGame.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerGame.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\AddHighScore.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\SinglePlayerGameSummary.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\PauseScreen.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\TwoPlayerGameSummary.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\App.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.cache
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.g.resources
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.Properties.Resources.resources
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.csproj.GenerateResource.Cache
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerModeSelect.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerModeSelect.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerModeSelect.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerModeSelect.g.cs
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.lref
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerModeSelect.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\MainMenu.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerModeSelect.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\ScoresMenu.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerGame.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerGame.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\AddHighScore.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\SinglePlayerGameSummary.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\PauseScreen.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\TwoPlayerGameSummary.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\App.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerModeSelect.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\MainMenu.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerModeSelect.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\ScoresMenu.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerGame.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerGame.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\AddHighScore.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\SinglePlayerGameSummary.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\PauseScreen.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\TwoPlayerGameSummary.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.lref
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\App.baml
-C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.g.cs
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\Sound\TetrisThemeSong.wav
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\Tetris.exe.config
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\Tetris.exe
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\Tetris.pdb
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerModeSelect.baml
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Views\GameScreens\MainMenu.baml
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerModeSelect.baml
@@ -101,6 +27,7 @@ C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Views\Overlays\PauseScreen.g.cs
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Views\Overlays\TwoPlayerGameSummary.g.cs
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\App.g.cs
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Tetris_Content.g.cs
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.cache
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.lref
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\App.baml
@@ -110,50 +37,3 @@ C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Tetris.csproj.GenerateResource.Cache
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Tetris.exe
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Tetris.pdb
-C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Debug\Tetris.exe.config
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Debug\Tetris.exe
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Debug\Tetris.pdb
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerModeSelect.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\MainMenu.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerModeSelect.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\ScoresMenu.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerGame.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerGame.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\AddHighScore.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\SinglePlayerGameSummary.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\PauseScreen.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\TwoPlayerGameSummary.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\MainWindow.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerModeSelect.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\MainMenu.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerModeSelect.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\ScoresMenu.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerGame.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerGame.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\AddHighScore.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\QuitConfirm.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\SinglePlayerGameSummary.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\PauseScreen.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Views\Overlays\TwoPlayerGameSummary.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\App.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.cache
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.lref
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\App.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\MainWindow.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris.g.resources
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris.Properties.Resources.resources
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris.csproj.GenerateResource.Cache
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris.exe
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris.pdb
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris_Content.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\bin\Debug\Sound\TetrisThemeSong.wav
-<<<<<<< HEAD
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Debug\Sound\TetrisThemeSong.wav
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris_Content.g.cs
-=======
-C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\Sound\TetrisThemeSong.wav
-C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Tetris_Content.g.cs
->>>>>>> origin/master
