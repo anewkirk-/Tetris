@@ -180,12 +180,12 @@ namespace Tetris
                     if (csm.IsHighScore(finalScore))
                     {
                         SP_gameSummary.AHS_type.Content = "New High Score!!";
-                        //SP_gameSummary.AHS_type.FontWeight = FontWeights.Bold;
+                        SP_gameSummary.AHS_type.FontWeight = FontWeights.Bold;
                     }
                     else
                     {
-                        SP_gameSummary.AHS_type.Content = "Enter your score:";
-                        //SP_gameSummary.AHS_type.FontWeight = FontWeights.Normal;
+                        SP_gameSummary.AHS_type.Content = "Submit your score:";
+                        SP_gameSummary.AHS_type.FontWeight = FontWeights.Normal;
                     }
 
                     mainPanel.Children.Remove(backCanvas);
