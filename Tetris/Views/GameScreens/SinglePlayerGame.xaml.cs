@@ -207,7 +207,7 @@ namespace Tetris.Views.GameScreens
                     if (i >= 3)
                     {
                         Rectangle rct = _nextBoard[i, j];
-                        rct.Fill = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                        rct.Fill = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
                         rct.StrokeThickness = 0;
                     }
                 }
