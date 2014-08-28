@@ -39,7 +39,7 @@
                FontWeight="Bold"
                FontSize="18"/>
 
-        <Grid Width="180">
+        <Grid Width="155">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="4*"/>
