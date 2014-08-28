@@ -26,6 +26,7 @@ namespace Tetris.Views.GameScreens
         public Game PlayerOneGame { get; set; }
         public Game PlayerTwoGame { get; set; }
         public System.Timers.Timer PaintTimer { get; set; }
+        public GameMode Mode { get; set; }
         private Rectangle[,] _playerOneRectangles = new Rectangle[10, 20];
         private Rectangle[,] _playerTwoRectangles = new Rectangle[10, 20];
         private SolidColorBrush _borderBrush = new SolidColorBrush(Colors.Black);
@@ -50,6 +51,7 @@ namespace Tetris.Views.GameScreens
 
         public void NewGame(GameMode type)
         {
+            this.Mode = type;
             PlayerOneGame = new Game(type);
             PlayerTwoGame = new Game(type);
             PlayerOneGame.ScoredTetris += PlayerOneTetris;
@@ -66,7 +68,7 @@ namespace Tetris.Views.GameScreens
 
         public GameMode GetGameMode()
         {
-            return PlayerOneGame.Mode;
+            return this.Mode;
         }
 
         public void PauseGame()
@@ -151,22 +153,7 @@ namespace Tetris.Views.GameScreens
             TimerLabel.Content = string.Concat(mins, ":" + secs);
 
 
-            //Empty grids
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 20; j++)
-                {
-                    //Player 1
-                    _playerOneRectangles[i, j].Fill = _tetriminoColors.ElementAt(7);
-                    _playerOneRectangles[i, j].Stroke = _tetriminoColors.ElementAt(8);
-                    _playerOneRectangles[i, j].StrokeThickness = 0.3;
-
-                    //Player 2
-                    _playerTwoRectangles[i, j].Fill = _tetriminoColors.ElementAt(7);
-                    _playerTwoRectangles[i, j].Stroke = _tetriminoColors.ElementAt(8);
-                    _playerTwoRectangles[i, j].StrokeThickness = 0.3;
-                }
-            }
+            ClearRectangleBoards();
 
             //Color in blocks
             //Player 1
@@ -197,8 +184,12 @@ namespace Tetris.Views.GameScreens
                 int d = PlayerOneGame.FindDistanceCurrentCanFall();
                 foreach (Points p in highlight)
                 {
-                    Rectangle currentRectangle = _playerOneRectangles[p.X, p.Y + d];
-                    currentRectangle.StrokeThickness = 2.5;
+                    int newY = p.Y + d;
+                    if (newY >= 0 && newY <= 19)
+                    {
+                        Rectangle currentRectangle = _playerOneRectangles[p.X, newY];
+                        currentRectangle.StrokeThickness = 1.8;
+                    }
                 }
             }
 
@@ -209,8 +200,32 @@ namespace Tetris.Views.GameScreens
                 int d = PlayerTwoGame.FindDistanceCurrentCanFall();
                 foreach (Points p in highlight)
                 {
-                    Rectangle currentRectangle = _playerTwoRectangles[p.X, p.Y + d];
-                    currentRectangle.StrokeThickness = 2.5;
+                    int newY = p.Y + d;
+                    if (newY >= 0 && newY <= 19)
+                    {
+                        Rectangle currentRectangle = _playerTwoRectangles[p.X, p.Y + d];
+                        currentRectangle.StrokeThickness = 1.8;
+                    }
+                }
+            }
+        }
+
+        private void ClearRectangleBoards()
+        {
+            //Empty grids
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 20; j++)
+                {
+                    //Player 1
+                    _playerOneRectangles[i, j].Fill = _tetriminoColors.ElementAt(7);
+                    _playerOneRectangles[i, j].Stroke = _tetriminoColors.ElementAt(8);
+                    _playerOneRectangles[i, j].StrokeThickness = 0.3;
+
+                    //Player 2
+                    _playerTwoRectangles[i, j].Fill = _tetriminoColors.ElementAt(7);
+                    _playerTwoRectangles[i, j].Stroke = _tetriminoColors.ElementAt(8);
+                    _playerTwoRectangles[i, j].StrokeThickness = 0.3;
                 }
             }
         }

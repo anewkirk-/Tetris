@@ -26,7 +26,6 @@ namespace Tetris.Controllers
         public Tetrimino CurrentTetrimino { get; set; }
         public int LinesCleared { get; set; }
         public int TimeElapsed { get; set; }
-        private int _marathonModeLineLimit = 50;
         public int _timedModeTimeLimit = 120000;
         private Random _rand = new Random(Guid.NewGuid().GetHashCode());
         private int _linesBeforeSpeedUp = 5;
@@ -330,12 +329,11 @@ namespace Tetris.Controllers
                 };
 
             //Loop that populates the bag
-            Random rnd = new Random();
             int i = 0;
             while (i < 7)
             {
                 //Randomly grabs an index from Bag 
-                int index = rnd.Next(0, Bag.Count);
+                int index = _rand.Next(0, Bag.Count);
                 //Temp tetrimino that is set to the random index from the Bag
                 Tetrimino tracker = Bag[index];
                 //Removes the tetrimino at the index so that is will not be used again

@@ -79,8 +79,6 @@ C:\Users\Cody Simpson\Documents\GitHub\Tetris\Tetris\obj\Debug\Views\Overlays\Qu
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\Tetris.exe.config
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\Tetris.exe
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\Tetris.pdb
-C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\System.Data.SQLite.pdb
-C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\System.Data.SQLite.xml
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Views\GameScreens\TwoPlayerModeSelect.baml
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Views\GameScreens\MainMenu.baml
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\Views\GameScreens\SinglePlayerModeSelect.baml

@@ -126,16 +126,7 @@ namespace Tetris.Views.GameScreens
             string secs = time.Seconds > 9 ? time.Seconds.ToString() : "0" + time.Seconds.ToString();
             TimerLabel.Content = string.Concat(mins, ":" + secs);
 
-            //Set all rectangles to a white fill and thin border
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 20; j++)
-                {
-                    _rectangleBoard[i, j].Fill = _tetriminoColors.ElementAt(7);
-                    _rectangleBoard[i, j].Stroke = _tetriminoColors.ElementAt(8);
-                    _rectangleBoard[i, j].StrokeThickness = 0.3;
-                }
-            }
+            ClearRectangleBoard();
 
             //Color in rectangles according to game state
             foreach (Tetrimino t in SoloGame.GameBoard.ToList())
@@ -201,6 +192,20 @@ namespace Tetris.Views.GameScreens
                         Rectangle currentRectangle = _rectangleBoard[p.X, p.Y + d];
                         currentRectangle.StrokeThickness = 1.8;
                     }
+                }
+            }
+        }
+
+        private void ClearRectangleBoard()
+        {
+            //Set all rectangles to a white fill and thin border
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 20; j++)
+                {
+                    _rectangleBoard[i, j].Fill = _tetriminoColors.ElementAt(7);
+                    _rectangleBoard[i, j].Stroke = _tetriminoColors.ElementAt(8);
+                    _rectangleBoard[i, j].StrokeThickness = 0.3;
                 }
             }
         }

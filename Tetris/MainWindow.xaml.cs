@@ -166,7 +166,7 @@ namespace Tetris
                     int finalScore = SP_gameView.SoloGame.CurrentScore;
                     SP_gameSummary.SPGS_score.Content = finalScore;
                     SP_gameSummary.SPGS_lines.Content = SP_gameView.SoloGame.LinesCleared;
-                    if (TP_gameView.GetGameMode() == GameMode.Timed)
+                    if (SP_gameView.GetGameMode() == GameMode.Timed)
                     {
                         SP_gameSummary.SPGS_time.Content = "02:00";
                     }
@@ -676,22 +676,19 @@ namespace Tetris
                 TP_gameSummary.AHS_playerOne_chars.Visibility = System.Windows.Visibility.Collapsed;
                 TP_gameSummary.AHS_playerTwo_chars.Visibility = System.Windows.Visibility.Collapsed;
 
+                TP_gameView.PlayerOneGame = null;
+                TP_gameView.PlayerTwoGame = null;
+
                 if (TP_gameView.GetGameMode() == GameMode.Classic)
                 {
-                    TP_gameView.PlayerOneGame = null;
-                    TP_gameView.PlayerTwoGame = null;
                     TPMS_classic_Click(null, null);
                 }
                 else if (TP_gameView.GetGameMode() == GameMode.Marathon)
                 {
-                    TP_gameView.PlayerOneGame = null;
-                    TP_gameView.PlayerTwoGame = null;
                     TPMS_marathon_Click(null, null);
                 }
                 else
                 {
-                    TP_gameView.PlayerOneGame = null;
-                    TP_gameView.PlayerTwoGame = null;
                     TPMS_timed_Click(null, null);
                 }
             }

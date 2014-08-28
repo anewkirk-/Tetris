@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:gs="clr-namespace:Tetris.Views.GameScreens"
         xmlns:ov="clr-namespace:Tetris.Views.Overlays"
-        Title="Tetris" Height="650" Width="800"
+        Title="Tetris" Height="650" Width="850"
         KeyDown="Window_KeyDown_1" PreviewKeyDown="PreviewKeyDown_1">
     <Grid x:Name="mainPanel">
         
