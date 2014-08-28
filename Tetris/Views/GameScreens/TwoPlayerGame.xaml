@@ -4,15 +4,37 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800"
+             d:DesignHeight="650" d:DesignWidth="850"
              Background="{StaticResource ResourceKey=GameBackground}">
     <StackPanel x:Name="TPG_mainPanel"
-                Orientation="Horizontal">
+                Orientation="Horizontal"
+                HorizontalAlignment="Center">
         
         <StackPanel>
+            <Label Content="Player One" />
             <Label Content="Next Block" />
-            <Image x:Name="TPG_playerOne_nextBlock"/>
-            
+            <Label BorderBrush="Black"
+                   BorderThickness="1">
+                <Grid x:Name="P1NextTetriminoGrid"
+                      Height="30"
+                      Width="106"
+                      Margin="-40,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/><!--3-->
+                        <ColumnDefinition/><!--4-->
+                        <ColumnDefinition/><!--5-->
+                        <ColumnDefinition/><!--6-->
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Label>
+
             <Label Content="Score" />
             <Label x:Name="TPG_playerOne_score"
                    Content="" />
@@ -20,10 +42,12 @@
             <Label x:Name="p1_LinesClearedLabel"></Label>
         </StackPanel>
         
-        <StackPanel>
-            <Label Content="Player One" />
+        <StackPanel VerticalAlignment="Center"
+                    Margin="10">
+            
             <Grid x:Name="TPG_playerOne_grid"
-                         Width="275" Height="550">
+                         Width="275" Height="550"
+                  VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -61,18 +85,33 @@
             </Grid>
         </StackPanel>
 
-        <StackPanel Width="100">
+        <StackPanel Width="70" VerticalAlignment="Center">
+            <Label x:Name="TimerLabel" HorizontalAlignment="Center"
+                   FontSize="14" FontWeight="Bold"/>
             <Button x:Name="TPG_pause"
+                    Style="{StaticResource ResourceKey=OverlayButtons}"
+                    Margin="2,5,2,0"
+                    FontSize="16"
+                    Height="25"
                     Content="Pause"/>
             <Button x:Name="TPG_save"
+                    Style="{StaticResource ResourceKey=OverlayButtons}"
+                    Margin="2,5,2,0"
+                    FontSize="16"
+                    Height="25"
                     Content="Save"/>
             <Button x:Name="TPG_quit"
+                    Style="{StaticResource ResourceKey=OverlayButtons}"
+                    Margin="2,5,2,0"
+                    FontSize="16"
+                    Height="25"
                     Content="Quit"/>
-            <Label x:Name="TimerLabel"></Label>
+            
         </StackPanel>
 
-        <StackPanel>
-            <Label Content="Player Two" />
+        <StackPanel VerticalAlignment="Center"
+                    Margin="10">
+            
             <Grid x:Name="TPG_playerTwo_grid"
                          Width="275" Height="550">
                 <Grid.ColumnDefinitions>
@@ -113,8 +152,29 @@
         </StackPanel>
 
         <StackPanel>
+            <Label Content="Player Two" />
             <Label Content="Next Block" />
-            <Image x:Name="TPG_playerTwo_nextBlock"/>
+            <Label BorderBrush="Black"
+                   BorderThickness="1">
+                <Grid x:Name="P2NextTetriminoGrid"
+                      Height="30"
+                      Width="106"
+                      Margin="-40,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Label>
 
             <Label Content="Score" />
             <Label x:Name="TPG_playerTwo_score"

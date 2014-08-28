@@ -29,6 +29,8 @@ namespace Tetris.Views.GameScreens
         public GameMode Mode { get; set; }
         private Rectangle[,] _playerOneRectangles = new Rectangle[10, 20];
         private Rectangle[,] _playerTwoRectangles = new Rectangle[10, 20];
+        private Rectangle[,] _playerOneNXT = new Rectangle[7, 2];
+        private Rectangle[,] _playerTwoNXT = new Rectangle[7, 2];
         private SolidColorBrush _borderBrush = new SolidColorBrush(Colors.Black);
         private Random _gen = new Random();
 
@@ -61,6 +63,8 @@ namespace Tetris.Views.GameScreens
             PaintTimer.Elapsed += PaintTimer_Elapsed;
             PlayerOneGame.MakeTetriminoBag();
             PlayerTwoGame.MakeTetriminoBag();
+            PlayerTwoGame.MakeTetriminoBag();
+            CreateNXTGrids();
             PlayerOneGame.Start();
             PlayerTwoGame.Start();
             PaintTimer.Start();
@@ -208,6 +212,8 @@ namespace Tetris.Views.GameScreens
                     }
                 }
             }
+
+            UpdateNextTetrimino();
         }
 
         private void ClearRectangleBoards()
@@ -266,6 +272,69 @@ namespace Tetris.Views.GameScreens
             }
             r.Stroke = _borderBrush;
             r.StrokeThickness = 1.8; 
+        }
+
+        private void CreateNXTGrids()
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    //Sets up Player 1 grid
+                    Rectangle r = new Rectangle();
+                    _playerOneNXT[i, j] = r;
+                    P1NextTetriminoGrid.Children.Add(r);
+                    Grid.SetColumn(r, i);
+                    Grid.SetRow(r, j);
+
+                    //Sets up Player 2 grid
+                    Rectangle r2 = new Rectangle();
+                    _playerTwoNXT[i, j] = r2;
+                    P2NextTetriminoGrid.Children.Add(r2);
+                    Grid.SetColumn(r2, i);
+                    Grid.SetRow(r2, j);
+                }
+            }
+        }
+
+        public void UpdateNextTetrimino()
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    if (i >= 3)
+                    {
+                        Rectangle rct = _playerOneNXT[i, j];
+                        rct.Fill = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+                        rct.StrokeThickness = 0;
+
+                        Rectangle rct2 = _playerTwoNXT[i, j];
+                        rct2.Fill = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+                        rct2.StrokeThickness = 0;
+                    }
+                }
+            }
+
+            #region Player One Next Block
+            foreach (Tetris.Models.TetriminoBag.Points p in PlayerOneGame.NextTetrimino.Blocks.ToList())
+            {
+                Rectangle nxtRectangle = _playerOneNXT[p.X, p.Y];
+                ColorBlock(PlayerOneGame.NextTetrimino, nxtRectangle);
+                nxtRectangle.Stroke = _borderBrush;
+                nxtRectangle.StrokeThickness = 1;
+            }
+            #endregion
+
+            #region Player Two Next Block
+            foreach (Tetris.Models.TetriminoBag.Points p in PlayerTwoGame.NextTetrimino.Blocks.ToList())
+            {
+                Rectangle nxtRectangle = _playerTwoNXT[p.X, p.Y];
+                ColorBlock(PlayerTwoGame.NextTetrimino, nxtRectangle);
+                nxtRectangle.Stroke = _borderBrush;
+                nxtRectangle.StrokeThickness = 1;
+            }
+            #endregion
         }
     }
 }
