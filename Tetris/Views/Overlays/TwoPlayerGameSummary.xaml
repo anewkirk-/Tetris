@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Height="300" Width="400"
-             Background="{StaticResource ResourceKey=MainBackground}">
+             Background="{StaticResource ResourceKey=MainBackground}"
+             BorderBrush="Black"
+             BorderThickness="1">
 
     <UserControl.Resources>
         <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
