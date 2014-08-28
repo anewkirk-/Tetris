@@ -94,8 +94,11 @@ namespace Tetris.Views.GameScreens
 
         public void PauseGame()
         {
-            PaintTimer.Stop();
-            SoloGame.Stop();
+            if (PaintTimer != null && SoloGame != null)
+            {
+                PaintTimer.Stop();
+                SoloGame.Stop();
+            }
         }
 
         public void ResumeGame()

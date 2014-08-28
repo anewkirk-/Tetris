@@ -412,7 +412,6 @@ namespace Tetris
             TP_gameView.PlayerOneGame.GameEnd += PlayerOneGame_GameEnd;
             TP_gameView.PlayerTwoGame.GameEnd += PlayerTwoGame_GameEnd;
             mainPanel.Children.Remove(TP_modeSelect);
-
             mainPanel.Children.Remove(TP_gameView);
             mainPanel.Children.Add(TP_gameView);
         }
@@ -447,11 +446,14 @@ namespace Tetris
         //Single Player
         void SPG_pause_Click(object sender, RoutedEventArgs e)
         {
-            SP_gameView.PauseGame();
-            mainPanel.Children.Remove(backCanvas);
-            mainPanel.Children.Remove(pause);
-            mainPanel.Children.Add(backCanvas);
-            mainPanel.Children.Add(pause);
+            if (SP_gameView.SoloGame != null)
+            {
+                SP_gameView.PauseGame();
+                mainPanel.Children.Remove(backCanvas);
+                mainPanel.Children.Remove(pause);
+                mainPanel.Children.Add(backCanvas);
+                mainPanel.Children.Add(pause);
+            }
         }
 
         void SPG_save_Click(object sender, RoutedEventArgs e)
@@ -495,11 +497,14 @@ namespace Tetris
         // Two Player
         void TPG_pause_Click(object sender, RoutedEventArgs e)
         {
-            TP_gameView.PauseGame();
-            mainPanel.Children.Remove(backCanvas);
-            mainPanel.Children.Remove(pause);
-            mainPanel.Children.Add(backCanvas);
-            mainPanel.Children.Add(pause);
+            if (TP_gameView.PlayerOneGame != null)
+            {
+                TP_gameView.PauseGame();
+                mainPanel.Children.Remove(backCanvas);
+                mainPanel.Children.Remove(pause);
+                mainPanel.Children.Add(backCanvas);
+                mainPanel.Children.Add(pause);
+            }
         }
 
         void TPG_save_Click(object sender, RoutedEventArgs e)
