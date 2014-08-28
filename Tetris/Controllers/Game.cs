@@ -195,6 +195,7 @@ namespace Tetris.Controllers
                 blocksBelow = from t in GameBoard
                               from pt in t.Blocks
                               where pt.X == p.X
+                              where pt.Y > p.Y
                               where t != CurrentTetrimino
                               select pt;
                 if (blocksBelow.Count() > 0)
