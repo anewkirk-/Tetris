@@ -31,26 +31,32 @@
     </UserControl.Resources>
 
     <StackPanel>
-        <Label x:Name="TPGS_winner" Content="Player One Wins!" />
-        <Label Content="Game Summary" />
+        <Label x:Name="TPGS_winner" Content="Player One Wins!"
+               FontSize="20" FontWeight="Bold"
+               HorizontalAlignment="Center"
+               FontStyle="Italic"/>
+        <Label Content="Game Summary"
+               FontSize="18" FontWeight="Bold"
+               HorizontalAlignment="Center"/>
 
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Label Content="Time Taken:" />
-            <Label x:Name="TPGS_time" Content="TIME" />
+            <Label x:Name="TPGS_time" Content="TIME" FontWeight="Bold"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <!--PLAYER ONE-->
             <StackPanel Margin="10">
-                <Label Content="Player One Summary" />
+                <Label Content="Player One Summary" 
+                       FontWeight="Bold" FontSize="14"/>
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Score:" />
-                    <Label x:Name="TPGS_playerOne_score" Content="SCORE" />
+                    <Label x:Name="TPGS_playerOne_score" Content="SCORE" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Lines Cleared:" />
-                    <Label x:Name="TPGS_playerOne_lines" Content="LINES" />
+                    <Label x:Name="TPGS_playerOne_lines" Content="LINES" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel>
                     <Label x:Name="AHS_playerOne_type" Content="New High Score!" />
@@ -64,21 +70,48 @@
             
             
             <!--PLAYER TWO-->
-            <StackPanel Margin="10">
-                <Label Content="Player Two Summary" />
-                <StackPanel Orientation="Horizontal">
+            <StackPanel Margin="10" HorizontalAlignment="Right">
+                <Label Content="Player Two Summary" 
+                       HorizontalAlignment="Right"
+                       FontWeight="Bold" FontSize="14"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="Score:" />
-                    <Label x:Name="TPGS_playerTwo_score" Content="SCORE" />
+                    <Label x:Name="TPGS_playerTwo_score" Content="SCORE" FontWeight="Bold"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Label Content="Lines Cleared:" />
-                    <Label x:Name="TPGS_playerTwo_lines" Content="LINES" />
+                    <Label x:Name="TPGS_playerTwo_lines" Content="LINES" FontWeight="Bold"/>
                 </StackPanel>
                 <StackPanel>
-                    <Label x:Name="AHS_playerTwo_type" Content="New High Score!" />
+                    <Label x:Name="AHS_playerTwo_type" Content="New High Score!" 
+                           HorizontalAlignment="Right"/>
 
                     <!--Hint text: http://stackoverflow.com/questions/7425618/how-can-i-add-a-hint-text-to-wpf-textbox -->
-                    <TextBox x:Name="AHS_playerTwo_name" Width="150"/>
+                    <TextBox x:Name="AHS_playerTwo_name" Width="150" HorizontalContentAlignment="Right">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                <Style.Resources>
+                                    <VisualBrush x:Key="CueBannerBrush2" AlignmentX="Right" AlignmentY="Center" Stretch="None" >
+                                        <VisualBrush.Visual>
+                                            <Label Content="Enter your name" Foreground="LightGray" Background="White" Width="200"
+                                                   HorizontalContentAlignment="Right"/>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </Style.Resources>
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush2}" />
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="{x:Null}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush2}" />
+                                    </Trigger>
+                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                        <Setter Property="Background" Value="White" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
                     <Label x:Name="AHS_playerTwo_chars" Content="No more than 10 characters"
                    Visibility="Collapsed"/>
                 </StackPanel>
