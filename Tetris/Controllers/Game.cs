@@ -591,6 +591,14 @@ namespace Tetris.Controllers
            
         }
 
+        public void MoveCurrentDown()
+        {
+            if(FindDistanceCurrentCanFall() > 0)
+            {
+                CurrentTetrimino.Fall();
+            }
+        }
+
         public void QuitGame()
         {
             GameEnd();
