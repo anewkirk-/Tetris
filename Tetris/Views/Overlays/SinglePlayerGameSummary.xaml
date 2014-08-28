@@ -10,7 +10,7 @@
              BorderThickness="1">
     
     <UserControl.Resources>
-        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">            
             <Style.Resources>
                 <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None" >
                     <VisualBrush.Visual>
@@ -78,7 +78,9 @@
                    Margin="0,10,0,0"/>
 
             <!--Hint text: http://stackoverflow.com/questions/7425618/how-can-i-add-a-hint-text-to-wpf-textbox -->
-            <TextBox x:Name="AHS_name" Width="150"/>
+            <TextBox x:Name="AHS_name" Width="150"
+                     BorderBrush="Gray"
+                     BorderThickness="1"/>
             <Label x:Name="AHS_chars" Content="No more than 10 characters"
                    HorizontalAlignment="Center"
                    Visibility="Collapsed"
