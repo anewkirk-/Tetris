@@ -145,7 +145,7 @@ namespace Tetris
             P2Left = Key.Left;
             P2Right = Key.Right;
             P2Down = Key.Down;
-            P2Drop = Key.RightCtrl;
+            P2Drop = Key.RightShift;
             P2Rotate = Key.Up;
             PauseKey = Key.Escape;
 
@@ -785,6 +785,10 @@ namespace Tetris
                 {
                     TPG_pause_Click(null, null);
                 }
+                //else if(k == Key.V)
+                //{
+                //    TP_gameView.PlayerTwoGame.AddRowSansOne();
+                //}
             }
             else
             {
@@ -818,13 +822,5 @@ namespace Tetris
                 }
             }
         }
-
-        //private void PreviewKeyDown_1(object sender, KeyEventArgs e)
-        //{
-        //    if (e.IsRepeat)
-        //    {
-        //        e.Handled = true;
-        //    }
-        //}
     }
 }
