@@ -64,7 +64,9 @@
                     <Label x:Name="AHS_playerOne_type" Content="New High Score!" />
 
                     <!--Hint text: http://stackoverflow.com/questions/7425618/how-can-i-add-a-hint-text-to-wpf-textbox -->
-                    <TextBox x:Name="AHS_playerOne_name" Width="150"/>
+                    <TextBox x:Name="AHS_playerOne_name" Width="150"
+                             BorderBrush="Gray"
+                             BorderThickness="1"/>
                     <Label x:Name="AHS_playerOne_chars" Content="No more than 10 characters"
                    Visibility="Collapsed"/>
                 </StackPanel>
@@ -89,7 +91,9 @@
                            HorizontalAlignment="Right"/>
 
                     <!--Hint text: http://stackoverflow.com/questions/7425618/how-can-i-add-a-hint-text-to-wpf-textbox -->
-                    <TextBox x:Name="AHS_playerTwo_name" Width="150" HorizontalContentAlignment="Right">
+                    <TextBox x:Name="AHS_playerTwo_name" Width="150" HorizontalContentAlignment="Right"
+                             BorderBrush="Gray"
+                             BorderThickness="1">
                         <TextBox.Style>
                             <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                                 <Style.Resources>

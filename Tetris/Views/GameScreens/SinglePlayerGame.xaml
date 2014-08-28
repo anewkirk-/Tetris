@@ -8,11 +8,13 @@
              Background="{StaticResource ResourceKey=GameBackground}">
     
     <StackPanel x:Name="SPG_mainPanel"
-                Orientation="Horizontal">
+                Orientation="Horizontal"
+                HorizontalAlignment="Center">
 
         
 
-        <StackPanel>
+        <StackPanel VerticalAlignment="Center"
+                    Margin="20,0">
             <Grid x:Name="SPG_playerOne_grid"
                          Width="275" Height="550">
                 <Grid.ColumnDefinitions>
@@ -52,8 +54,13 @@
             </Grid>
         </StackPanel>
 
-        <StackPanel>
-            <Label Content="Next Block" />
+        <StackPanel Margin="0,25,0,0">
+            <Label x:Name="TimerLabel" 
+                   Margin="-5,0,0,5"
+                   FontSize="16" FontWeight="Bold"/>
+            <Label Content="Next Block"
+                   Margin="-5,0,0,0"
+                   FontSize="12" FontWeight="Bold"/>
             <Label BorderBrush="Black"
                    BorderThickness="1">
                 <Grid x:Name="NextTetriminoGrid"
@@ -75,16 +82,25 @@
                     </Grid.RowDefinitions>
                 </Grid>
             </Label>
-            <Label Content="Score" />
-            <Label x:Name="SPG_playerOne_score" />
+            <Label Content="Score" Height="24" Margin="-5,10,0,0"/>
+            <Label x:Name="SPG_playerOne_score"
+                   FontWeight="Bold" FontSize="14" Margin="-5,-5,0,0"/>
+            <Label Content="Lines Cleared" Height="24" Margin="-5,0,0,0"/>
+            <Label x:Name="LinesClearedLabel"
+                   FontWeight="Bold" FontSize="14" Margin="-5,-5,0,0"/>
             <Button x:Name="SPG_pause"
+                    Style="{StaticResource ResourceKey=OverlayButtons}"
+                    Margin="0,25,0,0"
                     Content="Pause"/>
             <Button x:Name="SPG_save"
+                    Style="{StaticResource ResourceKey=OverlayButtons}"
+                    Margin="0,5,0,0"
                     Content="Save"/>
             <Button x:Name="SPG_quit"
+                    Style="{StaticResource ResourceKey=OverlayButtons}"
+                    Margin="0,5,0,0"
                     Content="Quit"/>
-            <Label x:Name="TimerLabel"></Label>
-            <Label x:Name="LinesClearedLabel"></Label>
+            
         </StackPanel>
     
     </StackPanel>
