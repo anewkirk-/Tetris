@@ -61,6 +61,7 @@ namespace Tetris.Views.GameScreens
             PaintTimer.Elapsed += PaintTimer_Elapsed;
             PlayerOneGame.MakeTetriminoBag();
             PlayerTwoGame.MakeTetriminoBag();
+            PlayerTwoGame.MakeTetriminoBag();
             PlayerOneGame.Start();
             PlayerTwoGame.Start();
             PaintTimer.Start();
