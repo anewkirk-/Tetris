@@ -35,6 +35,7 @@ namespace Tetris.Controllers
         private int _linesBeforeSpeedUp = 5;
         private int _currentLevel = 1;
         private bool _isToppedOut = false;
+        private bool _currentWasHardDropped = false;
 
         public Game(GameMode mode = GameMode.Classic)
         {
@@ -387,6 +388,7 @@ namespace Tetris.Controllers
 
             CurrentTetrimino = randT;
             GameBoard.Add(CurrentTetrimino);
+            _currentWasHardDropped = false;
             foreach (Tetrimino t in GameBoard.ToList())
             {
                 if (t != CurrentTetrimino)
@@ -459,7 +461,7 @@ namespace Tetris.Controllers
 
         public void MoveLeft()
         {
-            if (CurrentTetrimino != null && GameTimer.Enabled)
+            if (CurrentTetrimino != null && GameTimer.Enabled && !_currentWasHardDropped)
             {
                 bool canMove = true;
                 IEnumerable<Points> allBlocksExceptCurrent =
@@ -495,7 +497,7 @@ namespace Tetris.Controllers
 
         public void MoveRight()
         {
-            if (CurrentTetrimino != null && GameTimer.Enabled)
+            if (CurrentTetrimino != null && GameTimer.Enabled && !_currentWasHardDropped)
             {
                 bool canMove = true;
                 IEnumerable<Points> allBlocksExceptCurrent =
@@ -538,12 +540,13 @@ namespace Tetris.Controllers
                 {
                     p.Y += d;
                 }
+                _currentWasHardDropped = true;
             }
         }
 
         public void RotateCurrent()
         {
-            if (CurrentTetrimino != null && GameTimer.Enabled)
+            if (CurrentTetrimino != null && GameTimer.Enabled && !_currentWasHardDropped)
             {
                 //Rotates the current tetrimino
                 CurrentTetrimino.Rotate();
