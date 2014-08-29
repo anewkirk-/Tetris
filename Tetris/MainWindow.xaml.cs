@@ -341,14 +341,27 @@ namespace Tetris
 
         private void PlayBgMusic()
         {
+            StopBgMusic();
+            string songPath = "Sound\\TetrisThemeSong.wav";
+            MusicPlayer = new SoundPlayer(songPath);
+            MusicPlayer.PlayLooping();
+        }
+
+        private void PlayAltBgMusic()
+        {
+            StopBgMusic();
+            string songPath = "Sound\\TetrisThemeSong.wav";
+            MusicPlayer = new SoundPlayer(songPath);
+            MusicPlayer.PlayLooping();
+        }
+
+        private void StopBgMusic()
+        {
             if (MusicPlayer != null)
             {
                 MusicPlayer.Stop();
             }
-            string songPath = "Sound\\TetrisThemeSong.wav";
-            MusicPlayer = new SoundPlayer(songPath);
-            MusicPlayer.PlayLooping();
-        }  
+        }
 
         //EVENT HANDLERS--------------------------------------------------------------------------------------------
 
@@ -850,7 +863,7 @@ namespace Tetris
                 //    TP_gameView.PlayerTwoGame.AddRowSansOne();
                 //}
             }
-            else
+            else if(SP_gameView.SoloGame != null)
             {
                 if (k == P1Left)
                 {
@@ -880,7 +893,16 @@ namespace Tetris
                 {
                     if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift))
                     {
-                        SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
+                        SP_gameView._rainbowMode = true;
+                        PlayAltBgMusic();
+                    }
+                }
+                else if (k == Key.X)
+                {
+                    if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift))
+                    {
+                        SP_gameView._rainbowMode = false;
+                        PlayBgMusic();
                     }
                 }
             }
