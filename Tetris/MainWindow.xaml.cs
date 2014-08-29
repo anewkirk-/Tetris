@@ -21,6 +21,8 @@ using System.Threading;
 using System.Windows.Threading;
 using Tetris.Models;
 using System.Media;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace Tetris
 {
@@ -467,8 +469,8 @@ namespace Tetris
             file += " Solo";
             file += (SP_gameView.GetGameMode()).ToString();
             saveDialog.FileName = file;
-            saveDialog.DefaultExt = ".tetris2";
-            saveDialog.Filter = "Tetris Two Player Games (.tetris2)|*.tetris2";
+            saveDialog.DefaultExt = ".tetris";
+            saveDialog.Filter = "Tetris Solo Games (.tetris) | *.tetris";
 
             Nullable<bool> result = saveDialog.ShowDialog();
 
@@ -476,7 +478,7 @@ namespace Tetris
             if (result == true)
             {
                 file = saveDialog.FileName;
-                //TODO Save document
+                SerializeSoloGame(SP_gameView.SoloGame, file);
             }
         }
 
@@ -828,6 +830,16 @@ namespace Tetris
                     SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
                 }
             }
+        }
+
+        //SERIALIZATION
+
+        void SerializeSoloGame(Game soloGame, string filePath)
+        {
+            BinaryFormatter formater = new BinaryFormatter();
+            FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+
+            formater.Serialize(stream, soloGame);
         }
     }
 }
