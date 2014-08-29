@@ -465,7 +465,7 @@ namespace Tetris
             mainPanel.Children.Add(pause);
 
             // http://stackoverflow.com/questions/5622854/how-do-i-show-a-save-as-dialog-in-wpf
-            string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+            string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss ");
             file += (SP_gameView.GetGameMode()).ToString();
             saveDialog.FileName = file;
             saveDialog.DefaultExt = ".tetris";
@@ -518,7 +518,7 @@ namespace Tetris
 
             // http://stackoverflow.com/questions/5622854/how-do-i-show-a-save-as-dialog-in-wpf
 
-            string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+            string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss ");
             file += (TP_gameView.GetGameMode()).ToString();
             saveDialog.FileName = file;
             saveDialog.DefaultExt = ".tetris2";
@@ -530,7 +530,7 @@ namespace Tetris
             if (result == true)
             {
                 file = saveDialog.FileName;
-                //TODO Save document
+                SerializeTwoPlayerGame(TP_gameView.PlayerOneGame, TP_gameView.PlayerTwoGame, file);
             }
         }
 
@@ -838,6 +838,16 @@ namespace Tetris
             FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
 
             formater.Serialize(stream, soloGame);
+        }
+
+        void SerializeTwoPlayerGame(Game playerOneGame, Game playerTwoGame, string filePath)
+        {
+            BinaryFormatter formater = new BinaryFormatter();
+            FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+
+            List<Game> games = new List<Game> { playerOneGame, playerTwoGame };
+
+            formater.Serialize(stream, games);
         }
     }
 }
