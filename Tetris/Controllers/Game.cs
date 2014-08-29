@@ -15,9 +15,12 @@ namespace Tetris.Controllers
     public delegate void GameEndHandler();
     public delegate void TetrisHandler();
 
+    [Serializable]
     public class Game
     {
+        [field:NonSerialized]
         public event TetrisHandler ScoredTetris;
+        [field: NonSerialized]
         public event GameEndHandler GameEnd;
         public int CurrentScore { get; set; }
         public GameMode Mode { get; set; }

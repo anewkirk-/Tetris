@@ -116,8 +116,6 @@ namespace Tetris
             TP_gameSummary.TPGS_mainMenu.Click += TPGS_mainMenu_Click;
             TP_gameSummary.TPGS_playAgain.Click += TPGS_playAgain_Click;
             //Other
-            saveDialog.DefaultExt = ".tetris";
-            saveDialog.Filter = "Tetris Games (.tetris)|*.tetris";
             saveDialog.ValidateNames = true;
             saveDialog.Title = "Save Tetris Game";
             saveDialog.OverwritePrompt = true;
@@ -469,6 +467,8 @@ namespace Tetris
             file += " Solo";
             file += (SP_gameView.GetGameMode()).ToString();
             saveDialog.FileName = file;
+            saveDialog.DefaultExt = ".tetris2";
+            saveDialog.Filter = "Tetris Two Player Games (.tetris2)|*.tetris2";
 
             Nullable<bool> result = saveDialog.ShowDialog();
 
@@ -521,6 +521,8 @@ namespace Tetris
             file += " Duo";
             file += (TP_gameView.GetGameMode()).ToString();
             saveDialog.FileName = file;
+            saveDialog.DefaultExt = ".tetris2";
+            saveDialog.Filter = "Tetris Two Player Games (.tetris2)|*.tetris2";
 
             Nullable<bool> result = saveDialog.ShowDialog();
 
