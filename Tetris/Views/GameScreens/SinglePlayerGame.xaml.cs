@@ -84,7 +84,14 @@ namespace Tetris.Views.GameScreens
 
         public void PaintTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Dispatcher.Invoke((Action)(() => { UpdateUI(); }));
+            try
+            {
+                Dispatcher.Invoke((Action)(() => { UpdateUI(); }));
+            }
+            catch
+            {
+                //Task cancelled, nothing to do here
+            }
         }
 
         public GameMode GetGameMode()

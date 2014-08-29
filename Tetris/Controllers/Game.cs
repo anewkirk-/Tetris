@@ -27,11 +27,11 @@ namespace Tetris.Controllers
         public int LinesCleared { get; set; }
         public int TimeElapsed { get; set; }
         public int _timedModeTimeLimit = 120000;
+        public Tetrimino NextTetrimino { get; set; }
         private Random _rand = new Random(Guid.NewGuid().GetHashCode());
         private int _linesBeforeSpeedUp = 5;
         private int _currentLevel = 1;
         private bool _isToppedOut = false;
-        public Tetrimino NextTetrimino { get; set; }
 
         public Game(GameMode mode = GameMode.Classic)
         {
@@ -102,6 +102,9 @@ namespace Tetris.Controllers
                     if (GameTimer.Interval > 50)
                     {
                         GameTimer.Interval -= 50;
+
+                        //this will need to be changed later
+                        LinesCleared++; 
                     }
                 }
             }
@@ -453,7 +456,7 @@ namespace Tetris.Controllers
 
         public void MoveLeft()
         {
-            if (CurrentTetrimino != null)
+            if (CurrentTetrimino != null && GameTimer.Enabled)
             {
                 bool canMove = true;
                 IEnumerable<Points> allBlocksExceptCurrent =
@@ -489,7 +492,7 @@ namespace Tetris.Controllers
 
         public void MoveRight()
         {
-            if (CurrentTetrimino != null)
+            if (CurrentTetrimino != null && GameTimer.Enabled)
             {
                 bool canMove = true;
                 IEnumerable<Points> allBlocksExceptCurrent =
@@ -525,7 +528,7 @@ namespace Tetris.Controllers
 
         public void HardDrop()
         {
-            if (CurrentTetrimino != null)
+            if (CurrentTetrimino != null && GameTimer.Enabled)
             {
                 int d = FindDistanceCurrentCanFall();
                 foreach (Points p in CurrentTetrimino.Blocks)
@@ -537,7 +540,7 @@ namespace Tetris.Controllers
 
         public void RotateCurrent()
         {
-            if (CurrentTetrimino != null)
+            if (CurrentTetrimino != null && GameTimer.Enabled)
             {
                 //Rotates the current tetrimino
                 CurrentTetrimino.Rotate();
