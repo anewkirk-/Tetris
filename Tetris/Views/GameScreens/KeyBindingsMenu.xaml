@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="Tetris.Views.GameScreens.ScoresMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800"
+             Background="{StaticResource ResourceKey=MainBackground}">
+    
+    <UserControl.Resources>
+        <Style TargetType="RowDefinition" x:Key="score">
+            <Setter Property="Height" Value="35" />
+        </Style>
+    </UserControl.Resources>
+    
+    <StackPanel>
+        <Image Source="/Images/dotTetrisLogo.png" Height="100" Margin="10" />
+
+        <Grid Height="380">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Content="Key Bindings" 
+                   Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="3"
+                   Width="733"
+                   FontWeight="ExtraBold"/>
+            
+            <Label Content="Move Left" 
+                   Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Grid.Row="1"/>
+            <ComboBox x:Name="P1MoveLeftBox"
+                      Grid.Column="1"
+                      Grid.Row="1"
+                      Margin="15,15,15,15"/>
+            <ComboBox x:Name="P2MoveLeftBox"
+                      Grid.Column="2"
+                      Grid.Row="1"
+                      Margin="15,15,15,15"/>
+            
+            <Label Content="Move Right" 
+                   Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Grid.Row="2"/>
+            <ComboBox x:Name="P1MoveRightBox"
+                      Grid.Column="1"
+                      Grid.Row="2"
+                      Margin="15,15,15,15"/>
+            <ComboBox x:Name="P2MoveRightBox"
+                      Grid.Column="2"
+                      Grid.Row="2"
+                      Margin="15,15,15,15"/>
+            
+            <Label Content="Rotate" 
+                   Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Grid.Row="3"/>
+            <ComboBox x:Name="P1MoveRotateBox"
+                      Grid.Column="1"
+                      Grid.Row="3"
+                      Margin="15,15,15,15"/>
+            <ComboBox x:Name="P2MoveRotateBox"
+                      Grid.Column="2"
+                      Grid.Row="3"
+                      Margin="15,15,15,15"/>
+            
+            <Label Content="Soft Drop" 
+                   Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Grid.Row="4"/>
+            <ComboBox x:Name="P1MoveSoftDropBox"
+                      Grid.Column="1"
+                      Grid.Row="4"
+                      Margin="15,15,15,15"/>
+            <ComboBox x:Name="P2MoveSoftDropBox"
+                      Grid.Column="2"
+                      Grid.Row="4"
+                      Margin="15,15,15,15"/>
+            
+            <Label Content="Hard Drop" 
+                   Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Grid.Row="5"/>
+            <ComboBox x:Name="P1MoveHardDropBox"
+                      Grid.Column="1"
+                      Grid.Row="5"
+                      Margin="15,15,15,15"/>
+            <ComboBox x:Name="P2MoveHardBox"
+                      Grid.Column="2"
+                      Grid.Row="5"
+                      Margin="15,15,15,15"/>
+            
+        </Grid>
+        
+        <Button x:Name="SM_back"
+                Style="{StaticResource ResourceKey=MenuButtons}"
+                Content="Back to Main Menu" 
+                Margin="0,20,0,0"/>
+    </StackPanel>
+</UserControl>

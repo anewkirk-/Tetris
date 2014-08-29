@@ -94,6 +94,29 @@
                 <Setter Property="Fill" Value="{StaticResource ResourceKey=GameBackground}" />
             </Style>
 
+            <Style x:Key="KeyBindingLabels" TargetType="{x:Type Label}">
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Width" Value="200" />
+                <Setter Property="Height" Value="50" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontFamily" Value="Miriam" />
+                <Setter Property="Background" Value="CornflowerBlue" />
+                <Setter Property="BorderBrush" Value="Black" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Label}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    TextBlock.Foreground="{TemplateBinding Foreground}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
