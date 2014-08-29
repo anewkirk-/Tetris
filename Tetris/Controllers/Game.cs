@@ -36,6 +36,7 @@ namespace Tetris.Controllers
         private int _currentLevel = 1;
         private bool _isToppedOut = false;
         private bool _currentWasHardDropped = false;
+        private bool _speedUp = false;
 
         public Game(GameMode mode = GameMode.Classic)
         {
@@ -99,16 +100,15 @@ namespace Tetris.Controllers
             {
                 //Check LinesCleared to see if the timer interval needs to be
                 //decreased
-                if (LinesCleared > 0 && LinesCleared % _linesBeforeSpeedUp == 0)
+                if (LinesCleared > 0 && LinesCleared % _linesBeforeSpeedUp == 0 && _speedUp)
                 {
                     //Makes the drop interval half a second shorter,
                     //This will probably need to be adjusted
-                    if (GameTimer.Interval > 50)
+                    if (GameTimer.Interval > 75)
                     {
-                        GameTimer.Interval -= 50;
+                        GameTimer.Interval -= 75;
 
-                        //this will need to be changed later
-                        LinesCleared++; 
+                        _speedUp = false;
                     }
                 }
             }
@@ -155,6 +155,7 @@ namespace Tetris.Controllers
                 {
                     ClearRow(i);
                     LinesCleared++;
+                    _speedUp = true;
                     MoveDownStartingFrom(i);
                 }
                 AddRandomTetrimino();
@@ -197,23 +198,32 @@ namespace Tetris.Controllers
             int distance = 19 - lowest;
             IEnumerable<Points> blocksBelow;
             //This needs to be in a try/catch block
-            foreach (Points p in lowestPoints)
+            try
             {
-                blocksBelow = from t in GameBoard
-                              from pt in t.Blocks
-                              where pt.X == p.X
-                              where pt.Y > p.Y
-                              where t != CurrentTetrimino
-                              select pt;
-                if (blocksBelow.Count() > 0)
+                foreach (Points p in lowestPoints.ToList())
                 {
-                    Points highest = blocksBelow.OrderBy(a => a.Y).First();
-                    if (highest.Y - p.Y - 1 < distance)
+                    blocksBelow = from t in GameBoard
+                                  from pt in t.Blocks
+                                  where pt.X == p.X
+                                  where pt.Y > p.Y
+                                  where t != CurrentTetrimino
+                                  select pt;
+                    if (blocksBelow.Count() > 0)
                     {
-                        distance = highest.Y - p.Y - 1;
+                        Points highest = blocksBelow.OrderBy(a => a.Y).First();
+                        if (highest.Y - p.Y - 1 < distance)
+                        {
+                            distance = highest.Y - p.Y - 1;
+                        }
                     }
                 }
             }
+            catch 
+            { 
+                //No worries, this shouldnt break the game. Highlighting might disappear for 1 frame,
+                //it shouldn't even be noticable
+            }
+
             return distance;
         }
 
