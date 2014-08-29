@@ -83,6 +83,7 @@ namespace Tetris
             mainMenu.MM_singlePlayer.Click += MM_singlePlayer_Click;
             mainMenu.MM_twoPlayer.Click += MM_twoPlayer_Click;
             mainMenu.MM_scoreBoards.Click += MM_scoreBoards_Click;
+            mainMenu.MM_options.Click += MM_options_Click;
             //Menus
             SP_modeSelect.SPMS_classic.Click += SPMS_classic_Click;
             SP_modeSelect.SPMS_timed.Click += SPMS_timed_Click;
@@ -362,6 +363,11 @@ namespace Tetris
             mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Remove(scoreMenu);
             mainPanel.Children.Add(scoreMenu);
+        }
+
+        void MM_options_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         //Mode Select
