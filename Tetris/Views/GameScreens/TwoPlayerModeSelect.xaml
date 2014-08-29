@@ -23,7 +23,7 @@
         <Button x:Name="TPMS_marathon"
                 Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Marathon"/>
-        <Button x:Name="SPMS_load"
+        <Button x:Name="TPMS_load"
                 Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Load Game"/>
         <Button x:Name="TPMS_back"

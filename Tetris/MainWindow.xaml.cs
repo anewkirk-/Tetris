@@ -55,6 +55,7 @@ namespace Tetris
         TwoPlayerGameSummary TP_gameSummary = new TwoPlayerGameSummary();
 
         //Other
+        OpenFileDialog openDialog = new OpenFileDialog();
         SaveFileDialog saveDialog = new SaveFileDialog();
         private ScoreManager csm;
 
@@ -85,12 +86,14 @@ namespace Tetris
             //Menus
             SP_modeSelect.SPMS_classic.Click += SPMS_classic_Click;
             SP_modeSelect.SPMS_timed.Click += SPMS_timed_Click;
-            SP_modeSelect.SPMS_marathon.Click += SPMS_Marathon_Click;
+            SP_modeSelect.SPMS_marathon.Click += SPMS_marathon_Click;
+            SP_modeSelect.SPMS_load.Click += SPMS_load_Click;
             SP_modeSelect.SPMS_back.Click += SPMS_back_Click;
 
             TP_modeSelect.TPMS_classic.Click += TPMS_classic_Click;
             TP_modeSelect.TPMS_timed.Click += TPMS_timed_Click;
             TP_modeSelect.TPMS_marathon.Click += TPMS_marathon_Click;
+            TP_modeSelect.TPMS_load.Click += TPMS_load_Click;
             TP_modeSelect.TPMS_back.Click += TPMS_back_Click;
 
             scoreMenu.SM_back.Click += SM_back_Click;
@@ -118,6 +121,10 @@ namespace Tetris
             TP_gameSummary.TPGS_mainMenu.Click += TPGS_mainMenu_Click;
             TP_gameSummary.TPGS_playAgain.Click += TPGS_playAgain_Click;
             //Other
+            openDialog.CheckPathExists = true;
+            openDialog.CheckFileExists = true;
+            openDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\SavedGames";
+
             saveDialog.ValidateNames = true;
             saveDialog.Title = "Save Tetris Game";
             saveDialog.OverwritePrompt = true;
@@ -157,7 +164,7 @@ namespace Tetris
             player.PlayLooping();
 
             mainPanel.Children.Add(mainMenu);
-        }        
+        }    
 
         /************
          * GAME END
@@ -378,13 +385,28 @@ namespace Tetris
             mainPanel.Children.Add(SP_gameView);
         }
 
-        void SPMS_Marathon_Click(object sender, RoutedEventArgs e)
+        void SPMS_marathon_Click(object sender, RoutedEventArgs e)
         {
             SP_gameView.NewGame(GameMode.Marathon);
             SP_gameView.SoloGame.GameEnd += soloGame_GameEnd;
             mainPanel.Children.Remove(SP_modeSelect);
             mainPanel.Children.Remove(SP_gameView);
             mainPanel.Children.Add(SP_gameView);
+        }
+
+        void SPMS_load_Click(object sender, RoutedEventArgs e)
+        {
+            openDialog.DefaultExt = ".tetris";
+            openDialog.Filter = "Tetris Solo Games (.tetris)|*.tetris";
+
+            Nullable<bool> result = openDialog.ShowDialog();
+
+            // Process save file dialog box results
+            if (result == true)
+            {
+                string file = openDialog.FileName;
+                DeserializeSoloGame(file);
+            }
         }
 
         void SPMS_back_Click(object sender, RoutedEventArgs e)
@@ -424,6 +446,21 @@ namespace Tetris
             mainPanel.Children.Remove(TP_modeSelect);
             mainPanel.Children.Remove(TP_gameView);
             mainPanel.Children.Add(TP_gameView);
+        }
+
+        void TPMS_load_Click(object sender, RoutedEventArgs e)
+        {
+            openDialog.DefaultExt = ".tetris2";
+            openDialog.Filter = "Tetris Two Player Games (.tetris2)|*.tetris2";
+
+            Nullable<bool> result = openDialog.ShowDialog();
+
+            // Process save file dialog box results
+            if (result == true)
+            {
+                string file = openDialog.FileName;
+                DeserializeTwoPlayerGame(file);
+            }
         }
 
         void TPMS_back_Click(object sender, RoutedEventArgs e)
@@ -640,7 +677,7 @@ namespace Tetris
                 else if (SP_gameView.GetGameMode() == GameMode.Marathon)
                 {
                     SP_gameView.SoloGame = null;
-                    SPMS_Marathon_Click(null, null);
+                    SPMS_marathon_Click(null, null);
                 }
                 else
                 {
@@ -840,6 +877,11 @@ namespace Tetris
             formater.Serialize(stream, soloGame);
         }
 
+        private void DeserializeSoloGame(string file)
+        {
+            throw new NotImplementedException();
+        } 
+
         void SerializeTwoPlayerGame(Game playerOneGame, Game playerTwoGame, string filePath)
         {
             BinaryFormatter formater = new BinaryFormatter();
@@ -848,6 +890,11 @@ namespace Tetris
             List<Game> games = new List<Game> { playerOneGame, playerTwoGame };
 
             formater.Serialize(stream, games);
+        }
+
+        private void DeserializeTwoPlayerGame(string file)
+        {
+            throw new NotImplementedException();
         }
     }
 }
