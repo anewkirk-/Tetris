@@ -231,6 +231,8 @@
     <Folder Include="bin\Release\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\muted.png" />
+    <Resource Include="Images\sound.png" />
     <Content Include="Sound\TetrisThemeSong.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
