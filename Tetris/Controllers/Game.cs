@@ -36,6 +36,7 @@ namespace Tetris.Controllers
         private int _currentLevel = 1;
         private bool _isToppedOut = false;
         private bool _currentWasHardDropped = false;
+        private bool _speedUp = false;
 
         public Game(GameMode mode = GameMode.Classic)
         {
@@ -99,16 +100,15 @@ namespace Tetris.Controllers
             {
                 //Check LinesCleared to see if the timer interval needs to be
                 //decreased
-                if (LinesCleared > 0 && LinesCleared % _linesBeforeSpeedUp == 0)
+                if (LinesCleared > 0 && LinesCleared % _linesBeforeSpeedUp == 0 && _speedUp)
                 {
                     //Makes the drop interval half a second shorter,
                     //This will probably need to be adjusted
-                    if (GameTimer.Interval > 50)
+                    if (GameTimer.Interval > 75)
                     {
-                        GameTimer.Interval -= 50;
+                        GameTimer.Interval -= 75;
 
-                        //this will need to be changed later
-                        LinesCleared++; 
+                        _speedUp = false;
                     }
                 }
             }
@@ -155,6 +155,7 @@ namespace Tetris.Controllers
                 {
                     ClearRow(i);
                     LinesCleared++;
+                    _speedUp = true;
                     MoveDownStartingFrom(i);
                 }
                 AddRandomTetrimino();
