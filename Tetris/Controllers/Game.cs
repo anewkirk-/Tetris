@@ -198,23 +198,32 @@ namespace Tetris.Controllers
             int distance = 19 - lowest;
             IEnumerable<Points> blocksBelow;
             //This needs to be in a try/catch block
-            foreach (Points p in lowestPoints)
+            try
             {
-                blocksBelow = from t in GameBoard
-                              from pt in t.Blocks
-                              where pt.X == p.X
-                              where pt.Y > p.Y
-                              where t != CurrentTetrimino
-                              select pt;
-                if (blocksBelow.Count() > 0)
+                foreach (Points p in lowestPoints.ToList())
                 {
-                    Points highest = blocksBelow.OrderBy(a => a.Y).First();
-                    if (highest.Y - p.Y - 1 < distance)
+                    blocksBelow = from t in GameBoard
+                                  from pt in t.Blocks
+                                  where pt.X == p.X
+                                  where pt.Y > p.Y
+                                  where t != CurrentTetrimino
+                                  select pt;
+                    if (blocksBelow.Count() > 0)
                     {
-                        distance = highest.Y - p.Y - 1;
+                        Points highest = blocksBelow.OrderBy(a => a.Y).First();
+                        if (highest.Y - p.Y - 1 < distance)
+                        {
+                            distance = highest.Y - p.Y - 1;
+                        }
                     }
                 }
             }
+            catch 
+            { 
+                //No worries, this shouldnt break the game. Highlighting might disappear for 1 frame,
+                //it shouldn't even be noticable
+            }
+
             return distance;
         }
 
