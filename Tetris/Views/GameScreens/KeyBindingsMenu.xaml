@@ -33,8 +33,17 @@
             <Label Content="Key Bindings" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
                    Grid.Row="0"
-                   Grid.ColumnSpan="3"
-                   Width="733"
+                   Grid.Column="0"
+                   FontWeight="ExtraBold"/>
+            <Label Content="Player 1" 
+                   Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   FontWeight="ExtraBold"/>
+            <Label Content="Player 2" 
+                   Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Grid.Row="0"
+                   Grid.Column="2"
                    FontWeight="ExtraBold"/>
             
             <Label Content="Move Left" 
