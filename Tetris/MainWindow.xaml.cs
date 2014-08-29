@@ -122,7 +122,7 @@ namespace Tetris
             saveDialog.Title = "Save Tetris Game";
             saveDialog.OverwritePrompt = true;
             saveDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\SavedGames";
-            saveDialog.CreatePrompt = true;
+            saveDialog.CreatePrompt = false;
             saveDialog.AddExtension = true;
             saveDialog.CheckPathExists = true;
 
@@ -466,7 +466,6 @@ namespace Tetris
 
             // http://stackoverflow.com/questions/5622854/how-do-i-show-a-save-as-dialog-in-wpf
             string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
-            file += " Solo";
             file += (SP_gameView.GetGameMode()).ToString();
             saveDialog.FileName = file;
             saveDialog.DefaultExt = ".tetris";
@@ -520,7 +519,6 @@ namespace Tetris
             // http://stackoverflow.com/questions/5622854/how-do-i-show-a-save-as-dialog-in-wpf
 
             string file = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
-            file += " Duo";
             file += (TP_gameView.GetGameMode()).ToString();
             saveDialog.FileName = file;
             saveDialog.DefaultExt = ".tetris2";
