@@ -7,6 +7,7 @@ using System.Windows.Media;
 
 namespace Tetris.Models.TetriminoBag
 {
+    [Serializable]
     public class Tetrimino
     {
 

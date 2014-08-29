@@ -7,5 +7,6 @@ using Tetris.Models.TetriminoBag;
 
 namespace Tetris.Models
 {
+    [Serializable]
     public class TetrisBoard : List<Tetrimino> { }
 }
