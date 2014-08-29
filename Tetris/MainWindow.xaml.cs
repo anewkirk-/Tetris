@@ -75,6 +75,7 @@ namespace Tetris
         public Key P2Drop { get; set; }
         public Key P2Rotate { get; set; }
         public Key PauseKey { get; set; }
+        public SoundPlayer MusicPlayer { get; set; }
 
         public MainWindow()
         {
@@ -160,12 +161,10 @@ namespace Tetris
             InitializeComponent();
 
             //Play background music
-            string songPath = "Sound\\TetrisThemeSong.wav";
-            SoundPlayer player = new SoundPlayer(songPath);
-            player.PlayLooping();
+            PlayBgMusic();
 
             mainPanel.Children.Add(mainMenu);
-        }    
+        }  
 
         /************
          * GAME END
@@ -339,6 +338,17 @@ namespace Tetris
             }
             ));
         }
+
+        private void PlayBgMusic()
+        {
+            if (MusicPlayer != null)
+            {
+                MusicPlayer.Stop();
+            }
+            string songPath = "Sound\\TetrisThemeSong.wav";
+            MusicPlayer = new SoundPlayer(songPath);
+            MusicPlayer.PlayLooping();
+        }  
 
         //EVENT HANDLERS--------------------------------------------------------------------------------------------
 
@@ -868,7 +878,10 @@ namespace Tetris
                 }
                 else if (k == Key.R)
                 {
-                    SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
+                    if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift))
+                    {
+                        SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
+                    }
                 }
             }
         }
