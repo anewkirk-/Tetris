@@ -53,6 +53,7 @@ namespace Tetris
         QuitConfirm quit = new QuitConfirm();
         SinglePlayerGameSummary SP_gameSummary = new SinglePlayerGameSummary();
         TwoPlayerGameSummary TP_gameSummary = new TwoPlayerGameSummary();
+        KeyBindingsMenu bindingsMenu = new KeyBindingsMenu();
 
         //Other
         OpenFileDialog openDialog = new OpenFileDialog();
@@ -122,6 +123,10 @@ namespace Tetris
 
             TP_gameSummary.TPGS_mainMenu.Click += TPGS_mainMenu_Click;
             TP_gameSummary.TPGS_playAgain.Click += TPGS_playAgain_Click;
+
+            bindingsMenu.KBM_back.Click += KBM_back_Click;
+            bindingsMenu.DataContext = this;
+
             //Other
             openDialog.CheckPathExists = true;
             openDialog.CheckFileExists = true;
@@ -164,7 +169,7 @@ namespace Tetris
             PlayBgMusic();
 
             mainPanel.Children.Add(mainMenu);
-        }  
+        }
 
         /************
          * GAME END
@@ -390,7 +395,8 @@ namespace Tetris
 
         void MM_options_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            mainPanel.Children.Remove(mainMenu);
+            mainPanel.Children.Add(bindingsMenu);
         }
 
         //Mode Select
@@ -801,6 +807,12 @@ namespace Tetris
                 }
             }
         }
+
+        private void KBM_back_Click(object sender, RoutedEventArgs e)
+        {
+            mainPanel.Children.Remove(bindingsMenu);
+            mainPanel.Children.Add(mainMenu);
+        }  
 
 
         //KEY BINDINGS--------------------------------------------------------------------
