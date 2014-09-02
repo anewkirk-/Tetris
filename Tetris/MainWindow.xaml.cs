@@ -24,7 +24,6 @@ using System.Media;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.ComponentModel;
-using System.Web.UI.WebControls;
 using Tetris.Converters;
 
 namespace Tetris
@@ -195,18 +194,42 @@ namespace Tetris
             musicVolume.Source = this;
             musicVolume.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
 
-            mainMenu.MM_music.SetBinding(System.Windows.Controls.Button.ContentProperty, musicVolume);
+            mainMenu.MM_music.SetBinding(Button.ContentProperty, musicVolume);
+            SP_modeSelect.SPMS_music.SetBinding(Button.ContentProperty, musicVolume);
+            TP_modeSelect.TPMS_music.SetBinding(Button.ContentProperty, musicVolume);
+            scoreMenu.SM_music.SetBinding(Button.ContentProperty, musicVolume);
+            bindingsMenu.KBM_music.SetBinding(Button.ContentProperty, musicVolume);
+            SP_gameView.SPG_music.SetBinding(Button.ContentProperty, musicVolume);
+            TP_gameView.TPG_music.SetBinding(Button.ContentProperty, musicVolume);
 
             mainMenu.MM_music.Click += music_Click;
+            SP_modeSelect.SPMS_music.Click += music_Click;
+            TP_modeSelect.TPMS_music.Click += music_Click;
+            scoreMenu.SM_music.Click += music_Click;
+            bindingsMenu.KBM_music.Click += music_Click;
+            SP_gameView.SPG_music.Click += music_Click;
+            TP_gameView.TPG_music.Click += music_Click;
 
             Binding sfxVolume = new Binding("SFXMuted");
             sfxVolume.Converter = (BoolToImageConverter)Application.Current.FindResource("SFXConverter");
             sfxVolume.Source = this;
             sfxVolume.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
 
-            mainMenu.MM_sfx.SetBinding(System.Windows.Controls.Button.ContentProperty, sfxVolume);
+            mainMenu.MM_sfx.SetBinding(Button.ContentProperty, sfxVolume);
+            SP_modeSelect.SPMS_sfx.SetBinding(Button.ContentProperty, sfxVolume);
+            TP_modeSelect.TPMS_sfx.SetBinding(Button.ContentProperty, sfxVolume);
+            scoreMenu.SM_sfx.SetBinding(Button.ContentProperty, sfxVolume);
+            bindingsMenu.KBM_sfx.SetBinding(Button.ContentProperty, sfxVolume);
+            SP_gameView.SPG_sfx.SetBinding(Button.ContentProperty, sfxVolume);
+            TP_gameView.TPG_sfx.SetBinding(Button.ContentProperty, sfxVolume);
 
             mainMenu.MM_sfx.Click += sfx_Click;
+            SP_modeSelect.SPMS_sfx.Click += sfx_Click;
+            TP_modeSelect.TPMS_sfx.Click += sfx_Click;
+            scoreMenu.SM_sfx.Click += sfx_Click;
+            bindingsMenu.KBM_sfx.Click += sfx_Click;
+            SP_gameView.SPG_sfx.Click += sfx_Click;
+            TP_gameView.TPG_sfx.Click += sfx_Click;
 
             //Key defaults
             P1Left = Key.A;

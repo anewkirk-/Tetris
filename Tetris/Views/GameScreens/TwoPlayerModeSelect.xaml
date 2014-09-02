@@ -8,7 +8,7 @@
              Background="{StaticResource ResourceKey=MainBackground}">
 
     <StackPanel x:Name="TPMS_mainPanel"
-                Margin="40">
+                Margin="30">
 
         <Image Source="/Images/vsLogo.png" 
                Width="500"
@@ -29,5 +29,14 @@
         <Button x:Name="TPMS_back"
                 Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Back to Main Menu"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="TPMS_music" Style="{StaticResource ResourceKey=ImageButton}"
+                    Height="40" Width="40"
+                    Margin="0,0,5,0" HorizontalAlignment="Right"/>
+            <Button x:Name="TPMS_sfx" Style="{StaticResource ResourceKey=ImageButton}"
+                    Height="40" Width="40"
+                    Margin="5,0,0,0" HorizontalAlignment="Right"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

@@ -112,7 +112,15 @@
                     FontSize="16"
                     Height="25"
                     Content="Quit"/>
+
             
+                <Button x:Name="TPG_music" Style="{StaticResource ResourceKey=ImageButton}"
+                    Height="40" Width="40"
+                    Margin="2,5,2,0" HorizontalAlignment="Center"/>
+                <Button x:Name="TPG_sfx" Style="{StaticResource ResourceKey=ImageButton}"
+                    Height="40" Width="40"
+                    Margin="2,5,2,0" HorizontalAlignment="Center"/>
+
         </StackPanel>
 
         <StackPanel VerticalAlignment="Center"

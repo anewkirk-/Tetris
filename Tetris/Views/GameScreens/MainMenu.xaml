@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:asp="clr-namespace:System.Web.UI.WebControls;assembly=System.Web"
              mc:Ignorable="d" 
              Height="650" Width="850"
              Background="{StaticResource ResourceKey=MainBackground}">
