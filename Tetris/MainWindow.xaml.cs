@@ -23,13 +23,16 @@ using Tetris.Models;
 using System.Media;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.ComponentModel;
+using System.Web.UI.WebControls;
+using Tetris.Converters;
 
 namespace Tetris
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         /*
          * Is all of this supposed to be default visibility?
@@ -64,6 +67,42 @@ namespace Tetris
         Canvas backCanvas = new Canvas();
         Canvas backCanvas2 = new Canvas();
 
+        //Sound Buttons
+        public event PropertyChangedEventHandler PropertyChanged;
+        private bool _musicMuted = false;
+        public bool MusicMuted
+        {
+            get
+            {
+                return _musicMuted;
+            }
+            set
+            {
+                _musicMuted = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("MusicMuted"));
+                }
+            }
+        }
+        private bool _sfxMuted = false;
+        public bool SFXMuted
+        {
+            get
+            {
+                return _sfxMuted;
+            }
+            set
+            {
+                _sfxMuted = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("SFXMuted"));
+                }
+            }
+        }
+        public SoundPlayer MusicPlayer { get; set; }
+
         //Keys
         public Key P1Left { get; set; }
         public Key P1Right { get; set; }
@@ -76,7 +115,7 @@ namespace Tetris
         public Key P2Drop { get; set; }
         public Key P2Rotate { get; set; }
         public Key PauseKey { get; set; }
-        public SoundPlayer MusicPlayer { get; set; }
+        
 
         public MainWindow()
         {
@@ -149,6 +188,25 @@ namespace Tetris
 
             //Instantiate score manager
             csm = new ScoreManager();
+
+            //Sound Buttons
+            Binding musicVolume = new Binding("MusicMuted");
+            musicVolume.Converter = (BoolToImageConverter)Application.Current.FindResource("MusicConverter");
+            musicVolume.Source = this;
+            musicVolume.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+
+            mainMenu.MM_music.SetBinding(System.Windows.Controls.Button.ContentProperty, musicVolume);
+
+            mainMenu.MM_music.Click += music_Click;
+
+            Binding sfxVolume = new Binding("SFXMuted");
+            sfxVolume.Converter = (BoolToImageConverter)Application.Current.FindResource("SFXConverter");
+            sfxVolume.Source = this;
+            sfxVolume.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+
+            mainMenu.MM_sfx.SetBinding(System.Windows.Controls.Button.ContentProperty, sfxVolume);
+
+            mainMenu.MM_sfx.Click += sfx_Click;
 
             //Key defaults
             P1Left = Key.A;
@@ -366,6 +424,20 @@ namespace Tetris
             {
                 MusicPlayer.Stop();
             }
+        }
+
+        //Sound Buttons
+
+        void music_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO
+            MusicMuted = !MusicMuted;
+        }
+
+        private void sfx_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO
+            SFXMuted = !SFXMuted;
         }
 
         //EVENT HANDLERS--------------------------------------------------------------------------------------------
@@ -949,5 +1021,6 @@ namespace Tetris
         {
             throw new NotImplementedException();
         }
+
     }
 }

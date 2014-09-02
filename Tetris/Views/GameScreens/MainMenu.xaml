@@ -2,13 +2,14 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:asp="clr-namespace:System.Web.UI.WebControls;assembly=System.Web"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="850"
+             Height="650" Width="850"
              Background="{StaticResource ResourceKey=MainBackground}">
     
     <StackPanel x:Name="MM_mainPanel"
-                Margin="40">
+                Margin="40,30,40,25">
         
         <Image Source="/Images/dotTetrisLogo.png" 
                Width="500"
@@ -25,10 +26,19 @@
                 Content="High Scores"/>
         <Button x:Name="MM_options"
                 Style="{StaticResource ResourceKey=MenuButtons}"
-                Content="Options"/>
+                Content="Controls"/>
         <Button x:Name="MM_quit"
                 Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Quit"
                 Click="MM_quit_Click"/>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="MM_music" Style="{StaticResource ResourceKey=ImageButton}"
+                    Height="40" Width="40"
+                    Margin="0,0,5,0" HorizontalAlignment="Right"/>
+            <Button x:Name="MM_sfx" Style="{StaticResource ResourceKey=ImageButton}"
+                    Height="40" Width="40"
+                    Margin="5,0,0,0" HorizontalAlignment="Right"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>
