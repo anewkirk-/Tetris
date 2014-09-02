@@ -51,11 +51,11 @@
             <ComboBox x:Name="P1MoveLeftBox"
                       Grid.Column="1"
                       Grid.Row="1"
-                      Margin="15,15,15,15"/>
+                      Margin="15,15,15,15" SelectedItem="{Binding Path=P1Left, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <ComboBox x:Name="P2MoveLeftBox"
                       Grid.Column="2"
                       Grid.Row="1"
-                      Margin="15,15,15,15"/>
+                      Margin="15,15,15,15" SelectedItem="{Binding Path=P2Left, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label Content="Move Right" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
@@ -63,11 +63,11 @@
             <ComboBox x:Name="P1MoveRightBox"
                       Grid.Column="1"
                       Grid.Row="2"
-                      Margin="15,15,15,15"/>
+                      Margin="15,15,15,15" SelectedItem="{Binding Path=P1Right, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <ComboBox x:Name="P2MoveRightBox"
                       Grid.Column="2"
                       Grid.Row="2"
-                      Margin="15,15,15,15"/>
+                      Margin="15,15,15,15" SelectedItem="{Binding Path=P2Right, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label Content="Rotate" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
@@ -75,11 +75,11 @@
             <ComboBox x:Name="P1MoveRotateBox"
                       Grid.Column="1"
                       Grid.Row="3"
-                      Margin="15,15,15,15"/>
+                      Margin="15,15,15,15" SelectedItem="{Binding Path=P1Rotate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <ComboBox x:Name="P2MoveRotateBox"
                       Grid.Column="2"
                       Grid.Row="3"
-                      Margin="15,15,15,15"/>
+                      Margin="15,15,15,15" SelectedItem="{Binding Path=P2Rotate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label Content="Soft Drop" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
@@ -87,11 +87,11 @@
             <ComboBox x:Name="P1MoveSoftDropBox"
                       Grid.Column="1"
                       Grid.Row="4"
-                      Margin="15,15,15,15"/>
+                      Margin="15,15,15,15" SelectedItem="{Binding Path=P1Down, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <ComboBox x:Name="P2MoveSoftDropBox"
                       Grid.Column="2"
                       Grid.Row="4"
-                      Margin="15,15,15,15"/>
+                      Margin="15,15,15,15" SelectedItem="{Binding Path=P2Down, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label Content="Hard Drop" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
@@ -99,11 +99,11 @@
             <ComboBox x:Name="P1MoveHardDropBox"
                       Grid.Column="1"
                       Grid.Row="5"
-                      Margin="15,15,15,15"/>
+                      Margin="15,15,15,15" SelectedItem="{Binding Path=P1Drop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <ComboBox x:Name="P2MoveHardBox"
                       Grid.Column="2"
                       Grid.Row="5"
-                      Margin="15,15,15,15"/>
+                      Margin="15,15,15,15" SelectedItem="{Binding Path=P2Drop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         </Grid>
 

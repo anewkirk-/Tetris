@@ -53,6 +53,7 @@ namespace Tetris
         QuitConfirm quit = new QuitConfirm();
         SinglePlayerGameSummary SP_gameSummary = new SinglePlayerGameSummary();
         TwoPlayerGameSummary TP_gameSummary = new TwoPlayerGameSummary();
+        KeyBindingsMenu bindingsMenu = new KeyBindingsMenu();
 
         //Other
         OpenFileDialog openDialog = new OpenFileDialog();
@@ -75,6 +76,7 @@ namespace Tetris
         public Key P2Drop { get; set; }
         public Key P2Rotate { get; set; }
         public Key PauseKey { get; set; }
+        public SoundPlayer MusicPlayer { get; set; }
 
         public MainWindow()
         {
@@ -121,6 +123,10 @@ namespace Tetris
 
             TP_gameSummary.TPGS_mainMenu.Click += TPGS_mainMenu_Click;
             TP_gameSummary.TPGS_playAgain.Click += TPGS_playAgain_Click;
+
+            bindingsMenu.KBM_back.Click += KBM_back_Click;
+            bindingsMenu.DataContext = this;
+
             //Other
             openDialog.CheckPathExists = true;
             openDialog.CheckFileExists = true;
@@ -160,12 +166,10 @@ namespace Tetris
             InitializeComponent();
 
             //Play background music
-            string songPath = "Sound\\TetrisThemeSong.wav";
-            SoundPlayer player = new SoundPlayer(songPath);
-            player.PlayLooping();
+            PlayBgMusic();
 
             mainPanel.Children.Add(mainMenu);
-        }    
+        }
 
         /************
          * GAME END
@@ -340,6 +344,30 @@ namespace Tetris
             ));
         }
 
+        private void PlayBgMusic()
+        {
+            StopBgMusic();
+            string songPath = "Sound\\TetrisThemeSong.wav";
+            MusicPlayer = new SoundPlayer(songPath);
+            MusicPlayer.PlayLooping();
+        }
+
+        private void PlayAltBgMusic()
+        {
+            StopBgMusic();
+            string songPath = "Sound\\TetrisThemeSong.wav";
+            MusicPlayer = new SoundPlayer(songPath);
+            MusicPlayer.PlayLooping();
+        }
+
+        private void StopBgMusic()
+        {
+            if (MusicPlayer != null)
+            {
+                MusicPlayer.Stop();
+            }
+        }
+
         //EVENT HANDLERS--------------------------------------------------------------------------------------------
 
         //Main Menu
@@ -367,7 +395,8 @@ namespace Tetris
 
         void MM_options_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            mainPanel.Children.Remove(mainMenu);
+            mainPanel.Children.Add(bindingsMenu);
         }
 
         //Mode Select
@@ -779,6 +808,12 @@ namespace Tetris
             }
         }
 
+        private void KBM_back_Click(object sender, RoutedEventArgs e)
+        {
+            mainPanel.Children.Remove(bindingsMenu);
+            mainPanel.Children.Add(mainMenu);
+        }  
+
 
         //KEY BINDINGS--------------------------------------------------------------------
         private void Window_KeyDown_1(object sender, KeyEventArgs e)
@@ -840,7 +875,7 @@ namespace Tetris
                 //    TP_gameView.PlayerTwoGame.AddRowSansOne();
                 //}
             }
-            else
+            else if(SP_gameView.SoloGame != null)
             {
                 if (k == P1Left)
                 {
@@ -868,7 +903,19 @@ namespace Tetris
                 }
                 else if (k == Key.R)
                 {
-                    SP_gameView._rainbowMode = !SP_gameView._rainbowMode;
+                    if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift))
+                    {
+                        SP_gameView._rainbowMode = true;
+                        PlayAltBgMusic();
+                    }
+                }
+                else if (k == Key.X)
+                {
+                    if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift))
+                    {
+                        SP_gameView._rainbowMode = false;
+                        PlayBgMusic();
+                    }
                 }
             }
         }
