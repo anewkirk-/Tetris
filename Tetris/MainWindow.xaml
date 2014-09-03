@@ -5,7 +5,8 @@
         xmlns:ov="clr-namespace:Tetris.Views.Overlays"
         Title="Tetris" Height="650" Width="850"
         ResizeMode="CanMinimize"
-        KeyDown="Window_KeyDown_1">
+        KeyDown="Window_KeyDown_1"
+        Icon="Icon.ico">
     <Grid x:Name="mainPanel">
         <!--<MediaElement Name ="backgroundMusic"
                       LoadedBehavior="Play">

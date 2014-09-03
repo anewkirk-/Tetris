@@ -84,6 +84,11 @@ C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\D
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris.exe
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris.pdb
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\System.Data.SQLite.dll
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\System.Data.SQLite.pdb
+=======
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\bin\Debug\Tetris.exe.config
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.exe
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.pdb
@@ -140,3 +145,4 @@ C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\MainWindow.baml
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.g.resources
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.Properties.Resources.resources
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\Tetris.csproj.GenerateResource.Cache
+>>>>>>> ed4d91e1e087301041ad13647a3a9cc5fa5505d3

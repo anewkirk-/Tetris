@@ -4,16 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\
+=======
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Debug\
+>>>>>>> ed4d91e1e087301041ad13647a3a9cc5fa5505d3
 Tetris
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\App.xaml
+13-540146119
+11465199187
+31-79842221
+141403424607
+=======
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\App.xaml
 13-540146119
 15969257951
 32572864414
 14-1805588540
+>>>>>>> ed4d91e1e087301041ad13647a3a9cc5fa5505d3
 MainWindow.xaml;Views\GameScreens\KeyBindingsMenu.xaml;Views\GameScreens\TwoPlayerModeSelect.xaml;Views\GameScreens\MainMenu.xaml;Views\GameScreens\SinglePlayerModeSelect.xaml;Views\GameScreens\ScoresMenu.xaml;Views\GameScreens\SinglePlayerGame.xaml;Views\GameScreens\TwoPlayerGame.xaml;Views\Overlays\AddHighScore.xaml;Views\Overlays\QuitConfirm.xaml;Views\Overlays\SinglePlayerGameSummary.xaml;Views\Overlays\PauseScreen.xaml;Views\Overlays\TwoPlayerGameSummary.xaml;
 
 False
