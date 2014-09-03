@@ -18,7 +18,7 @@ namespace Tetris.Controllers
     [Serializable]
     public class Game
     {
-        [field:NonSerialized]
+        [field: NonSerialized]
         public event TetrisHandler ScoredTetris;
         [field: NonSerialized]
         public event GameEndHandler GameEnd;
@@ -90,6 +90,7 @@ namespace Tetris.Controllers
                 if (GameEnd != null)
                 {
                     GameEnd();
+
                 }
             }
 
@@ -218,8 +219,8 @@ namespace Tetris.Controllers
                     }
                 }
             }
-            catch 
-            { 
+            catch
+            {
                 //No worries, this shouldnt break the game. Highlighting might disappear for 1 frame,
                 //it shouldn't even be noticable
             }
@@ -297,7 +298,7 @@ namespace Tetris.Controllers
                 where pt.Y > p.Y
                 select pt;
 
-            foreach(Points ps in bl.ToList())
+            foreach (Points ps in bl.ToList())
             {
                 if (ps.X == p.X && ps.Y == p.Y + 1)
                 {
@@ -425,14 +426,14 @@ namespace Tetris.Controllers
             else
                 MakeTetriminoBag();
         }
-            
-     
+
+
         //Create a row of points leaving one space
         public Tetrimino RowOfBlocksMinusOne()
         {
             Tetrimino t = new Tetrimino();
             int randomY = _rand.Next(0, 10);
-            
+
             for (int i = 0; i <= 9; i++)
             {
                 if (i != randomY)
@@ -608,12 +609,12 @@ namespace Tetris.Controllers
                     CurrentTetrimino.RotateBack();
                 }
             }
-           
+
         }
 
         public void MoveCurrentDown()
         {
-            if(FindDistanceCurrentCanFall() > 0)
+            if (FindDistanceCurrentCanFall() > 0)
             {
                 CurrentTetrimino.Fall();
             }
