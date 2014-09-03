@@ -202,6 +202,14 @@ namespace Tetris
             SP_gameView.SPG_music.SetBinding(Button.ContentProperty, musicVolume);
             TP_gameView.TPG_music.SetBinding(Button.ContentProperty, musicVolume);
 
+            mainMenu.MM_music.DataContext = this;
+            SP_modeSelect.SPMS_music.DataContext = this;
+            TP_modeSelect.TPMS_music.DataContext = this;
+            scoreMenu.SM_music.DataContext = this;
+            bindingsMenu.KBM_music.DataContext = this;
+            SP_gameView.SPG_music.DataContext = this;
+            TP_gameView.TPG_music.DataContext = this;
+
             mainMenu.MM_music.Click += music_Click;
             SP_modeSelect.SPMS_music.Click += music_Click;
             TP_modeSelect.TPMS_music.Click += music_Click;
@@ -471,6 +479,7 @@ namespace Tetris
             mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Remove(SP_modeSelect);
             mainPanel.Children.Add(SP_modeSelect);
+            UpdateSoundButtons();
         }
 
         void MM_twoPlayer_Click(object sender, RoutedEventArgs e)
@@ -478,6 +487,7 @@ namespace Tetris
             mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Remove(TP_modeSelect);
             mainPanel.Children.Add(TP_modeSelect);
+            UpdateSoundButtons();
         }
 
         void MM_scoreBoards_Click(object sender, RoutedEventArgs e)
@@ -486,12 +496,14 @@ namespace Tetris
             mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Remove(scoreMenu);
             mainPanel.Children.Add(scoreMenu);
+            UpdateSoundButtons();
         }
 
         void MM_options_Click(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Add(bindingsMenu);
+            UpdateSoundButtons();
         }
 
         //Mode Select
@@ -504,6 +516,7 @@ namespace Tetris
             mainPanel.Children.Remove(SP_modeSelect);
             mainPanel.Children.Remove(SP_gameView);
             mainPanel.Children.Add(SP_gameView);
+            UpdateSoundButtons();
         }
 
         void SPMS_timed_Click(object sender, RoutedEventArgs e)
@@ -513,6 +526,7 @@ namespace Tetris
             mainPanel.Children.Remove(SP_modeSelect);
             mainPanel.Children.Remove(SP_gameView);
             mainPanel.Children.Add(SP_gameView);
+            UpdateSoundButtons();
         }
 
         void SPMS_marathon_Click(object sender, RoutedEventArgs e)
@@ -522,6 +536,7 @@ namespace Tetris
             mainPanel.Children.Remove(SP_modeSelect);
             mainPanel.Children.Remove(SP_gameView);
             mainPanel.Children.Add(SP_gameView);
+            UpdateSoundButtons();
         }
 
         void SPMS_load_Click(object sender, RoutedEventArgs e)
@@ -544,6 +559,7 @@ namespace Tetris
             mainPanel.Children.Remove(SP_modeSelect);
             mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Add(mainMenu);
+            UpdateSoundButtons();
         }
 
         //Two Player
@@ -553,9 +569,9 @@ namespace Tetris
             TP_gameView.PlayerOneGame.GameEnd += PlayerOneGame_GameEnd;
             TP_gameView.PlayerTwoGame.GameEnd += PlayerTwoGame_GameEnd;
             mainPanel.Children.Remove(TP_modeSelect);
-
             mainPanel.Children.Remove(TP_gameView);
             mainPanel.Children.Add(TP_gameView);
+            UpdateSoundButtons();
         }
 
         void TPMS_timed_Click(object sender, RoutedEventArgs e)
@@ -566,6 +582,7 @@ namespace Tetris
             mainPanel.Children.Remove(TP_modeSelect);
             mainPanel.Children.Remove(TP_gameView);
             mainPanel.Children.Add(TP_gameView);
+            UpdateSoundButtons();
         }
 
         void TPMS_marathon_Click(object sender, RoutedEventArgs e)
@@ -576,6 +593,7 @@ namespace Tetris
             mainPanel.Children.Remove(TP_modeSelect);
             mainPanel.Children.Remove(TP_gameView);
             mainPanel.Children.Add(TP_gameView);
+            UpdateSoundButtons();
         }
 
         void TPMS_load_Click(object sender, RoutedEventArgs e)
@@ -598,6 +616,7 @@ namespace Tetris
             mainPanel.Children.Remove(TP_modeSelect);
             mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Add(mainMenu);
+            UpdateSoundButtons();
         }
 
         //Score Menu
@@ -606,6 +625,7 @@ namespace Tetris
             mainPanel.Children.Remove(scoreMenu);
             mainPanel.Children.Remove(mainMenu);
             mainPanel.Children.Add(mainMenu);
+            UpdateSoundButtons();
         }
 
         //Game Views
@@ -779,6 +799,7 @@ namespace Tetris
 
                 mainPanel.Children.Remove(mainMenu);
                 mainPanel.Children.Add(mainMenu);
+                UpdateSoundButtons();
             }
         }
 
@@ -853,6 +874,7 @@ namespace Tetris
 
                 mainPanel.Children.Remove(mainMenu);
                 mainPanel.Children.Add(mainMenu);
+                UpdateSoundButtons();
             }
         }
 
@@ -907,6 +929,7 @@ namespace Tetris
         {
             mainPanel.Children.Remove(bindingsMenu);
             mainPanel.Children.Add(mainMenu);
+            UpdateSoundButtons();
         }  
 
 
@@ -1045,5 +1068,14 @@ namespace Tetris
             throw new NotImplementedException();
         }
 
+        //Sound Update Buttons
+        private void UpdateSoundButtons()
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs("MusicMuted"));
+                PropertyChanged(this, new PropertyChangedEventArgs("SFXMuted"));
+            }
+        }
     }
 }
