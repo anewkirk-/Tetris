@@ -250,6 +250,7 @@
     <Resource Include="Images\sound_sfx_muted.png" />
     <Resource Include="Images\Icon.ico" />
     <Resource Include="Icon.ico" />
+    <Resource Include="Images\MousePointer.png" />
     <Content Include="Sound\TetrisThemeSong.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -4,15 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             Height="650" Width="850"
+             Height="625" Width="850"
              Background="{StaticResource ResourceKey=MainBackground}">
     
     <StackPanel x:Name="MM_mainPanel"
-                Margin="40,30,40,25">
+                Margin="40,30,40,0">
         
         <Image Source="/Images/dotTetrisLogo.png" 
                Width="500"
-               Margin="0,0,0,30"/>
+               Margin="0,0,0,20"/>
         
         <Button x:Name="MM_singlePlayer"
                 Style="{StaticResource ResourceKey=MenuButtons}"
