@@ -1,5 +1,3 @@
-C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Release\Tetris.exe.config
-C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Tetris.csprojResolveAssemblyReference.cache
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Views\GameScreens\KeyBindingsMenu.baml
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Views\GameScreens\TwoPlayerModeSelect.baml
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Views\GameScreens\MainMenu.baml
@@ -30,3 +28,16 @@ C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Relea
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\GeneratedInternalTypeHelper.g.cs
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Tetris_MarkupCompile.cache
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Tetris_MarkupCompile.lref
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Release\Tetris.exe.config
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Release\Sound\TetrisThemeSong.wav
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Release\Tetris.exe
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Release\Tetris.pdb
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Release\System.Data.SQLite.dll
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Release\System.Data.SQLite.pdb
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\App.baml
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\MainWindow.baml
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Tetris.g.resources
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Tetris.Properties.Resources.resources
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Tetris.csproj.GenerateResource.Cache
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Tetris.exe
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Tetris.pdb

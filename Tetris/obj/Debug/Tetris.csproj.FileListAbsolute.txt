@@ -85,3 +85,5 @@ C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\D
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris.pdb
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\System.Data.SQLite.dll
+C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\bin\Debug\System.Data.SQLite.pdb
