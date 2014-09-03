@@ -48,6 +48,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -245,6 +248,8 @@
     <Resource Include="Images\sound_music_muted.png" />
     <Resource Include="Images\sound_sfx.png" />
     <Resource Include="Images\sound_sfx_muted.png" />
+    <Resource Include="Images\Icon.ico" />
+    <Resource Include="Icon.ico" />
     <Content Include="Sound\TetrisThemeSong.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
