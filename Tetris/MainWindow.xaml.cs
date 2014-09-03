@@ -100,7 +100,8 @@ namespace Tetris
                 }
             }
         }
-        public SoundPlayer MusicPlayer { get; set; }
+
+        Sound sound = new Sound();
 
         //Keys
         public Key P1Left { get; set; }
@@ -114,7 +115,7 @@ namespace Tetris
         public Key P2Drop { get; set; }
         public Key P2Rotate { get; set; }
         public Key PauseKey { get; set; }
-        
+
 
         public MainWindow()
         {
@@ -254,9 +255,6 @@ namespace Tetris
 
             InitializeComponent();
 
-            //Play background music
-            PlayBgMusic();
-
             mainPanel.Children.Add(mainMenu);
         }
 
@@ -295,6 +293,8 @@ namespace Tetris
                         SP_gameSummary.AHS_type.Content = "Submit your score:";
                         SP_gameSummary.AHS_type.FontWeight = FontWeights.Normal;
                     }
+
+                    sound.PlayGameOverSFX();
 
                     mainPanel.Children.Remove(backCanvas);
                     mainPanel.Children.Add(backCanvas);
@@ -433,29 +433,21 @@ namespace Tetris
             ));
         }
 
-        private void PlayBgMusic()
-        {
-            StopBgMusic();
-            string songPath = "Sound\\TetrisThemeSong.wav";
-            MusicPlayer = new SoundPlayer(songPath);
-            MusicPlayer.PlayLooping();
-        }
+        //private void PlayAltBgMusic()
+        //{
+        //    StopBgMusic();
+        //    string songPath = "Sound\\TetrisThemeSong.wav";
+        //    MusicPlayer = new SoundPlayer(songPath);
+        //    MusicPlayer.PlayLooping();
+        //}
 
-        private void PlayAltBgMusic()
-        {
-            StopBgMusic();
-            string songPath = "Sound\\TetrisThemeSong.wav";
-            MusicPlayer = new SoundPlayer(songPath);
-            MusicPlayer.PlayLooping();
-        }
-
-        private void StopBgMusic()
-        {
-            if (MusicPlayer != null)
-            {
-                MusicPlayer.Stop();
-            }
-        }
+        //private void StopBgMusic()
+        //{
+        //    if (MusicPlayer != null)
+        //    {
+        //        MusicPlayer.Stop();
+        //    }
+        //}
 
         //Sound Buttons
 
@@ -635,6 +627,7 @@ namespace Tetris
         {
             if (SP_gameView.SoloGame != null)
             {
+
                 SP_gameView.PauseGame();
                 mainPanel.Children.Remove(backCanvas);
                 mainPanel.Children.Remove(pause);
@@ -929,8 +922,12 @@ namespace Tetris
         {
             mainPanel.Children.Remove(bindingsMenu);
             mainPanel.Children.Add(mainMenu);
+<<<<<<< HEAD
+        }
+=======
             UpdateSoundButtons();
         }  
+>>>>>>> origin/master
 
 
         //KEY BINDINGS--------------------------------------------------------------------
@@ -947,84 +944,101 @@ namespace Tetris
                 if (k == P1Left)
                 {
                     TP_gameView.PlayerOneGame.MoveLeft();
+                    sound.PlayMoveSFX();
                 }
                 else if (k == P1Right)
                 {
+                    sound.PlayMoveSFX();
                     TP_gameView.PlayerOneGame.MoveRight();
                 }
                 else if (k == P1Down)
                 {
                     TP_gameView.PlayerOneGame.MoveCurrentDown();
+                    sound.PlayMoveSFX();
                 }
                 else if (k == P1Drop)
                 {
                     TP_gameView.PlayerOneGame.HardDrop();
+                    sound.PlayCollisionSFX();
                 }
                 else if (k == P1Rotate)
                 {
                     TP_gameView.PlayerOneGame.RotateCurrent();
+                    sound.PlayRotateSFX();
                 }
                 else if (k == P2Left)
                 {
                     TP_gameView.PlayerTwoGame.MoveLeft();
+                    sound.PlayMoveSFX();
                 }
                 else if (k == P2Right)
                 {
                     TP_gameView.PlayerTwoGame.MoveRight();
+                    sound.PlayMoveSFX();
                 }
                 else if (k == P2Down)
                 {
                     TP_gameView.PlayerTwoGame.MoveCurrentDown();
+                    sound.PlayMoveSFX();
                 }
                 else if (k == P2Drop)
                 {
                     TP_gameView.PlayerTwoGame.HardDrop();
+                    sound.PlayCollisionSFX();
                 }
                 else if (k == P2Rotate)
                 {
                     TP_gameView.PlayerTwoGame.RotateCurrent();
+                    sound.PlayRotateSFX();
                 }
                 else if (k == PauseKey)
                 {
                     TPG_pause_Click(null, null);
+                    sound.PlayPauseSFX();
                 }
                 //else if(k == Key.V)
                 //{
                 //    TP_gameView.PlayerTwoGame.AddRowSansOne();
                 //}
             }
-            else if(SP_gameView.SoloGame != null)
+            else if (SP_gameView.SoloGame != null)
             {
                 if (k == P1Left)
                 {
                     SP_gameView.SoloGame.MoveLeft();
+                    sound.PlayMoveSFX();
                 }
                 else if (k == P1Right)
                 {
                     SP_gameView.SoloGame.MoveRight();
+                    sound.PlayMoveSFX();
                 }
                 else if (k == P1Down)
                 {
                     SP_gameView.SoloGame.MoveCurrentDown();
+                    sound.PlayMoveSFX();
                 }
                 else if (k == P1Drop)
                 {
                     SP_gameView.SoloGame.HardDrop();
+                    sound.PlayCollisionSFX();
                 }
                 else if (k == P1Rotate)
                 {
                     SP_gameView.SoloGame.RotateCurrent();
+                    sound.PlayRotateSFX();
                 }
                 else if (k == PauseKey)
                 {
                     SPG_pause_Click(null, null);
+                    sound.PlayPauseSFX();
                 }
                 else if (k == Key.R)
                 {
                     if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift))
                     {
                         SP_gameView._rainbowMode = true;
-                        PlayAltBgMusic();
+                        //PlayAltBgMusic();
                     }
                 }
                 else if (k == Key.X)
@@ -1032,7 +1046,6 @@ namespace Tetris
                     if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift))
                     {
                         SP_gameView._rainbowMode = false;
-                        PlayBgMusic();
                     }
                 }
             }
@@ -1051,7 +1064,7 @@ namespace Tetris
         private void DeserializeSoloGame(string file)
         {
             throw new NotImplementedException();
-        } 
+        }
 
         void SerializeTwoPlayerGame(Game playerOneGame, Game playerTwoGame, string filePath)
         {

@@ -29,6 +29,7 @@ namespace Tetris.Views.GameScreens
         private Rectangle[,] _rectangleBoard = new Rectangle[10, 20];
         private Rectangle[,] _nextBoard = new Rectangle[7, 2];
         private Random _gen = new Random();
+        Sound sound = new Sound();
 
         private List<SolidColorBrush> _tetriminoColors = new List<SolidColorBrush>() {
             new SolidColorBrush(Colors.Cyan),
@@ -42,7 +43,7 @@ namespace Tetris.Views.GameScreens
             new SolidColorBrush(Colors.Black)
     };
         private SolidColorBrush _borderBrush = new SolidColorBrush(Colors.Black);
-        private SolidColorBrush _nxtBorderBrush = new SolidColorBrush(Color.FromArgb(144,0,0,0));
+        private SolidColorBrush _nxtBorderBrush = new SolidColorBrush(Color.FromArgb(144, 0, 0, 0));
 
         public SinglePlayerGame()
         {
@@ -101,6 +102,7 @@ namespace Tetris.Views.GameScreens
 
         public void PauseGame()
         {
+
             if (PaintTimer != null && SoloGame != null)
             {
                 PaintTimer.Stop();
@@ -186,7 +188,7 @@ namespace Tetris.Views.GameScreens
                         }
                     }
                     currentRectangle.Stroke = _borderBrush;
-                    currentRectangle.StrokeThickness = 2.5;                    
+                    currentRectangle.StrokeThickness = 2.5;
                 }
                 UpdateNextTetrimino();
             }

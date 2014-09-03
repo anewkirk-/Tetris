@@ -77,6 +77,7 @@
     </ApplicationDefinition>
     <Compile Include="Controllers\GameMode.cs" />
     <Compile Include="Controllers\ScoreManager.cs" />
+    <Compile Include="Controllers\Sound.cs" />
     <Compile Include="Converters\BoolToImageConverter.cs" />
     <Compile Include="Models\Score.cs" />
     <Compile Include="Models\TetriminoBag\i_Tetrimino.cs" />
@@ -250,8 +251,49 @@
     <Resource Include="Images\sound_sfx_muted.png" />
     <Resource Include="Images\Icon.ico" />
     <Resource Include="Icon.ico" />
-    <Resource Include="Images\MousePointer.png" />
-    <Content Include="Sound\TetrisThemeSong.wav">
+    <Content Include="Sound\SoundEffects\Tetris_Collission.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_Countdown.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_Dominating.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_DoubleLineClear.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_GameOver.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_GameStart.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_HighScore.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_LevelUp.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_Move.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_Pause.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_Rotate.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_SingleLineClear.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_TripleLineClear.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\SoundEffects\Tetris_Win.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\Music\TetrisThemeSong.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

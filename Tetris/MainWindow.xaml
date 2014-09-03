@@ -8,6 +8,21 @@
         KeyDown="Window_KeyDown_1"
         Icon="Icon.ico">
     <Grid x:Name="mainPanel">
-        
+        <!--<MediaElement Name ="backgroundMusic"
+                      LoadedBehavior="Play">
+            <MediaElement.Triggers>
+                <EventTrigger RoutedEvent="MediaElement.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <MediaTimeline Source="Sound\Music\TetrisThemeSong.wav" 
+                                               Storyboard.TargetName="backgroundMusic" 
+                                               RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </MediaElement.Triggers>
+        </MediaElement>-->
     </Grid>
 </Window>
