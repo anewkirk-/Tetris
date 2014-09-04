@@ -7,7 +7,7 @@
         ResizeMode="CanMinimize"
         KeyDown="Window_KeyDown_1">
     <Grid x:Name="mainPanel">
-        <!--<MediaElement Name ="backgroundMusic"
+        <MediaElement Name ="backgroundMusic"
                       LoadedBehavior="Play">
             <MediaElement.Triggers>
                 <EventTrigger RoutedEvent="MediaElement.Loaded">
@@ -22,6 +22,6 @@
                     </EventTrigger.Actions>
                 </EventTrigger>
             </MediaElement.Triggers>
-        </MediaElement>-->
+        </MediaElement>
     </Grid>
 </Window>

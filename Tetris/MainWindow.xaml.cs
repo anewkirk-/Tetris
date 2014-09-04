@@ -453,14 +453,42 @@ namespace Tetris
 
         void music_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            
             MusicMuted = !MusicMuted;
+             if (backgroundMusic != null)
+            {
+                if (MusicMuted)
+                {
+                    backgroundMusic.Volume = 0;
+                }
+                else
+                {
+                    backgroundMusic.Volume = .5;
+                }
+            }
         }
 
         private void sfx_Click(object sender, RoutedEventArgs e)
         {
             //TODO
             SFXMuted = !SFXMuted;
+           
+            List<MediaPlayer> sfx = sound.SFXList();
+            if (sfx != null)
+            {
+                if (SFXMuted)
+                {
+                    foreach (MediaPlayer s in sfx)
+                    {
+                        s.Volume = 0;
+                    }
+                }
+                else
+                    foreach (MediaPlayer s in sfx)
+                    {
+                        s.Volume = 8;
+                    }
+            }
         }
 
         //EVENT HANDLERS--------------------------------------------------------------------------------------------
@@ -922,13 +950,7 @@ namespace Tetris
         {
             mainPanel.Children.Remove(bindingsMenu);
             mainPanel.Children.Add(mainMenu);
-<<<<<<< HEAD
         }
-=======
-            UpdateSoundButtons();
-        }  
->>>>>>> origin/master
-
 
         //KEY BINDINGS--------------------------------------------------------------------
         private void Window_KeyDown_1(object sender, KeyEventArgs e)
