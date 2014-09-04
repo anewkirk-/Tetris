@@ -922,12 +922,8 @@ namespace Tetris
         {
             mainPanel.Children.Remove(bindingsMenu);
             mainPanel.Children.Add(mainMenu);
-<<<<<<< HEAD
-        }
-=======
             UpdateSoundButtons();
         }  
->>>>>>> origin/master
 
 
         //KEY BINDINGS--------------------------------------------------------------------

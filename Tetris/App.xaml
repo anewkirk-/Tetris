@@ -191,15 +191,12 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
-                            <Themes:ButtonChrome x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}" SnapsToDevicePixels="true">
+                            <Border x:Name="Chrome" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}"  SnapsToDevicePixels="true">
                                 <Grid HorizontalAlignment="Right" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}">
                                     <Path x:Name="Arrow" Data="{StaticResource DownArrowGeometry}" Fill="Black" HorizontalAlignment="Center" Margin="3,1,0,0" VerticalAlignment="Center"/>
                                 </Grid>
-                            </Themes:ButtonChrome>
+                            </Border>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsChecked" Value="true">
-                                    <Setter Property="RenderPressed" TargetName="Chrome" Value="true"/>
-                                </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter Property="Fill" TargetName="Arrow" Value="#AFAFAF"/>
                                 </Trigger>
