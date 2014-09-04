@@ -7,7 +7,7 @@
              Height="100" Width="225"
              BorderBrush="Black"
              BorderThickness="1">
-    <Grid Background="{StaticResource ResourceKey=GameBackground}">
+    <Grid Background="{StaticResource ResourceKey=OverlayBackground}">
 
         <Grid.RowDefinitions>
             <RowDefinition />

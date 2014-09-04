@@ -9,19 +9,13 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <SolidColorBrush x:Key="MainBackground">
-                <SolidColorBrush.Color>
-                    <!--<Color A="255" R="32" G="106" B="135" />-->
-                    <Color A="255" R="235" G="240" B="255" />
-                </SolidColorBrush.Color>
-            </SolidColorBrush>
-
-            <SolidColorBrush x:Key="GameBackground">
-                <SolidColorBrush.Color>
-                    <!--<Color A="255" R="32" G="106" B="135" />-->
-                    <Color A="255" R="255" G="250" B="240" />
-                </SolidColorBrush.Color>
-            </SolidColorBrush>
+            <ImageBrush x:Key="MainBackground" ImageSource="/Images/MainBackground.png"/>
+            <ImageBrush x:Key="GameBackground" ImageSource="/Images/GameScreenBackground.png"/>
+            <ImageBrush x:Key="OverlayBackground" ImageSource="/Images/OverlayBackground.png"/>
+            <ImageBrush x:Key="R1Background" ImageSource="/Images/HighScoreR1.png"/>
+            <ImageBrush x:Key="R2Background" ImageSource="/Images/HighScoreR2.png"/>
+            <ImageBrush x:Key="ScoresBackground" ImageSource="/Images/ScoresBackground.png"/>
+            <ImageBrush x:Key="ControlsBackground" ImageSource="/Images/ControlsBackground.png"/>
 
             <Style x:Key="MenuButtons" TargetType="{x:Type Button}">
                 <Setter Property="Margin" Value="10" />
@@ -93,8 +87,12 @@
             </Style>
 
 
-            <Style x:Key="GridRow1" TargetType="{x:Type Rectangle}">
-                <Setter Property="Fill" Value="{StaticResource ResourceKey=GameBackground}" />
+            <Style x:Key="GridRow1" TargetType="Rectangle">
+                <Setter Property="Fill" Value="{StaticResource ResourceKey=R1Background}"/>
+            </Style>
+
+            <Style x:Key="GridRow2" TargetType="Rectangle">
+                <Setter Property="Fill" Value="{StaticResource ResourceKey=R2Background}"/>
             </Style>
 
             <Style x:Key="KeyBindingLabels" TargetType="{x:Type Label}">
