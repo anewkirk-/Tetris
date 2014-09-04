@@ -101,7 +101,7 @@ namespace Tetris
             }
         }
 
-        Sound sound = new Sound();
+        public Sound SoundManager { get; set; }
 
         //Keys
         public Key P1Left { get; set; }
@@ -188,6 +188,10 @@ namespace Tetris
 
             //Instantiate score manager
             csm = new ScoreManager();
+
+
+            //
+            SoundManager = new Sound();
 
             //Sound Buttons
             Binding musicVolume = new Binding("MusicMuted");
@@ -294,7 +298,7 @@ namespace Tetris
                         SP_gameSummary.AHS_type.FontWeight = FontWeights.Normal;
                     }
 
-                    sound.PlayGameOverSFX();
+                    SoundManager.PlayGameOverSFX();
 
                     mainPanel.Children.Remove(backCanvas);
                     mainPanel.Children.Add(backCanvas);
@@ -453,9 +457,9 @@ namespace Tetris
 
         void music_Click(object sender, RoutedEventArgs e)
         {
-            
+
             MusicMuted = !MusicMuted;
-             if (backgroundMusic != null)
+            if (backgroundMusic != null)
             {
                 if (MusicMuted)
                 {
@@ -470,10 +474,10 @@ namespace Tetris
 
         private void sfx_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+
             SFXMuted = !SFXMuted;
-           
-            List<MediaPlayer> sfx = sound.SFXList();
+
+            List<MediaPlayer> sfx = SoundManager.SFXList();
             if (sfx != null)
             {
                 if (SFXMuted)
@@ -738,7 +742,10 @@ namespace Tetris
             if (result == true)
             {
                 file = saveDialog.FileName;
-                SerializeTwoPlayerGame(TP_gameView.PlayerOneGame, TP_gameView.PlayerTwoGame, file);
+                TwoPlayerSerWrapper w = new TwoPlayerSerWrapper();
+                w.PlayerOneGame = TP_gameView.PlayerOneGame;
+                w.PlayerTwoGame = TP_gameView.PlayerTwoGame;
+                SerializeTwoPlayerGame(w, file);
             }
         }
 
@@ -966,94 +973,91 @@ namespace Tetris
                 if (k == P1Left)
                 {
                     TP_gameView.PlayerOneGame.MoveLeft();
-                    sound.PlayMoveSFX();
+                    SoundManager.PlayMoveSFX();
                 }
                 else if (k == P1Right)
                 {
-                    sound.PlayMoveSFX();
+                    SoundManager.PlayMoveSFX();
                     TP_gameView.PlayerOneGame.MoveRight();
                 }
                 else if (k == P1Down)
                 {
                     TP_gameView.PlayerOneGame.MoveCurrentDown();
-                    sound.PlayMoveSFX();
+                    SoundManager.PlayMoveSFX();
                 }
                 else if (k == P1Drop)
                 {
                     TP_gameView.PlayerOneGame.HardDrop();
-                    sound.PlayCollisionSFX();
+                    SoundManager.PlayCollisionSFX();
                 }
                 else if (k == P1Rotate)
                 {
                     TP_gameView.PlayerOneGame.RotateCurrent();
-                    sound.PlayRotateSFX();
+                    SoundManager.PlayRotateSFX();
                 }
                 else if (k == P2Left)
                 {
                     TP_gameView.PlayerTwoGame.MoveLeft();
-                    sound.PlayMoveSFX();
+                    SoundManager.PlayMoveSFX();
                 }
                 else if (k == P2Right)
                 {
                     TP_gameView.PlayerTwoGame.MoveRight();
-                    sound.PlayMoveSFX();
+                    SoundManager.PlayMoveSFX();
                 }
                 else if (k == P2Down)
                 {
                     TP_gameView.PlayerTwoGame.MoveCurrentDown();
-                    sound.PlayMoveSFX();
+                    SoundManager.PlayMoveSFX();
                 }
                 else if (k == P2Drop)
                 {
                     TP_gameView.PlayerTwoGame.HardDrop();
-                    sound.PlayCollisionSFX();
+                    SoundManager.PlayCollisionSFX();
                 }
                 else if (k == P2Rotate)
                 {
                     TP_gameView.PlayerTwoGame.RotateCurrent();
-                    sound.PlayRotateSFX();
+                    SoundManager.PlayRotateSFX();
                 }
                 else if (k == PauseKey)
                 {
                     TPG_pause_Click(null, null);
-                    sound.PlayPauseSFX();
+                    SoundManager.PlayPauseSFX();
                 }
-                //else if(k == Key.V)
-                //{
-                //    TP_gameView.PlayerTwoGame.AddRowSansOne();
-                //}
+
             }
             else if (SP_gameView.SoloGame != null)
             {
                 if (k == P1Left)
                 {
                     SP_gameView.SoloGame.MoveLeft();
-                    sound.PlayMoveSFX();
+                    SoundManager.PlayMoveSFX();
                 }
                 else if (k == P1Right)
                 {
                     SP_gameView.SoloGame.MoveRight();
-                    sound.PlayMoveSFX();
+                    SoundManager.PlayMoveSFX();
                 }
                 else if (k == P1Down)
                 {
                     SP_gameView.SoloGame.MoveCurrentDown();
-                    sound.PlayMoveSFX();
+                    SoundManager.PlayMoveSFX();
                 }
                 else if (k == P1Drop)
                 {
                     SP_gameView.SoloGame.HardDrop();
-                    sound.PlayCollisionSFX();
+                    SoundManager.PlayCollisionSFX();
                 }
                 else if (k == P1Rotate)
                 {
                     SP_gameView.SoloGame.RotateCurrent();
-                    sound.PlayRotateSFX();
+                    SoundManager.PlayRotateSFX();
                 }
                 else if (k == PauseKey)
                 {
                     SPG_pause_Click(null, null);
-                    sound.PlayPauseSFX();
+                    SoundManager.PlayPauseSFX();
                 }
                 else if (k == Key.R)
                 {
@@ -1075,27 +1079,48 @@ namespace Tetris
 
         //SERIALIZATION
 
-        void SerializeSoloGame(Game soloGame, string filePath)
+        void SerializeSoloGame(Game w, string filePath)
         {
-            BinaryFormatter formater = new BinaryFormatter();
+            BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
 
-            formater.Serialize(stream, soloGame);
+            formatter.Serialize(stream, w);
         }
 
         private void DeserializeSoloGame(string file)
         {
-            throw new NotImplementedException();
+            try
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                Stream InStream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
+                Game soloGame = (Game)formatter.Deserialize(InStream);
+                soloGame.GameTimer = new System.Timers.Timer();
+                soloGame.GameTimer.Interval = 500;
+                soloGame.GameTimer.Elapsed += soloGame.Tick;
+                soloGame.GameEnd += soloGame_GameEnd;
+                InStream.Close();
+                SP_gameView.NewGame(soloGame.Mode);
+                SP_gameView.SoloGame.Stop();
+                SP_gameView.PaintTimer.Stop();
+                SP_gameView.SoloGame = soloGame;
+                mainPanel.Children.Remove(SP_modeSelect);
+                mainPanel.Children.Remove(SP_gameView);
+                mainPanel.Children.Add(SP_gameView);
+                UpdateSoundButtons();
+                SP_gameView.SoloGame.Start();
+                SP_gameView.PaintTimer.Start();
+            }
+            catch
+            {
+                // >.<" sorry
+            }
         }
 
-        void SerializeTwoPlayerGame(Game playerOneGame, Game playerTwoGame, string filePath)
+        void SerializeTwoPlayerGame(TwoPlayerSerWrapper w, string filePath)
         {
             BinaryFormatter formater = new BinaryFormatter();
             FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
-
-            List<Game> games = new List<Game> { playerOneGame, playerTwoGame };
-
-            formater.Serialize(stream, games);
+            formater.Serialize(stream, w);
         }
 
         private void DeserializeTwoPlayerGame(string file)

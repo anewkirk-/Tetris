@@ -7,11 +7,11 @@ using System.Windows.Media;
 
 namespace Tetris.Models.TetriminoBag
 {
+    [Serializable]
     public class s_Tetrimino : Tetrimino
     {
         public s_Tetrimino()
         {
-            color = new SolidColorBrush(Color.FromRgb(0, 255, 0));
             Blocks = new List<Points>()
             {
                 new Points { X = 3, Y = 1 },

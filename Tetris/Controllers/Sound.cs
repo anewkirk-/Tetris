@@ -36,37 +36,37 @@ namespace Tetris.Controllers
             soundEffects = new List<MediaPlayer>();
             #region File Paths
             //Sound effect file paths
-            string dominatingPath = "Sound\\SoundEffects\\Tetris_Dominating.wav";
-            string collissionPath = "Sound\\SoundEffects\\Tetris_Collission.wav";
-            string countdownPath = "Sound\\SoundEffects\\Tetris_Countdown.wav";
-            string doubleLineClearPath = "Sound\\SoundEffects\\Tetris_DoubleLineClear.wav";
-            string gameOverPath = "Sound\\SoundEffects\\Tetris_GameOver.wav";
-            string highScorePath = "Sound\\SoundEffects\\Tetris_HighScore.wav";
-            string gameStartPath = "Sound\\SoundEffects\\Tetris_GameStart.wav";
-            string levelUpPath = "Sound\\SoundEffects\\Tetris_LevelUp.wav";
-            string movePath = "Sound\\SoundEffects\\Tetris_Move.wav";
-            string pausePath = "Sound\\SoundEffects\\Tetris_Pause.wav";
-            string rotatePath = "Sound\\SoundEffects\\Tetris_Rotate.wav";
-            string singleLineClearPath = "Sound\\SoundEffects\\Tetris_SingleLineClear.wav";
-            string tripleLineClearPath = "Sound\\SoundEffects\\Tetris_TripleLineClear.wav";
-            string winPath = "Sound\\SoundEffects\\Tetris_Win.wav";
+            string dominatingPath = @"Sound\SoundEffects\Tetris_Dominating.wav";
+            string collissionPath = @"Sound\SoundEffects\Tetris_Collission.wav";
+            string countdownPath = @"Sound\SoundEffects\Tetris_Countdown.wav";
+            string doubleLineClearPath = @"Sound\SoundEffects\Tetris_DoubleLineClear.wav";
+            string gameOverPath = @"Sound\SoundEffects\Tetris_GameOver.wav";
+            string highScorePath = @"Sound\SoundEffects\Tetris_HighScore.wav";
+            string gameStartPath = @"Sound\SoundEffects\Tetris_GameStart.wav";
+            string levelUpPath = @"Sound\SoundEffects\Tetris_LevelUp.wav";
+            string movePath = @"Sound\SoundEffects\Tetris_Move.wav";
+            string pausePath = @"Sound\SoundEffects\Tetris_Pause.wav";
+            string rotatePath = @"Sound\SoundEffects\Tetris_Rotate.wav";
+            string singleLineClearPath = @"Sound\SoundEffects\Tetris_SingleLineClear.wav";
+            string tripleLineClearPath = @"Sound\SoundEffects\Tetris_TripleLineClear.wav";
+            string winPath = @"Sound\SoundEffects\Tetris_Win.wav";
             #endregion
             #region Open File Path
             //Open sound effect files for each player
-            dominatingPlayer.Open(new Uri(@dominatingPath, uriKind: UriKind.Relative));
-            collissionPlayer.Open(new Uri(@collissionPath, uriKind: UriKind.Relative));
-            countdownPlayer.Open(new Uri(@countdownPath, uriKind: UriKind.Relative));
-            gameOverPlayer.Open(new Uri(@gameOverPath, uriKind: UriKind.Relative));
-            scorePlayer.Open(new Uri(@highScorePath, uriKind: UriKind.Relative));
-            gameStartPlayer.Open(new Uri(@gameStartPath, uriKind: UriKind.Relative));
-            levelUpPlayer.Open(new Uri(@levelUpPath, uriKind: UriKind.Relative));
-            movePlayer.Open(new Uri(@movePath, uriKind: UriKind.Relative));
-            pausePlayer.Open(new Uri(@pausePath, uriKind: UriKind.Relative));
-            rotatePlayer.Open(new Uri(@rotatePath, uriKind: UriKind.Relative));
-            singleLineClearPlayer.Open(new Uri(@singleLineClearPath, uriKind: UriKind.Relative));
-            doubleLineClearPlayer.Open(new Uri(@doubleLineClearPath, uriKind: UriKind.Relative));
-            tripleLineClearPlayer.Open(new Uri(@tripleLineClearPath, uriKind: UriKind.Relative));
-            winPlayer.Open(new Uri(@winPath, uriKind: UriKind.Relative));
+            dominatingPlayer.Open(new Uri(dominatingPath, uriKind: UriKind.Relative));
+            collissionPlayer.Open(new Uri(collissionPath, uriKind: UriKind.Relative));
+            countdownPlayer.Open(new Uri(countdownPath, uriKind: UriKind.Relative));
+            gameOverPlayer.Open(new Uri(gameOverPath, uriKind: UriKind.Relative));
+            scorePlayer.Open(new Uri(highScorePath, uriKind: UriKind.Relative));
+            gameStartPlayer.Open(new Uri(gameStartPath, uriKind: UriKind.Relative));
+            levelUpPlayer.Open(new Uri(levelUpPath, uriKind: UriKind.Relative));
+            movePlayer.Open(new Uri(movePath, uriKind: UriKind.Relative));
+            pausePlayer.Open(new Uri(pausePath, uriKind: UriKind.Relative));
+            rotatePlayer.Open(new Uri(rotatePath, uriKind: UriKind.Relative));
+            singleLineClearPlayer.Open(new Uri(singleLineClearPath, uriKind: UriKind.Relative));
+            doubleLineClearPlayer.Open(new Uri(doubleLineClearPath, uriKind: UriKind.Relative));
+            tripleLineClearPlayer.Open(new Uri(tripleLineClearPath, uriKind: UriKind.Relative));
+            winPlayer.Open(new Uri(winPath, uriKind: UriKind.Relative));
             #endregion
         }
 

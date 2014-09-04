@@ -94,6 +94,7 @@
     <Compile Include="Models\TetriminoBag\t_Tetrimino.cs" />
     <Compile Include="Models\TetriminoBag\z_Tetrimino.cs" />
     <Compile Include="Models\TetrisBoard.cs" />
+    <Compile Include="Models\TwoPlayerSerWrapper.cs" />
     <Compile Include="Views\GameScreens\KeyBindingsMenu.xaml.cs">
       <DependentUpon>KeyBindingsMenu.xaml</DependentUpon>
     </Compile>

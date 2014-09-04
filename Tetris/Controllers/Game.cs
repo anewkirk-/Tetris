@@ -25,7 +25,21 @@ namespace Tetris.Controllers
         public int CurrentScore { get; set; }
         public GameMode Mode { get; set; }
         public TetrisBoard GameBoard { get; set; }
-        public Timer GameTimer { get; set; }
+
+        [field: NonSerialized]
+        private Timer _gameTimer;
+        public Timer GameTimer 
+        {
+            get
+            {
+                return _gameTimer;
+            }
+            set
+            {
+                _gameTimer = value;
+            }
+        
+        }
         public Tetrimino CurrentTetrimino { get; set; }
         public int LinesCleared { get; set; }
         public int TimeElapsed { get; set; }

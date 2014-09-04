@@ -16,8 +16,6 @@ namespace Tetris.Models.TetriminoBag
             this.Blocks = new List<Points>();
         }
 
-        public SolidColorBrush color;
-
         public List<Points> Blocks;
 
         public string Name;
@@ -35,6 +33,7 @@ namespace Tetris.Models.TetriminoBag
         public virtual void RotateBack() { }
     }
 
+    [Serializable]
     public class Points
     {
         public int X { get; set; }
