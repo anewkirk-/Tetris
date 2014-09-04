@@ -14,7 +14,6 @@ Page instfiles
 Section ""
   SetOutPath $INSTDIR
     
-  File /r bin\Debug
-  File /r Sound
+  File /r bin
   File /r Images
 SectionEnd ; end the section

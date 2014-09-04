@@ -194,13 +194,13 @@ namespace Tetris.Controllers
 
         public int FindDistanceCurrentCanFall()
         {
-            List<Points> lowestPoints = FindLowestPoints(CurrentTetrimino);
-            int lowest = lowestPoints.OrderByDescending(a => a.Y).First().Y;
-            int distance = 19 - lowest;
-            IEnumerable<Points> blocksBelow;
-            //This needs to be in a try/catch block
+            int distance = 0;
             try
             {
+            List<Points> lowestPoints = FindLowestPoints(CurrentTetrimino);
+            int lowest = lowestPoints.OrderByDescending(a => a.Y).First().Y;
+            distance = 19 - lowest;
+            IEnumerable<Points> blocksBelow;
                 foreach (Points p in lowestPoints.ToList())
                 {
                     blocksBelow = from t in GameBoard
