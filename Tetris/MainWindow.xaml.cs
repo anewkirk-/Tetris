@@ -280,11 +280,40 @@ namespace Tetris
                     SP_gameSummary.SPGS_lines.Content = SP_gameView.SoloGame.LinesCleared;
                     if (SP_gameView.GetGameMode() == GameMode.Timed)
                     {
-                        SP_gameSummary.SPGS_time.Content = "02:00";
+                        if (SP_gameView.SoloGame.TimeElapsed < 120000)
+                        {
+                            if (SP_gameView.SoloGame.TimeElapsed > 59999)
+                            {
+                                SP_gameSummary.SPGS_time.Content = "01:" + ((int)((SP_gameView.SoloGame.TimeElapsed - 60000) / 1000));
+                            }
+                            else if (SP_gameView.SoloGame.TimeElapsed < 10000)
+                            {
+                                SP_gameSummary.SPGS_time.Content = "00:0" + ((int)(SP_gameView.SoloGame.TimeElapsed / 1000));
+                            }
+                            else
+                            {
+                                SP_gameSummary.SPGS_time.Content = "00:" + ((int)(SP_gameView.SoloGame.TimeElapsed / 1000));
+                            }
+                        }
+                        else
+                        {
+                            SP_gameSummary.SPGS_time.Content = "02:00";
+                        }
                     }
                     else
                     {
                         SP_gameSummary.SPGS_time.Content = SP_gameView.TimerLabel.Content;
+                    }
+
+                    if (finalScore == 0)
+                    {
+                        SP_gameSummary.AHS_name.Visibility = System.Windows.Visibility.Collapsed;
+                        SP_gameSummary.AHS_type.Visibility = System.Windows.Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        SP_gameSummary.AHS_name.Visibility = System.Windows.Visibility.Visible;
+                        SP_gameSummary.AHS_type.Visibility = System.Windows.Visibility.Visible;
                     }
 
                     if (csm.IsHighScore(finalScore))
@@ -323,11 +352,50 @@ namespace Tetris
                 TP_gameSummary.TPGS_playerTwo_lines.Content = TP_gameView.PlayerTwoGame.LinesCleared;
                 if (TP_gameView.GetGameMode() == GameMode.Timed)
                 {
-                    TP_gameSummary.TPGS_time.Content = "02:00";
+                    if (TP_gameView.PlayerOneGame.TimeElapsed < 120000)
+                    {
+                        if (TP_gameView.PlayerOneGame.TimeElapsed > 59999)
+                        {
+                            TP_gameSummary.TPGS_time.Content = "01:" + ((int)((TP_gameView.PlayerOneGame.TimeElapsed - 60000) / 1000));
+                        }
+                        else if (TP_gameView.PlayerOneGame.TimeElapsed < 10000)
+                        {
+                            TP_gameSummary.TPGS_time.Content = "00:0" + ((int)(TP_gameView.PlayerOneGame.TimeElapsed / 1000));
+                        }
+                        else
+                        {
+                            TP_gameSummary.TPGS_time.Content = "00:" + ((int)(TP_gameView.PlayerOneGame.TimeElapsed / 1000));
+                        }
+                    }
+                    else
+                    {
+                        TP_gameSummary.TPGS_time.Content = "02:00";
+                    }
                 }
                 else
                 {
                     TP_gameSummary.TPGS_time.Content = TP_gameView.TimerLabel.Content;
+                }
+
+                if (playerOneScore == 0)
+                {
+                    TP_gameSummary.AHS_playerOne_name.Visibility = System.Windows.Visibility.Collapsed;
+                    TP_gameSummary.AHS_playerOne_type.Visibility = System.Windows.Visibility.Collapsed;
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerOne_name.Visibility = System.Windows.Visibility.Visible;
+                    TP_gameSummary.AHS_playerOne_type.Visibility = System.Windows.Visibility.Visible;
+                }
+                if (playerTwoScore == 0)
+                {
+                    TP_gameSummary.AHS_playerTwo_name.Visibility = System.Windows.Visibility.Collapsed;
+                    TP_gameSummary.AHS_playerTwo_type.Visibility = System.Windows.Visibility.Collapsed;
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerTwo_name.Visibility = System.Windows.Visibility.Visible;
+                    TP_gameSummary.AHS_playerTwo_type.Visibility = System.Windows.Visibility.Visible;
                 }
 
                 if (csm.IsHighScore(playerOneScore))
@@ -387,13 +455,52 @@ namespace Tetris
                 TP_gameSummary.TPGS_playerTwo_lines.Content = TP_gameView.PlayerTwoGame.LinesCleared;
                 if (TP_gameView.GetGameMode() == GameMode.Timed)
                 {
-                    TP_gameSummary.TPGS_time.Content = "02:00";
+                    if (TP_gameView.PlayerOneGame.TimeElapsed < 120000)
+                    {
+                        if (TP_gameView.PlayerOneGame.TimeElapsed > 59999)
+                        {
+                            TP_gameSummary.TPGS_time.Content = "01:" + ((int)((TP_gameView.PlayerOneGame.TimeElapsed - 60000) / 1000));
+                        }
+                        else if (SP_gameView.SoloGame.TimeElapsed < 10000)
+                        {
+                            TP_gameSummary.TPGS_time.Content = "00:0" + ((int)(TP_gameView.PlayerOneGame.TimeElapsed / 1000));
+                        }
+                        else
+                        {
+                            TP_gameSummary.TPGS_time.Content = "00:" + ((int)(TP_gameView.PlayerOneGame.TimeElapsed / 1000));
+                        }
+                    }
+                    else
+                    {
+                        TP_gameSummary.TPGS_time.Content = "02:00";
+                    }
                 }
                 else
                 {
                     TP_gameSummary.TPGS_time.Content = TP_gameView.TimerLabel.Content;
                 }
 
+                if (playerOneScore == 0)
+                {
+                    TP_gameSummary.AHS_playerOne_name.Visibility = System.Windows.Visibility.Collapsed;
+                    TP_gameSummary.AHS_playerOne_type.Visibility = System.Windows.Visibility.Collapsed;
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerOne_name.Visibility = System.Windows.Visibility.Visible;
+                    TP_gameSummary.AHS_playerOne_type.Visibility = System.Windows.Visibility.Visible;
+                }
+                if (playerTwoScore == 0)
+                {
+                    TP_gameSummary.AHS_playerTwo_name.Visibility = System.Windows.Visibility.Collapsed;
+                    TP_gameSummary.AHS_playerTwo_type.Visibility = System.Windows.Visibility.Collapsed;
+                }
+                else
+                {
+                    TP_gameSummary.AHS_playerTwo_name.Visibility = System.Windows.Visibility.Visible;
+                    TP_gameSummary.AHS_playerTwo_type.Visibility = System.Windows.Visibility.Visible;
+                }
+                
                 if (csm.IsHighScore(playerOneScore))
                 {
                     TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";

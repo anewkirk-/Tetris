@@ -31,7 +31,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -258,6 +258,14 @@
     <Resource Include="Images\sound_sfx_muted.png" />
     <Resource Include="Images\Icon.ico" />
     <Resource Include="Icon.ico" />
+    <Resource Include="Images\GameScreenBackground.png" />
+    <Resource Include="Images\GameScreenBackgroundv6.png" />
+    <Resource Include="Images\HighScoreR1.png" />
+    <Resource Include="Images\HighScoreR2.png" />
+    <Resource Include="Images\MainBackground.png" />
+    <Resource Include="Images\OverLayBackground.png" />
+    <Resource Include="Images\ScoresBackground.png" />
+    <Resource Include="Images\ControlsBackground.png" />
     <Content Include="Sound\SoundEffects\Tetris_Collission.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
