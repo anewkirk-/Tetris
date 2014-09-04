@@ -30,11 +30,8 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-<<<<<<< HEAD
     <PlatformTarget>x86</PlatformTarget>
-=======
-    <PlatformTarget>x64</PlatformTarget>
->>>>>>> ddf0a2d9f670a114505e9f62b13e0da248262205
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
