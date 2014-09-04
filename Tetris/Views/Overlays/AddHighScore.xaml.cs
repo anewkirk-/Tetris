@@ -32,8 +32,15 @@ namespace Tetris.Views.Overlays
 
         private void AHS_submit_Click_1(object sender, RoutedEventArgs e)
         {
-            Score newScore = new Score(AHS_name.Text, int.Parse(AHS_score.Content.ToString()));
-            sm.Submit(newScore);
+            try
+            {
+                Score newScore = new Score(AHS_name.Text, int.Parse(AHS_score.Content.ToString()));
+                sm.Submit(newScore);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void AHS_cancel_Click_1(object sender, RoutedEventArgs e)
