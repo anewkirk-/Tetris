@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\
 Tetris
 none
 false
 TRACE
-C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\App.xaml
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\App.xaml
 13-540146119
 15969257951
-36-901536304
-141403424607
+36-429992720
+14867540857
 MainWindow.xaml;Views\GameScreens\KeyBindingsMenu.xaml;Views\GameScreens\TwoPlayerModeSelect.xaml;Views\GameScreens\MainMenu.xaml;Views\GameScreens\SinglePlayerModeSelect.xaml;Views\GameScreens\ScoresMenu.xaml;Views\GameScreens\SinglePlayerGame.xaml;Views\GameScreens\TwoPlayerGame.xaml;Views\Overlays\AddHighScore.xaml;Views\Overlays\QuitConfirm.xaml;Views\Overlays\SinglePlayerGameSummary.xaml;Views\Overlays\PauseScreen.xaml;Views\Overlays\TwoPlayerGameSummary.xaml;
 
-False
+True
 
