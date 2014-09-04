@@ -28,11 +28,12 @@ namespace Tetris.Controllers
         MediaPlayer gameStartPlayer = new MediaPlayer();
         #endregion
 
-        List<MediaPlayer> soundEffects = new List<MediaPlayer>();
+        List<MediaPlayer> soundEffects { get; set; }
 
         //Constructor to open file paths for sound effects
         public Sound()
         {
+            soundEffects = new List<MediaPlayer>();
             #region File Paths
             //Sound effect file paths
             string dominatingPath = "Sound\\SoundEffects\\Tetris_Dominating.wav";
