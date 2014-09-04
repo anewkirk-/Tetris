@@ -796,7 +796,10 @@ namespace Tetris
             if (result == true)
             {
                 file = saveDialog.FileName;
-                SerializeSoloGame(SP_gameView.SoloGame, file);
+                OnePlayerSerWrapper w = new OnePlayerSerWrapper();
+                w.OnePlayerGame = SP_gameView.SoloGame;
+                w.TimerInterval = (int)SP_gameView.SoloGame.GameTimer.Interval;
+                SerializeSoloGame(w, file);
             }
         }
 
@@ -852,6 +855,7 @@ namespace Tetris
                 TwoPlayerSerWrapper w = new TwoPlayerSerWrapper();
                 w.PlayerOneGame = TP_gameView.PlayerOneGame;
                 w.PlayerTwoGame = TP_gameView.PlayerTwoGame;
+                w.TimerInterval = (int)TP_gameView.PlayerOneGame.GameTimer.Interval;
                 SerializeTwoPlayerGame(w, file);
             }
         }
@@ -1186,12 +1190,19 @@ namespace Tetris
 
         //SERIALIZATION
 
-        void SerializeSoloGame(Game w, string filePath)
+        void SerializeSoloGame(OnePlayerSerWrapper w, string filePath)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+            try
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
 
-            formatter.Serialize(stream, w);
+                formatter.Serialize(stream, w);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error has occurred:\n" + e.Message);
+            }
         }
 
         private void DeserializeSoloGame(string file)
@@ -1200,9 +1211,11 @@ namespace Tetris
             {
                 BinaryFormatter formatter = new BinaryFormatter();
                 Stream InStream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
-                Game soloGame = (Game)formatter.Deserialize(InStream);
+                OnePlayerSerWrapper w = (OnePlayerSerWrapper)formatter.Deserialize(InStream);
+                Game soloGame = w.OnePlayerGame;
+                int timerInterval = w.TimerInterval;
                 soloGame.GameTimer = new System.Timers.Timer();
-                soloGame.GameTimer.Interval = 500;
+                soloGame.GameTimer.Interval = timerInterval;
                 soloGame.GameTimer.Elapsed += soloGame.Tick;
                 soloGame.GameEnd += soloGame_GameEnd;
                 InStream.Close();
@@ -1216,23 +1229,69 @@ namespace Tetris
                 UpdateSoundButtons();
                 SP_gameView.SoloGame.Start();
                 SP_gameView.PaintTimer.Start();
+                SPG_pause_Click(null, null);
+                SoundManager.PlayPauseSFX();
             }
-            catch
+            catch(Exception e)
             {
-                // >.<" sorry
+                MessageBox.Show("An error has occurred:\n" + e.Message);
             }
         }
 
         void SerializeTwoPlayerGame(TwoPlayerSerWrapper w, string filePath)
         {
-            BinaryFormatter formater = new BinaryFormatter();
-            FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
-            formater.Serialize(stream, w);
+            try
+            {
+                BinaryFormatter formater = new BinaryFormatter();
+                FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+                formater.Serialize(stream, w);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An error has occurred:\n" + e.Message);
+            }
         }
 
         private void DeserializeTwoPlayerGame(string file)
         {
-            throw new NotImplementedException();
+            try
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                Stream InStream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
+                TwoPlayerSerWrapper w = (TwoPlayerSerWrapper)formatter.Deserialize(InStream);
+                InStream.Close();
+                Game PlayerOneGame = w.PlayerOneGame;
+                Game PlayerTwoGame = w.PlayerTwoGame;
+                int timerInterval = w.TimerInterval;
+                PlayerOneGame.GameTimer = new System.Timers.Timer();
+                PlayerTwoGame.GameTimer = new System.Timers.Timer();
+                PlayerOneGame.GameTimer.Interval = timerInterval;
+                PlayerTwoGame.GameTimer.Interval = timerInterval;
+                PlayerOneGame.GameTimer.Elapsed += PlayerOneGame.Tick;
+                PlayerTwoGame.GameTimer.Elapsed += PlayerTwoGame.Tick;
+                PlayerOneGame.GameEnd += PlayerOneGame_GameEnd;
+                PlayerTwoGame.GameEnd += PlayerTwoGame_GameEnd;
+                TP_gameView.NewGame(PlayerOneGame.Mode);
+                TP_gameView.PlayerOneGame.Stop();
+                TP_gameView.PlayerTwoGame.Stop();
+                TP_gameView.PaintTimer.Stop();
+                TP_gameView.PlayerOneGame = PlayerOneGame;
+                TP_gameView.PlayerTwoGame = PlayerTwoGame;
+                mainPanel.Children.Remove(TP_modeSelect);
+                mainPanel.Children.Remove(TP_gameView);
+                mainPanel.Children.Add(TP_gameView);
+                UpdateSoundButtons();
+                TP_gameView.PlayerOneGame.Start();
+                TP_gameView.PlayerTwoGame.Start();
+                TP_gameView.PaintTimer.Start();
+                TPG_pause_Click(null, null);
+                SoundManager.PlayPauseSFX();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("An error has occurred:\n" + e.Message);
+            }
+
         }
 
         //Sound Update Buttons

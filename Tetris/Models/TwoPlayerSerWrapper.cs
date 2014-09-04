@@ -7,9 +7,11 @@ using Tetris.Controllers;
 
 namespace Tetris.Models
 {
+    [Serializable]
     public class TwoPlayerSerWrapper
     {
         public Game PlayerOneGame { get; set; }
         public Game PlayerTwoGame { get; set; }
+        public int TimerInterval { get; set; }
     }
 }

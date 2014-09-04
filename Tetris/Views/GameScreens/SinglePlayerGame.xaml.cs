@@ -75,6 +75,7 @@ namespace Tetris.Views.GameScreens
                     Grid.SetRow(r, j);
                 }
             }
+            ClearRectangleBoard();
             PaintTimer = new System.Timers.Timer(100);
             PaintTimer.Elapsed += PaintTimer_Elapsed;
             SoloGame = new Game(type);

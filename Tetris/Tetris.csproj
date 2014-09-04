@@ -84,6 +84,7 @@
     <Compile Include="Controllers\ScoreManager.cs" />
     <Compile Include="Controllers\Sound.cs" />
     <Compile Include="Converters\BoolToImageConverter.cs" />
+    <Compile Include="Models\OnePlayerSerWrapper.cs" />
     <Compile Include="Models\Score.cs" />
     <Compile Include="Models\TetriminoBag\i_Tetrimino.cs" />
     <Compile Include="Models\TetriminoBag\j_Tetrimino.cs" />
