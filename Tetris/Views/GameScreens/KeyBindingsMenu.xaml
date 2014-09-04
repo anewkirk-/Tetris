@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800"
+             Height="625" Width="850"
              Background="{StaticResource ResourceKey=MainBackground}">
     <UserControl.Resources>
         <Style TargetType="RowDefinition" x:Key="keybindings">
@@ -15,7 +15,7 @@
     <StackPanel>
         <Image Source="/Images/dotTetrisLogo.png" Height="100" Margin="10" />
 
-        <Grid Height="380">
+        <Grid Height="370">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -36,17 +36,20 @@
                    FontWeight="ExtraBold"/>
             <Label Content="Player 1" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Foreground="White"
                    Grid.Row="0"
                    Grid.Column="1"
                    FontWeight="ExtraBold"/>
             <Label Content="Player 2" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Foreground="White"
                    Grid.Row="0"
                    Grid.Column="2"
                    FontWeight="ExtraBold"/>
 
             <Label Content="Move Left" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=GameBackground}"
                    Grid.Row="1"/>
             <ComboBox x:Name="P1MoveLeftBox"
                       Grid.Column="1"
@@ -59,6 +62,7 @@
 
             <Label Content="Move Right" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=GameBackground}"
                    Grid.Row="2"/>
             <ComboBox x:Name="P1MoveRightBox"
                       Grid.Column="1"
@@ -71,6 +75,7 @@
 
             <Label Content="Rotate" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=GameBackground}"
                    Grid.Row="3"/>
             <ComboBox x:Name="P1MoveRotateBox"
                       Grid.Column="1"
@@ -83,6 +88,7 @@
 
             <Label Content="Soft Drop" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=GameBackground}"
                    Grid.Row="4"/>
             <ComboBox x:Name="P1MoveSoftDropBox"
                       Grid.Column="1"
@@ -95,6 +101,7 @@
 
             <Label Content="Hard Drop" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=GameBackground}"
                    Grid.Row="5"/>
             <ComboBox x:Name="P1MoveHardDropBox"
                       Grid.Column="1"
@@ -111,7 +118,7 @@
                 Style="{StaticResource ResourceKey=MenuButtons}"
                 Content="Back to Main Menu" 
                 Margin="0,20,0,0"/>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,-1,40,0">
             <Button x:Name="KBM_music" Style="{StaticResource ResourceKey=ImageButton}"
                     Height="40" Width="40"
                     Margin="0,0,5,0" HorizontalAlignment="Right"/>

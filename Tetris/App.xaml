@@ -97,9 +97,8 @@
             </Style>
 
             <Style x:Key="KeyBindingLabels" TargetType="{x:Type Label}">
-                <Setter Property="Margin" Value="10" />
                 <Setter Property="Width" Value="200" />
-                <Setter Property="Height" Value="50" />
+                <Setter Property="Height" Value="40" />
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontFamily" Value="Miriam" />
                 <Setter Property="Background" Value="CornflowerBlue" />
@@ -136,9 +135,6 @@
                     <Image Source="/Images/sound_sfx_muted.png" />
                 </converters:BoolToImageConverter.ifMuted>
             </converters:BoolToImageConverter>
-
-
-
 
             <!-- http://stackoverflow.com/questions/4151380/wpf-image-control-with-click-event -->
             <Style x:Key="ImageButton" TargetType="{x:Type Button}">
@@ -182,6 +178,7 @@
             <SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
 
             <Geometry x:Key="DownArrowGeometry">M 0 0 L 3.5 4 L 7 0 Z</Geometry>
+            
             <Style x:Key="ComboBoxReadonlyToggleButton" TargetType="{x:Type ToggleButton}">
                 <Setter Property="OverridesDefaultStyle" Value="true"/>
                 <Setter Property="IsTabStop" Value="false"/>
@@ -205,6 +202,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            
             <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
                 <Setter Property="OverridesDefaultStyle" Value="true"/>
                 <Setter Property="AllowDrop" Value="true"/>
@@ -221,6 +219,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            
             <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
                 <Setter Property="OverridesDefaultStyle" Value="true"/>
                 <Setter Property="IsTabStop" Value="false"/>
@@ -245,6 +244,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            
             <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
                 <Grid x:Name="Placement" SnapsToDevicePixels="true">
                     <Grid.ColumnDefinitions>
@@ -300,12 +300,16 @@
                     </Trigger>
                 </ControlTemplate.Triggers>
             </ControlTemplate>
+            
             <Style TargetType="{x:Type ComboBox}">
                 <Setter Property="FocusVisualStyle" Value="{StaticResource ComboBoxFocusVisual}"/>
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
                 <Setter Property="Background" Value="WhiteSmoke"/>
                 <Setter Property="BorderBrush" Value="Gray"/>
                 <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Width" Value="200" />
+                <Setter Property="MaxDropDownHeight" Value="200" />
                 <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
                 <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
                 <Setter Property="Padding" Value="4,3"/>
@@ -341,7 +345,7 @@
                                     </Themes:SystemDropShadowChrome>
                                 </Popup>
                                 <ToggleButton BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxReadonlyToggleButton}"/>
-                                <ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                <ContentPresenter ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="10,-1,0,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="true">
@@ -387,9 +391,6 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-
-
-
 
         </ResourceDictionary>
     </Application.Resources>
