@@ -27,6 +27,9 @@ namespace Tetris.Controllers
         MediaPlayer levelUpPlayer = new MediaPlayer();
         MediaPlayer gameStartPlayer = new MediaPlayer();
         #endregion
+
+        List<MediaPlayer> soundEffects = new List<MediaPlayer>();
+
         //Constructor to open file paths for sound effects
         public Sound()
         {
@@ -64,6 +67,27 @@ namespace Tetris.Controllers
             tripleLineClearPlayer.Open(new Uri(@tripleLineClearPath, uriKind: UriKind.Relative));
             winPlayer.Open(new Uri(@winPath, uriKind: UriKind.Relative));
             #endregion
+        }
+
+        //Add SFX to a list for Mute SFX
+        public List<MediaPlayer> SFXList()
+        {
+            soundEffects.Add(gameOverPlayer);
+            soundEffects.Add(scorePlayer);
+            soundEffects.Add(movePlayer);
+            soundEffects.Add(pausePlayer);
+            soundEffects.Add(rotatePlayer);
+            soundEffects.Add(singleLineClearPlayer);
+            soundEffects.Add(doubleLineClearPlayer);
+            soundEffects.Add(tripleLineClearPlayer);
+            soundEffects.Add(winPlayer);
+            soundEffects.Add(collissionPlayer);
+            soundEffects.Add(countdownPlayer);
+            soundEffects.Add(dominatingPlayer);
+            soundEffects.Add(levelUpPlayer);
+            soundEffects.Add(gameStartPlayer);
+
+            return soundEffects;
         }
         
         #region Methods to play each sound effect
