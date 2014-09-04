@@ -1227,6 +1227,7 @@ namespace Tetris
                 mainPanel.Children.Remove(SP_gameView);
                 mainPanel.Children.Add(SP_gameView);
                 UpdateSoundButtons();
+                SP_gameView.PaintTimer_Elapsed(null, null);
                 SP_gameView.SoloGame.Start();
                 SP_gameView.PaintTimer.Start();
                 SPG_pause_Click(null, null);
@@ -1281,6 +1282,7 @@ namespace Tetris
                 mainPanel.Children.Remove(TP_gameView);
                 mainPanel.Children.Add(TP_gameView);
                 UpdateSoundButtons();
+                TP_gameView.PaintTimer_Elapsed(null, null);
                 TP_gameView.PlayerOneGame.Start();
                 TP_gameView.PlayerTwoGame.Start();
                 TP_gameView.PaintTimer.Start();

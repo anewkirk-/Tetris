@@ -68,6 +68,7 @@ namespace Tetris.Views.GameScreens
             PlayerOneGame.Start();
             PlayerTwoGame.Start();
             PaintTimer.Start();
+            ClearRectangleBoards();
         }
 
         public GameMode GetGameMode()
