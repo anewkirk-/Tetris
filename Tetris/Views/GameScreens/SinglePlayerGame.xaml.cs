@@ -29,7 +29,6 @@ namespace Tetris.Views.GameScreens
         private Rectangle[,] _rectangleBoard = new Rectangle[10, 20];
         private Rectangle[,] _nextBoard = new Rectangle[7, 2];
         private Random _gen = new Random();
-        Sound sound = new Sound();
 
         private List<SolidColorBrush> _tetriminoColors = new List<SolidColorBrush>() {
             new SolidColorBrush(Colors.Cyan),

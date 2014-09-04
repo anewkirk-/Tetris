@@ -105,12 +105,20 @@ namespace Tetris.Views.GameScreens
                 Rectangle rect1 = new Rectangle();
                 if (i % 2 != 0)
                 {
-                    rect1.Style = (Style)Application.Current.FindResource("GridRow1");
+                    rect1.Style = (Style)Application.Current.FindResource("GridRow2");
                 }
+                else
+                {
+                    rect1.Style = (Style)Application.Current.FindResource("GridRow1");
 
+                }
 
                 Rectangle rect2 = new Rectangle();
                 if (i % 2 != 0)
+                {
+                    rect2.Style = (Style)Application.Current.FindResource("GridRow2");
+                }
+                else
                 {
                     rect2.Style = (Style)Application.Current.FindResource("GridRow1");
                 }
