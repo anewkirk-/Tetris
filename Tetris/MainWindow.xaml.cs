@@ -437,6 +437,7 @@ namespace Tetris
                 {
                     TP_gameSummary.TPGS_winner.Content = "It's a tie!";
                 }
+                SoundManager.PlayGameOverSFX();
 
                 mainPanel.Children.Remove(backCanvas);
                 mainPanel.Children.Add(backCanvas);
@@ -544,6 +545,7 @@ namespace Tetris
                 {
                     TP_gameSummary.TPGS_winner.Content = "It's a tie!";
                 }
+                SoundManager.PlayGameOverSFX();
 
                 mainPanel.Children.Remove(backCanvas);
                 mainPanel.Children.Add(backCanvas);

@@ -229,7 +229,10 @@ namespace Tetris.Controllers
         public void PlayMoveSFX()
         {
             movePlayer.Stop();
-            movePlayer.Volume = 5;
+            if (!SFXMuted)
+            {
+                movePlayer.Volume = 5;
+            }
             movePlayer.Play();
         }
 
