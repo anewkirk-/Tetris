@@ -17,7 +17,7 @@
         <Image Source="/Images/highScoreLogo.png" Height="100" Margin="10" />
         
         
-        <Border BorderBrush="Black" BorderThickness="3" 
+        <Border BorderBrush="White" BorderThickness="3" 
                 Margin="50,0,50,0"
                 Width="600">
             <Grid x:Name="SM_grid"
