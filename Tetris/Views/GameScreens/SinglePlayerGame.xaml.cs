@@ -29,6 +29,7 @@ namespace Tetris.Views.GameScreens
         private Rectangle[,] _rectangleBoard = new Rectangle[10, 20];
         private Rectangle[,] _nextBoard = new Rectangle[7, 2];
         private Random _gen = new Random();
+        private Sound _soundManager = new Sound();
 
         private List<SolidColorBrush> _tetriminoColors = new List<SolidColorBrush>() {
             new SolidColorBrush(Colors.Cyan),
@@ -78,6 +79,7 @@ namespace Tetris.Views.GameScreens
             PaintTimer = new System.Timers.Timer(100);
             PaintTimer.Elapsed += PaintTimer_Elapsed;
             SoloGame = new Game(type);
+            _soundManager.PlayGameStartSFX();
             SoloGame.Start();
             PaintTimer.Start();
             SoloGame.MakeTetriminoBag();
