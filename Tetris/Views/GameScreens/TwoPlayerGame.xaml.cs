@@ -33,6 +33,7 @@ namespace Tetris.Views.GameScreens
         private Rectangle[,] _playerTwoNXT = new Rectangle[7, 2];
         private SolidColorBrush _borderBrush = new SolidColorBrush(Colors.Black);
         private Random _gen = new Random();
+        private Sound _soundManager = new Sound();
 
         private List<SolidColorBrush> _tetriminoColors = new List<SolidColorBrush>() {
             new SolidColorBrush(Colors.Cyan),
@@ -65,6 +66,7 @@ namespace Tetris.Views.GameScreens
             PlayerTwoGame.MakeTetriminoBag();
             PlayerTwoGame.MakeTetriminoBag();
             CreateNXTGrids();
+            _soundManager.PlayGameStartSFX();
             PlayerOneGame.Start();
             PlayerTwoGame.Start();
             PaintTimer.Start();
