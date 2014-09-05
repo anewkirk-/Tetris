@@ -116,6 +116,7 @@ namespace Tetris
         public Key P2Rotate { get; set; }
         public Key PauseKey { get; set; }
 
+        private bool paused = false;
 
         public MainWindow()
         {
@@ -318,6 +319,7 @@ namespace Tetris
 
                     if (csm.IsHighScore(finalScore))
                     {
+                        SoundManager.PlayHighScoreSFX();
                         SP_gameSummary.AHS_type.Content = "New High Score!!";
                         SP_gameSummary.AHS_type.FontWeight = FontWeights.Bold;
                     }
@@ -400,6 +402,7 @@ namespace Tetris
 
                 if (csm.IsHighScore(playerOneScore))
                 {
+                    SoundManager.PlayHighScoreSFX();
                     TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
                     TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.Bold;
                 }
@@ -410,6 +413,7 @@ namespace Tetris
                 }
                 if (csm.IsHighScore(playerTwoScore))
                 {
+                    SoundManager.PlayHighScoreSFX();
                     TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
                     TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.Bold;
                 }
@@ -421,10 +425,12 @@ namespace Tetris
 
                 if (playerOneScore > playerTwoScore)
                 {
+                    SoundManager.PlayWinSFX();
                     TP_gameSummary.TPGS_winner.Content = "Player One Wins!";
                 }
                 else if (playerTwoScore > playerOneScore)
                 {
+                    SoundManager.PlayWinSFX();
                     TP_gameSummary.TPGS_winner.Content = "Player Two Wins!";
                 }
                 else
@@ -503,6 +509,7 @@ namespace Tetris
                 
                 if (csm.IsHighScore(playerOneScore))
                 {
+                    SoundManager.PlayHighScoreSFX();
                     TP_gameSummary.AHS_playerOne_type.Content = "New High Score!!";
                     TP_gameSummary.AHS_playerOne_type.FontWeight = FontWeights.Bold;
                 }
@@ -513,6 +520,7 @@ namespace Tetris
                 }
                 if (csm.IsHighScore(playerTwoScore))
                 {
+                    SoundManager.PlayHighScoreSFX();
                     TP_gameSummary.AHS_playerTwo_type.Content = "New High Score!!";
                     TP_gameSummary.AHS_playerTwo_type.FontWeight = FontWeights.Bold;
                 }
@@ -524,10 +532,12 @@ namespace Tetris
 
                 if (playerOneScore > playerTwoScore)
                 {
+                    SoundManager.PlayWinSFX();
                     TP_gameSummary.TPGS_winner.Content = "Player One Wins!";
                 }
                 else if (playerTwoScore > playerOneScore)
                 {
+                    SoundManager.PlayWinSFX();
                     TP_gameSummary.TPGS_winner.Content = "Player Two Wins!";
                 }
                 else
@@ -566,6 +576,7 @@ namespace Tetris
         {
 
             MusicMuted = !MusicMuted;
+
             if (backgroundMusic != null)
             {
                 if (MusicMuted)
@@ -574,14 +585,14 @@ namespace Tetris
                 }
                 else
                 {
-                    backgroundMusic.Volume = .5;
+                    backgroundMusic.Volume = .1;
                 }
             }
         }
 
         private void sfx_Click(object sender, RoutedEventArgs e)
         {
-
+            SoundManager.MuteSFX();
             SFXMuted = !SFXMuted;
 
             List<MediaPlayer> sfx = SoundManager.SFXList();
@@ -766,7 +777,7 @@ namespace Tetris
         {
             if (SP_gameView.SoloGame != null)
             {
-
+                SoundManager.PlayPauseSFX();
                 SP_gameView.PauseGame();
                 mainPanel.Children.Remove(backCanvas);
                 mainPanel.Children.Remove(pause);
@@ -822,6 +833,7 @@ namespace Tetris
         {
             if (TP_gameView.PlayerOneGame != null)
             {
+                SoundManager.PlayPauseSFX();
                 TP_gameView.PauseGame();
                 mainPanel.Children.Remove(backCanvas);
                 mainPanel.Children.Remove(pause);
@@ -1088,8 +1100,8 @@ namespace Tetris
                 }
                 else if (k == P1Right)
                 {
-                    SoundManager.PlayMoveSFX();
                     TP_gameView.PlayerOneGame.MoveRight();
+                    SoundManager.PlayMoveSFX();
                 }
                 else if (k == P1Down)
                 {
@@ -1133,8 +1145,13 @@ namespace Tetris
                 }
                 else if (k == PauseKey)
                 {
-                    TPG_pause_Click(null, null);
-                    SoundManager.PlayPauseSFX();
+                    if (Keyboard.IsKeyDown(PauseKey))
+                    {
+                        if (!paused)
+                            BeginPause();
+                        else
+                            EndPause();
+                    }
                 }
 
             }
@@ -1167,8 +1184,13 @@ namespace Tetris
                 }
                 else if (k == PauseKey)
                 {
-                    SPG_pause_Click(null, null);
-                    SoundManager.PlayPauseSFX();
+                    if (Keyboard.IsKeyDown(PauseKey))
+                    {
+                        if (!paused)
+                            BeginPause();
+                        else
+                            EndPause();
+                    }
                 }
                 else if (k == Key.R)
                 {
@@ -1186,6 +1208,29 @@ namespace Tetris
                     }
                 }
             }
+        }
+
+        private void BeginPause()
+        {
+            paused = true;
+            if (SP_gameView.SoloGame != null)
+            {
+                SPG_pause_Click(null, null);
+            }
+            else if (TP_gameView.PlayerTwoGame != null)
+            {
+                TPG_pause_Click(null, null);
+            }
+
+            SoundManager.PlayPauseSFX();
+        }
+
+        private void EndPause()
+        {
+            paused = false;
+            pause_continue_Click(null, null);
+            SoundManager.PlayPauseSFX();
+
         }
 
         //SERIALIZATION

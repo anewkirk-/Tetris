@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,41 @@ namespace Tetris.Controllers
     public class Sound
     {
         //Create new players for two player games---------------------------------
+        //Sound Buttons
+        public event PropertyChangedEventHandler PropertyChanged;
+        private bool _musicMuted = false;
+        public bool MusicMuted
+        {
+            get
+            {
+                return _musicMuted;
+            }
+            set
+            {
+                _musicMuted = value;
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("MusicMuted"));
+                }
+            }
+        }
+        private bool _sfxMuted = false;
+        public bool SFXMuted
+        {
+            get
+            {
+                return _sfxMuted;
+            }
+            set
+            {
+                _sfxMuted = value;
+                if (PropertyChanged != null)
+                {
+
+                    PropertyChanged(this, new PropertyChangedEventArgs("SFXMuted"));
+                }
+            }
+        }
         #region Initialize MediaPlayers
         //Initialize a MediaPlayer for each sound
         MediaPlayer gameOverPlayer = new MediaPlayer();
@@ -34,6 +70,7 @@ namespace Tetris.Controllers
         public Sound()
         {
             soundEffects = new List<MediaPlayer>();
+            SFXList();
             #region File Paths
             //Sound effect file paths
             string dominatingPath = @"Sound\SoundEffects\Tetris_Dominating.wav";
@@ -51,6 +88,7 @@ namespace Tetris.Controllers
             string tripleLineClearPath = @"Sound\SoundEffects\Tetris_TripleLineClear.wav";
             string winPath = @"Sound\SoundEffects\Tetris_Win.wav";
             #endregion
+
             #region Open File Path
             //Open sound effect files for each player
             dominatingPlayer.Open(new Uri(dominatingPath, uriKind: UriKind.Relative));
@@ -89,6 +127,29 @@ namespace Tetris.Controllers
             soundEffects.Add(gameStartPlayer);
 
             return soundEffects;
+        }
+
+        public void MuteSFX()
+        {
+
+            SFXMuted = !SFXMuted;
+
+            if (soundEffects != null)
+            {
+                if (SFXMuted)
+                {
+                    foreach (MediaPlayer s in soundEffects)
+                    {
+                        s.Volume = 0;
+                    }
+                }
+                else
+                    foreach (MediaPlayer s in soundEffects)
+                    {
+                        s.Volume = 8;
+                    }
+            }
+
         }
         
         #region Methods to play each sound effect
@@ -168,6 +229,7 @@ namespace Tetris.Controllers
         public void PlayMoveSFX()
         {
             movePlayer.Stop();
+            movePlayer.Volume = 5;
             movePlayer.Play();
         }
 
