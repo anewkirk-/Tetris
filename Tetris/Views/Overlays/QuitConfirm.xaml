@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Height="100" Width="225"
-             BorderBrush="Black"
-             BorderThickness="1">
+             BorderBrush="White"
+             BorderThickness="2">
     <Grid Background="{StaticResource ResourceKey=OverlayBackground}">
 
         <Grid.RowDefinitions>
@@ -17,11 +17,13 @@
 
         <Label Content="Are you sure you want to quit?" 
                FontSize="14"
+               Foreground="White"
                HorizontalAlignment="Center"
                VerticalAlignment="Bottom"
                Grid.Row="0"/>
 
         <StackPanel Orientation="Horizontal"
+                    Height="55"
                     HorizontalAlignment="Center"
                     Grid.Row="1">
 
@@ -29,6 +31,7 @@
                     Content="Yes"
                     Grid.Row="1"
                     Style="{StaticResource ResourceKey=OverlayButtons}"
+                    BorderBrush="White"
                     Width="75"
                     Margin="10"/>
 
@@ -36,6 +39,7 @@
                     Content="No"
                     Grid.Row="1"
                     Style="{StaticResource ResourceKey=OverlayButtons}"
+                    BorderBrush="White"
                     Width="75"
                     Margin="10"/>
         </StackPanel>
