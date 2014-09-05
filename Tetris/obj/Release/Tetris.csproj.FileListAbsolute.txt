@@ -88,3 +88,26 @@ C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Relea
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Tetris.exe
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Tetris.pdb
 C:\Users\echo_drop\Documents\Visual Studio 2012\Projects\Tetris\Tetris\obj\Release\Tetris.csprojResolveAssemblyReference.cache
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_Collission.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_Countdown.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_Dominating.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_DoubleLineClear.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_GameOver.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_GameStart.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_HighScore.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_LevelUp.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_Move.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_Pause.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_Rotate.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_SingleLineClear.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_TripleLineClear.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\SoundEffects\Tetris_Win.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Sound\Music\TetrisThemeSong.wav
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Tetris.exe
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\Tetris.pdb
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\bin\Release\System.Data.SQLite.dll
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\App.baml
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\MainWindow.baml
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Tetris.g.resources
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Tetris.Properties.Resources.resources
+C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Tetris.csproj.GenerateResource.Cache
