@@ -33,9 +33,11 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="SPMS_music" Style="{StaticResource ResourceKey=ImageButton}"
                     Height="40" Width="40"
+                    Focusable="False"
                     Margin="0,0,5,0" HorizontalAlignment="Right"/>
             <Button x:Name="SPMS_sfx" Style="{StaticResource ResourceKey=ImageButton}"
                     Height="40" Width="40"
+                    Focusable="False"
                     Margin="5,0,0,0" HorizontalAlignment="Right"/>
         </StackPanel>
     </StackPanel>

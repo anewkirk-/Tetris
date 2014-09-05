@@ -106,9 +106,11 @@
         
             <Button x:Name="SPG_music" Style="{StaticResource ResourceKey=ImageButton}"
                     Height="40" Width="40" VerticalAlignment="Bottom"
+                    Focusable="False"
                     Margin="0,0,5,30" HorizontalAlignment="Right"/>
             <Button x:Name="SPG_sfx" Style="{StaticResource ResourceKey=ImageButton}"
                     Height="40" Width="40" VerticalAlignment="Bottom"
+                    Focusable="False"
                     Margin="5,0,0,30" HorizontalAlignment="Right"/>
     </StackPanel>
 </UserControl>
