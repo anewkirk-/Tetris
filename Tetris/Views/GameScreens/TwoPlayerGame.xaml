@@ -96,19 +96,26 @@
                    FontSize="18" FontWeight="Bold"/>
             <Button x:Name="TPG_pause"
                     Style="{StaticResource ResourceKey=OverlayButtons}"
+                    Background="{StaticResource ResourceKey=Brush_LightBlue}"
                     Margin="2,5,2,0"
+                    HorizontalAlignment="Center"
+                    Width="65"
                     FontSize="16"
                     Height="25"
                     Content="Pause"/>
             <Button x:Name="TPG_save"
                     Style="{StaticResource ResourceKey=OverlayButtons}"
                     Margin="2,5,2,0"
+                    HorizontalAlignment="Center"
+                    Width="65"
                     FontSize="16"
                     Height="25"
                     Content="Save"/>
             <Button x:Name="TPG_quit"
                     Style="{StaticResource ResourceKey=OverlayButtons}"
                     Margin="2,5,2,0"
+                    HorizontalAlignment="Center"
+                    Width="65"
                     FontSize="16"
                     Height="25"
                     Content="Quit"/>

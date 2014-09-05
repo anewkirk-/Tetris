@@ -16,6 +16,17 @@
             <ImageBrush x:Key="R2Background" ImageSource="/Images/HighScoreR2.png"/>
             <ImageBrush x:Key="ScoresBackground" ImageSource="/Images/ScoresBackground.png"/>
             <ImageBrush x:Key="ControlsBackground" ImageSource="/Images/ControlsBackground.png"/>
+            
+            <SolidColorBrush x:Key="KBM_Labels">
+                <SolidColorBrush.Color>
+                    <Color A="255" R="171" G="149" B="149" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+            <SolidColorBrush x:Key="Brush_LightBlue">
+                <SolidColorBrush.Color>
+                    <Color A="255" R="203" G="230" B="247" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
 
             <Style x:Key="MenuButtons" TargetType="{x:Type Button}">
                 <Setter Property="Margin" Value="10" />
@@ -23,9 +34,9 @@
                 <Setter Property="Height" Value="50" />
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontFamily" Value="Miriam" />
-                <Setter Property="Background" Value="CornflowerBlue" />
-                <Setter Property="BorderBrush" Value="Black" />
-                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="Background" Value="{StaticResource ResourceKey=KBM_Labels}" />
+                <Setter Property="BorderBrush" Value="White" />
+                <Setter Property="BorderThickness" Value="2" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
@@ -54,7 +65,7 @@
                 <Setter Property="Height" Value="30" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontFamily" Value="Miriam" />
-                <Setter Property="Background" Value="CornflowerBlue" />
+                <Setter Property="Background" Value="{StaticResource ResourceKey=Brush_LightBlue}" />
                 <Setter Property="BorderBrush" Value="Black" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="HorizontalAlignment" Value="Center" />
@@ -96,13 +107,14 @@
             </Style>
 
             <Style x:Key="KeyBindingLabels" TargetType="{x:Type Label}">
-                <Setter Property="Margin" Value="10" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
                 <Setter Property="Width" Value="200" />
                 <Setter Property="Height" Value="50" />
                 <Setter Property="FontSize" Value="24" />
                 <Setter Property="FontFamily" Value="Miriam" />
                 <Setter Property="Background" Value="CornflowerBlue" />
-                <Setter Property="BorderBrush" Value="Black" />
+                <Setter Property="BorderBrush" Value="White" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="Template">
                     <Setter.Value>
@@ -386,8 +398,6 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-
-
 
 
         </ResourceDictionary>

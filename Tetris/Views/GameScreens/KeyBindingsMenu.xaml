@@ -47,6 +47,7 @@
 
             <Label Content="Move Left" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=KBM_Labels}"
                    Grid.Row="1"/>
             <ComboBox x:Name="P1MoveLeftBox"
                       Grid.Column="1"
@@ -59,6 +60,7 @@
 
             <Label Content="Move Right" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=KBM_Labels}"
                    Grid.Row="2"/>
             <ComboBox x:Name="P1MoveRightBox"
                       Grid.Column="1"
@@ -71,6 +73,7 @@
 
             <Label Content="Rotate" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=KBM_Labels}"
                    Grid.Row="3"/>
             <ComboBox x:Name="P1MoveRotateBox"
                       Grid.Column="1"
@@ -83,6 +86,7 @@
 
             <Label Content="Soft Drop" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=KBM_Labels}"
                    Grid.Row="4"/>
             <ComboBox x:Name="P1MoveSoftDropBox"
                       Grid.Column="1"
@@ -95,6 +99,7 @@
 
             <Label Content="Hard Drop" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=KBM_Labels}"
                    Grid.Row="5"/>
             <ComboBox x:Name="P1MoveHardDropBox"
                       Grid.Column="1"
