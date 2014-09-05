@@ -31,22 +31,29 @@
             </Grid.RowDefinitions>
             <Label Content="Key Bindings" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   BorderBrush="White"
+                   BorderThickness="2"
                    Grid.Row="0"
                    Grid.Column="0"
                    FontWeight="ExtraBold"/>
             <Label Content="Player 1" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   
                    Grid.Row="0"
                    Grid.Column="1"
                    FontWeight="ExtraBold"/>
             <Label Content="Player 2" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   BorderBrush="White"
+                   BorderThickness="2"
                    Grid.Row="0"
                    Grid.Column="2"
                    FontWeight="ExtraBold"/>
 
             <Label Content="Move Left" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=Brush_LightBlue}"
+                   BorderThickness="1"
                    Grid.Row="1"/>
             <ComboBox x:Name="P1MoveLeftBox"
                       Grid.Column="1"
@@ -59,6 +66,8 @@
 
             <Label Content="Move Right" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=Brush_LightBlue}"
+                   BorderThickness="1"
                    Grid.Row="2"/>
             <ComboBox x:Name="P1MoveRightBox"
                       Grid.Column="1"
@@ -71,6 +80,8 @@
 
             <Label Content="Rotate" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=Brush_LightBlue}"
+                   BorderThickness="1"
                    Grid.Row="3"/>
             <ComboBox x:Name="P1MoveRotateBox"
                       Grid.Column="1"
@@ -83,6 +94,8 @@
 
             <Label Content="Soft Drop" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=Brush_LightBlue}"
+                   BorderThickness="1"
                    Grid.Row="4"/>
             <ComboBox x:Name="P1MoveSoftDropBox"
                       Grid.Column="1"
@@ -95,6 +108,8 @@
 
             <Label Content="Hard Drop" 
                    Style="{StaticResource ResourceKey=KeyBindingLabels}"
+                   Background="{StaticResource ResourceKey=Brush_LightBlue}"
+                   BorderThickness="1"
                    Grid.Row="5"/>
             <ComboBox x:Name="P1MoveHardDropBox"
                       Grid.Column="1"
