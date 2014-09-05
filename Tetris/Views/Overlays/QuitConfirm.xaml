@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Height="100" Width="225"
-             BorderBrush="White"
-             BorderThickness="2">
+             BorderBrush="Black"
+             BorderThickness="1">
     <Grid Background="{StaticResource ResourceKey=OverlayBackground}">
 
         <Grid.RowDefinitions>
@@ -23,14 +23,12 @@
 
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
-                    Height="55"
                     Grid.Row="1">
 
             <Button x:Name="quit_yes"
                     Content="Yes"
                     Grid.Row="1"
                     Style="{StaticResource ResourceKey=OverlayButtons}"
-                    Background="{StaticResource ResourceKey=Brush_LightBlue}"
                     Width="75"
                     Margin="10"/>
 
