@@ -42,7 +42,7 @@ namespace Tetris.Views.GameScreens
             Application.Current.FindResource("Brush_GridBackground") as SolidColorBrush,
             new SolidColorBrush(Colors.Black)
     };
-        private SolidColorBrush _borderBrush = new SolidColorBrush(Colors.Black);
+        private SolidColorBrush _borderBrush = Application.Current.FindResource("Brush_GridBorders") as SolidColorBrush;
         private SolidColorBrush _nxtBorderBrush = new SolidColorBrush(Color.FromArgb(144, 0, 0, 0));
 
         public SinglePlayerGame()

@@ -32,6 +32,12 @@
                 </SolidColorBrush.Color>
             </SolidColorBrush>
 
+            <SolidColorBrush x:Key="Brush_GridBorders">
+                <SolidColorBrush.Color>
+                    <Color A="255" R="30" G="30" B="30" />
+                </SolidColorBrush.Color>
+            </SolidColorBrush>
+
             <Style x:Key="MenuButtons" TargetType="{x:Type Button}">
                 <Setter Property="Margin" Value="10" />
                 <Setter Property="Width" Value="200" />

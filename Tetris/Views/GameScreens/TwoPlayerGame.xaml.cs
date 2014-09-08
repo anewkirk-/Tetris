@@ -31,7 +31,7 @@ namespace Tetris.Views.GameScreens
         private Rectangle[,] _playerTwoRectangles = new Rectangle[10, 20];
         private Rectangle[,] _playerOneNXT = new Rectangle[7, 2];
         private Rectangle[,] _playerTwoNXT = new Rectangle[7, 2];
-        private SolidColorBrush _borderBrush = new SolidColorBrush(Colors.Black);
+        private SolidColorBrush _borderBrush = Application.Current.FindResource("Brush_GridBorders") as SolidColorBrush;
         private Random _gen = new Random();
         private Sound _soundManager = new Sound();
 
