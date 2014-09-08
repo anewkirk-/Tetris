@@ -117,9 +117,6 @@
     <Compile Include="Views\GameScreens\TwoPlayerGame.xaml.cs">
       <DependentUpon>TwoPlayerGame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Overlays\AddHighScore.xaml.cs">
-      <DependentUpon>AddHighScore.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Overlays\QuitConfirm.xaml.cs">
       <DependentUpon>QuitConfirm.xaml</DependentUpon>
     </Compile>
@@ -172,10 +169,6 @@
     <Page Include="Views\GameScreens\TwoPlayerGame.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Overlays\AddHighScore.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Overlays\QuitConfirm.xaml">
       <SubType>Designer</SubType>

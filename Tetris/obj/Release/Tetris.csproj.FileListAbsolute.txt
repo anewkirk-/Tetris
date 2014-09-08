@@ -9,7 +9,6 @@ C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\R
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\GameScreens\ScoresMenu.baml
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\GameScreens\SinglePlayerGame.baml
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\GameScreens\TwoPlayerGame.baml
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\Overlays\AddHighScore.baml
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\Overlays\QuitConfirm.baml
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\Overlays\SinglePlayerGameSummary.baml
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\Overlays\PauseScreen.baml
@@ -22,7 +21,6 @@ C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\R
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\GameScreens\ScoresMenu.g.cs
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\GameScreens\SinglePlayerGame.g.cs
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\GameScreens\TwoPlayerGame.g.cs
-C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\Overlays\AddHighScore.g.cs
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\Overlays\QuitConfirm.g.cs
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\Overlays\SinglePlayerGameSummary.g.cs
 C:\Users\Scott Crisenbery\Documents\_Neumont\App Dev Project\Tetris\Tetris\obj\Release\Views\Overlays\PauseScreen.g.cs
