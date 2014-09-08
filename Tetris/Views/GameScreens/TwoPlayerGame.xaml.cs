@@ -309,11 +309,11 @@ namespace Tetris.Views.GameScreens
                     if (i >= 3)
                     {
                         Rectangle rct = _playerOneNXT[i, j];
-                        rct.Fill = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+                        rct.Fill = Application.Current.FindResource("Brush_GridBackground") as SolidColorBrush;
                         rct.StrokeThickness = 0;
 
                         Rectangle rct2 = _playerTwoNXT[i, j];
-                        rct2.Fill = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+                        rct2.Fill = Application.Current.FindResource("Brush_GridBackground") as SolidColorBrush;
                         rct2.StrokeThickness = 0;
                     }
                 }
