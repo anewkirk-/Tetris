@@ -97,7 +97,6 @@ C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\GameScre
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\GameScreens\ScoresMenu.baml
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\GameScreens\SinglePlayerGame.baml
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\GameScreens\TwoPlayerGame.baml
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\Overlays\AddHighScore.baml
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\Overlays\QuitConfirm.baml
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\Overlays\SinglePlayerGameSummary.baml
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\Overlays\PauseScreen.baml
@@ -110,7 +109,6 @@ C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\GameScre
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\GameScreens\ScoresMenu.g.cs
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\GameScreens\SinglePlayerGame.g.cs
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\GameScreens\TwoPlayerGame.g.cs
-C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\Overlays\AddHighScore.g.cs
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\Overlays\QuitConfirm.g.cs
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\Overlays\SinglePlayerGameSummary.g.cs
 C:\Users\Derek Nasfell\Documents\GitHub\Tetris\Tetris\obj\Release\Views\Overlays\PauseScreen.g.cs

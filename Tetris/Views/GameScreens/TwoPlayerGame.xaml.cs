@@ -159,7 +159,11 @@ namespace Tetris.Views.GameScreens
             string secs = time.Seconds > 9 ? time.Seconds.ToString() : "0" + time.Seconds.ToString();
             TimerLabel.Content = string.Concat(mins, ":" + secs);
 
-
+            if (mins.ToString() == "00" && secs.ToString() == "30")
+            {
+                _soundManager.PlayCountdownSFX();
+            }
+            
             ClearRectangleBoards();
 
             //Color in blocks
