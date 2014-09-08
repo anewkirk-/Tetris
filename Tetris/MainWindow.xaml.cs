@@ -468,7 +468,7 @@ namespace Tetris
                         {
                             TP_gameSummary.TPGS_time.Content = "01:" + ((int)((TP_gameView.PlayerOneGame.TimeElapsed - 60000) / 1000));
                         }
-                        else if (SP_gameView.SoloGame.TimeElapsed < 10000)
+                        else if (TP_gameView.PlayerOneGame.TimeElapsed < 10000)
                         {
                             TP_gameSummary.TPGS_time.Content = "00:0" + ((int)(TP_gameView.PlayerOneGame.TimeElapsed / 1000));
                         }
